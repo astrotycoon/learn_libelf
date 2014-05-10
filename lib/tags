@@ -1,0 +1,2567 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AR	Makefile	/^AR = ar$/;"	m
+ARFMAG	private.h	116;"	d
+ARMAG	private.h	103;"	d
+AUXHDRS	Makefile	/^AUXHDRS = sys_elf.h$/;"	m
+CA_SUNW_HW_1	elf_repl.h	988;"	d
+CA_SUNW_NULL	elf_repl.h	987;"	d
+CA_SUNW_SF_1	elf_repl.h	989;"	d
+CC	Makefile	/^CC = gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -g3$/;"	m
+COMPILE	Makefile	/^COMPILE = $(CC) -c $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS) $(XCFLAGS)$/;"	m
+CPPFLAGS	Makefile	/^CPPFLAGS = $/;"	m
+Cat2	32.xlatetof.c	33;"	d	file:
+Cat2	32.xlatetof.c	40;"	d	file:
+Cat2	32.xlatetof.c	45;"	d	file:
+Cat2	64.xlatetof.c	35;"	d	file:
+Cat2	64.xlatetof.c	42;"	d	file:
+Cat2	64.xlatetof.c	47;"	d	file:
+Cat3	32.xlatetof.c	34;"	d	file:
+Cat3	32.xlatetof.c	41;"	d	file:
+Cat3	32.xlatetof.c	46;"	d	file:
+Cat3	64.xlatetof.c	36;"	d	file:
+Cat3	64.xlatetof.c	43;"	d	file:
+Cat3	64.xlatetof.c	48;"	d	file:
+DATA_MAGIC	private.h	291;"	d
+DEFS	Makefile	/^DEFS = -DHAVE_CONFIG_H$/;"	m
+DEPRECATED	libelf.h	35;"	d
+DEPRECATED	libelf.h	37;"	d
+DEPSHLIBS	Makefile	/^DEPSHLIBS = -lc$/;"	m
+DF_1_CONFALT	elf_repl.h	787;"	d
+DF_1_DIRECT	elf_repl.h	782;"	d
+DF_1_DISPRELDNE	elf_repl.h	789;"	d
+DF_1_DISPRELPND	elf_repl.h	790;"	d
+DF_1_ENDFILTEE	elf_repl.h	788;"	d
+DF_1_GLOBAL	elf_repl.h	775;"	d
+DF_1_GROUP	elf_repl.h	776;"	d
+DF_1_INITFIRST	elf_repl.h	779;"	d
+DF_1_INTERPOSE	elf_repl.h	784;"	d
+DF_1_LOADFLTR	elf_repl.h	778;"	d
+DF_1_NODEFLIB	elf_repl.h	785;"	d
+DF_1_NODELETE	elf_repl.h	777;"	d
+DF_1_NODUMP	elf_repl.h	786;"	d
+DF_1_NOOPEN	elf_repl.h	780;"	d
+DF_1_NOW	elf_repl.h	774;"	d
+DF_1_ORIGIN	elf_repl.h	781;"	d
+DF_1_TRANS	elf_repl.h	783;"	d
+DF_BIND_NOW	elf_repl.h	716;"	d
+DF_ORIGIN	elf_repl.h	713;"	d
+DF_P1_GROUPPERM	elf_repl.h	769;"	d
+DF_P1_LAZYLOAD	elf_repl.h	768;"	d
+DF_STATIC_TLS	elf_repl.h	717;"	d
+DF_SYMBOLIC	elf_repl.h	714;"	d
+DF_TEXTREL	elf_repl.h	715;"	d
+DISTFILES	Makefile	/^DISTFILES = $(SRCS) $(LIBSRCS) $(HDRS) $(PRIVHDRS) Makefile.in sys_elf.h.in \\$/;"	m
+DO_COMPAT	Makefile	/^DO_COMPAT = no$/;"	m
+DO_SHLIB	Makefile	/^DO_SHLIB = yes$/;"	m
+DTF_1_CONFEXP	elf_repl.h	763;"	d
+DTF_1_PARINIT	elf_repl.h	762;"	d
+DT_ADDRRNGHI	elf_repl.h	740;"	d
+DT_ADDRRNGLO	elf_repl.h	733;"	d
+DT_AUDIT	elf_repl.h	736;"	d
+DT_AUXILIARY	elf_repl.h	750;"	d
+DT_BIND_NOW	elf_repl.h	694;"	d
+DT_CHECKSUM	elf_repl.h	723;"	d
+DT_CONFIG	elf_repl.h	734;"	d
+DT_DEBUG	elf_repl.h	691;"	d
+DT_DEPAUDIT	elf_repl.h	735;"	d
+DT_ENCODING	elf_repl.h	701;"	d
+DT_FEATURE_1	elf_repl.h	727;"	d
+DT_FILTER	elf_repl.h	752;"	d
+DT_FINI	elf_repl.h	683;"	d
+DT_FINI_ARRAY	elf_repl.h	696;"	d
+DT_FINI_ARRAYSZ	elf_repl.h	698;"	d
+DT_FLAGS	elf_repl.h	700;"	d
+DT_FLAGS_1	elf_repl.h	744;"	d
+DT_HASH	elf_repl.h	674;"	d
+DT_HIOS	elf_repl.h	706;"	d
+DT_HIPROC	elf_repl.h	708;"	d
+DT_INIT	elf_repl.h	682;"	d
+DT_INIT_ARRAY	elf_repl.h	695;"	d
+DT_INIT_ARRAYSZ	elf_repl.h	697;"	d
+DT_JMPREL	elf_repl.h	693;"	d
+DT_LOOS	elf_repl.h	705;"	d
+DT_LOPROC	elf_repl.h	707;"	d
+DT_MOVEENT	elf_repl.h	725;"	d
+DT_MOVESZ	elf_repl.h	726;"	d
+DT_MOVETAB	elf_repl.h	738;"	d
+DT_NEEDED	elf_repl.h	671;"	d
+DT_NULL	elf_repl.h	670;"	d
+DT_NUM	elf_repl.h	704;"	d
+DT_PLTGOT	elf_repl.h	673;"	d
+DT_PLTPAD	elf_repl.h	737;"	d
+DT_PLTPADSZ	elf_repl.h	724;"	d
+DT_PLTREL	elf_repl.h	690;"	d
+DT_PLTRELSZ	elf_repl.h	672;"	d
+DT_POSFLAG_1	elf_repl.h	728;"	d
+DT_PREINIT_ARRAY	elf_repl.h	702;"	d
+DT_PREINIT_ARRAYSZ	elf_repl.h	703;"	d
+DT_REL	elf_repl.h	687;"	d
+DT_RELA	elf_repl.h	677;"	d
+DT_RELACOUNT	elf_repl.h	742;"	d
+DT_RELAENT	elf_repl.h	679;"	d
+DT_RELASZ	elf_repl.h	678;"	d
+DT_RELCOUNT	elf_repl.h	743;"	d
+DT_RELENT	elf_repl.h	689;"	d
+DT_RELSZ	elf_repl.h	688;"	d
+DT_RPATH	elf_repl.h	685;"	d
+DT_RUNPATH	elf_repl.h	699;"	d
+DT_SONAME	elf_repl.h	684;"	d
+DT_STRSZ	elf_repl.h	680;"	d
+DT_STRTAB	elf_repl.h	675;"	d
+DT_SYMBOLIC	elf_repl.h	686;"	d
+DT_SYMENT	elf_repl.h	681;"	d
+DT_SYMINENT	elf_repl.h	730;"	d
+DT_SYMINFO	elf_repl.h	739;"	d
+DT_SYMINSZ	elf_repl.h	729;"	d
+DT_SYMTAB	elf_repl.h	676;"	d
+DT_TEXTREL	elf_repl.h	692;"	d
+DT_USED	elf_repl.h	751;"	d
+DT_VALRNGHI	elf_repl.h	731;"	d
+DT_VALRNGLO	elf_repl.h	722;"	d
+DT_VERDEF	elf_repl.h	745;"	d
+DT_VERDEFNUM	elf_repl.h	746;"	d
+DT_VERNEED	elf_repl.h	747;"	d
+DT_VERNEEDNUM	elf_repl.h	748;"	d
+DT_VERSYM	elf_repl.h	757;"	d
+EI_ABIVERSION	elf_repl.h	126;"	d
+EI_CLASS	elf_repl.h	122;"	d
+EI_DATA	elf_repl.h	123;"	d
+EI_MAG0	elf_repl.h	118;"	d
+EI_MAG1	elf_repl.h	119;"	d
+EI_MAG2	elf_repl.h	120;"	d
+EI_MAG3	elf_repl.h	121;"	d
+EI_NIDENT	elf_repl.h	77;"	d
+EI_OSABI	elf_repl.h	125;"	d
+EI_PAD	elf_repl.h	127;"	d
+EI_VERSION	elf_repl.h	124;"	d
+ELF32_FSZ_ADDR	elf_repl.h	42;"	d
+ELF32_FSZ_ADDR	private.h	413;"	d
+ELF32_FSZ_ADDR	sys_elf.h	85;"	d
+ELF32_FSZ_HALF	elf_repl.h	43;"	d
+ELF32_FSZ_HALF	private.h	414;"	d
+ELF32_FSZ_HALF	sys_elf.h	86;"	d
+ELF32_FSZ_OFF	elf_repl.h	44;"	d
+ELF32_FSZ_OFF	private.h	415;"	d
+ELF32_FSZ_OFF	sys_elf.h	87;"	d
+ELF32_FSZ_SWORD	elf_repl.h	45;"	d
+ELF32_FSZ_SWORD	private.h	416;"	d
+ELF32_FSZ_SWORD	sys_elf.h	88;"	d
+ELF32_FSZ_WORD	elf_repl.h	46;"	d
+ELF32_FSZ_WORD	private.h	417;"	d
+ELF32_FSZ_WORD	sys_elf.h	89;"	d
+ELF32_M_INFO	elf_repl.h	955;"	d
+ELF32_M_SIZE	elf_repl.h	954;"	d
+ELF32_M_SYM	elf_repl.h	953;"	d
+ELF32_R_INFO	elf_repl.h	541;"	d
+ELF32_R_INFO	gelftrans.c	45;"	d	file:
+ELF32_R_INFO	gelftrans.c	48;"	d	file:
+ELF32_R_SYM	elf_repl.h	539;"	d
+ELF32_R_SYM	gelftrans.c	43;"	d	file:
+ELF32_R_SYM	gelftrans.c	46;"	d	file:
+ELF32_R_TYPE	elf_repl.h	540;"	d
+ELF32_R_TYPE	gelftrans.c	44;"	d	file:
+ELF32_R_TYPE	gelftrans.c	47;"	d	file:
+ELF32_ST_BIND	elf_repl.h	455;"	d
+ELF32_ST_INFO	elf_repl.h	457;"	d
+ELF32_ST_TYPE	elf_repl.h	456;"	d
+ELF32_ST_VISIBILITY	elf_repl.h	496;"	d
+ELF64_FSZ_ADDR	elf_repl.h	58;"	d
+ELF64_FSZ_ADDR	private.h	420;"	d
+ELF64_FSZ_ADDR	sys_elf.h	99;"	d
+ELF64_FSZ_HALF	elf_repl.h	59;"	d
+ELF64_FSZ_HALF	private.h	421;"	d
+ELF64_FSZ_HALF	sys_elf.h	100;"	d
+ELF64_FSZ_OFF	elf_repl.h	60;"	d
+ELF64_FSZ_OFF	private.h	422;"	d
+ELF64_FSZ_OFF	sys_elf.h	101;"	d
+ELF64_FSZ_SWORD	elf_repl.h	61;"	d
+ELF64_FSZ_SWORD	private.h	423;"	d
+ELF64_FSZ_SWORD	sys_elf.h	102;"	d
+ELF64_FSZ_SXWORD	elf_repl.h	63;"	d
+ELF64_FSZ_SXWORD	private.h	424;"	d
+ELF64_FSZ_SXWORD	sys_elf.h	104;"	d
+ELF64_FSZ_WORD	elf_repl.h	62;"	d
+ELF64_FSZ_WORD	private.h	425;"	d
+ELF64_FSZ_WORD	sys_elf.h	103;"	d
+ELF64_FSZ_XWORD	elf_repl.h	64;"	d
+ELF64_FSZ_XWORD	private.h	426;"	d
+ELF64_FSZ_XWORD	sys_elf.h	105;"	d
+ELF64_M_INFO	elf_repl.h	959;"	d
+ELF64_M_SIZE	elf_repl.h	958;"	d
+ELF64_M_SYM	elf_repl.h	957;"	d
+ELF64_R_INFO	elf_repl.h	546;"	d
+ELF64_R_INFO	gelftrans.c	54;"	d	file:
+ELF64_R_INFO	gelftrans.c	57;"	d	file:
+ELF64_R_INFO	sys_elf.h	117;"	d
+ELF64_R_SYM	elf_repl.h	544;"	d
+ELF64_R_SYM	gelftrans.c	52;"	d	file:
+ELF64_R_SYM	gelftrans.c	55;"	d	file:
+ELF64_R_SYM	sys_elf.h	115;"	d
+ELF64_R_TYPE	elf_repl.h	545;"	d
+ELF64_R_TYPE	gelftrans.c	53;"	d	file:
+ELF64_R_TYPE	gelftrans.c	56;"	d	file:
+ELF64_R_TYPE	sys_elf.h	116;"	d
+ELF64_ST_BIND	elf_repl.h	460;"	d
+ELF64_ST_BIND	sys_elf.h	109;"	d
+ELF64_ST_INFO	elf_repl.h	462;"	d
+ELF64_ST_INFO	sys_elf.h	111;"	d
+ELF64_ST_TYPE	elf_repl.h	461;"	d
+ELF64_ST_TYPE	sys_elf.h	110;"	d
+ELF64_ST_VISIBILITY	elf_repl.h	498;"	d
+ELFCLASS32	elf_repl.h	140;"	d
+ELFCLASS64	elf_repl.h	141;"	d
+ELFCLASSNONE	elf_repl.h	139;"	d
+ELFCLASSNUM	elf_repl.h	142;"	d
+ELFDATA2LSB	elf_repl.h	148;"	d
+ELFDATA2MSB	elf_repl.h	149;"	d
+ELFDATANONE	elf_repl.h	147;"	d
+ELFDATANUM	elf_repl.h	150;"	d
+ELFMAG	elf_repl.h	133;"	d
+ELFMAG0	elf_repl.h	129;"	d
+ELFMAG1	elf_repl.h	130;"	d
+ELFMAG2	elf_repl.h	131;"	d
+ELFMAG3	elf_repl.h	132;"	d
+ELFOSABI_AIX	elf_repl.h	161;"	d
+ELFOSABI_ARM	elf_repl.h	171;"	d
+ELFOSABI_AROS	elf_repl.h	169;"	d
+ELFOSABI_FREEBSD	elf_repl.h	163;"	d
+ELFOSABI_HPUX	elf_repl.h	157;"	d
+ELFOSABI_IRIX	elf_repl.h	162;"	d
+ELFOSABI_LINUX	elf_repl.h	159;"	d
+ELFOSABI_MODESTO	elf_repl.h	165;"	d
+ELFOSABI_NETBSD	elf_repl.h	158;"	d
+ELFOSABI_NONE	elf_repl.h	155;"	d
+ELFOSABI_NSK	elf_repl.h	168;"	d
+ELFOSABI_OPENBSD	elf_repl.h	166;"	d
+ELFOSABI_OPENVMS	elf_repl.h	167;"	d
+ELFOSABI_SOLARIS	elf_repl.h	160;"	d
+ELFOSABI_STANDALONE	elf_repl.h	172;"	d
+ELFOSABI_SYSV	elf_repl.h	156;"	d
+ELFOSABI_TRU64	elf_repl.h	164;"	d
+ELF_C_CLR	libelf.h	/^		ELF_C_CLR,$/;"	e	enum:__anon1
+ELF_C_CLR	test.cpp	/^	ELF_C_CLR,$/;"	e	enum:__anon64	file:
+ELF_C_FDDONE	libelf.h	/^		ELF_C_FDDONE,$/;"	e	enum:__anon1
+ELF_C_FDDONE	test.cpp	/^	ELF_C_FDDONE,$/;"	e	enum:__anon64	file:
+ELF_C_FDREAD	libelf.h	/^		ELF_C_FDREAD,$/;"	e	enum:__anon1
+ELF_C_FDREAD	test.cpp	/^	ELF_C_FDREAD,$/;"	e	enum:__anon64	file:
+ELF_C_NULL	libelf.h	/^		ELF_C_NULL = 0,	\/* must be first, 0 *\/$/;"	e	enum:__anon1
+ELF_C_NULL	test.cpp	/^	ELF_C_NULL = 0,$/;"	e	enum:__anon64	file:
+ELF_C_NUM	libelf.h	/^		ELF_C_NUM	\/* must be last *\/$/;"	e	enum:__anon1
+ELF_C_NUM	test.cpp	/^	ELF_C_NUM$/;"	e	enum:__anon64	file:
+ELF_C_RDWR	libelf.h	/^		ELF_C_RDWR,$/;"	e	enum:__anon1
+ELF_C_RDWR	test.cpp	/^	ELF_C_RDWR,$/;"	e	enum:__anon64	file:
+ELF_C_READ	libelf.h	/^		ELF_C_READ,$/;"	e	enum:__anon1
+ELF_C_READ	test.cpp	/^	ELF_C_READ,$/;"	e	enum:__anon64	file:
+ELF_C_SET	libelf.h	/^		ELF_C_SET,$/;"	e	enum:__anon1
+ELF_C_SET	test.cpp	/^	ELF_C_SET,$/;"	e	enum:__anon64	file:
+ELF_C_WRITE	libelf.h	/^		ELF_C_WRITE,$/;"	e	enum:__anon1
+ELF_C_WRITE	test.cpp	/^	ELF_C_WRITE,$/;"	e	enum:__anon64	file:
+ELF_F_DIRTY	libelf.h	70;"	d
+ELF_F_LAYOUT	libelf.h	71;"	d
+ELF_F_LAYOUT_OVERLAP	libelf.h	77;"	d
+ELF_K_AR	libelf.h	/^		ELF_K_AR,$/;"	e	enum:__anon2
+ELF_K_AR	test.cpp	/^	ELF_K_AR,$/;"	e	enum:__anon65	file:
+ELF_K_COFF	libelf.h	/^		ELF_K_COFF,$/;"	e	enum:__anon2
+ELF_K_COFF	test.cpp	/^	ELF_K_COFF,$/;"	e	enum:__anon65	file:
+ELF_K_ELF	libelf.h	/^		ELF_K_ELF,$/;"	e	enum:__anon2
+ELF_K_ELF	test.cpp	/^	ELF_K_ELF,$/;"	e	enum:__anon65	file:
+ELF_K_NONE	libelf.h	/^		ELF_K_NONE = 0,	\/* must be first, 0 *\/$/;"	e	enum:__anon2
+ELF_K_NONE	test.cpp	/^	ELF_K_NONE = 0,$/;"	e	enum:__anon65	file:
+ELF_K_NUM	libelf.h	/^		ELF_K_NUM	\/* must be last *\/$/;"	e	enum:__anon2
+ELF_K_NUM	test.cpp	/^	ELF_K_NUM$/;"	e	enum:__anon65	file:
+ELF_MAGIC	private.h	182;"	d
+ELF_T_ADDR	libelf.h	/^		ELF_T_ADDR,$/;"	e	enum:__anon3
+ELF_T_ADDR	test.cpp	/^	ELF_T_ADDR,$/;"	e	enum:__anon66	file:
+ELF_T_BYTE	libelf.h	/^		ELF_T_BYTE = 0,	\/* must be first, 0 *\/$/;"	e	enum:__anon3
+ELF_T_BYTE	test.cpp	/^	ELF_T_BYTE = 0,$/;"	e	enum:__anon66	file:
+ELF_T_DYN	libelf.h	/^		ELF_T_DYN,$/;"	e	enum:__anon3
+ELF_T_DYN	test.cpp	/^	ELF_T_DYN,$/;"	e	enum:__anon66	file:
+ELF_T_EHDR	libelf.h	/^		ELF_T_EHDR,$/;"	e	enum:__anon3
+ELF_T_EHDR	test.cpp	/^	ELF_T_EHDR,$/;"	e	enum:__anon66	file:
+ELF_T_HALF	libelf.h	/^		ELF_T_HALF,$/;"	e	enum:__anon3
+ELF_T_HALF	test.cpp	/^	ELF_T_HALF,$/;"	e	enum:__anon66	file:
+ELF_T_NUM	libelf.h	/^		ELF_T_NUM	\/* must be last *\/$/;"	e	enum:__anon3
+ELF_T_NUM	test.cpp	/^	ELF_T_NUM$/;"	e	enum:__anon66	file:
+ELF_T_OFF	libelf.h	/^		ELF_T_OFF,$/;"	e	enum:__anon3
+ELF_T_OFF	test.cpp	/^	ELF_T_OFF,$/;"	e	enum:__anon66	file:
+ELF_T_PHDR	libelf.h	/^		ELF_T_PHDR,$/;"	e	enum:__anon3
+ELF_T_PHDR	test.cpp	/^	ELF_T_PHDR,$/;"	e	enum:__anon66	file:
+ELF_T_REL	libelf.h	/^		ELF_T_REL,$/;"	e	enum:__anon3
+ELF_T_REL	test.cpp	/^	ELF_T_REL,$/;"	e	enum:__anon66	file:
+ELF_T_RELA	libelf.h	/^		ELF_T_RELA,$/;"	e	enum:__anon3
+ELF_T_RELA	test.cpp	/^	ELF_T_RELA,$/;"	e	enum:__anon66	file:
+ELF_T_SHDR	libelf.h	/^		ELF_T_SHDR,$/;"	e	enum:__anon3
+ELF_T_SHDR	test.cpp	/^	ELF_T_SHDR,$/;"	e	enum:__anon66	file:
+ELF_T_SWORD	libelf.h	/^		ELF_T_SWORD,$/;"	e	enum:__anon3
+ELF_T_SWORD	test.cpp	/^	ELF_T_SWORD,$/;"	e	enum:__anon66	file:
+ELF_T_SXWORD	libelf.h	/^		ELF_T_SXWORD,$/;"	e	enum:__anon3
+ELF_T_SXWORD	test.cpp	/^	ELF_T_SXWORD,$/;"	e	enum:__anon66	file:
+ELF_T_SYM	libelf.h	/^		ELF_T_SYM,$/;"	e	enum:__anon3
+ELF_T_SYM	test.cpp	/^	ELF_T_SYM,$/;"	e	enum:__anon66	file:
+ELF_T_VDEF	libelf.h	/^		ELF_T_VDEF,$/;"	e	enum:__anon3
+ELF_T_VDEF	test.cpp	/^	ELF_T_VDEF,$/;"	e	enum:__anon66	file:
+ELF_T_VNEED	libelf.h	/^		ELF_T_VNEED,$/;"	e	enum:__anon3
+ELF_T_VNEED	test.cpp	/^	ELF_T_VNEED,$/;"	e	enum:__anon66	file:
+ELF_T_WORD	libelf.h	/^		ELF_T_WORD,$/;"	e	enum:__anon3
+ELF_T_WORD	test.cpp	/^	ELF_T_WORD,$/;"	e	enum:__anon66	file:
+ELF_T_XWORD	libelf.h	/^		ELF_T_XWORD,$/;"	e	enum:__anon3
+ELF_T_XWORD	test.cpp	/^	ELF_T_XWORD,$/;"	e	enum:__anon66	file:
+EM_386	elf_repl.h	194;"	d
+EM_486	elf_repl.h	197;"	d
+EM_68HC05	elf_repl.h	245;"	d
+EM_68HC08	elf_repl.h	244;"	d
+EM_68HC11	elf_repl.h	243;"	d
+EM_68HC12	elf_repl.h	227;"	d
+EM_68HC16	elf_repl.h	242;"	d
+EM_68K	elf_repl.h	195;"	d
+EM_860	elf_repl.h	198;"	d
+EM_88K	elf_repl.h	196;"	d
+EM_960	elf_repl.h	206;"	d
+EM_ALPHA	elf_repl.h	215;"	d
+EM_AMD64	elf_repl.h	237;"	d
+EM_ARC	elf_repl.h	219;"	d
+EM_ARCA	elf_repl.h	282;"	d
+EM_ARC_A5	elf_repl.h	266;"	d
+EM_ARM	elf_repl.h	214;"	d
+EM_AVR	elf_repl.h	256;"	d
+EM_BLACKFIN	elf_repl.h	279;"	d
+EM_COLDFIRE	elf_repl.h	226;"	d
+EM_CR	elf_repl.h	276;"	d
+EM_CRIS	elf_repl.h	249;"	d
+EM_D10V	elf_repl.h	258;"	d
+EM_D30V	elf_repl.h	259;"	d
+EM_F2MC16	elf_repl.h	277;"	d
+EM_FIREPATH	elf_repl.h	251;"	d
+EM_FR20	elf_repl.h	211;"	d
+EM_FR30	elf_repl.h	257;"	d
+EM_FX66	elf_repl.h	239;"	d
+EM_H8S	elf_repl.h	222;"	d
+EM_H8_300	elf_repl.h	220;"	d
+EM_H8_300H	elf_repl.h	221;"	d
+EM_H8_500	elf_repl.h	223;"	d
+EM_HUANY	elf_repl.h	254;"	d
+EM_IA_64	elf_repl.h	224;"	d
+EM_IP2K	elf_repl.h	274;"	d
+EM_JAVELIN	elf_repl.h	250;"	d
+EM_M32	elf_repl.h	192;"	d
+EM_M32R	elf_repl.h	261;"	d
+EM_MAX	elf_repl.h	275;"	d
+EM_ME16	elf_repl.h	233;"	d
+EM_MIPS	elf_repl.h	199;"	d
+EM_MIPS_RS3_LE	elf_repl.h	201;"	d
+EM_MIPS_X	elf_repl.h	225;"	d
+EM_MMA	elf_repl.h	228;"	d
+EM_MMIX	elf_repl.h	253;"	d
+EM_MN10200	elf_repl.h	263;"	d
+EM_MN10300	elf_repl.h	262;"	d
+EM_MSP430	elf_repl.h	278;"	d
+EM_NCPU	elf_repl.h	230;"	d
+EM_NDR1	elf_repl.h	231;"	d
+EM_NONE	elf_repl.h	191;"	d
+EM_NS32K	elf_repl.h	270;"	d
+EM_NUM	elf_repl.h	284;"	d
+EM_OPENRISC	elf_repl.h	265;"	d
+EM_PARISC	elf_repl.h	203;"	d
+EM_PCP	elf_repl.h	229;"	d
+EM_PDSP	elf_repl.h	238;"	d
+EM_PJ	elf_repl.h	264;"	d
+EM_PPC	elf_repl.h	207;"	d
+EM_PPC64	elf_repl.h	208;"	d
+EM_PRISM	elf_repl.h	255;"	d
+EM_RCE	elf_repl.h	213;"	d
+EM_RH32	elf_repl.h	212;"	d
+EM_S370	elf_repl.h	200;"	d
+EM_S390	elf_repl.h	209;"	d
+EM_SEP	elf_repl.h	281;"	d
+EM_SE_C33	elf_repl.h	280;"	d
+EM_SH	elf_repl.h	216;"	d
+EM_SNP1K	elf_repl.h	272;"	d
+EM_SPARC	elf_repl.h	193;"	d
+EM_SPARC32PLUS	elf_repl.h	205;"	d
+EM_SPARC64	elf_repl.h	202;"	d
+EM_SPARCV9	elf_repl.h	217;"	d
+EM_ST100	elf_repl.h	234;"	d
+EM_ST19	elf_repl.h	247;"	d
+EM_ST200	elf_repl.h	273;"	d
+EM_ST7	elf_repl.h	241;"	d
+EM_ST9PLUS	elf_repl.h	240;"	d
+EM_STARCORE	elf_repl.h	232;"	d
+EM_SVX	elf_repl.h	246;"	d
+EM_TINYJ	elf_repl.h	235;"	d
+EM_TMM_GPP	elf_repl.h	269;"	d
+EM_TPC	elf_repl.h	271;"	d
+EM_TRICORE	elf_repl.h	218;"	d
+EM_UNICORE	elf_repl.h	283;"	d
+EM_V800	elf_repl.h	210;"	d
+EM_V850	elf_repl.h	260;"	d
+EM_VAX	elf_repl.h	248;"	d
+EM_VIDEOCORE	elf_repl.h	268;"	d
+EM_VPP500	elf_repl.h	204;"	d
+EM_X86_64	elf_repl.h	236;"	d
+EM_XTENSA	elf_repl.h	267;"	d
+EM_ZSP	elf_repl.h	252;"	d
+ERROR_ALIGN_PHDR	test.cpp	/^	ERROR_ALIGN_PHDR,$/;"	e	enum:__anon71	file:
+ERROR_ALIGN_SHDR	test.cpp	/^	ERROR_ALIGN_SHDR,$/;"	e	enum:__anon71	file:
+ERROR_ARFMAG	test.cpp	/^	ERROR_ARFMAG,$/;"	e	enum:__anon71	file:
+ERROR_ARHDR	test.cpp	/^	ERROR_ARHDR,$/;"	e	enum:__anon71	file:
+ERROR_ARSPECIAL	test.cpp	/^	ERROR_ARSPECIAL,$/;"	e	enum:__anon71	file:
+ERROR_ARSTRTAB	test.cpp	/^	ERROR_ARSTRTAB,$/;"	e	enum:__anon71	file:
+ERROR_BADINDEX	test.cpp	/^	ERROR_BADINDEX,$/;"	e	enum:__anon71	file:
+ERROR_BADOFF	test.cpp	/^	ERROR_BADOFF,$/;"	e	enum:__anon71	file:
+ERROR_BADSTROFF	test.cpp	/^	ERROR_BADSTROFF,$/;"	e	enum:__anon71	file:
+ERROR_BADTYPE	test.cpp	/^	ERROR_BADTYPE,$/;"	e	enum:__anon71	file:
+ERROR_BADVALUE	test.cpp	/^	ERROR_BADVALUE,$/;"	e	enum:__anon71	file:
+ERROR_CLASSMISMATCH	test.cpp	/^	ERROR_CLASSMISMATCH,$/;"	e	enum:__anon71	file:
+ERROR_CMDMISMATCH	test.cpp	/^	ERROR_CMDMISMATCH,$/;"	e	enum:__anon71	file:
+ERROR_DST2SMALL	test.cpp	/^	ERROR_DST2SMALL,$/;"	e	enum:__anon71	file:
+ERROR_EHDR_PHENTSIZE	test.cpp	/^	ERROR_EHDR_PHENTSIZE,$/;"	e	enum:__anon71	file:
+ERROR_EHDR_SHENTSIZE	test.cpp	/^	ERROR_EHDR_SHENTSIZE,$/;"	e	enum:__anon71	file:
+ERROR_EHDR_SHNUM	test.cpp	/^	ERROR_EHDR_SHNUM,$/;"	e	enum:__anon71	file:
+ERROR_ELFSCNMISMATCH	test.cpp	/^	ERROR_ELFSCNMISMATCH,$/;"	e	enum:__anon71	file:
+ERROR_FDDISABLED	test.cpp	/^	ERROR_FDDISABLED,$/;"	e	enum:__anon71	file:
+ERROR_FDMISMATCH	test.cpp	/^	ERROR_FDMISMATCH,$/;"	e	enum:__anon71	file:
+ERROR_INTERNAL	test.cpp	/^	ERROR_INTERNAL,$/;"	e	enum:__anon71	file:
+ERROR_INVALID_CMD	test.cpp	/^	ERROR_INVALID_CMD,$/;"	e	enum:__anon71	file:
+ERROR_IO_2BIG	test.cpp	/^	ERROR_IO_2BIG,$/;"	e	enum:__anon71	file:
+ERROR_IO_GETSIZE	test.cpp	/^	ERROR_IO_GETSIZE,$/;"	e	enum:__anon71	file:
+ERROR_IO_READ	test.cpp	/^	ERROR_IO_READ,$/;"	e	enum:__anon71	file:
+ERROR_IO_SEEK	test.cpp	/^	ERROR_IO_SEEK,$/;"	e	enum:__anon71	file:
+ERROR_IO_TRUNC	test.cpp	/^	ERROR_IO_TRUNC,$/;"	e	enum:__anon71	file:
+ERROR_IO_WRITE	test.cpp	/^	ERROR_IO_WRITE,$/;"	e	enum:__anon71	file:
+ERROR_MEMBERWRITE	test.cpp	/^	ERROR_MEMBERWRITE,$/;"	e	enum:__anon71	file:
+ERROR_MEM_ARHDR	test.cpp	/^	ERROR_MEM_ARHDR,$/;"	e	enum:__anon71	file:
+ERROR_MEM_ARSYMTAB	test.cpp	/^	ERROR_MEM_ARSYMTAB,$/;"	e	enum:__anon71	file:
+ERROR_MEM_DYN	test.cpp	/^	ERROR_MEM_DYN,$/;"	e	enum:__anon71	file:
+ERROR_MEM_EHDR	test.cpp	/^	ERROR_MEM_EHDR,$/;"	e	enum:__anon71	file:
+ERROR_MEM_ELF	test.cpp	/^	ERROR_MEM_ELF,$/;"	e	enum:__anon71	file:
+ERROR_MEM_OUTBUF	test.cpp	/^	ERROR_MEM_OUTBUF,$/;"	e	enum:__anon71	file:
+ERROR_MEM_PHDR	test.cpp	/^	ERROR_MEM_PHDR,$/;"	e	enum:__anon71	file:
+ERROR_MEM_REL	test.cpp	/^	ERROR_MEM_REL,$/;"	e	enum:__anon71	file:
+ERROR_MEM_RELA	test.cpp	/^	ERROR_MEM_RELA,$/;"	e	enum:__anon71	file:
+ERROR_MEM_SCN	test.cpp	/^	ERROR_MEM_SCN,$/;"	e	enum:__anon71	file:
+ERROR_MEM_SCNDATA	test.cpp	/^	ERROR_MEM_SCNDATA,$/;"	e	enum:__anon71	file:
+ERROR_MEM_SHDR	test.cpp	/^	ERROR_MEM_SHDR,$/;"	e	enum:__anon71	file:
+ERROR_MEM_SYM	test.cpp	/^	ERROR_MEM_SYM,$/;"	e	enum:__anon71	file:
+ERROR_MEM_TEMPORARY	test.cpp	/^	ERROR_MEM_TEMPORARY,$/;"	e	enum:__anon71	file:
+ERROR_NOEHDR	test.cpp	/^	ERROR_NOEHDR,$/;"	e	enum:__anon71	file:
+ERROR_NOSTRTAB	test.cpp	/^	ERROR_NOSTRTAB,$/;"	e	enum:__anon71	file:
+ERROR_NOSUCHSCN	test.cpp	/^	ERROR_NOSUCHSCN,$/;"	e	enum:__anon71	file:
+ERROR_NOTARCHIVE	test.cpp	/^	ERROR_NOTARCHIVE,$/;"	e	enum:__anon71	file:
+ERROR_NOTELF	test.cpp	/^	ERROR_NOTELF,$/;"	e	enum:__anon71	file:
+ERROR_NULLBUF	test.cpp	/^	ERROR_NULLBUF,$/;"	e	enum:__anon71	file:
+ERROR_NULLSCN	test.cpp	/^	ERROR_NULLSCN,$/;"	e	enum:__anon71	file:
+ERROR_NUM	private.h	/^	ERROR_NUM$/;"	e	enum:__anon99
+ERROR_NUM	test.cpp	/^	ERROR_NUM$/;"	e	enum:__anon71	file:
+ERROR_OK	test.cpp	/^	ERROR_OK,$/;"	e	enum:__anon71	file:
+ERROR_OUTSIDE	test.cpp	/^	ERROR_OUTSIDE,$/;"	e	enum:__anon71	file:
+ERROR_RDONLY	test.cpp	/^	ERROR_RDONLY,$/;"	e	enum:__anon71	file:
+ERROR_SCN2SMALL	test.cpp	/^	ERROR_SCN2SMALL,$/;"	e	enum:__anon71	file:
+ERROR_SCNDATAMISMATCH	test.cpp	/^	ERROR_SCNDATAMISMATCH,$/;"	e	enum:__anon71	file:
+ERROR_SCN_OVERLAP	test.cpp	/^	ERROR_SCN_OVERLAP,$/;"	e	enum:__anon71	file:
+ERROR_SIZE_ARSYMTAB	test.cpp	/^	ERROR_SIZE_ARSYMTAB,$/;"	e	enum:__anon71	file:
+ERROR_TRUNC_ARHDR	test.cpp	/^	ERROR_TRUNC_ARHDR,$/;"	e	enum:__anon71	file:
+ERROR_TRUNC_EHDR	test.cpp	/^	ERROR_TRUNC_EHDR,$/;"	e	enum:__anon71	file:
+ERROR_TRUNC_MEMBER	test.cpp	/^	ERROR_TRUNC_MEMBER,$/;"	e	enum:__anon71	file:
+ERROR_TRUNC_PHDR	test.cpp	/^	ERROR_TRUNC_PHDR,$/;"	e	enum:__anon71	file:
+ERROR_TRUNC_SCN	test.cpp	/^	ERROR_TRUNC_SCN,$/;"	e	enum:__anon71	file:
+ERROR_TRUNC_SHDR	test.cpp	/^	ERROR_TRUNC_SHDR,$/;"	e	enum:__anon71	file:
+ERROR_UNIMPLEMENTED	test.cpp	/^	ERROR_UNIMPLEMENTED,$/;"	e	enum:__anon71	file:
+ERROR_UNKNOWN	test.cpp	/^	ERROR_UNKNOWN,$/;"	e	enum:__anon71	file:
+ERROR_UNKNOWN_CLASS	test.cpp	/^	ERROR_UNKNOWN_CLASS,$/;"	e	enum:__anon71	file:
+ERROR_UNKNOWN_ENCODING	test.cpp	/^	ERROR_UNKNOWN_ENCODING,$/;"	e	enum:__anon71	file:
+ERROR_UNKNOWN_TYPE	test.cpp	/^	ERROR_UNKNOWN_TYPE,$/;"	e	enum:__anon71	file:
+ERROR_UNKNOWN_VERSION	test.cpp	/^	ERROR_UNKNOWN_VERSION,$/;"	e	enum:__anon71	file:
+ERROR_UNTERM	test.cpp	/^	ERROR_UNTERM,$/;"	e	enum:__anon71	file:
+ERROR_VERDEF_FORMAT	test.cpp	/^	ERROR_VERDEF_FORMAT,$/;"	e	enum:__anon71	file:
+ERROR_VERDEF_VERSION	test.cpp	/^	ERROR_VERDEF_VERSION,$/;"	e	enum:__anon71	file:
+ERROR_VERNEED_FORMAT	test.cpp	/^	ERROR_VERNEED_FORMAT,$/;"	e	enum:__anon71	file:
+ERROR_VERNEED_VERSION	test.cpp	/^	ERROR_VERNEED_VERSION,$/;"	e	enum:__anon71	file:
+ERROR_VERSION_UNSET	test.cpp	/^	ERROR_VERSION_UNSET,$/;"	e	enum:__anon71	file:
+ERROR_WRONLY	test.cpp	/^	ERROR_WRONLY,$/;"	e	enum:__anon71	file:
+ET_CORE	elf_repl.h	181;"	d
+ET_DYN	elf_repl.h	180;"	d
+ET_EXEC	elf_repl.h	179;"	d
+ET_HIOS	elf_repl.h	184;"	d
+ET_HIPROC	elf_repl.h	186;"	d
+ET_LOOS	elf_repl.h	183;"	d
+ET_LOPROC	elf_repl.h	185;"	d
+ET_NONE	elf_repl.h	177;"	d
+ET_NUM	elf_repl.h	182;"	d
+ET_REL	elf_repl.h	178;"	d
+EV_CURRENT	elf_repl.h	290;"	d
+EV_NONE	elf_repl.h	289;"	d
+EV_NUM	elf_repl.h	291;"	d
+Elf	libelf.h	/^	typedef struct Elf Elf;$/;"	t	typeref:struct:Elf
+Elf	private.h	/^struct Elf {$/;"	s
+Elf	test.cpp	/^struct Elf {$/;"	s	file:
+Elf	test.cpp	/^typedef struct Elf Elf;$/;"	t	typeref:struct:Elf	file:
+Elf32_Addr	elf_repl.h	/^	typedef __libelf_u32_t Elf32_Addr;$/;"	t
+Elf32_Addr	test.cpp	/^typedef uint32_t Elf32_Addr;$/;"	t	file:
+Elf32_Cap	elf_repl.h	/^	} Elf32_Cap;$/;"	t	typeref:struct:__anon156
+Elf32_Conflict	test.cpp	/^typedef Elf32_Addr Elf32_Conflict;$/;"	t	file:
+Elf32_Dyn	elf_repl.h	/^	} Elf32_Dyn;$/;"	t	typeref:struct:__anon140
+Elf32_Dyn	test.cpp	/^} Elf32_Dyn;$/;"	t	typeref:struct:__anon36	file:
+Elf32_Ehdr	elf_repl.h	/^	} Elf32_Ehdr;$/;"	t	typeref:struct:__anon126
+Elf32_Ehdr	test.cpp	/^} Elf32_Ehdr;$/;"	t	typeref:struct:__anon22	file:
+Elf32_Half	elf_repl.h	/^	typedef __libelf_u16_t Elf32_Half;$/;"	t
+Elf32_Half	test.cpp	/^typedef uint16_t Elf32_Half;$/;"	t	file:
+Elf32_Lib	test.cpp	/^} Elf32_Lib;$/;"	t	typeref:struct:__anon62	file:
+Elf32_Lword	elf_repl.h	/^	typedef __libelf_u64_t Elf32_Lword;$/;"	t
+Elf32_Move	elf_repl.h	/^	} Elf32_Move;$/;"	t	typeref:struct:__anon154
+Elf32_Move	test.cpp	/^} Elf32_Move;$/;"	t	typeref:struct:__anon54	file:
+Elf32_Nhdr	elf_repl.h	/^	} Elf32_Nhdr;$/;"	t	typeref:struct:__anon136
+Elf32_Nhdr	test.cpp	/^} Elf32_Nhdr;$/;"	t	typeref:struct:__anon52	file:
+Elf32_Off	elf_repl.h	/^	typedef __libelf_u32_t Elf32_Off;$/;"	t
+Elf32_Off	test.cpp	/^typedef uint32_t Elf32_Off;$/;"	t	file:
+Elf32_Phdr	elf_repl.h	/^	} Elf32_Phdr;$/;"	t	typeref:struct:__anon138
+Elf32_Phdr	test.cpp	/^} Elf32_Phdr;$/;"	t	typeref:struct:__anon34	file:
+Elf32_RegInfo	test.cpp	/^} Elf32_RegInfo;$/;"	t	typeref:struct:__anon59	file:
+Elf32_Rel	elf_repl.h	/^	} Elf32_Rel;$/;"	t	typeref:struct:__anon132
+Elf32_Rel	test.cpp	/^} Elf32_Rel;$/;"	t	typeref:struct:__anon30	file:
+Elf32_Rela	elf_repl.h	/^	} Elf32_Rela;$/;"	t	typeref:struct:__anon133
+Elf32_Rela	test.cpp	/^} Elf32_Rela;$/;"	t	typeref:struct:__anon32	file:
+Elf32_Section	test.cpp	/^typedef uint16_t Elf32_Section;$/;"	t	file:
+Elf32_Shdr	elf_repl.h	/^	} Elf32_Shdr;$/;"	t	typeref:struct:__anon128
+Elf32_Shdr	test.cpp	/^} Elf32_Shdr;$/;"	t	typeref:struct:__anon24	file:
+Elf32_Sword	elf_repl.h	/^	typedef __libelf_i32_t Elf32_Sword;$/;"	t
+Elf32_Sword	test.cpp	/^typedef int32_t Elf32_Sword;$/;"	t	file:
+Elf32_Sxword	test.cpp	/^typedef int64_t Elf32_Sxword;$/;"	t	file:
+Elf32_Sym	elf_repl.h	/^	} Elf32_Sym;$/;"	t	typeref:struct:__anon130
+Elf32_Sym	test.cpp	/^} Elf32_Sym;$/;"	t	typeref:struct:__anon26	file:
+Elf32_Syminfo	elf_repl.h	/^	} Elf32_Syminfo;$/;"	t	typeref:struct:__anon144
+Elf32_Syminfo	test.cpp	/^} Elf32_Syminfo;$/;"	t	typeref:struct:__anon28	file:
+Elf32_Verdaux	elf_repl.h	/^	} Elf32_Verdaux;$/;"	t	typeref:struct:__anon147
+Elf32_Verdaux	test.cpp	/^} Elf32_Verdaux;$/;"	t	typeref:struct:__anon42	file:
+Elf32_Verdef	elf_repl.h	/^	} Elf32_Verdef;$/;"	t	typeref:struct:__anon146
+Elf32_Verdef	test.cpp	/^} Elf32_Verdef;$/;"	t	typeref:struct:__anon40	file:
+Elf32_Vernaux	elf_repl.h	/^	} Elf32_Vernaux;$/;"	t	typeref:struct:__anon149
+Elf32_Vernaux	test.cpp	/^} Elf32_Vernaux;$/;"	t	typeref:struct:__anon46	file:
+Elf32_Verneed	elf_repl.h	/^	} Elf32_Verneed;$/;"	t	typeref:struct:__anon148
+Elf32_Verneed	test.cpp	/^} Elf32_Verneed;$/;"	t	typeref:struct:__anon44	file:
+Elf32_Versym	elf_repl.h	/^	typedef Elf32_Half Elf32_Versym;$/;"	t
+Elf32_Versym	test.cpp	/^typedef Elf32_Half Elf32_Versym;$/;"	t	file:
+Elf32_Word	elf_repl.h	/^	typedef __libelf_u32_t Elf32_Word;$/;"	t
+Elf32_Word	test.cpp	/^typedef uint32_t Elf32_Word;$/;"	t	file:
+Elf32_Xword	test.cpp	/^typedef uint64_t Elf32_Xword;$/;"	t	file:
+Elf32_auxv_t	test.cpp	/^} Elf32_auxv_t;$/;"	t	typeref:struct:__anon48	file:
+Elf32_gptab	test.cpp	/^} Elf32_gptab;$/;"	t	typeref:union:__anon56	file:
+Elf64_Addr	elf_repl.h	/^	typedef __libelf_u64_t Elf64_Addr;$/;"	t
+Elf64_Addr	sys_elf.h	/^typedef __libelf_u64_t	Elf64_Addr;$/;"	t
+Elf64_Addr	test.cpp	/^typedef uint64_t Elf64_Addr;$/;"	t	file:
+Elf64_Cap	elf_repl.h	/^	} Elf64_Cap;$/;"	t	typeref:struct:__anon158
+Elf64_Dyn	elf_repl.h	/^	} Elf64_Dyn;$/;"	t	typeref:struct:__anon142
+Elf64_Dyn	test.cpp	/^} Elf64_Dyn;$/;"	t	typeref:struct:__anon38	file:
+Elf64_Ehdr	elf_repl.h	/^	} Elf64_Ehdr;$/;"	t	typeref:struct:__anon127
+Elf64_Ehdr	test.cpp	/^} Elf64_Ehdr;$/;"	t	typeref:struct:__anon23	file:
+Elf64_Half	elf_repl.h	/^	typedef __libelf_u16_t Elf64_Half;$/;"	t
+Elf64_Half	sys_elf.h	/^typedef __libelf_u16_t	Elf64_Half;$/;"	t
+Elf64_Half	test.cpp	/^typedef uint16_t Elf64_Half;$/;"	t	file:
+Elf64_Lib	test.cpp	/^} Elf64_Lib;$/;"	t	typeref:struct:__anon63	file:
+Elf64_Lword	elf_repl.h	/^	typedef __libelf_u64_t Elf64_Lword;$/;"	t
+Elf64_Move	elf_repl.h	/^	} Elf64_Move;$/;"	t	typeref:struct:__anon155
+Elf64_Move	test.cpp	/^} Elf64_Move;$/;"	t	typeref:struct:__anon55	file:
+Elf64_Nhdr	elf_repl.h	/^	} Elf64_Nhdr;$/;"	t	typeref:struct:__anon137
+Elf64_Nhdr	test.cpp	/^} Elf64_Nhdr;$/;"	t	typeref:struct:__anon53	file:
+Elf64_Off	elf_repl.h	/^	typedef __libelf_u64_t Elf64_Off;$/;"	t
+Elf64_Off	sys_elf.h	/^typedef __libelf_u64_t	Elf64_Off;$/;"	t
+Elf64_Off	test.cpp	/^typedef uint64_t Elf64_Off;$/;"	t	file:
+Elf64_Phdr	elf_repl.h	/^	} Elf64_Phdr;$/;"	t	typeref:struct:__anon139
+Elf64_Phdr	test.cpp	/^} Elf64_Phdr;$/;"	t	typeref:struct:__anon35	file:
+Elf64_Rel	elf_repl.h	/^	} Elf64_Rel;$/;"	t	typeref:struct:__anon134
+Elf64_Rel	test.cpp	/^} Elf64_Rel;$/;"	t	typeref:struct:__anon31	file:
+Elf64_Rela	elf_repl.h	/^	} Elf64_Rela;$/;"	t	typeref:struct:__anon135
+Elf64_Rela	test.cpp	/^} Elf64_Rela;$/;"	t	typeref:struct:__anon33	file:
+Elf64_Section	test.cpp	/^typedef uint16_t Elf64_Section;$/;"	t	file:
+Elf64_Shdr	elf_repl.h	/^	} Elf64_Shdr;$/;"	t	typeref:struct:__anon129
+Elf64_Shdr	test.cpp	/^} Elf64_Shdr;$/;"	t	typeref:struct:__anon25	file:
+Elf64_Sword	elf_repl.h	/^	typedef __libelf_i32_t Elf64_Sword;$/;"	t
+Elf64_Sword	sys_elf.h	/^typedef __libelf_i32_t	Elf64_Sword;$/;"	t
+Elf64_Sword	test.cpp	/^typedef int32_t Elf64_Sword;$/;"	t	file:
+Elf64_Sxword	elf_repl.h	/^	typedef __libelf_i64_t Elf64_Sxword;$/;"	t
+Elf64_Sxword	sys_elf.h	/^typedef __libelf_i64_t	Elf64_Sxword;$/;"	t
+Elf64_Sxword	test.cpp	/^typedef int64_t Elf64_Sxword;$/;"	t	file:
+Elf64_Sym	elf_repl.h	/^	} Elf64_Sym;$/;"	t	typeref:struct:__anon131
+Elf64_Sym	test.cpp	/^} Elf64_Sym;$/;"	t	typeref:struct:__anon27	file:
+Elf64_Syminfo	elf_repl.h	/^	} Elf64_Syminfo;$/;"	t	typeref:struct:__anon145
+Elf64_Syminfo	test.cpp	/^} Elf64_Syminfo;$/;"	t	typeref:struct:__anon29	file:
+Elf64_Verdaux	elf_repl.h	/^	} Elf64_Verdaux;$/;"	t	typeref:struct:__anon151
+Elf64_Verdaux	test.cpp	/^} Elf64_Verdaux;$/;"	t	typeref:struct:__anon43	file:
+Elf64_Verdef	elf_repl.h	/^	} Elf64_Verdef;$/;"	t	typeref:struct:__anon150
+Elf64_Verdef	test.cpp	/^} Elf64_Verdef;$/;"	t	typeref:struct:__anon41	file:
+Elf64_Vernaux	elf_repl.h	/^	} Elf64_Vernaux;$/;"	t	typeref:struct:__anon153
+Elf64_Vernaux	test.cpp	/^} Elf64_Vernaux;$/;"	t	typeref:struct:__anon47	file:
+Elf64_Verneed	elf_repl.h	/^	} Elf64_Verneed;$/;"	t	typeref:struct:__anon152
+Elf64_Verneed	test.cpp	/^} Elf64_Verneed;$/;"	t	typeref:struct:__anon45	file:
+Elf64_Versym	elf_repl.h	/^	typedef Elf64_Half Elf64_Versym;$/;"	t
+Elf64_Versym	test.cpp	/^typedef Elf64_Half Elf64_Versym;$/;"	t	file:
+Elf64_Word	elf_repl.h	/^	typedef __libelf_u32_t Elf64_Word;$/;"	t
+Elf64_Word	sys_elf.h	/^typedef __libelf_u32_t	Elf64_Word;$/;"	t
+Elf64_Word	test.cpp	/^typedef uint32_t Elf64_Word;$/;"	t	file:
+Elf64_Xword	elf_repl.h	/^	typedef __libelf_u64_t Elf64_Xword;$/;"	t
+Elf64_Xword	sys_elf.h	/^typedef __libelf_u64_t	Elf64_Xword;$/;"	t
+Elf64_Xword	test.cpp	/^typedef uint64_t Elf64_Xword;$/;"	t	file:
+Elf64_auxv_t	test.cpp	/^} Elf64_auxv_t;$/;"	t	typeref:struct:__anon50	file:
+Elf_Arhdr	libelf.h	/^	} Elf_Arhdr;$/;"	t	typeref:struct:__anon4
+Elf_Arhdr	test.cpp	/^} Elf_Arhdr;$/;"	t	typeref:struct:__anon67	file:
+Elf_Arsym	libelf.h	/^	} Elf_Arsym;$/;"	t	typeref:struct:__anon5
+Elf_Arsym	test.cpp	/^} Elf_Arsym;$/;"	t	typeref:struct:__anon68	file:
+Elf_Cmd	libelf.h	/^	} Elf_Cmd;$/;"	t	typeref:enum:__anon1
+Elf_Cmd	test.cpp	/^} Elf_Cmd;$/;"	t	typeref:enum:__anon64	file:
+Elf_Data	libelf.h	/^	} Elf_Data;$/;"	t	typeref:struct:__anon6
+Elf_Data	test.cpp	/^} Elf_Data;$/;"	t	typeref:struct:__anon69	file:
+Elf_Kind	libelf.h	/^	} Elf_Kind;$/;"	t	typeref:enum:__anon2
+Elf_Kind	test.cpp	/^} Elf_Kind;$/;"	t	typeref:enum:__anon65	file:
+Elf_Options	test.cpp	/^} Elf_Options;$/;"	t	typeref:struct:__anon60	file:
+Elf_Options_Hw	test.cpp	/^} Elf_Options_Hw;$/;"	t	typeref:struct:__anon61	file:
+Elf_Scn	libelf.h	/^	typedef struct Elf_Scn Elf_Scn;$/;"	t	typeref:struct:Elf_Scn
+Elf_Scn	private.h	/^struct Elf_Scn {$/;"	s
+Elf_Scn	test.cpp	/^struct Elf_Scn {$/;"	s	file:
+Elf_Scn	test.cpp	/^typedef struct Elf_Scn Elf_Scn;$/;"	t	typeref:struct:Elf_Scn	file:
+Elf_Type	libelf.h	/^	} Elf_Type;$/;"	t	typeref:enum:__anon3
+Elf_Type	test.cpp	/^} Elf_Type;$/;"	t	typeref:enum:__anon66	file:
+Ex1	32.xlatetof.c	35;"	d	file:
+Ex1	32.xlatetof.c	42;"	d	file:
+Ex1	32.xlatetof.c	47;"	d	file:
+Ex1	64.xlatetof.c	37;"	d	file:
+Ex1	64.xlatetof.c	44;"	d	file:
+Ex1	64.xlatetof.c	49;"	d	file:
+Ex2	32.xlatetof.c	36;"	d	file:
+Ex2	32.xlatetof.c	43;"	d	file:
+Ex2	32.xlatetof.c	48;"	d	file:
+Ex2	64.xlatetof.c	38;"	d	file:
+Ex2	64.xlatetof.c	45;"	d	file:
+Ex2	64.xlatetof.c	50;"	d	file:
+FILE_OPEN_MODE	nlist.c	44;"	d	file:
+GELF_R_INFO	gelf.h	97;"	d
+GELF_R_SYM	gelf.h	96;"	d
+GELF_R_TYPE	gelf.h	95;"	d
+GELF_ST_BIND	gelf.h	91;"	d
+GELF_ST_INFO	gelf.h	93;"	d
+GELF_ST_TYPE	gelf.h	92;"	d
+GElf_Addr	gelf.h	/^	typedef Elf64_Addr GElf_Addr;$/;"	t
+GElf_Addr	test.cpp	/^typedef Elf64_Addr GElf_Addr;$/;"	t	file:
+GElf_Dyn	gelf.h	/^	typedef Elf64_Dyn GElf_Dyn;$/;"	t
+GElf_Dyn	test.cpp	/^typedef Elf64_Dyn GElf_Dyn;$/;"	t	file:
+GElf_Ehdr	gelf.h	/^	typedef Elf64_Ehdr GElf_Ehdr;$/;"	t
+GElf_Ehdr	test.cpp	/^typedef Elf64_Ehdr GElf_Ehdr;$/;"	t	file:
+GElf_Half	gelf.h	/^	typedef Elf64_Half GElf_Half;$/;"	t
+GElf_Half	test.cpp	/^typedef Elf64_Half GElf_Half;$/;"	t	file:
+GElf_Off	gelf.h	/^	typedef Elf64_Off GElf_Off;$/;"	t
+GElf_Off	test.cpp	/^typedef Elf64_Off GElf_Off;$/;"	t	file:
+GElf_Phdr	gelf.h	/^	typedef Elf64_Phdr GElf_Phdr;$/;"	t
+GElf_Phdr	test.cpp	/^typedef Elf64_Phdr GElf_Phdr;$/;"	t	file:
+GElf_Rel	gelf.h	/^	typedef Elf64_Rel GElf_Rel;$/;"	t
+GElf_Rel	test.cpp	/^typedef Elf64_Rel GElf_Rel;$/;"	t	file:
+GElf_Rela	gelf.h	/^	typedef Elf64_Rela GElf_Rela;$/;"	t
+GElf_Rela	test.cpp	/^typedef Elf64_Rela GElf_Rela;$/;"	t	file:
+GElf_Shdr	gelf.h	/^	typedef Elf64_Shdr GElf_Shdr;$/;"	t
+GElf_Shdr	test.cpp	/^typedef Elf64_Shdr GElf_Shdr;$/;"	t	file:
+GElf_Sword	gelf.h	/^	typedef Elf64_Sword GElf_Sword;$/;"	t
+GElf_Sword	test.cpp	/^typedef Elf64_Sword GElf_Sword;$/;"	t	file:
+GElf_Sxword	gelf.h	/^	typedef Elf64_Sxword GElf_Sxword;$/;"	t
+GElf_Sxword	test.cpp	/^typedef Elf64_Sxword GElf_Sxword;$/;"	t	file:
+GElf_Sym	gelf.h	/^	typedef Elf64_Sym GElf_Sym;$/;"	t
+GElf_Sym	test.cpp	/^typedef Elf64_Sym GElf_Sym;$/;"	t	file:
+GElf_Verdaux	gelf.h	/^	typedef Elf64_Verdaux GElf_Verdaux;$/;"	t
+GElf_Verdaux	test.cpp	/^typedef Elf64_Verdaux GElf_Verdaux;$/;"	t	file:
+GElf_Verdef	gelf.h	/^	typedef Elf64_Verdef GElf_Verdef;$/;"	t
+GElf_Verdef	test.cpp	/^typedef Elf64_Verdef GElf_Verdef;$/;"	t	file:
+GElf_Vernaux	gelf.h	/^	typedef Elf64_Vernaux GElf_Vernaux;$/;"	t
+GElf_Vernaux	test.cpp	/^typedef Elf64_Vernaux GElf_Vernaux;$/;"	t	file:
+GElf_Verneed	gelf.h	/^	typedef Elf64_Verneed GElf_Verneed;$/;"	t
+GElf_Verneed	test.cpp	/^typedef Elf64_Verneed GElf_Verneed;$/;"	t	file:
+GElf_Word	gelf.h	/^	typedef Elf64_Word GElf_Word;$/;"	t
+GElf_Word	test.cpp	/^typedef Elf64_Word GElf_Word;$/;"	t	file:
+GElf_Xword	gelf.h	/^	typedef Elf64_Xword GElf_Xword;$/;"	t
+GElf_Xword	test.cpp	/^typedef Elf64_Xword GElf_Xword;$/;"	t	file:
+GRP_COMDAT	elf_repl.h	420;"	d
+GRP_MASKOS	elf_repl.h	421;"	d
+GRP_MASKPROC	elf_repl.h	422;"	d
+HAVE_CATGETS	errmsg.c	28;"	d	file:
+HDRS	Makefile	/^HDRS = libelf.h nlist.h gelf.h$/;"	m
+HDRS_V	Makefile	/^HDRS_V = verdef.h verneed.h$/;"	m
+INCLUDES	Makefile	/^INCLUDES = -I$(topdir) -I. -I$(srcdir)$/;"	m
+INIT_DATA	private.h	293;"	d
+INIT_ELF	private.h	184;"	d
+INIT_SCN	private.h	258;"	d
+INSTALL	Makefile	/^INSTALL = \/usr\/bin\/install -c$/;"	m
+INSTALL_DATA	Makefile	/^INSTALL_DATA = ${INSTALL} -m 644$/;"	m
+INSTALL_PROGRAM	Makefile	/^INSTALL_PROGRAM = ${INSTALL}$/;"	m
+INSTALL_SHLIB	Makefile	/^INSTALL_SHLIB = $(INSTALL_PROGRAM)$/;"	m
+LD	Makefile	/^LD = \/usr\/bin\/ld$/;"	m
+LDFLAGS	Makefile	/^LDFLAGS = $/;"	m
+LIBELF_FAILURE	private.h	462;"	d
+LIBELF_SUCCESS	private.h	461;"	d
+LIBOBJS	Makefile	/^LIBOBJS = $/;"	m
+LIBS	Makefile	/^LIBS = $/;"	m
+LIBSRCS	Makefile	/^LIBSRCS = memset.c$/;"	m
+LINK_SHLIB	Makefile	/^LINK_SHLIB = $(CC) -shared -Wl,-soname,$(SONAME)$/;"	m
+LN_S	Makefile	/^LN_S = ln -s$/;"	m
+MAINT	Makefile	/^MAINT = maintainer-only-$/;"	m
+MAJOR	Makefile	/^MAJOR = 0$/;"	m
+MV	Makefile	/^MV = mv -f$/;"	m
+NT_PRFPREG	elf_repl.h	572;"	d
+NT_PRPSINFO	elf_repl.h	573;"	d
+NT_PRSTATUS	elf_repl.h	571;"	d
+OBJS	Makefile	/^OBJS = $(OBJS1) $(OBJS2) $(OBJS3) $(OBJS4) $(OBJS5) $(OBJS64) $(OBJS_V)$/;"	m
+OBJS1	Makefile	/^OBJS1 = begin.o cntl.o end.o errmsg.o errno.o fill.o flag.o getarhdr.o \\$/;"	m
+OBJS2	Makefile	/^OBJS2 = 32.fsize.o 32.getehdr.o 32.getphdr.o 32.getshdr.o 32.newehdr.o \\$/;"	m
+OBJS3	Makefile	/^OBJS3 = cook.o data.o input.o assert.o$/;"	m
+OBJS4	Makefile	/^OBJS4 = nlist.o$/;"	m
+OBJS5	Makefile	/^OBJS5 = opt.delscn.o x.remscn.o x.movscn.o x.elfext.o$/;"	m
+OBJS64	Makefile	/^OBJS64 = 64.xlatetof.o gelfehdr.o gelfphdr.o gelfshdr.o gelftrans.o swap64.o$/;"	m
+OBJS_V	Makefile	/^OBJS_V = verdef_32_tof.o verdef_32_tom.o verdef_64_tof.o verdef_64_tom.o$/;"	m
+O_BINARY	nlist.c	41;"	d	file:
+O_RDONLY	nlist.c	37;"	d	file:
+PACKAGE	Makefile	/^PACKAGE = libelf$/;"	m
+PATH	build.bat	/^rem set PATH="C:\\PATH\\TO\\COMPILER\\BINARY;%PATH%"$/;"	v
+PF_MASKOS	elf_repl.h	642;"	d
+PF_MASKPROC	elf_repl.h	643;"	d
+PF_R	elf_repl.h	641;"	d
+PF_W	elf_repl.h	640;"	d
+PF_X	elf_repl.h	639;"	d
+PICFLAGS	Makefile	/^PICFLAGS = -fPIC -DPIC$/;"	m
+PN_XNUM	elf_repl.h	605;"	d
+PN_XNUM	private.h	441;"	d
+PRIME	nlist.c	46;"	d	file:
+PRIVHDRS	Makefile	/^PRIVHDRS = byteswap.h errors.h ext_types.h private.h elf_repl.h \\$/;"	m
+PT_DYNAMIC	elf_repl.h	612;"	d
+PT_HIOS	elf_repl.h	620;"	d
+PT_HIPROC	elf_repl.h	622;"	d
+PT_HISUNW	elf_repl.h	634;"	d
+PT_INTERP	elf_repl.h	613;"	d
+PT_LOAD	elf_repl.h	611;"	d
+PT_LOOS	elf_repl.h	619;"	d
+PT_LOPROC	elf_repl.h	621;"	d
+PT_LOSUNW	elf_repl.h	629;"	d
+PT_NOTE	elf_repl.h	614;"	d
+PT_NULL	elf_repl.h	610;"	d
+PT_NUM	elf_repl.h	618;"	d
+PT_PHDR	elf_repl.h	616;"	d
+PT_SHLIB	elf_repl.h	615;"	d
+PT_SUNWBSS	elf_repl.h	630;"	d
+PT_SUNWCAP	elf_repl.h	633;"	d
+PT_SUNWDTRACE	elf_repl.h	632;"	d
+PT_SUNWSTACK	elf_repl.h	631;"	d
+PT_SUNW_UNWIND	elf_repl.h	628;"	d
+PT_TLS	elf_repl.h	617;"	d
+RANLIB	Makefile	/^RANLIB = ranlib$/;"	m
+RM	Makefile	/^RM = rm -f$/;"	m
+SANITY_CHECKS	data.c	32;"	d	file:
+SANITY_CHECKS	data.c	34;"	d	file:
+SANITY_CHECK_STRPTR	private.h	318;"	d
+SARMAG	private.h	104;"	d
+SCN_MAGIC	private.h	256;"	d
+SEEK_CUR	private.h	68;"	d
+SEEK_END	private.h	71;"	d
+SEEK_SET	private.h	65;"	d
+SELFMAG	elf_repl.h	134;"	d
+SHELL	Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHF_ALLOC	elf_repl.h	398;"	d
+SHF_AMD64_LARGE	elf_repl.h	413;"	d
+SHF_EXCLUDE	elf_repl.h	415;"	d
+SHF_EXECINSTR	elf_repl.h	399;"	d
+SHF_GROUP	elf_repl.h	405;"	d
+SHF_INFO_LINK	elf_repl.h	402;"	d
+SHF_LINK_ORDER	elf_repl.h	403;"	d
+SHF_MASKOS	elf_repl.h	407;"	d
+SHF_MASKPROC	elf_repl.h	408;"	d
+SHF_MERGE	elf_repl.h	400;"	d
+SHF_ORDERED	elf_repl.h	414;"	d
+SHF_OS_NONCONFORMING	elf_repl.h	404;"	d
+SHF_STRINGS	elf_repl.h	401;"	d
+SHF_TLS	elf_repl.h	406;"	d
+SHF_WRITE	elf_repl.h	397;"	d
+SHLIB	Makefile	/^SHLIB = libelf$(SHLIB_SFX)$/;"	m
+SHLIB_SFX	Makefile	/^SHLIB_SFX = .so.$(VERSION)$/;"	m
+SHLINK	Makefile	/^SHLINK = libelf$(SHLINK_SFX)$/;"	m
+SHLINK_SFX	Makefile	/^SHLINK_SFX = .so$/;"	m
+SHN_ABS	elf_repl.h	333;"	d
+SHN_COMMON	elf_repl.h	334;"	d
+SHN_HIOS	elf_repl.h	332;"	d
+SHN_HIPROC	elf_repl.h	330;"	d
+SHN_HIRESERVE	elf_repl.h	336;"	d
+SHN_LOOS	elf_repl.h	331;"	d
+SHN_LOPROC	elf_repl.h	329;"	d
+SHN_LORESERVE	elf_repl.h	328;"	d
+SHN_UNDEF	elf_repl.h	327;"	d
+SHN_XINDEX	elf_repl.h	335;"	d
+SHN_XINDEX	private.h	437;"	d
+SHT_AMD64_UNWIND	elf_repl.h	385;"	d
+SHT_DYNAMIC	elf_repl.h	347;"	d
+SHT_DYNSYM	elf_repl.h	352;"	d
+SHT_FINI_ARRAY	elf_repl.h	354;"	d
+SHT_GNU_verdef	elf_repl.h	390;"	d
+SHT_GNU_verneed	elf_repl.h	391;"	d
+SHT_GNU_versym	elf_repl.h	392;"	d
+SHT_GROUP	elf_repl.h	356;"	d
+SHT_HASH	elf_repl.h	346;"	d
+SHT_HIOS	elf_repl.h	360;"	d
+SHT_HIPROC	elf_repl.h	362;"	d
+SHT_HISUNW	elf_repl.h	382;"	d
+SHT_HIUSER	elf_repl.h	364;"	d
+SHT_INIT_ARRAY	elf_repl.h	353;"	d
+SHT_LOOS	elf_repl.h	359;"	d
+SHT_LOPROC	elf_repl.h	361;"	d
+SHT_LOSUNW	elf_repl.h	369;"	d
+SHT_LOUSER	elf_repl.h	363;"	d
+SHT_NOBITS	elf_repl.h	349;"	d
+SHT_NOTE	elf_repl.h	348;"	d
+SHT_NULL	elf_repl.h	341;"	d
+SHT_NUM	elf_repl.h	358;"	d
+SHT_PREINIT_ARRAY	elf_repl.h	355;"	d
+SHT_PROGBITS	elf_repl.h	342;"	d
+SHT_REL	elf_repl.h	350;"	d
+SHT_RELA	elf_repl.h	345;"	d
+SHT_SHLIB	elf_repl.h	351;"	d
+SHT_SPARC_GOTDATA	elf_repl.h	384;"	d
+SHT_STRTAB	elf_repl.h	344;"	d
+SHT_SUNW_ANNOTATE	elf_repl.h	373;"	d
+SHT_SUNW_COMDAT	elf_repl.h	377;"	d
+SHT_SUNW_DEBUG	elf_repl.h	375;"	d
+SHT_SUNW_DEBUGSTR	elf_repl.h	374;"	d
+SHT_SUNW_SIGNATURE	elf_repl.h	372;"	d
+SHT_SUNW_cap	elf_repl.h	371;"	d
+SHT_SUNW_dof	elf_repl.h	370;"	d
+SHT_SUNW_move	elf_repl.h	376;"	d
+SHT_SUNW_syminfo	elf_repl.h	378;"	d
+SHT_SUNW_verdef	elf_repl.h	379;"	d
+SHT_SUNW_verneed	elf_repl.h	380;"	d
+SHT_SUNW_versym	elf_repl.h	381;"	d
+SHT_SYMTAB	elf_repl.h	343;"	d
+SHT_SYMTAB_SHNDX	elf_repl.h	357;"	d
+SHT_SYMTAB_SHNDX	private.h	433;"	d
+SONAME	Makefile	/^SONAME = libelf$(SONAME_SFX)$/;"	m
+SONAME_SFX	Makefile	/^SONAME_SFX = .so.$(MAJOR)$/;"	m
+SRCS	Makefile	/^SRCS = $(SRCS1) $(SRCS2) $(SRCS3) $(SRCS4) $(SRCS5) $(SRCS64) $(SRCS_V)$/;"	m
+SRCS1	Makefile	/^SRCS1 = begin.c cntl.c end.c errmsg.c errno.c fill.c flag.c getarhdr.c \\$/;"	m
+SRCS2	Makefile	/^SRCS2 = 32.fsize.c 32.getehdr.c 32.getphdr.c 32.getshdr.c 32.newehdr.c \\$/;"	m
+SRCS3	Makefile	/^SRCS3 = cook.c data.c input.c assert.c$/;"	m
+SRCS4	Makefile	/^SRCS4 = nlist.c$/;"	m
+SRCS5	Makefile	/^SRCS5 = opt.delscn.c x.remscn.c x.movscn.c x.elfext.c$/;"	m
+SRCS64	Makefile	/^SRCS64 = 64.xlatetof.c gelfehdr.c gelfphdr.c gelfshdr.c gelftrans.c swap64.c$/;"	m
+SRCS_V	Makefile	/^SRCS_V = verdef_32_tof.c verdef_32_tom.c verdef_64_tof.c verdef_64_tom.c$/;"	m
+STB_GLOBAL	elf_repl.h	469;"	d
+STB_HIOS	elf_repl.h	473;"	d
+STB_HIPROC	elf_repl.h	475;"	d
+STB_LOCAL	elf_repl.h	468;"	d
+STB_LOOS	elf_repl.h	472;"	d
+STB_LOPROC	elf_repl.h	474;"	d
+STB_NUM	elf_repl.h	471;"	d
+STB_WEAK	elf_repl.h	470;"	d
+STN_UNDEF	elf_repl.h	450;"	d
+STN_UNDEF	sys_elf.h	93;"	d
+STT_COMMON	elf_repl.h	485;"	d
+STT_FILE	elf_repl.h	484;"	d
+STT_FUNC	elf_repl.h	482;"	d
+STT_HIOS	elf_repl.h	489;"	d
+STT_HIPROC	elf_repl.h	491;"	d
+STT_LOOS	elf_repl.h	488;"	d
+STT_LOPROC	elf_repl.h	490;"	d
+STT_NOTYPE	elf_repl.h	480;"	d
+STT_NUM	elf_repl.h	487;"	d
+STT_OBJECT	elf_repl.h	481;"	d
+STT_SECTION	elf_repl.h	483;"	d
+STT_TLS	elf_repl.h	486;"	d
+STV_DEFAULT	elf_repl.h	504;"	d
+STV_HIDDEN	elf_repl.h	506;"	d
+STV_INTERNAL	elf_repl.h	505;"	d
+STV_PROTECTED	elf_repl.h	507;"	d
+SYMINFO_BT_LOWRESERVE	elf_repl.h	817;"	d
+SYMINFO_BT_PARENT	elf_repl.h	818;"	d
+SYMINFO_BT_SELF	elf_repl.h	819;"	d
+SYMINFO_CURRENT	elf_repl.h	811;"	d
+SYMINFO_FLG_COPY	elf_repl.h	826;"	d
+SYMINFO_FLG_DIRECT	elf_repl.h	824;"	d
+SYMINFO_FLG_LAZYLOAD	elf_repl.h	827;"	d
+SYMINFO_FLG_PASSTHRU	elf_repl.h	825;"	d
+SYMINFO_NONE	elf_repl.h	810;"	d
+SYMINFO_NUM	elf_repl.h	812;"	d
+Scn_Data	private.h	/^struct Scn_Data {$/;"	s
+Scn_Data	private.h	/^typedef struct Scn_Data Scn_Data;$/;"	t	typeref:struct:Scn_Data
+Scn_Data	test.cpp	/^struct Scn_Data {$/;"	s	file:
+Scn_Data	test.cpp	/^typedef struct Scn_Data Scn_Data;$/;"	t	typeref:struct:Scn_Data	file:
+TOFILE	verdef_32_tof.c	45;"	d	file:
+TOFILE	verdef_32_tof.c	46;"	d	file:
+TOFILE	verdef_32_tom.c	45;"	d	file:
+TOFILE	verdef_32_tom.c	46;"	d	file:
+TOFILE	verdef_64_tof.c	45;"	d	file:
+TOFILE	verdef_64_tof.c	46;"	d	file:
+TOFILE	verdef_64_tom.c	45;"	d	file:
+TOFILE	verdef_64_tom.c	46;"	d	file:
+VERSION	Makefile	/^VERSION = 0.8.13$/;"	m
+VER_DEF_CURRENT	elf_repl.h	906;"	d
+VER_DEF_NONE	elf_repl.h	905;"	d
+VER_DEF_NUM	elf_repl.h	907;"	d
+VER_FLG_BASE	elf_repl.h	919;"	d
+VER_FLG_WEAK	elf_repl.h	920;"	d
+VER_NDX_GLOBAL	elf_repl.h	926;"	d
+VER_NDX_LOCAL	elf_repl.h	925;"	d
+VER_NEED_CURRENT	elf_repl.h	913;"	d
+VER_NEED_NONE	elf_repl.h	912;"	d
+VER_NEED_NUM	elf_repl.h	914;"	d
+_	errors.h	23;"	d
+_BYTESWAP_H	byteswap.h	23;"	d
+_ELF_REPL_H	elf_repl.h	27;"	d
+_EXT_TYPES_H	ext_types.h	23;"	d
+_GELF_H	gelf.h	23;"	d
+_LIBELF_H	libelf.h	23;"	d
+_NLIST_H	nlist.h	23;"	d
+_PRIVATE_H	private.h	23;"	d
+__LIBELF64	sys_elf.h	37;"	d
+__LIBELF_HEADER_ELF_H	sys_elf.h	28;"	d
+__LIBELF_INTERNAL__	private.h	25;"	d
+__LIBELF_SYMBOL_VERSIONS	sys_elf.h	46;"	d
+__P	gelf.h	43;"	d
+__P	gelf.h	45;"	d
+__P	libelf.h	46;"	d
+__P	libelf.h	48;"	d
+__align	test.cpp	/^	__extension__ long long int __align;$/;"	m	union:__anon14	file:
+__align	test.cpp	/^	int __align;$/;"	m	union:__anon21	file:
+__align	test.cpp	/^	long int __align;$/;"	m	union:__anon10	file:
+__align	test.cpp	/^	long int __align;$/;"	m	union:__anon11	file:
+__align	test.cpp	/^	long int __align;$/;"	m	union:__anon13	file:
+__align	test.cpp	/^	long int __align;$/;"	m	union:__anon16	file:
+__align	test.cpp	/^	long int __align;$/;"	m	union:__anon17	file:
+__align	test.cpp	/^	long int __align;$/;"	m	union:__anon19	file:
+__align	test.cpp	/^	long int __align;$/;"	m	union:__anon20	file:
+__blkcnt64_t	test.cpp	/^__extension__ typedef __quad_t __blkcnt64_t;$/;"	t	file:
+__blkcnt_t	test.cpp	/^__extension__ typedef long int __blkcnt_t;$/;"	t	file:
+__blksize_t	test.cpp	/^__extension__ typedef long int __blksize_t;$/;"	t	file:
+__broadcast_seq	test.cpp	/^		unsigned int __broadcast_seq;$/;"	m	struct:__anon14::__anon15	file:
+__caddr_t	test.cpp	/^typedef char *__caddr_t;$/;"	t	file:
+__clock_t	test.cpp	/^__extension__ typedef long int __clock_t;$/;"	t	file:
+__clockid_t	test.cpp	/^__extension__ typedef int __clockid_t;$/;"	t	file:
+__count	test.cpp	/^		unsigned int __count;$/;"	m	struct:__anon11::__pthread_mutex_s	file:
+__daddr_t	test.cpp	/^__extension__ typedef int __daddr_t;$/;"	t	file:
+__data	test.cpp	/^	} __data;$/;"	m	union:__anon11	typeref:struct:__anon11::__pthread_mutex_s	file:
+__data	test.cpp	/^	} __data;$/;"	m	union:__anon14	typeref:struct:__anon14::__anon15	file:
+__data	test.cpp	/^	} __data;$/;"	m	union:__anon17	typeref:struct:__anon17::__anon18	file:
+__dev_t	test.cpp	/^__extension__ typedef __u_quad_t __dev_t;$/;"	t	file:
+__elf_assert	assert.c	/^void __elf_assert(const char *file, unsigned line, const char *cond)$/;"	f
+__encoding	update.c	/^static const unsigned short __encoding = ELFDATA2LSB + (ELFDATA2MSB << 8);$/;"	v	file:
+__err__	errmsg.c	48;"	d	file:
+__err__	errmsg.c	50;"	d	file:
+__err__	private.h	400;"	d
+__err__	private.h	402;"	d
+__ext_Elf32_Addr	ext_types.h	/^	typedef unsigned char __ext_Elf32_Addr[ELF32_FSZ_ADDR];$/;"	t
+__ext_Elf32_Addr	test.cpp	/^typedef unsigned char __ext_Elf32_Addr[4];$/;"	t	file:
+__ext_Elf32_Dyn	ext_types.h	/^	} __ext_Elf32_Dyn;$/;"	t	typeref:struct:__anon112
+__ext_Elf32_Dyn	test.cpp	/^} __ext_Elf32_Dyn;$/;"	t	typeref:struct:__anon84	file:
+__ext_Elf32_Ehdr	ext_types.h	/^	} __ext_Elf32_Ehdr;$/;"	t	typeref:struct:__anon100
+__ext_Elf32_Ehdr	test.cpp	/^} __ext_Elf32_Ehdr;$/;"	t	typeref:struct:__anon72	file:
+__ext_Elf32_Half	ext_types.h	/^	typedef unsigned char __ext_Elf32_Half[ELF32_FSZ_HALF];$/;"	t
+__ext_Elf32_Half	test.cpp	/^typedef unsigned char __ext_Elf32_Half[2];$/;"	t	file:
+__ext_Elf32_Lword	ext_types.h	/^	typedef unsigned char __ext_Elf32_Lword[8];$/;"	t
+__ext_Elf32_Lword	test.cpp	/^typedef unsigned char __ext_Elf32_Lword[8];$/;"	t	file:
+__ext_Elf32_Move	ext_types.h	/^	} __ext_Elf32_Move;$/;"	t	typeref:struct:__anon124
+__ext_Elf32_Move	test.cpp	/^} __ext_Elf32_Move;$/;"	t	typeref:struct:__anon96	file:
+__ext_Elf32_Off	ext_types.h	/^	typedef unsigned char __ext_Elf32_Off[ELF32_FSZ_OFF];$/;"	t
+__ext_Elf32_Off	test.cpp	/^typedef unsigned char __ext_Elf32_Off[4];$/;"	t	file:
+__ext_Elf32_Phdr	ext_types.h	/^	} __ext_Elf32_Phdr;$/;"	t	typeref:struct:__anon110
+__ext_Elf32_Phdr	test.cpp	/^} __ext_Elf32_Phdr;$/;"	t	typeref:struct:__anon82	file:
+__ext_Elf32_Rel	ext_types.h	/^	} __ext_Elf32_Rel;$/;"	t	typeref:struct:__anon106
+__ext_Elf32_Rel	test.cpp	/^} __ext_Elf32_Rel;$/;"	t	typeref:struct:__anon78	file:
+__ext_Elf32_Rela	ext_types.h	/^	} __ext_Elf32_Rela;$/;"	t	typeref:struct:__anon107
+__ext_Elf32_Rela	test.cpp	/^} __ext_Elf32_Rela;$/;"	t	typeref:struct:__anon79	file:
+__ext_Elf32_Shdr	ext_types.h	/^	} __ext_Elf32_Shdr;$/;"	t	typeref:struct:__anon102
+__ext_Elf32_Shdr	test.cpp	/^} __ext_Elf32_Shdr;$/;"	t	typeref:struct:__anon74	file:
+__ext_Elf32_Sword	ext_types.h	/^	typedef unsigned char __ext_Elf32_Sword[ELF32_FSZ_SWORD];$/;"	t
+__ext_Elf32_Sword	test.cpp	/^typedef unsigned char __ext_Elf32_Sword[4];$/;"	t	file:
+__ext_Elf32_Sym	ext_types.h	/^	} __ext_Elf32_Sym;$/;"	t	typeref:struct:__anon104
+__ext_Elf32_Sym	test.cpp	/^} __ext_Elf32_Sym;$/;"	t	typeref:struct:__anon76	file:
+__ext_Elf32_Verdaux	ext_types.h	/^	} __ext_Elf32_Verdaux;$/;"	t	typeref:struct:__anon117
+__ext_Elf32_Verdaux	test.cpp	/^} __ext_Elf32_Verdaux;$/;"	t	typeref:struct:__anon89	file:
+__ext_Elf32_Verdef	ext_types.h	/^	} __ext_Elf32_Verdef;$/;"	t	typeref:struct:__anon116
+__ext_Elf32_Verdef	test.cpp	/^} __ext_Elf32_Verdef;$/;"	t	typeref:struct:__anon88	file:
+__ext_Elf32_Vernaux	ext_types.h	/^	} __ext_Elf32_Vernaux;$/;"	t	typeref:struct:__anon119
+__ext_Elf32_Vernaux	test.cpp	/^} __ext_Elf32_Vernaux;$/;"	t	typeref:struct:__anon91	file:
+__ext_Elf32_Verneed	ext_types.h	/^	} __ext_Elf32_Verneed;$/;"	t	typeref:struct:__anon118
+__ext_Elf32_Verneed	test.cpp	/^} __ext_Elf32_Verneed;$/;"	t	typeref:struct:__anon90	file:
+__ext_Elf32_Word	ext_types.h	/^	typedef unsigned char __ext_Elf32_Word[ELF32_FSZ_WORD];$/;"	t
+__ext_Elf32_Word	test.cpp	/^typedef unsigned char __ext_Elf32_Word[4];$/;"	t	file:
+__ext_Elf64_Addr	ext_types.h	/^	typedef unsigned char __ext_Elf64_Addr[ELF64_FSZ_ADDR];$/;"	t
+__ext_Elf64_Addr	test.cpp	/^typedef unsigned char __ext_Elf64_Addr[8];$/;"	t	file:
+__ext_Elf64_Dyn	ext_types.h	/^	} __ext_Elf64_Dyn;$/;"	t	typeref:struct:__anon114
+__ext_Elf64_Dyn	test.cpp	/^} __ext_Elf64_Dyn;$/;"	t	typeref:struct:__anon86	file:
+__ext_Elf64_Ehdr	ext_types.h	/^	} __ext_Elf64_Ehdr;$/;"	t	typeref:struct:__anon101
+__ext_Elf64_Ehdr	test.cpp	/^} __ext_Elf64_Ehdr;$/;"	t	typeref:struct:__anon73	file:
+__ext_Elf64_Half	ext_types.h	/^	typedef unsigned char __ext_Elf64_Half[ELF64_FSZ_HALF];$/;"	t
+__ext_Elf64_Half	test.cpp	/^typedef unsigned char __ext_Elf64_Half[2];$/;"	t	file:
+__ext_Elf64_Lword	ext_types.h	/^	typedef unsigned char __ext_Elf64_Lword[8];$/;"	t
+__ext_Elf64_Lword	test.cpp	/^typedef unsigned char __ext_Elf64_Lword[8];$/;"	t	file:
+__ext_Elf64_Move	ext_types.h	/^	} __ext_Elf64_Move;$/;"	t	typeref:struct:__anon125
+__ext_Elf64_Move	test.cpp	/^} __ext_Elf64_Move;$/;"	t	typeref:struct:__anon97	file:
+__ext_Elf64_Off	ext_types.h	/^	typedef unsigned char __ext_Elf64_Off[ELF64_FSZ_OFF];$/;"	t
+__ext_Elf64_Off	test.cpp	/^typedef unsigned char __ext_Elf64_Off[8];$/;"	t	file:
+__ext_Elf64_Phdr	ext_types.h	/^	} __ext_Elf64_Phdr;$/;"	t	typeref:struct:__anon111
+__ext_Elf64_Phdr	test.cpp	/^} __ext_Elf64_Phdr;$/;"	t	typeref:struct:__anon83	file:
+__ext_Elf64_Rel	ext_types.h	/^	} __ext_Elf64_Rel;$/;"	t	typeref:struct:__anon108
+__ext_Elf64_Rel	test.cpp	/^} __ext_Elf64_Rel;$/;"	t	typeref:struct:__anon80	file:
+__ext_Elf64_Rela	ext_types.h	/^	} __ext_Elf64_Rela;$/;"	t	typeref:struct:__anon109
+__ext_Elf64_Rela	test.cpp	/^} __ext_Elf64_Rela;$/;"	t	typeref:struct:__anon81	file:
+__ext_Elf64_Shdr	ext_types.h	/^	} __ext_Elf64_Shdr;$/;"	t	typeref:struct:__anon103
+__ext_Elf64_Shdr	test.cpp	/^} __ext_Elf64_Shdr;$/;"	t	typeref:struct:__anon75	file:
+__ext_Elf64_Sword	ext_types.h	/^	typedef unsigned char __ext_Elf64_Sword[ELF64_FSZ_SWORD];$/;"	t
+__ext_Elf64_Sword	test.cpp	/^typedef unsigned char __ext_Elf64_Sword[4];$/;"	t	file:
+__ext_Elf64_Sxword	ext_types.h	/^	typedef unsigned char __ext_Elf64_Sxword[ELF64_FSZ_SXWORD];$/;"	t
+__ext_Elf64_Sxword	test.cpp	/^typedef unsigned char __ext_Elf64_Sxword[8];$/;"	t	file:
+__ext_Elf64_Sym	ext_types.h	/^	} __ext_Elf64_Sym;$/;"	t	typeref:struct:__anon105
+__ext_Elf64_Sym	test.cpp	/^} __ext_Elf64_Sym;$/;"	t	typeref:struct:__anon77	file:
+__ext_Elf64_Verdaux	ext_types.h	/^	} __ext_Elf64_Verdaux;$/;"	t	typeref:struct:__anon121
+__ext_Elf64_Verdaux	test.cpp	/^} __ext_Elf64_Verdaux;$/;"	t	typeref:struct:__anon93	file:
+__ext_Elf64_Verdef	ext_types.h	/^	} __ext_Elf64_Verdef;$/;"	t	typeref:struct:__anon120
+__ext_Elf64_Verdef	test.cpp	/^} __ext_Elf64_Verdef;$/;"	t	typeref:struct:__anon92	file:
+__ext_Elf64_Vernaux	ext_types.h	/^	} __ext_Elf64_Vernaux;$/;"	t	typeref:struct:__anon123
+__ext_Elf64_Vernaux	test.cpp	/^} __ext_Elf64_Vernaux;$/;"	t	typeref:struct:__anon95	file:
+__ext_Elf64_Verneed	ext_types.h	/^	} __ext_Elf64_Verneed;$/;"	t	typeref:struct:__anon122
+__ext_Elf64_Verneed	test.cpp	/^} __ext_Elf64_Verneed;$/;"	t	typeref:struct:__anon94	file:
+__ext_Elf64_Word	ext_types.h	/^	typedef unsigned char __ext_Elf64_Word[ELF64_FSZ_WORD];$/;"	t
+__ext_Elf64_Word	test.cpp	/^typedef unsigned char __ext_Elf64_Word[4];$/;"	t	file:
+__ext_Elf64_Xword	ext_types.h	/^	typedef unsigned char __ext_Elf64_Xword[ELF64_FSZ_XWORD];$/;"	t
+__ext_Elf64_Xword	test.cpp	/^typedef unsigned char __ext_Elf64_Xword[8];$/;"	t	file:
+__fd_mask	test.cpp	/^typedef long int __fd_mask;$/;"	t	file:
+__fds_bits	test.cpp	/^	__fd_mask __fds_bits[1024 \/ (8 * (int)sizeof(__fd_mask))];$/;"	m	struct:__anon9	file:
+__flags	test.cpp	/^		unsigned char __flags;$/;"	m	struct:__anon17::__anon18	file:
+__fsblkcnt64_t	test.cpp	/^__extension__ typedef __u_quad_t __fsblkcnt64_t;$/;"	t	file:
+__fsblkcnt_t	test.cpp	/^__extension__ typedef unsigned long int __fsblkcnt_t;$/;"	t	file:
+__fsfilcnt64_t	test.cpp	/^__extension__ typedef __u_quad_t __fsfilcnt64_t;$/;"	t	file:
+__fsfilcnt_t	test.cpp	/^__extension__ typedef unsigned long int __fsfilcnt_t;$/;"	t	file:
+__fsid_t	test.cpp	/^} __fsid_t;$/;"	t	typeref:struct:__anon7	file:
+__futex	test.cpp	/^		unsigned int __futex;$/;"	m	struct:__anon14::__anon15	file:
+__gid_t	test.cpp	/^__extension__ typedef unsigned int __gid_t;$/;"	t	file:
+__id_t	test.cpp	/^__extension__ typedef unsigned int __id_t;$/;"	t	file:
+__ino64_t	test.cpp	/^__extension__ typedef __u_quad_t __ino64_t;$/;"	t	file:
+__ino_t	test.cpp	/^__extension__ typedef unsigned long int __ino_t;$/;"	t	file:
+__int16_t	test.cpp	/^typedef signed short int __int16_t;$/;"	t	file:
+__int32_t	test.cpp	/^typedef signed int __int32_t;$/;"	t	file:
+__int64_t	test.cpp	/^__extension__ typedef signed long long int __int64_t;$/;"	t	file:
+__int8_t	test.cpp	/^typedef signed char __int8_t;$/;"	t	file:
+__intptr_t	test.cpp	/^__extension__ typedef int __intptr_t;$/;"	t	file:
+__key_t	test.cpp	/^__extension__ typedef int __key_t;$/;"	t	file:
+__kind	test.cpp	/^		int __kind;$/;"	m	struct:__anon11::__pthread_mutex_s	file:
+__libelf_i16_t	sys_elf.h	61;"	d
+__libelf_i32_t	sys_elf.h	55;"	d
+__libelf_i64_t	sys_elf.h	49;"	d
+__libelf_u16_t	sys_elf.h	64;"	d
+__libelf_u32_t	sys_elf.h	58;"	d
+__libelf_u64_t	sys_elf.h	52;"	d
+__list	test.cpp	/^			__pthread_slist_t __list;$/;"	m	union:__anon11::__pthread_mutex_s::__anon12	file:
+__load_i16L	byteswap.h	32;"	d
+__load_i16M	byteswap.h	34;"	d
+__load_i32L	byteswap.h	41;"	d
+__load_i32M	byteswap.h	43;"	d
+__load_i64L	byteswap.h	86;"	d
+__load_i64M	byteswap.h	87;"	d
+__load_u16L	byteswap.h	28;"	d
+__load_u16M	byteswap.h	30;"	d
+__load_u32L	byteswap.h	37;"	d
+__load_u32M	byteswap.h	39;"	d
+__load_u64L	byteswap.h	84;"	d
+__load_u64M	byteswap.h	85;"	d
+__load_verdaux	verdef.h	/^__load_verdaux(verdaux_mtype * dst, const verdaux_ftype * src, unsigned enc)$/;"	f
+__load_verdef	verdef.h	/^__load_verdef(verdef_mtype * dst, const verdef_ftype * src, unsigned enc)$/;"	f
+__load_vernaux	verneed.h	/^__load_vernaux(vernaux_mtype * dst, const vernaux_ftype * src, unsigned enc)$/;"	f
+__load_verneed	verneed.h	/^__load_verneed(verneed_mtype * dst, const verneed_ftype * src, unsigned enc)$/;"	f
+__lock	test.cpp	/^		int __lock;$/;"	m	struct:__anon11::__pthread_mutex_s	file:
+__lock	test.cpp	/^		int __lock;$/;"	m	struct:__anon14::__anon15	file:
+__lock	test.cpp	/^		int __lock;$/;"	m	struct:__anon17::__anon18	file:
+__loff_t	test.cpp	/^typedef __off64_t __loff_t;$/;"	t	file:
+__mode_t	test.cpp	/^__extension__ typedef unsigned int __mode_t;$/;"	t	file:
+__mutex	test.cpp	/^		void *__mutex;$/;"	m	struct:__anon14::__anon15	file:
+__next	test.cpp	/^	struct __pthread_internal_slist *__next;$/;"	m	struct:__pthread_internal_slist	typeref:struct:__pthread_internal_slist::__pthread_internal_slist	file:
+__nlink_t	test.cpp	/^__extension__ typedef unsigned int __nlink_t;$/;"	t	file:
+__nr_readers	test.cpp	/^		unsigned int __nr_readers;$/;"	m	struct:__anon17::__anon18	file:
+__nr_readers_queued	test.cpp	/^		unsigned int __nr_readers_queued;$/;"	m	struct:__anon17::__anon18	file:
+__nr_writers_queued	test.cpp	/^		unsigned int __nr_writers_queued;$/;"	m	struct:__anon17::__anon18	file:
+__nusers	test.cpp	/^		unsigned int __nusers;$/;"	m	struct:__anon11::__pthread_mutex_s	file:
+__nwaiters	test.cpp	/^		unsigned int __nwaiters;$/;"	m	struct:__anon14::__anon15	file:
+__off64_t	test.cpp	/^__extension__ typedef __quad_t __off64_t;$/;"	t	file:
+__off_t	test.cpp	/^__extension__ typedef long int __off_t;$/;"	t	file:
+__owner	test.cpp	/^		int __owner;$/;"	m	struct:__anon11::__pthread_mutex_s	file:
+__pad1	test.cpp	/^		unsigned char __pad1;$/;"	m	struct:__anon17::__anon18	file:
+__pad2	test.cpp	/^		unsigned char __pad2;$/;"	m	struct:__anon17::__anon18	file:
+__pid_t	test.cpp	/^__extension__ typedef int __pid_t;$/;"	t	file:
+__pthread_internal_slist	test.cpp	/^typedef struct __pthread_internal_slist {$/;"	s	file:
+__pthread_mutex_s	test.cpp	/^	struct __pthread_mutex_s {$/;"	s	union:__anon11	file:
+__pthread_slist_t	test.cpp	/^} __pthread_slist_t;$/;"	t	typeref:struct:__pthread_internal_slist	file:
+__qaddr_t	test.cpp	/^typedef __quad_t *__qaddr_t;$/;"	t	file:
+__quad_t	test.cpp	/^__extension__ typedef long long int __quad_t;$/;"	t	file:
+__readers_wakeup	test.cpp	/^		unsigned int __readers_wakeup;$/;"	m	struct:__anon17::__anon18	file:
+__rlim64_t	test.cpp	/^__extension__ typedef __u_quad_t __rlim64_t;$/;"	t	file:
+__rlim_t	test.cpp	/^__extension__ typedef unsigned long int __rlim_t;$/;"	t	file:
+__shared	test.cpp	/^		unsigned char __shared;$/;"	m	struct:__anon17::__anon18	file:
+__sig_atomic_t	test.cpp	/^typedef int __sig_atomic_t;$/;"	t	file:
+__sigset_t	test.cpp	/^} __sigset_t;$/;"	t	typeref:struct:__anon8	file:
+__size	test.cpp	/^	char __size[20];$/;"	m	union:__anon20	file:
+__size	test.cpp	/^	char __size[24];$/;"	m	union:__anon11	file:
+__size	test.cpp	/^	char __size[32];$/;"	m	union:__anon17	file:
+__size	test.cpp	/^	char __size[36];$/;"	m	union:__anon10	file:
+__size	test.cpp	/^	char __size[48];$/;"	m	union:__anon14	file:
+__size	test.cpp	/^	char __size[4];$/;"	m	union:__anon13	file:
+__size	test.cpp	/^	char __size[4];$/;"	m	union:__anon16	file:
+__size	test.cpp	/^	char __size[4];$/;"	m	union:__anon21	file:
+__size	test.cpp	/^	char __size[8];$/;"	m	union:__anon19	file:
+__socklen_t	test.cpp	/^__extension__ typedef unsigned int __socklen_t;$/;"	t	file:
+__spins	test.cpp	/^			int __spins;$/;"	m	union:__anon11::__pthread_mutex_s::__anon12	file:
+__ssize_t	test.cpp	/^__extension__ typedef int __ssize_t;$/;"	t	file:
+__store_i16L	byteswap.h	53;"	d
+__store_i16M	byteswap.h	55;"	d
+__store_i32L	byteswap.h	62;"	d
+__store_i32M	byteswap.h	64;"	d
+__store_i64L	byteswap.h	90;"	d
+__store_i64M	byteswap.h	91;"	d
+__store_u16L	byteswap.h	49;"	d
+__store_u16M	byteswap.h	51;"	d
+__store_u32L	byteswap.h	58;"	d
+__store_u32M	byteswap.h	60;"	d
+__store_u64L	byteswap.h	88;"	d
+__store_u64M	byteswap.h	89;"	d
+__store_verdaux	verdef.h	/^__store_verdaux(verdaux_ftype * dst, const verdaux_mtype * src, unsigned enc)$/;"	f
+__store_verdef	verdef.h	/^__store_verdef(verdef_ftype * dst, const verdef_mtype * src, unsigned enc)$/;"	f
+__store_vernaux	verneed.h	/^__store_vernaux(vernaux_ftype * dst, const vernaux_mtype * src, unsigned enc)$/;"	f
+__store_verneed	verneed.h	/^__store_verneed(verneed_ftype * dst, const verneed_mtype * src, unsigned enc)$/;"	f
+__suseconds_t	test.cpp	/^__extension__ typedef long int __suseconds_t;$/;"	t	file:
+__swblk_t	test.cpp	/^__extension__ typedef long int __swblk_t;$/;"	t	file:
+__time_t	test.cpp	/^__extension__ typedef long int __time_t;$/;"	t	file:
+__timer_t	test.cpp	/^__extension__ typedef void *__timer_t;$/;"	t	file:
+__total_seq	test.cpp	/^		__extension__ unsigned long long int __total_seq;$/;"	m	struct:__anon14::__anon15	file:
+__u_char	test.cpp	/^typedef unsigned char __u_char;$/;"	t	file:
+__u_int	test.cpp	/^typedef unsigned int __u_int;$/;"	t	file:
+__u_long	test.cpp	/^typedef unsigned long int __u_long;$/;"	t	file:
+__u_quad_t	test.cpp	/^__extension__ typedef unsigned long long int __u_quad_t;$/;"	t	file:
+__u_short	test.cpp	/^typedef unsigned short int __u_short;$/;"	t	file:
+__uid_t	test.cpp	/^__extension__ typedef unsigned int __uid_t;$/;"	t	file:
+__uint16_t	test.cpp	/^typedef unsigned short int __uint16_t;$/;"	t	file:
+__uint32_t	test.cpp	/^typedef unsigned int __uint32_t;$/;"	t	file:
+__uint64_t	test.cpp	/^__extension__ typedef unsigned long long int __uint64_t;$/;"	t	file:
+__uint8_t	test.cpp	/^typedef unsigned char __uint8_t;$/;"	t	file:
+__useconds_t	test.cpp	/^__extension__ typedef unsigned int __useconds_t;$/;"	t	file:
+__val	test.cpp	/^	int __val[2];$/;"	m	struct:__anon7	file:
+__val	test.cpp	/^	unsigned long int __val[(1024 \/ (8 * sizeof(unsigned long int)))];$/;"	m	struct:__anon8	file:
+__wakeup_seq	test.cpp	/^		__extension__ unsigned long long int __wakeup_seq;$/;"	m	struct:__anon14::__anon15	file:
+__woken_seq	test.cpp	/^		__extension__ unsigned long long int __woken_seq;$/;"	m	struct:__anon14::__anon15	file:
+__writer	test.cpp	/^		int __writer;$/;"	m	struct:__anon17::__anon18	file:
+__writer_wakeup	test.cpp	/^		unsigned int __writer_wakeup;$/;"	m	struct:__anon17::__anon18	file:
+_buildscn	newscn.c	/^static Elf_Scn *_buildscn(Elf * elf)$/;"	f	file:
+_elf32_layout	update.c	/^static off_t _elf32_layout(Elf * elf, unsigned *flag)$/;"	f	file:
+_elf32_update_shdr	opt.delscn.c	/^static void _elf32_update_shdr(Elf * elf, size_t index)$/;"	f	file:
+_elf32_write	update.c	/^static off_t _elf32_write(Elf * elf, char *outbuf, size_t len)$/;"	f	file:
+_elf32_xltsize	32.xlatetof.c	/^_elf32_xltsize(const Elf_Data * src, unsigned dv, unsigned encode, int tof)$/;"	f
+_elf32_xltsize	test.cpp	/^size_t _elf32_xltsize(const Elf_Data * src, unsigned dv, unsigned encode, int tof)$/;"	f
+_elf64_layout	update.c	/^static off_t _elf64_layout(Elf * elf, unsigned *flag)$/;"	f	file:
+_elf64_update_shdr	opt.delscn.c	/^static void _elf64_update_shdr(Elf * elf, size_t index)$/;"	f	file:
+_elf64_write	update.c	/^static off_t _elf64_write(Elf * elf, char *outbuf, size_t len)$/;"	f	file:
+_elf64_xltsize	64.xlatetof.c	/^_elf64_xltsize(const Elf_Data * src, unsigned dv, unsigned encode, int tof)$/;"	f
+_elf_arhdr	begin.c	/^static Elf_Arhdr *_elf_arhdr(Elf * arf)$/;"	f	file:
+_elf_check_type	begin.c	/^static void _elf_check_type(Elf * elf, size_t size)$/;"	f	file:
+_elf_cook	cook.c	/^int _elf_cook(Elf * elf)$/;"	f
+_elf_cook_file	cook.c	/^static int _elf_cook_file(Elf * elf)$/;"	f	file:
+_elf_cook_phdr	cook.c	/^static int _elf_cook_phdr(Elf * elf)$/;"	f	file:
+_elf_cook_scn	getdata.c	/^static Elf_Data *_elf_cook_scn(Elf * elf, Elf_Scn * scn, Scn_Data * sd)$/;"	f	file:
+_elf_cook_shdr	cook.c	/^static int _elf_cook_shdr(Elf * elf)$/;"	f	file:
+_elf_csum	checksum.c	/^static long _elf_csum(Elf * elf)$/;"	f	file:
+_elf_data_init	cook.c	/^const Scn_Data _elf_data_init = INIT_DATA;$/;"	v
+_elf_errno	data.c	/^int _elf_errno = 0;$/;"	v
+_elf_fill	data.c	/^int _elf_fill = 0;$/;"	v
+_elf_first_scn	newscn.c	/^Elf_Scn *_elf_first_scn(Elf * elf)$/;"	f
+_elf_flag	flag.c	/^static unsigned _elf_flag(unsigned *f, Elf_Cmd cmd, unsigned flags)$/;"	f	file:
+_elf_fmsize	32.fsize.c	/^const size_t _elf_fmsize[2][EV_CURRENT - EV_NONE][ELF_T_NUM][2] = $/;"	v
+_elf_free	end.c	/^static void _elf_free(void *ptr)$/;"	f	file:
+_elf_free_scns	end.c	/^static void _elf_free_scns(Elf * elf, Elf_Scn * scn)$/;"	f	file:
+_elf_fsize	32.fsize.c	/^static size_t _elf_fsize(unsigned cls, Elf_Type type, unsigned ver)$/;"	f	file:
+_elf_getehdr	32.getehdr.c	/^char *_elf_getehdr(Elf * elf, unsigned cls)$/;"	f
+_elf_getphdr	32.getphdr.c	/^char *_elf_getphdr(Elf * elf, unsigned cls)$/;"	f
+_elf_init	begin.c	/^static const Elf _elf_init = INIT_ELF;$/;"	v	file:
+_elf_init_ar	begin.c	/^static void _elf_init_ar(Elf * elf)$/;"	f	file:
+_elf_item	cook.c	/^static char *_elf_item(void *buf, Elf * elf, Elf_Type type, size_t off)$/;"	f	file:
+_elf_load_i64L	swap64.c	/^__libelf_i64_t _elf_load_i64L(const unsigned char *from)$/;"	f
+_elf_load_i64M	swap64.c	/^__libelf_i64_t _elf_load_i64M(const unsigned char *from)$/;"	f
+_elf_load_u64L	swap64.c	/^__libelf_u64_t _elf_load_u64L(const unsigned char *from)$/;"	f
+_elf_load_u64M	swap64.c	/^__libelf_u64_t _elf_load_u64M(const unsigned char *from)$/;"	f
+_elf_memset	memset.c	/^void *_elf_memset(void *s, int c, size_t n)$/;"	f
+_elf_mmap	input.c	/^void *_elf_mmap(Elf * elf)$/;"	f
+_elf_newehdr	32.newehdr.c	/^static char *_elf_newehdr(Elf * elf, unsigned cls)$/;"	f	file:
+_elf_newphdr	32.newphdr.c	/^static char *_elf_newphdr(Elf * elf, size_t count, unsigned cls)$/;"	f	file:
+_elf_nlist	nlist.c	/^static int _elf_nlist(Elf * elf, struct nlist *nl)$/;"	f	file:
+_elf_output	update.c	/^_elf_output(Elf * elf, int fd, size_t len,$/;"	f	file:
+_elf_read	input.c	/^void *_elf_read(Elf * elf, void *buffer, size_t off, size_t len)$/;"	f
+_elf_sanity_checks	data.c	/^int _elf_sanity_checks = SANITY_CHECKS;$/;"	v
+_elf_scn_init	cook.c	/^const Elf_Scn _elf_scn_init = INIT_SCN;$/;"	v
+_elf_scn_type	cook.c	/^Elf_Type _elf_scn_type(unsigned t)$/;"	f
+_elf_store_i64L	swap64.c	/^void _elf_store_i64L(unsigned char *to, __libelf_u64_t v)$/;"	f
+_elf_store_i64M	swap64.c	/^void _elf_store_i64M(unsigned char *to, __libelf_u64_t v)$/;"	f
+_elf_store_u64L	swap64.c	/^void _elf_store_u64L(unsigned char *to, __libelf_u64_t v)$/;"	f
+_elf_store_u64M	swap64.c	/^void _elf_store_u64M(unsigned char *to, __libelf_u64_t v)$/;"	f
+_elf_update_pointers	update.c	/^static int _elf_update_pointers(Elf * elf, char *outbuf, size_t len)$/;"	f	file:
+_elf_update_shnum	newscn.c	/^int _elf_update_shnum(Elf * elf, size_t shnum)$/;"	f
+_elf_version	data.c	/^unsigned _elf_version = EV_NONE;$/;"	v
+_elf_xlatetom	cook.c	/^Elf_Data *_elf_xlatetom(const Elf * elf, Elf_Data * dst, const Elf_Data * src)$/;"	f
+_fmsize	private.h	383;"	d
+_fsize	private.h	385;"	d
+_libelf_cat	errmsg.c	/^static nl_catd _libelf_cat = (nl_catd) 0;$/;"	v	file:
+_makescn	newscn.c	/^static Elf_Scn *_makescn(Elf * elf, size_t index)$/;"	f	file:
+_messages	errmsg.c	/^static const char *_messages[] = {$/;"	v	file:
+_msize	private.h	386;"	d
+_newindex	opt.delscn.c	/^static size_t _newindex(size_t old, size_t index)$/;"	f	file:
+a_type	test.cpp	/^	uint32_t a_type;$/;"	m	struct:__anon48	file:
+a_type	test.cpp	/^	uint64_t a_type;$/;"	m	struct:__anon50	file:
+a_un	test.cpp	/^	} a_un;$/;"	m	struct:__anon48	typeref:union:__anon48::__anon49	file:
+a_un	test.cpp	/^	} a_un;$/;"	m	struct:__anon50	typeref:union:__anon50::__anon51	file:
+a_val	test.cpp	/^		uint32_t a_val;$/;"	m	union:__anon48::__anon49	file:
+a_val	test.cpp	/^		uint64_t a_val;$/;"	m	union:__anon50::__anon51	file:
+add_bytes	checksum.c	/^static long add_bytes(unsigned char *ptr, size_t len)$/;"	f	file:
+addr_32L__tof	test.cpp	/^static size_t addr_32L__tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+addr_32L__tom	test.cpp	/^static size_t addr_32L__tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+addr_32M__tof	test.cpp	/^static size_t addr_32M__tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+addr_32M__tom	test.cpp	/^static size_t addr_32M__tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+align	update.c	39;"	d	file:
+align_ftype	verdef_32_tof.c	/^typedef __ext_Elf32_Word align_ftype;$/;"	t	file:
+align_ftype	verdef_32_tom.c	/^typedef __ext_Elf32_Word align_ftype;$/;"	t	file:
+align_ftype	verdef_64_tof.c	/^typedef __ext_Elf64_Word align_ftype;$/;"	t	file:
+align_ftype	verdef_64_tom.c	/^typedef __ext_Elf64_Word align_ftype;$/;"	t	file:
+align_mtype	verdef_32_tof.c	/^typedef Elf32_Word align_mtype;$/;"	t	file:
+align_mtype	verdef_32_tom.c	/^typedef Elf32_Word align_mtype;$/;"	t	file:
+align_mtype	verdef_64_tof.c	/^typedef Elf64_Word align_mtype;$/;"	t	file:
+align_mtype	verdef_64_tom.c	/^typedef Elf64_Word align_mtype;$/;"	t	file:
+ar_date	libelf.h	/^		time_t ar_date;$/;"	m	struct:__anon4
+ar_date	private.h	/^	char ar_date[12];$/;"	m	struct:ar_hdr
+ar_date	test.cpp	/^	char ar_date[12];$/;"	m	struct:ar_hdr	file:
+ar_date	test.cpp	/^	time_t ar_date;$/;"	m	struct:__anon67	file:
+ar_fmag	private.h	/^	char ar_fmag[2];$/;"	m	struct:ar_hdr
+ar_fmag	test.cpp	/^	char ar_fmag[2];$/;"	m	struct:ar_hdr	file:
+ar_gid	libelf.h	/^		long ar_gid;$/;"	m	struct:__anon4
+ar_gid	private.h	/^	char ar_gid[6];$/;"	m	struct:ar_hdr
+ar_gid	test.cpp	/^	char ar_gid[6];$/;"	m	struct:ar_hdr	file:
+ar_gid	test.cpp	/^	long ar_gid;$/;"	m	struct:__anon67	file:
+ar_hdr	private.h	/^struct ar_hdr {$/;"	s
+ar_hdr	test.cpp	/^struct ar_hdr {$/;"	s	file:
+ar_mode	libelf.h	/^		unsigned long ar_mode;$/;"	m	struct:__anon4
+ar_mode	private.h	/^	char ar_mode[8];$/;"	m	struct:ar_hdr
+ar_mode	test.cpp	/^	char ar_mode[8];$/;"	m	struct:ar_hdr	file:
+ar_mode	test.cpp	/^	unsigned long ar_mode;$/;"	m	struct:__anon67	file:
+ar_name	libelf.h	/^		char *ar_name;$/;"	m	struct:__anon4
+ar_name	private.h	/^	char ar_name[16];$/;"	m	struct:ar_hdr
+ar_name	test.cpp	/^	char *ar_name;$/;"	m	struct:__anon67	file:
+ar_name	test.cpp	/^	char ar_name[16];$/;"	m	struct:ar_hdr	file:
+ar_rawname	libelf.h	/^		char *ar_rawname;$/;"	m	struct:__anon4
+ar_rawname	test.cpp	/^	char *ar_rawname;$/;"	m	struct:__anon67	file:
+ar_size	libelf.h	/^		off_t ar_size;$/;"	m	struct:__anon4
+ar_size	private.h	/^	char ar_size[10];$/;"	m	struct:ar_hdr
+ar_size	test.cpp	/^	char ar_size[10];$/;"	m	struct:ar_hdr	file:
+ar_size	test.cpp	/^	off_t ar_size;$/;"	m	struct:__anon67	file:
+ar_uid	libelf.h	/^		long ar_uid;$/;"	m	struct:__anon4
+ar_uid	private.h	/^	char ar_uid[6];$/;"	m	struct:ar_hdr
+ar_uid	test.cpp	/^	char ar_uid[6];$/;"	m	struct:ar_hdr	file:
+ar_uid	test.cpp	/^	long ar_uid;$/;"	m	struct:__anon67	file:
+array_copy	32.xlatetof.c	/^array_copy(unsigned char *dst, size_t dlen, const unsigned char *src,$/;"	f	file:
+array_copy	64.xlatetof.c	/^array_copy(unsigned char *dst, size_t dlen, const unsigned char *src,$/;"	f	file:
+array_copy	test.cpp	/^static void array_copy(unsigned char *dst, size_t dlen, const unsigned char *src, size_t slen)$/;"	f	file:
+as_hash	libelf.h	/^		unsigned long as_hash;$/;"	m	struct:__anon5
+as_hash	test.cpp	/^	unsigned long as_hash;$/;"	m	struct:__anon68	file:
+as_name	libelf.h	/^		char *as_name;$/;"	m	struct:__anon5
+as_name	test.cpp	/^	char *as_name;$/;"	m	struct:__anon68	file:
+as_off	libelf.h	/^		size_t as_off;$/;"	m	struct:__anon5
+as_off	test.cpp	/^	size_t as_off;$/;"	m	struct:__anon68	file:
+blkcnt_t	test.cpp	/^typedef __blkcnt_t blkcnt_t;$/;"	t	file:
+blksize_t	test.cpp	/^typedef __blksize_t blksize_t;$/;"	t	file:
+byte_copy	32.xlatetof.c	/^static size_t byte_copy(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+byte_copy	64.xlatetof.c	/^static size_t byte_copy(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+byte_copy	test.cpp	/^static size_t byte_copy(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+c_ptr	elf_repl.h	/^			Elf32_Addr c_ptr;$/;"	m	union:__anon156::__anon157
+c_ptr	elf_repl.h	/^			Elf64_Addr c_ptr;$/;"	m	union:__anon158::__anon159
+c_tag	elf_repl.h	/^		Elf32_Word c_tag;$/;"	m	struct:__anon156
+c_tag	elf_repl.h	/^		Elf64_Xword c_tag;$/;"	m	struct:__anon158
+c_un	elf_repl.h	/^		} c_un;$/;"	m	struct:__anon156	typeref:union:__anon156::__anon157
+c_un	elf_repl.h	/^		} c_un;$/;"	m	struct:__anon158	typeref:union:__anon158::__anon159
+c_val	elf_repl.h	/^			Elf32_Word c_val;$/;"	m	union:__anon156::__anon157
+c_val	elf_repl.h	/^			Elf64_Xword c_val;$/;"	m	union:__anon158::__anon159
+caddr_t	test.cpp	/^typedef __caddr_t caddr_t;$/;"	t	file:
+cat3	verdef.h	129;"	d
+cat3	verneed.h	133;"	d
+check_and_copy	gelfehdr.c	29;"	d	file:
+check_and_copy	gelfphdr.c	29;"	d	file:
+check_and_copy	gelfshdr.c	29;"	d	file:
+check_and_copy	gelftrans.c	29;"	d	file:
+class_suffix	verdef_32_tof.c	43;"	d	file:
+class_suffix	verdef_32_tom.c	43;"	d	file:
+class_suffix	verdef_64_tof.c	43;"	d	file:
+class_suffix	verdef_64_tom.c	43;"	d	file:
+clock_t	test.cpp	/^typedef __clock_t clock_t;$/;"	t	file:
+clockid_t	test.cpp	/^typedef __clockid_t clockid_t;$/;"	t	file:
+copy_addr	32.xlatetof.c	119;"	d	file:
+copy_addr	64.xlatetof.c	120;"	d	file:
+copy_addr_11	32.xlatetof.c	131;"	d	file:
+copy_addr_11	64.xlatetof.c	134;"	d	file:
+copy_arr	32.xlatetof.c	124;"	d	file:
+copy_arr	64.xlatetof.c	127;"	d	file:
+copy_byte	32.xlatetof.c	118;"	d	file:
+copy_byte	64.xlatetof.c	119;"	d	file:
+copy_dyn_11	32.xlatetof.c	141;"	d	file:
+copy_dyn_11	64.xlatetof.c	146;"	d	file:
+copy_ehdr_11	32.xlatetof.c	146;"	d	file:
+copy_ehdr_11	64.xlatetof.c	150;"	d	file:
+copy_half	32.xlatetof.c	120;"	d	file:
+copy_half	64.xlatetof.c	121;"	d	file:
+copy_half_11	32.xlatetof.c	132;"	d	file:
+copy_half_11	64.xlatetof.c	135;"	d	file:
+copy_off	32.xlatetof.c	121;"	d	file:
+copy_off	64.xlatetof.c	122;"	d	file:
+copy_off_11	32.xlatetof.c	133;"	d	file:
+copy_off_11	64.xlatetof.c	136;"	d	file:
+copy_phdr_11	32.xlatetof.c	163;"	d	file:
+copy_phdr_11	64.xlatetof.c	166;"	d	file:
+copy_rel_11	32.xlatetof.c	180;"	d	file:
+copy_rel_11	64.xlatetof.c	186;"	d	file:
+copy_rel_11	64.xlatetof.c	200;"	d	file:
+copy_rela_11	32.xlatetof.c	174;"	d	file:
+copy_rela_11	64.xlatetof.c	177;"	d	file:
+copy_rela_11	64.xlatetof.c	195;"	d	file:
+copy_scalar_tof	32.xlatetof.c	107;"	d	file:
+copy_scalar_tof	64.xlatetof.c	108;"	d	file:
+copy_scalar_tom	32.xlatetof.c	106;"	d	file:
+copy_scalar_tom	64.xlatetof.c	107;"	d	file:
+copy_shdr_11	32.xlatetof.c	185;"	d	file:
+copy_shdr_11	64.xlatetof.c	205;"	d	file:
+copy_sword	32.xlatetof.c	122;"	d	file:
+copy_sword	64.xlatetof.c	123;"	d	file:
+copy_sword_11	32.xlatetof.c	134;"	d	file:
+copy_sword_11	64.xlatetof.c	137;"	d	file:
+copy_sxword	64.xlatetof.c	125;"	d	file:
+copy_sxword_11	64.xlatetof.c	139;"	d	file:
+copy_sym_11	32.xlatetof.c	198;"	d	file:
+copy_sym_11	64.xlatetof.c	217;"	d	file:
+copy_symbol	nlist.c	/^copy_symbol(Elf * elf, struct nlist *np, const void *syms, size_t index)$/;"	f	file:
+copy_tof	32.xlatetof.c	113;"	d	file:
+copy_tof	64.xlatetof.c	114;"	d	file:
+copy_tom	32.xlatetof.c	112;"	d	file:
+copy_tom	64.xlatetof.c	113;"	d	file:
+copy_type	32.xlatetof.c	99;"	d	file:
+copy_type	64.xlatetof.c	100;"	d	file:
+copy_type_e	32.xlatetof.c	92;"	d	file:
+copy_type_e	64.xlatetof.c	93;"	d	file:
+copy_type_e_io	32.xlatetof.c	62;"	d	file:
+copy_type_e_io	64.xlatetof.c	64;"	d	file:
+copy_verdaux_srctotmp	verdef.h	120;"	d
+copy_verdaux_srctotmp	verdef.h	71;"	d
+copy_verdaux_tmptodst	verdef.h	121;"	d
+copy_verdaux_tmptodst	verdef.h	72;"	d
+copy_verdef_srctotmp	verdef.h	122;"	d
+copy_verdef_srctotmp	verdef.h	73;"	d
+copy_verdef_tmptodst	verdef.h	123;"	d
+copy_verdef_tmptodst	verdef.h	74;"	d
+copy_vernaux_srctotmp	verneed.h	124;"	d
+copy_vernaux_srctotmp	verneed.h	73;"	d
+copy_vernaux_tmptodst	verneed.h	125;"	d
+copy_vernaux_tmptodst	verneed.h	74;"	d
+copy_verneed_srctotmp	verneed.h	126;"	d
+copy_verneed_srctotmp	verneed.h	75;"	d
+copy_verneed_tmptodst	verneed.h	127;"	d
+copy_verneed_tmptodst	verneed.h	76;"	d
+copy_word	32.xlatetof.c	123;"	d	file:
+copy_word	64.xlatetof.c	124;"	d	file:
+copy_word_11	32.xlatetof.c	135;"	d	file:
+copy_word_11	64.xlatetof.c	138;"	d	file:
+copy_xword	64.xlatetof.c	126;"	d	file:
+copy_xword_11	64.xlatetof.c	140;"	d	file:
+d_align	libelf.h	/^		size_t d_align;$/;"	m	struct:__anon6
+d_align	test.cpp	/^	size_t d_align;$/;"	m	struct:__anon69	file:
+d_buf	libelf.h	/^		void *d_buf;$/;"	m	struct:__anon6
+d_buf	test.cpp	/^	void *d_buf;$/;"	m	struct:__anon69	file:
+d_off	libelf.h	/^		off_t d_off;$/;"	m	struct:__anon6
+d_off	test.cpp	/^	off_t d_off;$/;"	m	struct:__anon69	file:
+d_ptr	elf_repl.h	/^			Elf32_Addr d_ptr;$/;"	m	union:__anon140::__anon141
+d_ptr	elf_repl.h	/^			Elf64_Addr d_ptr;$/;"	m	union:__anon142::__anon143
+d_ptr	ext_types.h	/^			__ext_Elf32_Addr d_ptr;$/;"	m	union:__anon112::__anon113
+d_ptr	ext_types.h	/^			__ext_Elf64_Addr d_ptr;$/;"	m	union:__anon114::__anon115
+d_ptr	test.cpp	/^		Elf32_Addr d_ptr;$/;"	m	union:__anon36::__anon37	file:
+d_ptr	test.cpp	/^		Elf64_Addr d_ptr;$/;"	m	union:__anon38::__anon39	file:
+d_ptr	test.cpp	/^		__ext_Elf32_Addr d_ptr;$/;"	m	union:__anon84::__anon85	file:
+d_ptr	test.cpp	/^		__ext_Elf64_Addr d_ptr;$/;"	m	union:__anon86::__anon87	file:
+d_size	libelf.h	/^		size_t d_size;$/;"	m	struct:__anon6
+d_size	test.cpp	/^	size_t d_size;$/;"	m	struct:__anon69	file:
+d_tag	elf_repl.h	/^		Elf32_Sword d_tag;$/;"	m	struct:__anon140
+d_tag	elf_repl.h	/^		Elf64_Sxword d_tag;$/;"	m	struct:__anon142
+d_tag	ext_types.h	/^		__ext_Elf32_Sword d_tag;$/;"	m	struct:__anon112
+d_tag	ext_types.h	/^		__ext_Elf64_Sxword d_tag;$/;"	m	struct:__anon114
+d_tag	test.cpp	/^	Elf32_Sword d_tag;$/;"	m	struct:__anon36	file:
+d_tag	test.cpp	/^	Elf64_Sxword d_tag;$/;"	m	struct:__anon38	file:
+d_tag	test.cpp	/^	__ext_Elf32_Sword d_tag;$/;"	m	struct:__anon84	file:
+d_tag	test.cpp	/^	__ext_Elf64_Sxword d_tag;$/;"	m	struct:__anon86	file:
+d_type	libelf.h	/^		Elf_Type d_type;$/;"	m	struct:__anon6
+d_type	test.cpp	/^	Elf_Type d_type;$/;"	m	struct:__anon69	file:
+d_un	elf_repl.h	/^		} d_un;$/;"	m	struct:__anon140	typeref:union:__anon140::__anon141
+d_un	elf_repl.h	/^		} d_un;$/;"	m	struct:__anon142	typeref:union:__anon142::__anon143
+d_un	ext_types.h	/^		} d_un;$/;"	m	struct:__anon112	typeref:union:__anon112::__anon113
+d_un	ext_types.h	/^		} d_un;$/;"	m	struct:__anon114	typeref:union:__anon114::__anon115
+d_un	test.cpp	/^	} d_un;$/;"	m	struct:__anon36	typeref:union:__anon36::__anon37	file:
+d_un	test.cpp	/^	} d_un;$/;"	m	struct:__anon38	typeref:union:__anon38::__anon39	file:
+d_un	test.cpp	/^	} d_un;$/;"	m	struct:__anon84	typeref:union:__anon84::__anon85	file:
+d_un	test.cpp	/^	} d_un;$/;"	m	struct:__anon86	typeref:union:__anon86::__anon87	file:
+d_val	elf_repl.h	/^			Elf32_Word d_val;$/;"	m	union:__anon140::__anon141
+d_val	elf_repl.h	/^			Elf64_Xword d_val;$/;"	m	union:__anon142::__anon143
+d_val	ext_types.h	/^			__ext_Elf32_Word d_val;$/;"	m	union:__anon112::__anon113
+d_val	ext_types.h	/^			__ext_Elf64_Xword d_val;$/;"	m	union:__anon114::__anon115
+d_val	test.cpp	/^		Elf32_Word d_val;$/;"	m	union:__anon36::__anon37	file:
+d_val	test.cpp	/^		Elf64_Xword d_val;$/;"	m	union:__anon38::__anon39	file:
+d_val	test.cpp	/^		__ext_Elf32_Word d_val;$/;"	m	union:__anon84::__anon85	file:
+d_val	test.cpp	/^		__ext_Elf64_Xword d_val;$/;"	m	union:__anon86::__anon87	file:
+d_version	libelf.h	/^		unsigned d_version;$/;"	m	struct:__anon6
+d_version	test.cpp	/^	unsigned d_version;$/;"	m	struct:__anon69	file:
+daddr_t	test.cpp	/^typedef __daddr_t daddr_t;$/;"	t	file:
+dev_t	test.cpp	/^typedef __dev_t dev_t;$/;"	t	file:
+dgettext	errmsg.c	31;"	d	file:
+distdir	Makefile	/^distdir = $(PACKAGE)-$(VERSION)$/;"	m
+distsubdir	Makefile	/^distsubdir = $(topdir)\/$(distdir)\/$(subdir)$/;"	m
+domain	errmsg.c	/^static const char domain[] = "libelf";$/;"	v	file:
+dyn_32L11_tof	test.cpp	/^static size_t dyn_32L11_tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+dyn_32L11_tom	test.cpp	/^static size_t dyn_32L11_tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+dyn_32M11_tof	test.cpp	/^static size_t dyn_32M11_tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+dyn_32M11_tom	test.cpp	/^static size_t dyn_32M11_tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+e_arhdr	private.h	/^	Elf_Arhdr *e_arhdr;	\/* archive member header or NULL *\/$/;"	m	struct:Elf
+e_arhdr	test.cpp	/^	Elf_Arhdr *e_arhdr;$/;"	m	struct:Elf	file:
+e_base	private.h	/^	size_t e_base;		\/* 0 if not an archive member *\/$/;"	m	struct:Elf
+e_base	test.cpp	/^	size_t e_base;$/;"	m	struct:Elf	file:
+e_class	private.h	/^	unsigned e_class;	\/* ELF class *\/											\/* 文件类别 *\/$/;"	m	struct:Elf
+e_class	test.cpp	/^	unsigned e_class;$/;"	m	struct:Elf	file:
+e_cooked	private.h	/^	unsigned e_cooked:1;	\/* e_data was modified *\/$/;"	m	struct:Elf
+e_cooked	test.cpp	/^	unsigned e_cooked:1;$/;"	m	struct:Elf	file:
+e_count	private.h	/^	unsigned e_count;	\/* activation count *\/$/;"	m	struct:Elf
+e_count	test.cpp	/^	unsigned e_count;$/;"	m	struct:Elf	file:
+e_data	private.h	/^	char *e_data;		\/* file\/member data *\/$/;"	m	struct:Elf
+e_data	test.cpp	/^	char *e_data;$/;"	m	struct:Elf	file:
+e_disabled	private.h	/^	unsigned e_disabled:1;	\/* e_fd has been disabled *\/$/;"	m	struct:Elf
+e_disabled	test.cpp	/^	unsigned e_disabled:1;$/;"	m	struct:Elf	file:
+e_dsize	private.h	/^	size_t e_dsize;		\/* size of memory image *\/$/;"	m	struct:Elf
+e_dsize	test.cpp	/^	size_t e_dsize;$/;"	m	struct:Elf	file:
+e_ehdr	private.h	/^	char *e_ehdr;		\/* ELF header *\/$/;"	m	struct:Elf
+e_ehdr	test.cpp	/^	char *e_ehdr;$/;"	m	struct:Elf	file:
+e_ehdr_flags	private.h	/^	unsigned e_ehdr_flags;	\/* ehdr flags (ELF_F_*) *\/$/;"	m	struct:Elf
+e_ehdr_flags	test.cpp	/^	unsigned e_ehdr_flags;$/;"	m	struct:Elf	file:
+e_ehsize	elf_repl.h	/^		Elf32_Half e_ehsize;$/;"	m	struct:__anon126
+e_ehsize	elf_repl.h	/^		Elf64_Half e_ehsize;$/;"	m	struct:__anon127
+e_ehsize	ext_types.h	/^		__ext_Elf32_Half e_ehsize;$/;"	m	struct:__anon100
+e_ehsize	ext_types.h	/^		__ext_Elf64_Half e_ehsize;$/;"	m	struct:__anon101
+e_ehsize	test.cpp	/^	Elf32_Half e_ehsize;$/;"	m	struct:__anon22	file:
+e_ehsize	test.cpp	/^	Elf64_Half e_ehsize;$/;"	m	struct:__anon23	file:
+e_ehsize	test.cpp	/^	__ext_Elf32_Half e_ehsize;$/;"	m	struct:__anon72	file:
+e_ehsize	test.cpp	/^	__ext_Elf64_Half e_ehsize;$/;"	m	struct:__anon73	file:
+e_elf_flags	private.h	/^	unsigned e_elf_flags;	\/* elf flags (ELF_F_*) *\/$/;"	m	struct:Elf
+e_elf_flags	test.cpp	/^	unsigned e_elf_flags;$/;"	m	struct:Elf	file:
+e_encoding	private.h	/^	unsigned e_encoding;	\/* ELF data encoding *\/								\/* 数据编码格式 -- 大小端 *\/$/;"	m	struct:Elf
+e_encoding	test.cpp	/^	unsigned e_encoding;$/;"	m	struct:Elf	file:
+e_entry	elf_repl.h	/^		Elf32_Addr e_entry;$/;"	m	struct:__anon126
+e_entry	elf_repl.h	/^		Elf64_Addr e_entry;$/;"	m	struct:__anon127
+e_entry	ext_types.h	/^		__ext_Elf32_Addr e_entry;$/;"	m	struct:__anon100
+e_entry	ext_types.h	/^		__ext_Elf64_Addr e_entry;$/;"	m	struct:__anon101
+e_entry	test.cpp	/^	Elf32_Addr e_entry;$/;"	m	struct:__anon22	file:
+e_entry	test.cpp	/^	Elf64_Addr e_entry;$/;"	m	struct:__anon23	file:
+e_entry	test.cpp	/^	__ext_Elf32_Addr e_entry;$/;"	m	struct:__anon72	file:
+e_entry	test.cpp	/^	__ext_Elf64_Addr e_entry;$/;"	m	struct:__anon73	file:
+e_fd	private.h	/^	int e_fd;			\/* file descriptor *\/$/;"	m	struct:Elf
+e_fd	test.cpp	/^	int e_fd;$/;"	m	struct:Elf	file:
+e_flags	elf_repl.h	/^		Elf32_Word e_flags;$/;"	m	struct:__anon126
+e_flags	elf_repl.h	/^		Elf64_Word e_flags;$/;"	m	struct:__anon127
+e_flags	ext_types.h	/^		__ext_Elf32_Word e_flags;$/;"	m	struct:__anon100
+e_flags	ext_types.h	/^		__ext_Elf64_Word e_flags;$/;"	m	struct:__anon101
+e_flags	test.cpp	/^	Elf32_Word e_flags;$/;"	m	struct:__anon22	file:
+e_flags	test.cpp	/^	Elf64_Word e_flags;$/;"	m	struct:__anon23	file:
+e_flags	test.cpp	/^	__ext_Elf32_Word e_flags;$/;"	m	struct:__anon72	file:
+e_flags	test.cpp	/^	__ext_Elf64_Word e_flags;$/;"	m	struct:__anon73	file:
+e_free_syms	private.h	/^	unsigned e_free_syms:1;	\/* e_symtab is malloc'ed *\/$/;"	m	struct:Elf
+e_free_syms	test.cpp	/^	unsigned e_free_syms:1;$/;"	m	struct:Elf	file:
+e_ident	elf_repl.h	/^		unsigned char e_ident[EI_NIDENT];$/;"	m	struct:__anon126
+e_ident	elf_repl.h	/^		unsigned char e_ident[EI_NIDENT];$/;"	m	struct:__anon127
+e_ident	ext_types.h	/^		unsigned char e_ident[EI_NIDENT];$/;"	m	struct:__anon100
+e_ident	ext_types.h	/^		unsigned char e_ident[EI_NIDENT];$/;"	m	struct:__anon101
+e_ident	test.cpp	/^	unsigned char e_ident[(16)];$/;"	m	struct:__anon22	file:
+e_ident	test.cpp	/^	unsigned char e_ident[(16)];$/;"	m	struct:__anon23	file:
+e_ident	test.cpp	/^	unsigned char e_ident[(16)];$/;"	m	struct:__anon72	file:
+e_ident	test.cpp	/^	unsigned char e_ident[(16)];$/;"	m	struct:__anon73	file:
+e_idlen	private.h	/^	size_t e_idlen;		\/* identifier size *\/									\/* EI_NIDENT -- 16 bytes *\/$/;"	m	struct:Elf
+e_idlen	test.cpp	/^	size_t e_idlen;$/;"	m	struct:Elf	file:
+e_kind	private.h	/^	Elf_Kind e_kind;	\/* kind of file *\/$/;"	m	struct:Elf
+e_kind	test.cpp	/^	Elf_Kind e_kind;$/;"	m	struct:Elf	file:
+e_link	private.h	/^	Elf *e_link;		\/* next archive member or NULL *\/$/;"	m	struct:Elf
+e_link	test.cpp	/^	Elf *e_link;$/;"	m	struct:Elf	file:
+e_machine	elf_repl.h	/^		Elf32_Half e_machine;$/;"	m	struct:__anon126
+e_machine	elf_repl.h	/^		Elf64_Half e_machine;$/;"	m	struct:__anon127
+e_machine	ext_types.h	/^		__ext_Elf32_Half e_machine;$/;"	m	struct:__anon100
+e_machine	ext_types.h	/^		__ext_Elf64_Half e_machine;$/;"	m	struct:__anon101
+e_machine	test.cpp	/^	Elf32_Half e_machine;$/;"	m	struct:__anon22	file:
+e_machine	test.cpp	/^	Elf64_Half e_machine;$/;"	m	struct:__anon23	file:
+e_machine	test.cpp	/^	__ext_Elf32_Half e_machine;$/;"	m	struct:__anon72	file:
+e_machine	test.cpp	/^	__ext_Elf64_Half e_machine;$/;"	m	struct:__anon73	file:
+e_magic	private.h	/^	long e_magic;$/;"	m	struct:Elf
+e_magic	test.cpp	/^	long e_magic;$/;"	m	struct:Elf	file:
+e_members	private.h	/^	Elf *e_members;		\/* linked list of active archive members *\/$/;"	m	struct:Elf
+e_members	test.cpp	/^	Elf *e_members;$/;"	m	struct:Elf	file:
+e_memory	private.h	/^	unsigned e_memory:1;	\/* created by elf_memory() *\/$/;"	m	struct:Elf
+e_memory	test.cpp	/^	unsigned e_memory:1;$/;"	m	struct:Elf	file:
+e_next	private.h	/^	size_t e_next;		\/* 0 if not an archive member *\/$/;"	m	struct:Elf
+e_next	test.cpp	/^	size_t e_next;$/;"	m	struct:Elf	file:
+e_off	private.h	/^	size_t e_off;		\/* current member offset (for elf_begin) *\/$/;"	m	struct:Elf
+e_off	test.cpp	/^	size_t e_off;$/;"	m	struct:Elf	file:
+e_parent	private.h	/^	Elf *e_parent;		\/* NULL if not an archive member *\/$/;"	m	struct:Elf
+e_parent	test.cpp	/^	Elf *e_parent;$/;"	m	struct:Elf	file:
+e_phdr	private.h	/^	char *e_phdr;		\/* ELF program header table *\/$/;"	m	struct:Elf
+e_phdr	test.cpp	/^	char *e_phdr;$/;"	m	struct:Elf	file:
+e_phdr_flags	private.h	/^	unsigned e_phdr_flags;	\/* phdr flags (ELF_F_*) *\/$/;"	m	struct:Elf
+e_phdr_flags	test.cpp	/^	unsigned e_phdr_flags;$/;"	m	struct:Elf	file:
+e_phentsize	elf_repl.h	/^		Elf32_Half e_phentsize;$/;"	m	struct:__anon126
+e_phentsize	elf_repl.h	/^		Elf64_Half e_phentsize;$/;"	m	struct:__anon127
+e_phentsize	ext_types.h	/^		__ext_Elf32_Half e_phentsize;$/;"	m	struct:__anon100
+e_phentsize	ext_types.h	/^		__ext_Elf64_Half e_phentsize;$/;"	m	struct:__anon101
+e_phentsize	test.cpp	/^	Elf32_Half e_phentsize;$/;"	m	struct:__anon22	file:
+e_phentsize	test.cpp	/^	Elf64_Half e_phentsize;$/;"	m	struct:__anon23	file:
+e_phentsize	test.cpp	/^	__ext_Elf32_Half e_phentsize;$/;"	m	struct:__anon72	file:
+e_phentsize	test.cpp	/^	__ext_Elf64_Half e_phentsize;$/;"	m	struct:__anon73	file:
+e_phnum	elf_repl.h	/^		Elf32_Half e_phnum;$/;"	m	struct:__anon126
+e_phnum	elf_repl.h	/^		Elf64_Half e_phnum;$/;"	m	struct:__anon127
+e_phnum	ext_types.h	/^		__ext_Elf32_Half e_phnum;$/;"	m	struct:__anon100
+e_phnum	ext_types.h	/^		__ext_Elf64_Half e_phnum;$/;"	m	struct:__anon101
+e_phnum	private.h	/^	size_t e_phnum;		\/* size of program header table *\/$/;"	m	struct:Elf
+e_phnum	test.cpp	/^	Elf32_Half e_phnum;$/;"	m	struct:__anon22	file:
+e_phnum	test.cpp	/^	Elf64_Half e_phnum;$/;"	m	struct:__anon23	file:
+e_phnum	test.cpp	/^	__ext_Elf32_Half e_phnum;$/;"	m	struct:__anon72	file:
+e_phnum	test.cpp	/^	__ext_Elf64_Half e_phnum;$/;"	m	struct:__anon73	file:
+e_phnum	test.cpp	/^	size_t e_phnum;$/;"	m	struct:Elf	file:
+e_phoff	elf_repl.h	/^		Elf32_Off e_phoff;$/;"	m	struct:__anon126
+e_phoff	elf_repl.h	/^		Elf64_Off e_phoff;$/;"	m	struct:__anon127
+e_phoff	ext_types.h	/^		__ext_Elf32_Off e_phoff;$/;"	m	struct:__anon100
+e_phoff	ext_types.h	/^		__ext_Elf64_Off e_phoff;$/;"	m	struct:__anon101
+e_phoff	test.cpp	/^	Elf32_Off e_phoff;$/;"	m	struct:__anon22	file:
+e_phoff	test.cpp	/^	Elf64_Off e_phoff;$/;"	m	struct:__anon23	file:
+e_phoff	test.cpp	/^	__ext_Elf32_Off e_phoff;$/;"	m	struct:__anon72	file:
+e_phoff	test.cpp	/^	__ext_Elf64_Off e_phoff;$/;"	m	struct:__anon73	file:
+e_rawdata	private.h	/^	char *e_rawdata;	\/* file\/member raw data *\/$/;"	m	struct:Elf
+e_rawdata	test.cpp	/^	char *e_rawdata;$/;"	m	struct:Elf	file:
+e_readable	private.h	/^	unsigned e_readable:1;	\/* file is readable *\/$/;"	m	struct:Elf
+e_readable	test.cpp	/^	unsigned e_readable:1;$/;"	m	struct:Elf	file:
+e_scn_1	private.h	/^	Elf_Scn *e_scn_1;	\/* first section *\/$/;"	m	struct:Elf
+e_scn_1	test.cpp	/^	Elf_Scn *e_scn_1;$/;"	m	struct:Elf	file:
+e_scn_n	private.h	/^	Elf_Scn *e_scn_n;	\/* last section *\/$/;"	m	struct:Elf
+e_scn_n	test.cpp	/^	Elf_Scn *e_scn_n;$/;"	m	struct:Elf	file:
+e_shentsize	elf_repl.h	/^		Elf32_Half e_shentsize;$/;"	m	struct:__anon126
+e_shentsize	elf_repl.h	/^		Elf64_Half e_shentsize;$/;"	m	struct:__anon127
+e_shentsize	ext_types.h	/^		__ext_Elf32_Half e_shentsize;$/;"	m	struct:__anon100
+e_shentsize	ext_types.h	/^		__ext_Elf64_Half e_shentsize;$/;"	m	struct:__anon101
+e_shentsize	test.cpp	/^	Elf32_Half e_shentsize;$/;"	m	struct:__anon22	file:
+e_shentsize	test.cpp	/^	Elf64_Half e_shentsize;$/;"	m	struct:__anon23	file:
+e_shentsize	test.cpp	/^	__ext_Elf32_Half e_shentsize;$/;"	m	struct:__anon72	file:
+e_shentsize	test.cpp	/^	__ext_Elf64_Half e_shentsize;$/;"	m	struct:__anon73	file:
+e_shnum	elf_repl.h	/^		Elf32_Half e_shnum;$/;"	m	struct:__anon126
+e_shnum	elf_repl.h	/^		Elf64_Half e_shnum;$/;"	m	struct:__anon127
+e_shnum	ext_types.h	/^		__ext_Elf32_Half e_shnum;$/;"	m	struct:__anon100
+e_shnum	ext_types.h	/^		__ext_Elf64_Half e_shnum;$/;"	m	struct:__anon101
+e_shnum	test.cpp	/^	Elf32_Half e_shnum;$/;"	m	struct:__anon22	file:
+e_shnum	test.cpp	/^	Elf64_Half e_shnum;$/;"	m	struct:__anon23	file:
+e_shnum	test.cpp	/^	__ext_Elf32_Half e_shnum;$/;"	m	struct:__anon72	file:
+e_shnum	test.cpp	/^	__ext_Elf64_Half e_shnum;$/;"	m	struct:__anon73	file:
+e_shoff	elf_repl.h	/^		Elf32_Off e_shoff;$/;"	m	struct:__anon126
+e_shoff	elf_repl.h	/^		Elf64_Off e_shoff;$/;"	m	struct:__anon127
+e_shoff	ext_types.h	/^		__ext_Elf32_Off e_shoff;$/;"	m	struct:__anon100
+e_shoff	ext_types.h	/^		__ext_Elf64_Off e_shoff;$/;"	m	struct:__anon101
+e_shoff	test.cpp	/^	Elf32_Off e_shoff;$/;"	m	struct:__anon22	file:
+e_shoff	test.cpp	/^	Elf64_Off e_shoff;$/;"	m	struct:__anon23	file:
+e_shoff	test.cpp	/^	__ext_Elf32_Off e_shoff;$/;"	m	struct:__anon72	file:
+e_shoff	test.cpp	/^	__ext_Elf64_Off e_shoff;$/;"	m	struct:__anon73	file:
+e_shstrndx	elf_repl.h	/^		Elf32_Half e_shstrndx;$/;"	m	struct:__anon126
+e_shstrndx	elf_repl.h	/^		Elf64_Half e_shstrndx;$/;"	m	struct:__anon127
+e_shstrndx	ext_types.h	/^		__ext_Elf32_Half e_shstrndx;$/;"	m	struct:__anon100
+e_shstrndx	ext_types.h	/^		__ext_Elf64_Half e_shstrndx;$/;"	m	struct:__anon101
+e_shstrndx	test.cpp	/^	Elf32_Half e_shstrndx;$/;"	m	struct:__anon22	file:
+e_shstrndx	test.cpp	/^	Elf64_Half e_shstrndx;$/;"	m	struct:__anon23	file:
+e_shstrndx	test.cpp	/^	__ext_Elf32_Half e_shstrndx;$/;"	m	struct:__anon72	file:
+e_shstrndx	test.cpp	/^	__ext_Elf64_Half e_shstrndx;$/;"	m	struct:__anon73	file:
+e_size	private.h	/^	size_t e_size;		\/* file\/member size *\/$/;"	m	struct:Elf
+e_size	test.cpp	/^	size_t e_size;$/;"	m	struct:Elf	file:
+e_strlen	private.h	/^	size_t e_strlen;	\/* length of archive string table *\/$/;"	m	struct:Elf
+e_strlen	test.cpp	/^	size_t e_strlen;$/;"	m	struct:Elf	file:
+e_strtab	private.h	/^	char *e_strtab;		\/* archive string table *\/$/;"	m	struct:Elf
+e_strtab	test.cpp	/^	char *e_strtab;$/;"	m	struct:Elf	file:
+e_symlen	private.h	/^	size_t e_symlen;	\/* length of archive symbol table *\/$/;"	m	struct:Elf
+e_symlen	test.cpp	/^	size_t e_symlen;$/;"	m	struct:Elf	file:
+e_symtab	private.h	/^	char *e_symtab;		\/* archive symbol table *\/$/;"	m	struct:Elf
+e_symtab	test.cpp	/^	char *e_symtab;$/;"	m	struct:Elf	file:
+e_type	elf_repl.h	/^		Elf32_Half e_type;$/;"	m	struct:__anon126
+e_type	elf_repl.h	/^		Elf64_Half e_type;$/;"	m	struct:__anon127
+e_type	ext_types.h	/^		__ext_Elf32_Half e_type;$/;"	m	struct:__anon100
+e_type	ext_types.h	/^		__ext_Elf64_Half e_type;$/;"	m	struct:__anon101
+e_type	test.cpp	/^	Elf32_Half e_type;$/;"	m	struct:__anon22	file:
+e_type	test.cpp	/^	Elf64_Half e_type;$/;"	m	struct:__anon23	file:
+e_type	test.cpp	/^	__ext_Elf32_Half e_type;$/;"	m	struct:__anon72	file:
+e_type	test.cpp	/^	__ext_Elf64_Half e_type;$/;"	m	struct:__anon73	file:
+e_unmap_data	private.h	/^	unsigned e_unmap_data:1;	\/* e_data is mmap'ed *\/$/;"	m	struct:Elf
+e_unmap_data	test.cpp	/^	unsigned e_unmap_data:1;$/;"	m	struct:Elf	file:
+e_version	elf_repl.h	/^		Elf32_Word e_version;$/;"	m	struct:__anon126
+e_version	elf_repl.h	/^		Elf64_Word e_version;$/;"	m	struct:__anon127
+e_version	ext_types.h	/^		__ext_Elf32_Word e_version;$/;"	m	struct:__anon100
+e_version	ext_types.h	/^		__ext_Elf64_Word e_version;$/;"	m	struct:__anon101
+e_version	private.h	/^	unsigned e_version;	\/* ELF version *\/										\/* ELF目前版本 *\/$/;"	m	struct:Elf
+e_version	test.cpp	/^	Elf32_Word e_version;$/;"	m	struct:__anon22	file:
+e_version	test.cpp	/^	Elf64_Word e_version;$/;"	m	struct:__anon23	file:
+e_version	test.cpp	/^	__ext_Elf32_Word e_version;$/;"	m	struct:__anon72	file:
+e_version	test.cpp	/^	__ext_Elf64_Word e_version;$/;"	m	struct:__anon73	file:
+e_version	test.cpp	/^	unsigned e_version;$/;"	m	struct:Elf	file:
+e_writable	private.h	/^	unsigned e_writable:1;	\/* file is writable *\/$/;"	m	struct:Elf
+e_writable	test.cpp	/^	unsigned e_writable:1;$/;"	m	struct:Elf	file:
+ehdr_32L11_tof	test.cpp	/^static size_t ehdr_32L11_tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+ehdr_32L11_tom	test.cpp	/^static size_t ehdr_32L11_tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+ehdr_32M11_tof	test.cpp	/^static size_t ehdr_32M11_tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+ehdr_32M11_tom	test.cpp	/^static size_t ehdr_32M11_tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+elf32_checksum	checksum.c	/^long elf32_checksum(Elf * elf)$/;"	f
+elf32_fsize	32.fsize.c	/^size_t elf32_fsize(Elf_Type type, size_t count, unsigned ver)$/;"	f
+elf32_getehdr	32.getehdr.c	/^Elf32_Ehdr *elf32_getehdr(Elf * elf)$/;"	f
+elf32_getphdr	32.getphdr.c	/^Elf32_Phdr *elf32_getphdr(Elf * elf)$/;"	f
+elf32_getshdr	32.getshdr.c	/^Elf32_Shdr *elf32_getshdr(Elf_Scn * scn)$/;"	f
+elf32_newehdr	32.newehdr.c	/^Elf32_Ehdr *elf32_newehdr(Elf * elf)$/;"	f
+elf32_newphdr	32.newphdr.c	/^Elf32_Phdr *elf32_newphdr(Elf * elf, size_t count)$/;"	f
+elf32_xlate	32.xlatetof.c	/^static Elf_Data *elf32_xlate(Elf_Data * dst, const Elf_Data * src,$/;"	f	file:
+elf32_xlate	test.cpp	/^static Elf_Data *elf32_xlate(Elf_Data * dst, const Elf_Data * src, unsigned encode, int tof)$/;"	f	file:
+elf32_xlatetof	32.xlatetof.c	/^Elf_Data *elf32_xlatetof(Elf_Data * dst, const Elf_Data * src, unsigned encode)$/;"	f
+elf32_xlatetof	test.cpp	/^Elf_Data *elf32_xlatetof(Elf_Data * dst, const Elf_Data * src, unsigned encode)$/;"	f
+elf32_xlatetom	32.xlatetof.c	/^Elf_Data *elf32_xlatetom(Elf_Data * dst, const Elf_Data * src, unsigned encode)$/;"	f
+elf32_xlatetom	test.cpp	/^Elf_Data *elf32_xlatetom(Elf_Data * dst, const Elf_Data * src, unsigned encode)$/;"	f
+elf64_checksum	checksum.c	/^long elf64_checksum(Elf * elf)$/;"	f
+elf64_fsize	32.fsize.c	/^size_t elf64_fsize(Elf_Type type, size_t count, unsigned ver)$/;"	f
+elf64_getehdr	32.getehdr.c	/^Elf64_Ehdr *elf64_getehdr(Elf * elf)$/;"	f
+elf64_getphdr	32.getphdr.c	/^Elf64_Phdr *elf64_getphdr(Elf * elf)$/;"	f
+elf64_getshdr	32.getshdr.c	/^Elf64_Shdr *elf64_getshdr(Elf_Scn * scn)$/;"	f
+elf64_newehdr	32.newehdr.c	/^Elf64_Ehdr *elf64_newehdr(Elf * elf)$/;"	f
+elf64_newphdr	32.newphdr.c	/^Elf64_Phdr *elf64_newphdr(Elf * elf, size_t count)$/;"	f
+elf64_xlate	64.xlatetof.c	/^static Elf_Data *elf64_xlate(Elf_Data * dst, const Elf_Data * src,$/;"	f	file:
+elf64_xlatetof	64.xlatetof.c	/^Elf_Data *elf64_xlatetof(Elf_Data * dst, const Elf_Data * src, unsigned encode)$/;"	f
+elf64_xlatetom	64.xlatetof.c	/^Elf_Data *elf64_xlatetom(Elf_Data * dst, const Elf_Data * src, unsigned encode)$/;"	f
+elf_assert	private.h	450;"	d
+elf_assert	private.h	452;"	d
+elf_assert	private.h	455;"	d
+elf_begin	begin.c	/^Elf *elf_begin(int fd, Elf_Cmd cmd, Elf * ref)$/;"	f
+elf_cntl	cntl.c	/^int elf_cntl(Elf * elf, Elf_Cmd cmd)$/;"	f
+elf_delscn	opt.delscn.c	/^size_t elf_delscn(Elf * elf, Elf_Scn * scn)$/;"	f
+elf_end	end.c	/^int elf_end(Elf * elf)$/;"	f
+elf_errmsg	errmsg.c	/^const char *elf_errmsg(int err)$/;"	f
+elf_errno	errno.c	/^int elf_errno(void)$/;"	f
+elf_fill	fill.c	/^void elf_fill(int fill)$/;"	f
+elf_flagdata	flag.c	/^unsigned elf_flagdata(Elf_Data * data, Elf_Cmd cmd, unsigned flags)$/;"	f
+elf_flagehdr	flag.c	/^unsigned elf_flagehdr(Elf * elf, Elf_Cmd cmd, unsigned flags)$/;"	f
+elf_flagelf	flag.c	/^unsigned elf_flagelf(Elf * elf, Elf_Cmd cmd, unsigned flags)$/;"	f
+elf_flagphdr	flag.c	/^unsigned elf_flagphdr(Elf * elf, Elf_Cmd cmd, unsigned flags)$/;"	f
+elf_flagscn	flag.c	/^unsigned elf_flagscn(Elf_Scn * scn, Elf_Cmd cmd, unsigned flags)$/;"	f
+elf_flagshdr	flag.c	/^unsigned elf_flagshdr(Elf_Scn * scn, Elf_Cmd cmd, unsigned flags)$/;"	f
+elf_getarhdr	getarhdr.c	/^Elf_Arhdr *elf_getarhdr(Elf * elf)$/;"	f
+elf_getaroff	getaroff.c	/^off_t elf_getaroff(Elf * elf)$/;"	f
+elf_getarsym	getarsym.c	/^Elf_Arsym *elf_getarsym(Elf * elf, size_t * ptr)$/;"	f
+elf_getbase	getbase.c	/^off_t elf_getbase(Elf * elf)$/;"	f
+elf_getdata	getdata.c	/^Elf_Data *elf_getdata(Elf_Scn * scn, Elf_Data * data)$/;"	f
+elf_getident	getident.c	/^char *elf_getident(Elf * elf, size_t * ptr)$/;"	f
+elf_getphdrnum	x.elfext.c	/^int elf_getphdrnum(Elf * elf, size_t * resultp)$/;"	f
+elf_getphnum	x.elfext.c	/^int elf_getphnum(Elf * elf, size_t * resultp)$/;"	f
+elf_getscn	getscn.c	/^Elf_Scn *elf_getscn(Elf * elf, size_t index)$/;"	f
+elf_getshdrnum	x.elfext.c	/^int elf_getshdrnum(Elf * elf, size_t * resultp)$/;"	f
+elf_getshdrstrndx	x.elfext.c	/^int elf_getshdrstrndx(Elf * elf, size_t * resultp)$/;"	f
+elf_getshnum	x.elfext.c	/^int elf_getshnum(Elf * elf, size_t * resultp)$/;"	f
+elf_getshstrndx	x.elfext.c	/^int elf_getshstrndx(Elf * elf, size_t * resultp)$/;"	f
+elf_hash	hash.c	/^unsigned long elf_hash(const unsigned char *name)$/;"	f
+elf_kind	kind.c	/^Elf_Kind elf_kind(Elf * elf)$/;"	f
+elf_memory	begin.c	/^Elf *elf_memory(char *image, size_t size)$/;"	f
+elf_ndxscn	ndxscn.c	/^size_t elf_ndxscn(Elf_Scn * scn)$/;"	f
+elf_newdata	newdata.c	/^Elf_Data *elf_newdata(Elf_Scn * scn)$/;"	f
+elf_newscn	newscn.c	/^Elf_Scn *elf_newscn(Elf * elf)$/;"	f
+elf_next	next.c	/^Elf_Cmd elf_next(Elf * elf)$/;"	f
+elf_nextscn	nextscn.c	/^Elf_Scn *elf_nextscn(Elf * elf, Elf_Scn * scn)$/;"	f
+elf_rand	rand.c	/^size_t elf_rand(Elf * elf, size_t offset)$/;"	f
+elf_rawdata	rawdata.c	/^Elf_Data *elf_rawdata(Elf_Scn * scn, Elf_Data * data)$/;"	f
+elf_rawfile	rawfile.c	/^char *elf_rawfile(Elf * elf, size_t * ptr)$/;"	f
+elf_strptr	strptr.c	/^char *elf_strptr(Elf * elf, size_t section, size_t offset)$/;"	f
+elf_update	update.c	/^off_t elf_update(Elf * elf, Elf_Cmd cmd)$/;"	f
+elf_version	version.c	/^unsigned elf_version(unsigned ver)$/;"	f
+elfx_movscn	x.movscn.c	/^size_t elfx_movscn(Elf * elf, Elf_Scn * scn, Elf_Scn * after)$/;"	f
+elfx_remscn	x.remscn.c	/^size_t elfx_remscn(Elf * elf, Elf_Scn * scn)$/;"	f
+elfx_update_shstrndx	x.elfext.c	/^int elfx_update_shstrndx(Elf * elf, size_t value)$/;"	f
+exec_prefix	Makefile	/^exec_prefix = ${prefix}$/;"	m
+fd_mask	test.cpp	/^typedef __fd_mask fd_mask;$/;"	t	file:
+fd_set	test.cpp	/^fd_set;$/;"	t	typeref:struct:__anon9	file:
+files	Makefile	/^	files="$(DISTFILES)"; for file in $$files; do \\$/;"	m
+files	Makefile	/^	files="$(HDRS) $(AUXHDRS) elf_repl.h"; for file in $$files; do \\$/;"	m
+files	Makefile	/^	files="$(HDRS)"; for file in $$files; do \\$/;"	m
+fmag	begin.c	/^static const char fmag[] = ARFMAG;$/;"	v	file:
+fsblkcnt_t	test.cpp	/^typedef __fsblkcnt_t fsblkcnt_t;$/;"	t	file:
+fsfilcnt_t	test.cpp	/^typedef __fsfilcnt_t fsfilcnt_t;$/;"	t	file:
+fsid_t	test.cpp	/^typedef __fsid_t fsid_t;$/;"	t	file:
+gelf_checksum	checksum.c	/^long gelf_checksum(Elf * elf)$/;"	f
+gelf_fsize	32.fsize.c	/^size_t gelf_fsize(Elf * elf, Elf_Type type, size_t count, unsigned ver)$/;"	f
+gelf_getclass	begin.c	/^int gelf_getclass(Elf * elf)$/;"	f
+gelf_getdyn	gelftrans.c	/^GElf_Dyn *gelf_getdyn(Elf_Data * src, int ndx, GElf_Dyn * dst)$/;"	f
+gelf_getehdr	gelfehdr.c	/^GElf_Ehdr *gelf_getehdr(Elf * elf, GElf_Ehdr * dst)$/;"	f
+gelf_getphdr	gelfphdr.c	/^GElf_Phdr *gelf_getphdr(Elf * elf, int ndx, GElf_Phdr * dst)$/;"	f
+gelf_getrel	gelftrans.c	/^GElf_Rel *gelf_getrel(Elf_Data * src, int ndx, GElf_Rel * dst)$/;"	f
+gelf_getrela	gelftrans.c	/^GElf_Rela *gelf_getrela(Elf_Data * src, int ndx, GElf_Rela * dst)$/;"	f
+gelf_getshdr	gelfshdr.c	/^GElf_Shdr *gelf_getshdr(Elf_Scn * scn, GElf_Shdr * dst)$/;"	f
+gelf_getsym	gelftrans.c	/^GElf_Sym *gelf_getsym(Elf_Data * src, int ndx, GElf_Sym * dst)$/;"	f
+gelf_msize	32.fsize.c	/^size_t gelf_msize(Elf * elf, Elf_Type type, size_t count, unsigned ver)$/;"	f
+gelf_newehdr	32.newehdr.c	/^unsigned long gelf_newehdr(Elf * elf, int cls)$/;"	f
+gelf_newphdr	32.newphdr.c	/^unsigned long gelf_newphdr(Elf * elf, size_t phnum)$/;"	f
+gelf_update_dyn	gelftrans.c	/^int gelf_update_dyn(Elf_Data * dst, int ndx, GElf_Dyn * src)$/;"	f
+gelf_update_ehdr	gelfehdr.c	/^int gelf_update_ehdr(Elf * elf, GElf_Ehdr * src)$/;"	f
+gelf_update_phdr	gelfphdr.c	/^int gelf_update_phdr(Elf * elf, int ndx, GElf_Phdr * src)$/;"	f
+gelf_update_rel	gelftrans.c	/^int gelf_update_rel(Elf_Data * dst, int ndx, GElf_Rel * src)$/;"	f
+gelf_update_rela	gelftrans.c	/^int gelf_update_rela(Elf_Data * dst, int ndx, GElf_Rela * src)$/;"	f
+gelf_update_shdr	gelfshdr.c	/^int gelf_update_shdr(Elf_Scn * scn, GElf_Shdr * src)$/;"	f
+gelf_update_sym	gelftrans.c	/^int gelf_update_sym(Elf_Data * dst, int ndx, GElf_Sym * src)$/;"	f
+gelf_xlatetof	64.xlatetof.c	/^Elf_Data *gelf_xlatetof(Elf * elf, Elf_Data * dst, const Elf_Data * src,$/;"	f
+gelf_xlatetom	64.xlatetof.c	/^Elf_Data *gelf_xlatetom(Elf * elf, Elf_Data * dst, const Elf_Data * src,$/;"	f
+get_addr_and_class	gelftrans.c	/^static char *get_addr_and_class(const Elf_Data * data, int ndx, Elf_Type type,$/;"	f	file:
+getnum	begin.c	/^static unsigned long getnum(const char *str, size_t len, int base, size_t * err)$/;"	f	file:
+gid_t	test.cpp	/^typedef __gid_t gid_t;$/;"	t	file:
+gt_bytes	test.cpp	/^		Elf32_Word gt_bytes;$/;"	m	struct:__anon56::__anon58	file:
+gt_current_g_value	test.cpp	/^		Elf32_Word gt_current_g_value;$/;"	m	struct:__anon56::__anon57	file:
+gt_entry	test.cpp	/^	} gt_entry;$/;"	m	union:__anon56	typeref:struct:__anon56::__anon58	file:
+gt_g_value	test.cpp	/^		Elf32_Word gt_g_value;$/;"	m	struct:__anon56::__anon58	file:
+gt_header	test.cpp	/^	} gt_header;$/;"	m	union:__anon56	typeref:struct:__anon56::__anon57	file:
+gt_unused	test.cpp	/^		Elf32_Word gt_unused;$/;"	m	struct:__anon56::__anon57	file:
+half_32L__tof	test.cpp	/^static size_t half_32L__tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+half_32L__tom	test.cpp	/^static size_t half_32L__tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+half_32M__tof	test.cpp	/^static size_t half_32M__tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+half_32M__tom	test.cpp	/^static size_t half_32M__tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+hash	nlist.c	/^	unsigned long hash;$/;"	m	struct:hash	file:
+hash	nlist.c	/^struct hash {$/;"	s	file:
+hwp_flags1	test.cpp	/^	Elf32_Word hwp_flags1;$/;"	m	struct:__anon61	file:
+hwp_flags2	test.cpp	/^	Elf32_Word hwp_flags2;$/;"	m	struct:__anon61	file:
+id_t	test.cpp	/^typedef __id_t id_t;$/;"	t	file:
+includedir	Makefile	/^includedir = ${prefix}\/include$/;"	m
+info	test.cpp	/^	Elf32_Word info;$/;"	m	struct:__anon60	file:
+ino_t	test.cpp	/^typedef __ino_t ino_t;$/;"	t	file:
+installdirs	Makefile	/^installdirs = $(libdir) $(includedir) $(includedir)\/libelf$/;"	m
+instroot	Makefile	/^instroot =$/;"	m
+int16_t	test.cpp	/^typedef int int16_t __attribute__ ((__mode__(__HI__)));$/;"	t	file:
+int32_t	test.cpp	/^typedef int int32_t __attribute__ ((__mode__(__SI__)));$/;"	t	file:
+int64_t	test.cpp	/^typedef int int64_t __attribute__ ((__mode__(__DI__)));$/;"	t	file:
+int8_t	test.cpp	/^typedef int int8_t __attribute__ ((__mode__(__QI__)));$/;"	t	file:
+int_fast16_t	test.cpp	/^typedef int int_fast16_t;$/;"	t	file:
+int_fast32_t	test.cpp	/^typedef int int_fast32_t;$/;"	t	file:
+int_fast64_t	test.cpp	/^__extension__ typedef long long int int_fast64_t;$/;"	t	file:
+int_fast8_t	test.cpp	/^typedef signed char int_fast8_t;$/;"	t	file:
+int_least16_t	test.cpp	/^typedef short int int_least16_t;$/;"	t	file:
+int_least32_t	test.cpp	/^typedef int int_least32_t;$/;"	t	file:
+int_least64_t	test.cpp	/^__extension__ typedef long long int int_least64_t;$/;"	t	file:
+int_least8_t	test.cpp	/^typedef signed char int_least8_t;$/;"	t	file:
+intmax_t	test.cpp	/^__extension__ typedef long long int intmax_t;$/;"	t	file:
+intptr_t	test.cpp	/^typedef int intptr_t;$/;"	t	file:
+key_t	test.cpp	/^typedef __key_t key_t;$/;"	t	file:
+kind	test.cpp	/^	unsigned char kind;$/;"	m	struct:__anon60	file:
+l_checksum	test.cpp	/^	Elf32_Word l_checksum;$/;"	m	struct:__anon62	file:
+l_checksum	test.cpp	/^	Elf64_Word l_checksum;$/;"	m	struct:__anon63	file:
+l_flags	test.cpp	/^	Elf32_Word l_flags;$/;"	m	struct:__anon62	file:
+l_flags	test.cpp	/^	Elf64_Word l_flags;$/;"	m	struct:__anon63	file:
+l_name	test.cpp	/^	Elf32_Word l_name;$/;"	m	struct:__anon62	file:
+l_name	test.cpp	/^	Elf64_Word l_name;$/;"	m	struct:__anon63	file:
+l_time_stamp	test.cpp	/^	Elf32_Word l_time_stamp;$/;"	m	struct:__anon62	file:
+l_time_stamp	test.cpp	/^	Elf64_Word l_time_stamp;$/;"	m	struct:__anon63	file:
+l_version	test.cpp	/^	Elf32_Word l_version;$/;"	m	struct:__anon62	file:
+l_version	test.cpp	/^	Elf64_Word l_version;$/;"	m	struct:__anon63	file:
+li	byteswap.h	26;"	d
+libdir	Makefile	/^libdir = ${exec_prefix}\/lib$/;"	m
+loff_t	test.cpp	/^typedef __loff_t loff_t;$/;"	t	file:
+lu	byteswap.h	25;"	d
+m_info	elf_repl.h	/^		Elf32_Word m_info;$/;"	m	struct:__anon154
+m_info	elf_repl.h	/^		Elf64_Xword m_info;$/;"	m	struct:__anon155
+m_info	ext_types.h	/^		__ext_Elf32_Word m_info;$/;"	m	struct:__anon124
+m_info	ext_types.h	/^		__ext_Elf64_Xword m_info;$/;"	m	struct:__anon125
+m_info	test.cpp	/^	Elf32_Word m_info;$/;"	m	struct:__anon54	file:
+m_info	test.cpp	/^	Elf64_Xword m_info;$/;"	m	struct:__anon55	file:
+m_info	test.cpp	/^	__ext_Elf32_Word m_info;$/;"	m	struct:__anon96	file:
+m_info	test.cpp	/^	__ext_Elf64_Xword m_info;$/;"	m	struct:__anon97	file:
+m_poffset	elf_repl.h	/^		Elf32_Word m_poffset;$/;"	m	struct:__anon154
+m_poffset	elf_repl.h	/^		Elf64_Xword m_poffset;$/;"	m	struct:__anon155
+m_poffset	ext_types.h	/^		__ext_Elf32_Word m_poffset;$/;"	m	struct:__anon124
+m_poffset	ext_types.h	/^		__ext_Elf64_Xword m_poffset;$/;"	m	struct:__anon125
+m_poffset	test.cpp	/^	Elf32_Word m_poffset;$/;"	m	struct:__anon54	file:
+m_poffset	test.cpp	/^	Elf64_Xword m_poffset;$/;"	m	struct:__anon55	file:
+m_poffset	test.cpp	/^	__ext_Elf32_Word m_poffset;$/;"	m	struct:__anon96	file:
+m_poffset	test.cpp	/^	__ext_Elf64_Xword m_poffset;$/;"	m	struct:__anon97	file:
+m_repeat	elf_repl.h	/^		Elf32_Half m_repeat;$/;"	m	struct:__anon154
+m_repeat	elf_repl.h	/^		Elf64_Half m_repeat;$/;"	m	struct:__anon155
+m_repeat	ext_types.h	/^		__ext_Elf32_Half m_repeat;$/;"	m	struct:__anon124
+m_repeat	ext_types.h	/^		__ext_Elf64_Half m_repeat;$/;"	m	struct:__anon125
+m_repeat	test.cpp	/^	Elf32_Half m_repeat;$/;"	m	struct:__anon54	file:
+m_repeat	test.cpp	/^	Elf64_Half m_repeat;$/;"	m	struct:__anon55	file:
+m_repeat	test.cpp	/^	__ext_Elf32_Half m_repeat;$/;"	m	struct:__anon96	file:
+m_repeat	test.cpp	/^	__ext_Elf64_Half m_repeat;$/;"	m	struct:__anon97	file:
+m_stride	elf_repl.h	/^		Elf32_Half m_stride;$/;"	m	struct:__anon154
+m_stride	elf_repl.h	/^		Elf64_Half m_stride;$/;"	m	struct:__anon155
+m_stride	ext_types.h	/^		__ext_Elf32_Half m_stride;$/;"	m	struct:__anon124
+m_stride	ext_types.h	/^		__ext_Elf64_Half m_stride;$/;"	m	struct:__anon125
+m_stride	test.cpp	/^	Elf32_Half m_stride;$/;"	m	struct:__anon54	file:
+m_stride	test.cpp	/^	Elf64_Half m_stride;$/;"	m	struct:__anon55	file:
+m_stride	test.cpp	/^	__ext_Elf32_Half m_stride;$/;"	m	struct:__anon96	file:
+m_stride	test.cpp	/^	__ext_Elf64_Half m_stride;$/;"	m	struct:__anon97	file:
+m_value	elf_repl.h	/^		Elf32_Lword m_value;$/;"	m	struct:__anon154
+m_value	elf_repl.h	/^		Elf64_Lword m_value;$/;"	m	struct:__anon155
+m_value	ext_types.h	/^		__ext_Elf32_Lword m_value;$/;"	m	struct:__anon124
+m_value	ext_types.h	/^		__ext_Elf64_Lword m_value;$/;"	m	struct:__anon125
+m_value	test.cpp	/^	Elf32_Xword m_value;$/;"	m	struct:__anon54	file:
+m_value	test.cpp	/^	Elf64_Xword m_value;$/;"	m	struct:__anon55	file:
+m_value	test.cpp	/^	__ext_Elf32_Lword m_value;$/;"	m	struct:__anon96	file:
+m_value	test.cpp	/^	__ext_Elf64_Lword m_value;$/;"	m	struct:__anon97	file:
+max	update.c	42;"	d	file:
+max	update.c	43;"	d	file:
+memcmp	private.h	75;"	d
+memcpy	private.h	78;"	d
+memerr	cook.c	76;"	d	file:
+memmove	private.h	81;"	d
+memset	private.h	85;"	d
+mode_t	test.cpp	/^typedef __mode_t mode_t;$/;"	t	file:
+n_descsz	elf_repl.h	/^		Elf32_Word n_descsz;	\/* descriptor size *\/$/;"	m	struct:__anon136
+n_descsz	elf_repl.h	/^		Elf64_Word n_descsz;	\/* descriptor size *\/$/;"	m	struct:__anon137
+n_descsz	test.cpp	/^	Elf32_Word n_descsz;$/;"	m	struct:__anon52	file:
+n_descsz	test.cpp	/^	Elf64_Word n_descsz;$/;"	m	struct:__anon53	file:
+n_name	nlist.h	/^		char *n_name;$/;"	m	struct:nlist
+n_namesz	elf_repl.h	/^		Elf32_Word n_namesz;	\/* name size *\/$/;"	m	struct:__anon136
+n_namesz	elf_repl.h	/^		Elf64_Word n_namesz;	\/* name size *\/$/;"	m	struct:__anon137
+n_namesz	test.cpp	/^	Elf32_Word n_namesz;$/;"	m	struct:__anon52	file:
+n_namesz	test.cpp	/^	Elf64_Word n_namesz;$/;"	m	struct:__anon53	file:
+n_numaux	nlist.h	/^		char n_numaux;$/;"	m	struct:nlist
+n_sclass	nlist.h	/^		char n_sclass;$/;"	m	struct:nlist
+n_scnum	nlist.h	/^		short n_scnum;$/;"	m	struct:nlist
+n_type	elf_repl.h	/^		Elf32_Word n_type;	\/* descriptor type *\/$/;"	m	struct:__anon136
+n_type	elf_repl.h	/^		Elf64_Word n_type;	\/* descriptor type *\/$/;"	m	struct:__anon137
+n_type	nlist.h	/^		unsigned short n_type;$/;"	m	struct:nlist
+n_type	test.cpp	/^	Elf32_Word n_type;$/;"	m	struct:__anon52	file:
+n_type	test.cpp	/^	Elf64_Word n_type;$/;"	m	struct:__anon53	file:
+n_value	nlist.h	/^		long n_value;$/;"	m	struct:nlist
+name	nlist.c	/^	const char *name;$/;"	m	struct:hash	file:
+native_encoding	update.c	34;"	d	file:
+newptr	update.c	539;"	d	file:
+newptr	update.c	644;"	d	file:
+next	nlist.c	/^	unsigned next;$/;"	m	struct:hash	file:
+nlink_t	test.cpp	/^typedef __nlink_t nlink_t;$/;"	t	file:
+nlist	nlist.c	/^int nlist(const char *filename, struct nlist *nl)$/;"	f
+nlist	nlist.h	/^	struct nlist {$/;"	s
+nlist	private.h	123;"	d
+nlist	private.h	90;"	d
+nullcopy	32.xlatetof.c	207;"	d	file:
+nullcopy	64.xlatetof.c	226;"	d	file:
+off_32L__tof	test.cpp	/^static size_t off_32L__tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+off_32L__tom	test.cpp	/^static size_t off_32L__tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+off_32M__tof	test.cpp	/^static size_t off_32M__tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+off_32M__tom	test.cpp	/^static size_t off_32M__tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+off_t	test.cpp	/^typedef __off_t off_t;$/;"	t	file:
+overflow	cook.c	71;"	d	file:
+p_align	elf_repl.h	/^		Elf32_Word p_align;$/;"	m	struct:__anon138
+p_align	elf_repl.h	/^		Elf64_Xword p_align;$/;"	m	struct:__anon139
+p_align	ext_types.h	/^		__ext_Elf32_Word p_align;$/;"	m	struct:__anon110
+p_align	ext_types.h	/^		__ext_Elf64_Xword p_align;$/;"	m	struct:__anon111
+p_align	test.cpp	/^	Elf32_Word p_align;$/;"	m	struct:__anon34	file:
+p_align	test.cpp	/^	Elf64_Xword p_align;$/;"	m	struct:__anon35	file:
+p_align	test.cpp	/^	__ext_Elf32_Word p_align;$/;"	m	struct:__anon82	file:
+p_align	test.cpp	/^	__ext_Elf64_Xword p_align;$/;"	m	struct:__anon83	file:
+p_filesz	elf_repl.h	/^		Elf32_Word p_filesz;$/;"	m	struct:__anon138
+p_filesz	elf_repl.h	/^		Elf64_Xword p_filesz;$/;"	m	struct:__anon139
+p_filesz	ext_types.h	/^		__ext_Elf32_Word p_filesz;$/;"	m	struct:__anon110
+p_filesz	ext_types.h	/^		__ext_Elf64_Xword p_filesz;$/;"	m	struct:__anon111
+p_filesz	test.cpp	/^	Elf32_Word p_filesz;$/;"	m	struct:__anon34	file:
+p_filesz	test.cpp	/^	Elf64_Xword p_filesz;$/;"	m	struct:__anon35	file:
+p_filesz	test.cpp	/^	__ext_Elf32_Word p_filesz;$/;"	m	struct:__anon82	file:
+p_filesz	test.cpp	/^	__ext_Elf64_Xword p_filesz;$/;"	m	struct:__anon83	file:
+p_flags	elf_repl.h	/^		Elf32_Word p_flags;$/;"	m	struct:__anon138
+p_flags	elf_repl.h	/^		Elf64_Word p_flags;$/;"	m	struct:__anon139
+p_flags	ext_types.h	/^		__ext_Elf32_Word p_flags;$/;"	m	struct:__anon110
+p_flags	ext_types.h	/^		__ext_Elf64_Word p_flags;$/;"	m	struct:__anon111
+p_flags	test.cpp	/^	Elf32_Word p_flags;$/;"	m	struct:__anon34	file:
+p_flags	test.cpp	/^	Elf64_Word p_flags;$/;"	m	struct:__anon35	file:
+p_flags	test.cpp	/^	__ext_Elf32_Word p_flags;$/;"	m	struct:__anon82	file:
+p_flags	test.cpp	/^	__ext_Elf64_Word p_flags;$/;"	m	struct:__anon83	file:
+p_memsz	elf_repl.h	/^		Elf32_Word p_memsz;$/;"	m	struct:__anon138
+p_memsz	elf_repl.h	/^		Elf64_Xword p_memsz;$/;"	m	struct:__anon139
+p_memsz	ext_types.h	/^		__ext_Elf32_Word p_memsz;$/;"	m	struct:__anon110
+p_memsz	ext_types.h	/^		__ext_Elf64_Xword p_memsz;$/;"	m	struct:__anon111
+p_memsz	test.cpp	/^	Elf32_Word p_memsz;$/;"	m	struct:__anon34	file:
+p_memsz	test.cpp	/^	Elf64_Xword p_memsz;$/;"	m	struct:__anon35	file:
+p_memsz	test.cpp	/^	__ext_Elf32_Word p_memsz;$/;"	m	struct:__anon82	file:
+p_memsz	test.cpp	/^	__ext_Elf64_Xword p_memsz;$/;"	m	struct:__anon83	file:
+p_offset	elf_repl.h	/^		Elf32_Off p_offset;$/;"	m	struct:__anon138
+p_offset	elf_repl.h	/^		Elf64_Off p_offset;$/;"	m	struct:__anon139
+p_offset	ext_types.h	/^		__ext_Elf32_Off p_offset;$/;"	m	struct:__anon110
+p_offset	ext_types.h	/^		__ext_Elf64_Off p_offset;$/;"	m	struct:__anon111
+p_offset	test.cpp	/^	Elf32_Off p_offset;$/;"	m	struct:__anon34	file:
+p_offset	test.cpp	/^	Elf64_Off p_offset;$/;"	m	struct:__anon35	file:
+p_offset	test.cpp	/^	__ext_Elf32_Off p_offset;$/;"	m	struct:__anon82	file:
+p_offset	test.cpp	/^	__ext_Elf64_Off p_offset;$/;"	m	struct:__anon83	file:
+p_paddr	elf_repl.h	/^		Elf32_Addr p_paddr;$/;"	m	struct:__anon138
+p_paddr	elf_repl.h	/^		Elf64_Addr p_paddr;$/;"	m	struct:__anon139
+p_paddr	ext_types.h	/^		__ext_Elf32_Addr p_paddr;$/;"	m	struct:__anon110
+p_paddr	ext_types.h	/^		__ext_Elf64_Addr p_paddr;$/;"	m	struct:__anon111
+p_paddr	test.cpp	/^	Elf32_Addr p_paddr;$/;"	m	struct:__anon34	file:
+p_paddr	test.cpp	/^	Elf64_Addr p_paddr;$/;"	m	struct:__anon35	file:
+p_paddr	test.cpp	/^	__ext_Elf32_Addr p_paddr;$/;"	m	struct:__anon82	file:
+p_paddr	test.cpp	/^	__ext_Elf64_Addr p_paddr;$/;"	m	struct:__anon83	file:
+p_type	elf_repl.h	/^		Elf32_Word p_type;$/;"	m	struct:__anon138
+p_type	elf_repl.h	/^		Elf64_Word p_type;$/;"	m	struct:__anon139
+p_type	ext_types.h	/^		__ext_Elf32_Word p_type;$/;"	m	struct:__anon110
+p_type	ext_types.h	/^		__ext_Elf64_Word p_type;$/;"	m	struct:__anon111
+p_type	test.cpp	/^	Elf32_Word p_type;$/;"	m	struct:__anon34	file:
+p_type	test.cpp	/^	Elf64_Word p_type;$/;"	m	struct:__anon35	file:
+p_type	test.cpp	/^	__ext_Elf32_Word p_type;$/;"	m	struct:__anon82	file:
+p_type	test.cpp	/^	__ext_Elf64_Word p_type;$/;"	m	struct:__anon83	file:
+p_vaddr	elf_repl.h	/^		Elf32_Addr p_vaddr;$/;"	m	struct:__anon138
+p_vaddr	elf_repl.h	/^		Elf64_Addr p_vaddr;$/;"	m	struct:__anon139
+p_vaddr	ext_types.h	/^		__ext_Elf32_Addr p_vaddr;$/;"	m	struct:__anon110
+p_vaddr	ext_types.h	/^		__ext_Elf64_Addr p_vaddr;$/;"	m	struct:__anon111
+p_vaddr	test.cpp	/^	Elf32_Addr p_vaddr;$/;"	m	struct:__anon34	file:
+p_vaddr	test.cpp	/^	Elf64_Addr p_vaddr;$/;"	m	struct:__anon35	file:
+p_vaddr	test.cpp	/^	__ext_Elf32_Addr p_vaddr;$/;"	m	struct:__anon82	file:
+p_vaddr	test.cpp	/^	__ext_Elf64_Addr p_vaddr;$/;"	m	struct:__anon83	file:
+phdr_32L11_tof	test.cpp	/^static size_t phdr_32L11_tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+phdr_32L11_tom	test.cpp	/^static size_t phdr_32L11_tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+phdr_32M11_tof	test.cpp	/^static size_t phdr_32M11_tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+phdr_32M11_tom	test.cpp	/^static size_t phdr_32M11_tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+pid_t	test.cpp	/^typedef __pid_t pid_t;$/;"	t	file:
+prefix	Makefile	/^prefix = \/usr\/local$/;"	m
+pthread_attr_t	test.cpp	/^} pthread_attr_t;$/;"	t	typeref:union:__anon10	file:
+pthread_barrier_t	test.cpp	/^} pthread_barrier_t;$/;"	t	typeref:union:__anon20	file:
+pthread_barrierattr_t	test.cpp	/^} pthread_barrierattr_t;$/;"	t	typeref:union:__anon21	file:
+pthread_cond_t	test.cpp	/^} pthread_cond_t;$/;"	t	typeref:union:__anon14	file:
+pthread_condattr_t	test.cpp	/^} pthread_condattr_t;$/;"	t	typeref:union:__anon16	file:
+pthread_key_t	test.cpp	/^typedef unsigned int pthread_key_t;$/;"	t	file:
+pthread_mutex_t	test.cpp	/^} pthread_mutex_t;$/;"	t	typeref:union:__anon11	file:
+pthread_mutexattr_t	test.cpp	/^} pthread_mutexattr_t;$/;"	t	typeref:union:__anon13	file:
+pthread_once_t	test.cpp	/^typedef int pthread_once_t;$/;"	t	file:
+pthread_rwlock_t	test.cpp	/^} pthread_rwlock_t;$/;"	t	typeref:union:__anon17	file:
+pthread_rwlockattr_t	test.cpp	/^} pthread_rwlockattr_t;$/;"	t	typeref:union:__anon19	file:
+pthread_spinlock_t	test.cpp	/^typedef volatile int pthread_spinlock_t;$/;"	t	file:
+pthread_t	test.cpp	/^typedef unsigned long int pthread_t;$/;"	t	file:
+ptrdiff_t	test.cpp	/^typedef int ptrdiff_t;$/;"	t	file:
+ptrinside	update.c	538;"	d	file:
+ptrinside	update.c	643;"	d	file:
+quad_t	test.cpp	/^typedef __quad_t quad_t;$/;"	t	file:
+r_addend	elf_repl.h	/^		Elf32_Sword r_addend;$/;"	m	struct:__anon133
+r_addend	elf_repl.h	/^		Elf64_Sxword r_addend;$/;"	m	struct:__anon135
+r_addend	ext_types.h	/^		__ext_Elf32_Sword r_addend;$/;"	m	struct:__anon107
+r_addend	ext_types.h	/^		__ext_Elf64_Sxword r_addend;$/;"	m	struct:__anon109
+r_addend	test.cpp	/^	Elf32_Sword r_addend;$/;"	m	struct:__anon32	file:
+r_addend	test.cpp	/^	Elf64_Sxword r_addend;$/;"	m	struct:__anon33	file:
+r_addend	test.cpp	/^	__ext_Elf32_Sword r_addend;$/;"	m	struct:__anon79	file:
+r_addend	test.cpp	/^	__ext_Elf64_Sxword r_addend;$/;"	m	struct:__anon81	file:
+r_info	elf_repl.h	/^		Elf32_Word r_info;$/;"	m	struct:__anon132
+r_info	elf_repl.h	/^		Elf32_Word r_info;$/;"	m	struct:__anon133
+r_info	elf_repl.h	/^		Elf64_Xword r_info;$/;"	m	struct:__anon134
+r_info	elf_repl.h	/^		Elf64_Xword r_info;$/;"	m	struct:__anon135
+r_info	ext_types.h	/^		__ext_Elf32_Word r_info;$/;"	m	struct:__anon106
+r_info	ext_types.h	/^		__ext_Elf32_Word r_info;$/;"	m	struct:__anon107
+r_info	ext_types.h	/^		__ext_Elf64_Xword r_info;$/;"	m	struct:__anon108
+r_info	ext_types.h	/^		__ext_Elf64_Xword r_info;$/;"	m	struct:__anon109
+r_info	test.cpp	/^	Elf32_Word r_info;$/;"	m	struct:__anon30	file:
+r_info	test.cpp	/^	Elf32_Word r_info;$/;"	m	struct:__anon32	file:
+r_info	test.cpp	/^	Elf64_Xword r_info;$/;"	m	struct:__anon31	file:
+r_info	test.cpp	/^	Elf64_Xword r_info;$/;"	m	struct:__anon33	file:
+r_info	test.cpp	/^	__ext_Elf32_Word r_info;$/;"	m	struct:__anon78	file:
+r_info	test.cpp	/^	__ext_Elf32_Word r_info;$/;"	m	struct:__anon79	file:
+r_info	test.cpp	/^	__ext_Elf64_Xword r_info;$/;"	m	struct:__anon80	file:
+r_info	test.cpp	/^	__ext_Elf64_Xword r_info;$/;"	m	struct:__anon81	file:
+r_offset	elf_repl.h	/^		Elf32_Addr r_offset;$/;"	m	struct:__anon132
+r_offset	elf_repl.h	/^		Elf32_Addr r_offset;$/;"	m	struct:__anon133
+r_offset	elf_repl.h	/^		Elf64_Addr r_offset;$/;"	m	struct:__anon134
+r_offset	elf_repl.h	/^		Elf64_Addr r_offset;$/;"	m	struct:__anon135
+r_offset	ext_types.h	/^		__ext_Elf32_Addr r_offset;$/;"	m	struct:__anon106
+r_offset	ext_types.h	/^		__ext_Elf32_Addr r_offset;$/;"	m	struct:__anon107
+r_offset	ext_types.h	/^		__ext_Elf64_Addr r_offset;$/;"	m	struct:__anon108
+r_offset	ext_types.h	/^		__ext_Elf64_Addr r_offset;$/;"	m	struct:__anon109
+r_offset	test.cpp	/^	Elf32_Addr r_offset;$/;"	m	struct:__anon30	file:
+r_offset	test.cpp	/^	Elf32_Addr r_offset;$/;"	m	struct:__anon32	file:
+r_offset	test.cpp	/^	Elf64_Addr r_offset;$/;"	m	struct:__anon31	file:
+r_offset	test.cpp	/^	Elf64_Addr r_offset;$/;"	m	struct:__anon33	file:
+r_offset	test.cpp	/^	__ext_Elf32_Addr r_offset;$/;"	m	struct:__anon78	file:
+r_offset	test.cpp	/^	__ext_Elf32_Addr r_offset;$/;"	m	struct:__anon79	file:
+r_offset	test.cpp	/^	__ext_Elf64_Addr r_offset;$/;"	m	struct:__anon80	file:
+r_offset	test.cpp	/^	__ext_Elf64_Addr r_offset;$/;"	m	struct:__anon81	file:
+r_ssym	ext_types.h	/^		unsigned char r_ssym;$/;"	m	struct:__anon108
+r_ssym	ext_types.h	/^		unsigned char r_ssym;$/;"	m	struct:__anon109
+r_sym	ext_types.h	/^		__ext_Elf64_Word r_sym;$/;"	m	struct:__anon108
+r_sym	ext_types.h	/^		__ext_Elf64_Word r_sym;$/;"	m	struct:__anon109
+r_type	ext_types.h	/^		unsigned char r_type;$/;"	m	struct:__anon108
+r_type	ext_types.h	/^		unsigned char r_type;$/;"	m	struct:__anon109
+r_type2	ext_types.h	/^		unsigned char r_type2;$/;"	m	struct:__anon108
+r_type2	ext_types.h	/^		unsigned char r_type2;$/;"	m	struct:__anon109
+r_type3	ext_types.h	/^		unsigned char r_type3;$/;"	m	struct:__anon108
+r_type3	ext_types.h	/^		unsigned char r_type3;$/;"	m	struct:__anon109
+rcsid	32.fsize.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	32.getehdr.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	32.getphdr.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	32.getshdr.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	32.newehdr.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	32.newphdr.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	32.xlatetof.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	64.xlatetof.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	assert.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	begin.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	checksum.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	cntl.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	cook.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	data.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	end.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	errmsg.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	errno.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	fill.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	flag.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	gelfehdr.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	gelfphdr.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	gelfshdr.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	gelftrans.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	getarhdr.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	getaroff.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	getarsym.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	getbase.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	getdata.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	getident.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	getscn.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	hash.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	input.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	kind.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	memset.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	ndxscn.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	newdata.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	newscn.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	next.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	nextscn.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	nlist.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	opt.delscn.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	rand.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	rawdata.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	rawfile.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	strptr.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	swap64.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	test.cpp	/^static const char rcsid[] = "@(#) $Id: 32.xlatetof.c,v 1.27 2008\/05\/23 08:15:34 michael Exp $";$/;"	v	file:
+rcsid	update.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	verdef_32_tof.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	verdef_32_tom.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	verdef_64_tof.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	verdef_64_tom.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	version.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	x.elfext.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	x.movscn.c	/^static const char rcsid[] =$/;"	v	file:
+rcsid	x.remscn.c	/^static const char rcsid[] =$/;"	v	file:
+register_t	test.cpp	/^typedef int register_t __attribute__ ((__mode__(__word__)));$/;"	t	file:
+rel_32L11_tof	test.cpp	/^static size_t rel_32L11_tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+rel_32L11_tom	test.cpp	/^static size_t rel_32L11_tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+rel_32M11_tof	test.cpp	/^static size_t rel_32M11_tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+rel_32M11_tom	test.cpp	/^static size_t rel_32M11_tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+rela_32L11_tof	test.cpp	/^static size_t rela_32L11_tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+rela_32L11_tom	test.cpp	/^static size_t rela_32L11_tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+rela_32M11_tof	test.cpp	/^static size_t rela_32M11_tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+rela_32M11_tom	test.cpp	/^static size_t rela_32M11_tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+rewrite	update.c	36;"	d	file:
+ri_cprmask	test.cpp	/^	Elf32_Word ri_cprmask[4];$/;"	m	struct:__anon59	file:
+ri_gp_value	test.cpp	/^	Elf32_Sword ri_gp_value;$/;"	m	struct:__anon59	file:
+ri_gprmask	test.cpp	/^	Elf32_Word ri_gprmask;$/;"	m	struct:__anon59	file:
+s_data_1	private.h	/^	Scn_Data *s_data_1;	\/* first data buffer *\/$/;"	m	struct:Elf_Scn
+s_data_1	test.cpp	/^	Scn_Data *s_data_1;$/;"	m	struct:Elf_Scn	file:
+s_data_n	private.h	/^	Scn_Data *s_data_n;	\/* last data buffer *\/$/;"	m	struct:Elf_Scn
+s_data_n	test.cpp	/^	Scn_Data *s_data_n;$/;"	m	struct:Elf_Scn	file:
+s_elf	private.h	/^	Elf *s_elf;		\/* pointer to elf descriptor *\/$/;"	m	struct:Elf_Scn
+s_elf	test.cpp	/^	Elf *s_elf;$/;"	m	struct:Elf_Scn	file:
+s_freeme	private.h	/^	unsigned s_freeme:1;	\/* this Elf_Scn was malloc'ed *\/$/;"	m	struct:Elf_Scn
+s_freeme	test.cpp	/^	unsigned s_freeme:1;$/;"	m	struct:Elf_Scn	file:
+s_index	private.h	/^	size_t s_index;		\/* number of this section *\/$/;"	m	struct:Elf_Scn
+s_index	test.cpp	/^	size_t s_index;$/;"	m	struct:Elf_Scn	file:
+s_link	private.h	/^	Elf_Scn *s_link;	\/* pointer to next Elf_Scn *\/$/;"	m	struct:Elf_Scn
+s_link	test.cpp	/^	Elf_Scn *s_link;$/;"	m	struct:Elf_Scn	file:
+s_magic	private.h	/^	long s_magic;$/;"	m	struct:Elf_Scn
+s_magic	test.cpp	/^	long s_magic;$/;"	m	struct:Elf_Scn	file:
+s_offset	private.h	/^	size_t s_offset;	\/* section offset *\/$/;"	m	struct:Elf_Scn
+s_offset	test.cpp	/^	size_t s_offset;$/;"	m	struct:Elf_Scn	file:
+s_rawdata	private.h	/^	Scn_Data *s_rawdata;	\/* raw data buffer *\/$/;"	m	struct:Elf_Scn
+s_rawdata	test.cpp	/^	Scn_Data *s_rawdata;$/;"	m	struct:Elf_Scn	file:
+s_scn_flags	private.h	/^	unsigned s_scn_flags;	\/* section flags (ELF_F_*) *\/$/;"	m	struct:Elf_Scn
+s_scn_flags	test.cpp	/^	unsigned s_scn_flags;$/;"	m	struct:Elf_Scn	file:
+s_shdr32	private.h	253;"	d
+s_shdr64	private.h	254;"	d
+s_shdr_flags	private.h	/^	unsigned s_shdr_flags;	\/* shdr flags (ELF_F_*) *\/$/;"	m	struct:Elf_Scn
+s_shdr_flags	test.cpp	/^	unsigned s_shdr_flags;$/;"	m	struct:Elf_Scn	file:
+s_size	private.h	/^	size_t s_size;		\/* section size *\/$/;"	m	struct:Elf_Scn
+s_size	test.cpp	/^	size_t s_size;$/;"	m	struct:Elf_Scn	file:
+s_type	private.h	/^	unsigned s_type;	\/* section type *\/$/;"	m	struct:Elf_Scn
+s_type	test.cpp	/^	unsigned s_type;$/;"	m	struct:Elf_Scn	file:
+s_uhdr	private.h	/^	} s_uhdr;$/;"	m	struct:Elf_Scn	typeref:union:Elf_Scn::__anon98
+s_uhdr	test.cpp	/^	} s_uhdr;$/;"	m	struct:Elf_Scn	typeref:union:Elf_Scn::__anon70	file:
+scn_data_layout	update.c	/^scn_data_layout(Elf_Scn * scn, unsigned v, unsigned type, size_t * algn,$/;"	f	file:
+scn_entsize	update.c	/^static size_t scn_entsize(const Elf * elf, unsigned version, unsigned stype)$/;"	f	file:
+sd_data	private.h	/^	Elf_Data sd_data;	\/* must be first! *\/$/;"	m	struct:Scn_Data
+sd_data	test.cpp	/^	Elf_Data sd_data;$/;"	m	struct:Scn_Data	file:
+sd_data_flags	private.h	/^	unsigned sd_data_flags;	\/* data flags (ELF_F_*) *\/$/;"	m	struct:Scn_Data
+sd_data_flags	test.cpp	/^	unsigned sd_data_flags;$/;"	m	struct:Scn_Data	file:
+sd_free_data	private.h	/^	unsigned sd_free_data:1;	\/* sd_memdata is malloc'ed *\/$/;"	m	struct:Scn_Data
+sd_free_data	test.cpp	/^	unsigned sd_free_data:1;$/;"	m	struct:Scn_Data	file:
+sd_freeme	private.h	/^	unsigned sd_freeme:1;	\/* this Scn_Data was malloc'ed *\/$/;"	m	struct:Scn_Data
+sd_freeme	test.cpp	/^	unsigned sd_freeme:1;$/;"	m	struct:Scn_Data	file:
+sd_link	private.h	/^	Scn_Data *sd_link;	\/* pointer to next Scn_Data *\/$/;"	m	struct:Scn_Data
+sd_link	test.cpp	/^	Scn_Data *sd_link;$/;"	m	struct:Scn_Data	file:
+sd_magic	private.h	/^	long sd_magic;$/;"	m	struct:Scn_Data
+sd_magic	test.cpp	/^	long sd_magic;$/;"	m	struct:Scn_Data	file:
+sd_memdata	private.h	/^	char *sd_memdata;	\/* memory image of section *\/$/;"	m	struct:Scn_Data
+sd_memdata	test.cpp	/^	char *sd_memdata;$/;"	m	struct:Scn_Data	file:
+sd_scn	private.h	/^	Elf_Scn *sd_scn;	\/* pointer to section *\/$/;"	m	struct:Scn_Data
+sd_scn	test.cpp	/^	Elf_Scn *sd_scn;$/;"	m	struct:Scn_Data	file:
+section	test.cpp	/^	Elf32_Section section;$/;"	m	struct:__anon60	file:
+seq_back	32.xlatetof.c	57;"	d	file:
+seq_back	64.xlatetof.c	59;"	d	file:
+seq_forw	32.xlatetof.c	56;"	d	file:
+seq_forw	64.xlatetof.c	58;"	d	file:
+seterr	private.h	406;"	d
+sh_addr	elf_repl.h	/^		Elf32_Addr sh_addr;$/;"	m	struct:__anon128
+sh_addr	elf_repl.h	/^		Elf64_Addr sh_addr;$/;"	m	struct:__anon129
+sh_addr	ext_types.h	/^		__ext_Elf32_Addr sh_addr;$/;"	m	struct:__anon102
+sh_addr	ext_types.h	/^		__ext_Elf64_Addr sh_addr;$/;"	m	struct:__anon103
+sh_addr	test.cpp	/^	Elf32_Addr sh_addr;$/;"	m	struct:__anon24	file:
+sh_addr	test.cpp	/^	Elf64_Addr sh_addr;$/;"	m	struct:__anon25	file:
+sh_addr	test.cpp	/^	__ext_Elf32_Addr sh_addr;$/;"	m	struct:__anon74	file:
+sh_addr	test.cpp	/^	__ext_Elf64_Addr sh_addr;$/;"	m	struct:__anon75	file:
+sh_addralign	elf_repl.h	/^		Elf32_Word sh_addralign;$/;"	m	struct:__anon128
+sh_addralign	elf_repl.h	/^		Elf64_Xword sh_addralign;$/;"	m	struct:__anon129
+sh_addralign	ext_types.h	/^		__ext_Elf32_Word sh_addralign;$/;"	m	struct:__anon102
+sh_addralign	ext_types.h	/^		__ext_Elf64_Xword sh_addralign;$/;"	m	struct:__anon103
+sh_addralign	test.cpp	/^	Elf32_Word sh_addralign;$/;"	m	struct:__anon24	file:
+sh_addralign	test.cpp	/^	Elf64_Xword sh_addralign;$/;"	m	struct:__anon25	file:
+sh_addralign	test.cpp	/^	__ext_Elf32_Word sh_addralign;$/;"	m	struct:__anon74	file:
+sh_addralign	test.cpp	/^	__ext_Elf64_Xword sh_addralign;$/;"	m	struct:__anon75	file:
+sh_entsize	elf_repl.h	/^		Elf32_Word sh_entsize;$/;"	m	struct:__anon128
+sh_entsize	elf_repl.h	/^		Elf64_Xword sh_entsize;$/;"	m	struct:__anon129
+sh_entsize	ext_types.h	/^		__ext_Elf32_Word sh_entsize;$/;"	m	struct:__anon102
+sh_entsize	ext_types.h	/^		__ext_Elf64_Xword sh_entsize;$/;"	m	struct:__anon103
+sh_entsize	test.cpp	/^	Elf32_Word sh_entsize;$/;"	m	struct:__anon24	file:
+sh_entsize	test.cpp	/^	Elf64_Xword sh_entsize;$/;"	m	struct:__anon25	file:
+sh_entsize	test.cpp	/^	__ext_Elf32_Word sh_entsize;$/;"	m	struct:__anon74	file:
+sh_entsize	test.cpp	/^	__ext_Elf64_Xword sh_entsize;$/;"	m	struct:__anon75	file:
+sh_flags	elf_repl.h	/^		Elf32_Word sh_flags;$/;"	m	struct:__anon128
+sh_flags	elf_repl.h	/^		Elf64_Xword sh_flags;$/;"	m	struct:__anon129
+sh_flags	ext_types.h	/^		__ext_Elf32_Word sh_flags;$/;"	m	struct:__anon102
+sh_flags	ext_types.h	/^		__ext_Elf64_Xword sh_flags;$/;"	m	struct:__anon103
+sh_flags	test.cpp	/^	Elf32_Word sh_flags;$/;"	m	struct:__anon24	file:
+sh_flags	test.cpp	/^	Elf64_Xword sh_flags;$/;"	m	struct:__anon25	file:
+sh_flags	test.cpp	/^	__ext_Elf32_Word sh_flags;$/;"	m	struct:__anon74	file:
+sh_flags	test.cpp	/^	__ext_Elf64_Xword sh_flags;$/;"	m	struct:__anon75	file:
+sh_info	elf_repl.h	/^		Elf32_Word sh_info;$/;"	m	struct:__anon128
+sh_info	elf_repl.h	/^		Elf64_Word sh_info;$/;"	m	struct:__anon129
+sh_info	ext_types.h	/^		__ext_Elf32_Word sh_info;$/;"	m	struct:__anon102
+sh_info	ext_types.h	/^		__ext_Elf64_Word sh_info;$/;"	m	struct:__anon103
+sh_info	test.cpp	/^	Elf32_Word sh_info;$/;"	m	struct:__anon24	file:
+sh_info	test.cpp	/^	Elf64_Word sh_info;$/;"	m	struct:__anon25	file:
+sh_info	test.cpp	/^	__ext_Elf32_Word sh_info;$/;"	m	struct:__anon74	file:
+sh_info	test.cpp	/^	__ext_Elf64_Word sh_info;$/;"	m	struct:__anon75	file:
+sh_link	elf_repl.h	/^		Elf32_Word sh_link;$/;"	m	struct:__anon128
+sh_link	elf_repl.h	/^		Elf64_Word sh_link;$/;"	m	struct:__anon129
+sh_link	ext_types.h	/^		__ext_Elf32_Word sh_link;$/;"	m	struct:__anon102
+sh_link	ext_types.h	/^		__ext_Elf64_Word sh_link;$/;"	m	struct:__anon103
+sh_link	test.cpp	/^	Elf32_Word sh_link;$/;"	m	struct:__anon24	file:
+sh_link	test.cpp	/^	Elf64_Word sh_link;$/;"	m	struct:__anon25	file:
+sh_link	test.cpp	/^	__ext_Elf32_Word sh_link;$/;"	m	struct:__anon74	file:
+sh_link	test.cpp	/^	__ext_Elf64_Word sh_link;$/;"	m	struct:__anon75	file:
+sh_name	elf_repl.h	/^		Elf32_Word sh_name;$/;"	m	struct:__anon128
+sh_name	elf_repl.h	/^		Elf64_Word sh_name;$/;"	m	struct:__anon129
+sh_name	ext_types.h	/^		__ext_Elf32_Word sh_name;$/;"	m	struct:__anon102
+sh_name	ext_types.h	/^		__ext_Elf64_Word sh_name;$/;"	m	struct:__anon103
+sh_name	test.cpp	/^	Elf32_Word sh_name;$/;"	m	struct:__anon24	file:
+sh_name	test.cpp	/^	Elf64_Word sh_name;$/;"	m	struct:__anon25	file:
+sh_name	test.cpp	/^	__ext_Elf32_Word sh_name;$/;"	m	struct:__anon74	file:
+sh_name	test.cpp	/^	__ext_Elf64_Word sh_name;$/;"	m	struct:__anon75	file:
+sh_offset	elf_repl.h	/^		Elf32_Off sh_offset;$/;"	m	struct:__anon128
+sh_offset	elf_repl.h	/^		Elf64_Off sh_offset;$/;"	m	struct:__anon129
+sh_offset	ext_types.h	/^		__ext_Elf32_Off sh_offset;$/;"	m	struct:__anon102
+sh_offset	ext_types.h	/^		__ext_Elf64_Off sh_offset;$/;"	m	struct:__anon103
+sh_offset	test.cpp	/^	Elf32_Off sh_offset;$/;"	m	struct:__anon24	file:
+sh_offset	test.cpp	/^	Elf64_Off sh_offset;$/;"	m	struct:__anon25	file:
+sh_offset	test.cpp	/^	__ext_Elf32_Off sh_offset;$/;"	m	struct:__anon74	file:
+sh_offset	test.cpp	/^	__ext_Elf64_Off sh_offset;$/;"	m	struct:__anon75	file:
+sh_size	elf_repl.h	/^		Elf32_Word sh_size;$/;"	m	struct:__anon128
+sh_size	elf_repl.h	/^		Elf64_Xword sh_size;$/;"	m	struct:__anon129
+sh_size	ext_types.h	/^		__ext_Elf32_Word sh_size;$/;"	m	struct:__anon102
+sh_size	ext_types.h	/^		__ext_Elf64_Xword sh_size;$/;"	m	struct:__anon103
+sh_size	test.cpp	/^	Elf32_Word sh_size;$/;"	m	struct:__anon24	file:
+sh_size	test.cpp	/^	Elf64_Xword sh_size;$/;"	m	struct:__anon25	file:
+sh_size	test.cpp	/^	__ext_Elf32_Word sh_size;$/;"	m	struct:__anon74	file:
+sh_size	test.cpp	/^	__ext_Elf64_Xword sh_size;$/;"	m	struct:__anon75	file:
+sh_type	elf_repl.h	/^		Elf32_Word sh_type;$/;"	m	struct:__anon128
+sh_type	elf_repl.h	/^		Elf64_Word sh_type;$/;"	m	struct:__anon129
+sh_type	ext_types.h	/^		__ext_Elf32_Word sh_type;$/;"	m	struct:__anon102
+sh_type	ext_types.h	/^		__ext_Elf64_Word sh_type;$/;"	m	struct:__anon103
+sh_type	test.cpp	/^	Elf32_Word sh_type;$/;"	m	struct:__anon24	file:
+sh_type	test.cpp	/^	Elf64_Word sh_type;$/;"	m	struct:__anon25	file:
+sh_type	test.cpp	/^	__ext_Elf32_Word sh_type;$/;"	m	struct:__anon74	file:
+sh_type	test.cpp	/^	__ext_Elf64_Word sh_type;$/;"	m	struct:__anon75	file:
+shdr_32L11_tof	test.cpp	/^static size_t shdr_32L11_tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+shdr_32L11_tom	test.cpp	/^static size_t shdr_32L11_tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+shdr_32M11_tof	test.cpp	/^static size_t shdr_32M11_tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+shdr_32M11_tom	test.cpp	/^static size_t shdr_32M11_tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+si	byteswap.h	47;"	d
+si_boundto	elf_repl.h	/^		Elf32_Half si_boundto;$/;"	m	struct:__anon144
+si_boundto	elf_repl.h	/^		Elf64_Half si_boundto;$/;"	m	struct:__anon145
+si_boundto	test.cpp	/^	Elf32_Half si_boundto;$/;"	m	struct:__anon28	file:
+si_boundto	test.cpp	/^	Elf64_Half si_boundto;$/;"	m	struct:__anon29	file:
+si_flags	elf_repl.h	/^		Elf32_Half si_flags;$/;"	m	struct:__anon144
+si_flags	elf_repl.h	/^		Elf64_Half si_flags;$/;"	m	struct:__anon145
+si_flags	test.cpp	/^	Elf32_Half si_flags;$/;"	m	struct:__anon28	file:
+si_flags	test.cpp	/^	Elf64_Half si_flags;$/;"	m	struct:__anon29	file:
+sigset_t	test.cpp	/^typedef __sigset_t sigset_t;$/;"	t	file:
+size	test.cpp	/^	unsigned char size;$/;"	m	struct:__anon60	file:
+size_t	test.cpp	/^typedef unsigned int size_t;$/;"	t	file:
+skip_section	checksum.c	/^static int skip_section(Elf_Scn * scn, unsigned cls)$/;"	f	file:
+srcdir	Makefile	/^srcdir = .$/;"	m
+ssize_t	test.cpp	/^typedef __ssize_t ssize_t;$/;"	t	file:
+st_info	elf_repl.h	/^		unsigned char st_info;$/;"	m	struct:__anon130
+st_info	elf_repl.h	/^		unsigned char st_info;$/;"	m	struct:__anon131
+st_info	ext_types.h	/^		unsigned char st_info;$/;"	m	struct:__anon104
+st_info	ext_types.h	/^		unsigned char st_info;$/;"	m	struct:__anon105
+st_info	test.cpp	/^	unsigned char st_info;$/;"	m	struct:__anon26	file:
+st_info	test.cpp	/^	unsigned char st_info;$/;"	m	struct:__anon27	file:
+st_info	test.cpp	/^	unsigned char st_info;$/;"	m	struct:__anon76	file:
+st_info	test.cpp	/^	unsigned char st_info;$/;"	m	struct:__anon77	file:
+st_name	elf_repl.h	/^		Elf32_Word st_name;$/;"	m	struct:__anon130
+st_name	elf_repl.h	/^		Elf64_Word st_name;$/;"	m	struct:__anon131
+st_name	ext_types.h	/^		__ext_Elf32_Word st_name;$/;"	m	struct:__anon104
+st_name	ext_types.h	/^		__ext_Elf64_Word st_name;$/;"	m	struct:__anon105
+st_name	test.cpp	/^	Elf32_Word st_name;$/;"	m	struct:__anon26	file:
+st_name	test.cpp	/^	Elf64_Word st_name;$/;"	m	struct:__anon27	file:
+st_name	test.cpp	/^	__ext_Elf32_Word st_name;$/;"	m	struct:__anon76	file:
+st_name	test.cpp	/^	__ext_Elf64_Word st_name;$/;"	m	struct:__anon77	file:
+st_other	elf_repl.h	/^		unsigned char st_other;$/;"	m	struct:__anon130
+st_other	elf_repl.h	/^		unsigned char st_other;$/;"	m	struct:__anon131
+st_other	ext_types.h	/^		unsigned char st_other;$/;"	m	struct:__anon104
+st_other	ext_types.h	/^		unsigned char st_other;$/;"	m	struct:__anon105
+st_other	test.cpp	/^	unsigned char st_other;$/;"	m	struct:__anon26	file:
+st_other	test.cpp	/^	unsigned char st_other;$/;"	m	struct:__anon27	file:
+st_other	test.cpp	/^	unsigned char st_other;$/;"	m	struct:__anon76	file:
+st_other	test.cpp	/^	unsigned char st_other;$/;"	m	struct:__anon77	file:
+st_shndx	elf_repl.h	/^		Elf32_Half st_shndx;$/;"	m	struct:__anon130
+st_shndx	elf_repl.h	/^		Elf64_Half st_shndx;$/;"	m	struct:__anon131
+st_shndx	ext_types.h	/^		__ext_Elf32_Half st_shndx;$/;"	m	struct:__anon104
+st_shndx	ext_types.h	/^		__ext_Elf64_Half st_shndx;$/;"	m	struct:__anon105
+st_shndx	test.cpp	/^	Elf32_Section st_shndx;$/;"	m	struct:__anon26	file:
+st_shndx	test.cpp	/^	Elf64_Section st_shndx;$/;"	m	struct:__anon27	file:
+st_shndx	test.cpp	/^	__ext_Elf32_Half st_shndx;$/;"	m	struct:__anon76	file:
+st_shndx	test.cpp	/^	__ext_Elf64_Half st_shndx;$/;"	m	struct:__anon77	file:
+st_size	elf_repl.h	/^		Elf32_Word st_size;$/;"	m	struct:__anon130
+st_size	elf_repl.h	/^		Elf64_Xword st_size;$/;"	m	struct:__anon131
+st_size	ext_types.h	/^		__ext_Elf32_Word st_size;$/;"	m	struct:__anon104
+st_size	ext_types.h	/^		__ext_Elf64_Xword st_size;$/;"	m	struct:__anon105
+st_size	test.cpp	/^	Elf32_Word st_size;$/;"	m	struct:__anon26	file:
+st_size	test.cpp	/^	Elf64_Xword st_size;$/;"	m	struct:__anon27	file:
+st_size	test.cpp	/^	__ext_Elf32_Word st_size;$/;"	m	struct:__anon76	file:
+st_size	test.cpp	/^	__ext_Elf64_Xword st_size;$/;"	m	struct:__anon77	file:
+st_value	elf_repl.h	/^		Elf32_Addr st_value;$/;"	m	struct:__anon130
+st_value	elf_repl.h	/^		Elf64_Addr st_value;$/;"	m	struct:__anon131
+st_value	ext_types.h	/^		__ext_Elf32_Addr st_value;$/;"	m	struct:__anon104
+st_value	ext_types.h	/^		__ext_Elf64_Addr st_value;$/;"	m	struct:__anon105
+st_value	test.cpp	/^	Elf32_Addr st_value;$/;"	m	struct:__anon26	file:
+st_value	test.cpp	/^	Elf64_Addr st_value;$/;"	m	struct:__anon27	file:
+st_value	test.cpp	/^	__ext_Elf32_Addr st_value;$/;"	m	struct:__anon76	file:
+st_value	test.cpp	/^	__ext_Elf64_Addr st_value;$/;"	m	struct:__anon77	file:
+su	byteswap.h	46;"	d
+subdir	Makefile	/^subdir = lib$/;"	m
+suseconds_t	test.cpp	/^typedef __suseconds_t suseconds_t;$/;"	t	file:
+sword_32L__tof	test.cpp	/^static size_t sword_32L__tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+sword_32L__tom	test.cpp	/^static size_t sword_32L__tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+sword_32M__tof	test.cpp	/^static size_t sword_32M__tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+sword_32M__tom	test.cpp	/^static size_t sword_32M__tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+sym_32L11_tof	test.cpp	/^static size_t sym_32L11_tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+sym_32L11_tom	test.cpp	/^static size_t sym_32L11_tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+sym_32M11_tof	test.cpp	/^static size_t sym_32M11_tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+sym_32M11_tom	test.cpp	/^static size_t sym_32M11_tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+symbol_name	nlist.c	/^static const char *symbol_name(Elf * elf, const void *syms, const char *names,$/;"	f	file:
+time_t	test.cpp	/^typedef __time_t time_t;$/;"	t	file:
+timer_t	test.cpp	/^typedef __timer_t timer_t;$/;"	t	file:
+timespec	test.cpp	/^struct timespec {$/;"	s	file:
+timeval	test.cpp	/^struct timeval {$/;"	s	file:
+top_srcdir	Makefile	/^top_srcdir = ..$/;"	m
+topdir	Makefile	/^topdir = ..$/;"	m
+translator	32.xlatetof.c	333;"	d	file:
+translator	64.xlatetof.c	353;"	d	file:
+translator	verdef.h	/^translator(verdef, L11) (unsigned char *dst, const unsigned char *src,$/;"	f
+translator	verdef.h	/^translator(verdef, M11) (unsigned char *dst, const unsigned char *src,$/;"	f
+translator	verdef.h	132;"	d
+translator	verneed.h	/^translator(verneed, L11) (unsigned char *dst, const unsigned char *src,$/;"	f
+translator	verneed.h	/^translator(verneed, M11) (unsigned char *dst, const unsigned char *src,$/;"	f
+translator	verneed.h	136;"	d
+translator_suffix	verdef.h	125;"	d
+translator_suffix	verdef.h	76;"	d
+translator_suffix	verneed.h	129;"	d
+translator_suffix	verneed.h	78;"	d
+truncerr	cook.c	73;"	d	file:
+tv_nsec	test.cpp	/^	long int tv_nsec;$/;"	m	struct:timespec	file:
+tv_sec	test.cpp	/^	__time_t tv_sec;$/;"	m	struct:timespec	file:
+tv_sec	test.cpp	/^	__time_t tv_sec;$/;"	m	struct:timeval	file:
+tv_usec	test.cpp	/^	__suseconds_t tv_usec;$/;"	m	struct:timeval	file:
+u_char	test.cpp	/^typedef __u_char u_char;$/;"	t	file:
+u_int	test.cpp	/^typedef __u_int u_int;$/;"	t	file:
+u_int16_t	test.cpp	/^typedef unsigned int u_int16_t __attribute__ ((__mode__(__HI__)));$/;"	t	file:
+u_int32_t	test.cpp	/^typedef unsigned int u_int32_t __attribute__ ((__mode__(__SI__)));$/;"	t	file:
+u_int64_t	test.cpp	/^typedef unsigned int u_int64_t __attribute__ ((__mode__(__DI__)));$/;"	t	file:
+u_int8_t	test.cpp	/^typedef unsigned int u_int8_t __attribute__ ((__mode__(__QI__)));$/;"	t	file:
+u_long	test.cpp	/^typedef __u_long u_long;$/;"	t	file:
+u_quad_t	test.cpp	/^typedef __u_quad_t u_quad_t;$/;"	t	file:
+u_shdr32	private.h	/^		Elf32_Shdr u_shdr32;$/;"	m	union:Elf_Scn::__anon98
+u_shdr32	test.cpp	/^		Elf32_Shdr u_shdr32;$/;"	m	union:Elf_Scn::__anon70	file:
+u_shdr64	private.h	/^		Elf64_Shdr u_shdr64;$/;"	m	union:Elf_Scn::__anon98
+u_shdr64	test.cpp	/^		Elf64_Shdr u_shdr64;$/;"	m	union:Elf_Scn::__anon70	file:
+u_short	test.cpp	/^typedef __u_short u_short;$/;"	t	file:
+uid_t	test.cpp	/^typedef __uid_t uid_t;$/;"	t	file:
+uint	test.cpp	/^typedef unsigned int uint;$/;"	t	file:
+uint16_t	test.cpp	/^typedef unsigned short int uint16_t;$/;"	t	file:
+uint32_t	test.cpp	/^typedef unsigned int uint32_t;$/;"	t	file:
+uint64_t	test.cpp	/^__extension__ typedef unsigned long long int uint64_t;$/;"	t	file:
+uint8_t	test.cpp	/^typedef unsigned char uint8_t;$/;"	t	file:
+uint_fast16_t	test.cpp	/^typedef unsigned int uint_fast16_t;$/;"	t	file:
+uint_fast32_t	test.cpp	/^typedef unsigned int uint_fast32_t;$/;"	t	file:
+uint_fast64_t	test.cpp	/^__extension__ typedef unsigned long long int uint_fast64_t;$/;"	t	file:
+uint_fast8_t	test.cpp	/^typedef unsigned char uint_fast8_t;$/;"	t	file:
+uint_least16_t	test.cpp	/^typedef unsigned short int uint_least16_t;$/;"	t	file:
+uint_least32_t	test.cpp	/^typedef unsigned int uint_least32_t;$/;"	t	file:
+uint_least64_t	test.cpp	/^__extension__ typedef unsigned long long int uint_least64_t;$/;"	t	file:
+uint_least8_t	test.cpp	/^typedef unsigned char uint_least8_t;$/;"	t	file:
+uintmax_t	test.cpp	/^__extension__ typedef unsigned long long int uintmax_t;$/;"	t	file:
+uintptr_t	test.cpp	/^typedef unsigned int uintptr_t;$/;"	t	file:
+ulong	test.cpp	/^typedef unsigned long int ulong;$/;"	t	file:
+ushort	test.cpp	/^typedef unsigned short int ushort;$/;"	t	file:
+valid_class	private.h	391;"	d
+valid_encoding	private.h	392;"	d
+valid_type	private.h	394;"	d
+valid_version	private.h	393;"	d
+vd_aux	elf_repl.h	/^		Elf32_Word vd_aux;$/;"	m	struct:__anon146
+vd_aux	elf_repl.h	/^		Elf64_Word vd_aux;$/;"	m	struct:__anon150
+vd_aux	ext_types.h	/^		__ext_Elf32_Word vd_aux;$/;"	m	struct:__anon116
+vd_aux	ext_types.h	/^		__ext_Elf64_Word vd_aux;$/;"	m	struct:__anon120
+vd_aux	test.cpp	/^	Elf32_Word vd_aux;$/;"	m	struct:__anon40	file:
+vd_aux	test.cpp	/^	Elf64_Word vd_aux;$/;"	m	struct:__anon41	file:
+vd_aux	test.cpp	/^	__ext_Elf32_Word vd_aux;$/;"	m	struct:__anon88	file:
+vd_aux	test.cpp	/^	__ext_Elf64_Word vd_aux;$/;"	m	struct:__anon92	file:
+vd_cnt	elf_repl.h	/^		Elf32_Half vd_cnt;$/;"	m	struct:__anon146
+vd_cnt	elf_repl.h	/^		Elf64_Half vd_cnt;$/;"	m	struct:__anon150
+vd_cnt	ext_types.h	/^		__ext_Elf32_Half vd_cnt;$/;"	m	struct:__anon116
+vd_cnt	ext_types.h	/^		__ext_Elf64_Half vd_cnt;$/;"	m	struct:__anon120
+vd_cnt	test.cpp	/^	Elf32_Half vd_cnt;$/;"	m	struct:__anon40	file:
+vd_cnt	test.cpp	/^	Elf64_Half vd_cnt;$/;"	m	struct:__anon41	file:
+vd_cnt	test.cpp	/^	__ext_Elf32_Half vd_cnt;$/;"	m	struct:__anon88	file:
+vd_cnt	test.cpp	/^	__ext_Elf64_Half vd_cnt;$/;"	m	struct:__anon92	file:
+vd_flags	elf_repl.h	/^		Elf32_Half vd_flags;$/;"	m	struct:__anon146
+vd_flags	elf_repl.h	/^		Elf64_Half vd_flags;$/;"	m	struct:__anon150
+vd_flags	ext_types.h	/^		__ext_Elf32_Half vd_flags;$/;"	m	struct:__anon116
+vd_flags	ext_types.h	/^		__ext_Elf64_Half vd_flags;$/;"	m	struct:__anon120
+vd_flags	test.cpp	/^	Elf32_Half vd_flags;$/;"	m	struct:__anon40	file:
+vd_flags	test.cpp	/^	Elf64_Half vd_flags;$/;"	m	struct:__anon41	file:
+vd_flags	test.cpp	/^	__ext_Elf32_Half vd_flags;$/;"	m	struct:__anon88	file:
+vd_flags	test.cpp	/^	__ext_Elf64_Half vd_flags;$/;"	m	struct:__anon92	file:
+vd_hash	elf_repl.h	/^		Elf32_Word vd_hash;$/;"	m	struct:__anon146
+vd_hash	elf_repl.h	/^		Elf64_Word vd_hash;$/;"	m	struct:__anon150
+vd_hash	ext_types.h	/^		__ext_Elf32_Word vd_hash;$/;"	m	struct:__anon116
+vd_hash	ext_types.h	/^		__ext_Elf64_Word vd_hash;$/;"	m	struct:__anon120
+vd_hash	test.cpp	/^	Elf32_Word vd_hash;$/;"	m	struct:__anon40	file:
+vd_hash	test.cpp	/^	Elf64_Word vd_hash;$/;"	m	struct:__anon41	file:
+vd_hash	test.cpp	/^	__ext_Elf32_Word vd_hash;$/;"	m	struct:__anon88	file:
+vd_hash	test.cpp	/^	__ext_Elf64_Word vd_hash;$/;"	m	struct:__anon92	file:
+vd_ndx	elf_repl.h	/^		Elf32_Half vd_ndx;$/;"	m	struct:__anon146
+vd_ndx	elf_repl.h	/^		Elf64_Half vd_ndx;$/;"	m	struct:__anon150
+vd_ndx	ext_types.h	/^		__ext_Elf32_Half vd_ndx;$/;"	m	struct:__anon116
+vd_ndx	ext_types.h	/^		__ext_Elf64_Half vd_ndx;$/;"	m	struct:__anon120
+vd_ndx	test.cpp	/^	Elf32_Half vd_ndx;$/;"	m	struct:__anon40	file:
+vd_ndx	test.cpp	/^	Elf64_Half vd_ndx;$/;"	m	struct:__anon41	file:
+vd_ndx	test.cpp	/^	__ext_Elf32_Half vd_ndx;$/;"	m	struct:__anon88	file:
+vd_ndx	test.cpp	/^	__ext_Elf64_Half vd_ndx;$/;"	m	struct:__anon92	file:
+vd_next	elf_repl.h	/^		Elf32_Word vd_next;$/;"	m	struct:__anon146
+vd_next	elf_repl.h	/^		Elf64_Word vd_next;$/;"	m	struct:__anon150
+vd_next	ext_types.h	/^		__ext_Elf32_Word vd_next;$/;"	m	struct:__anon116
+vd_next	ext_types.h	/^		__ext_Elf64_Word vd_next;$/;"	m	struct:__anon120
+vd_next	test.cpp	/^	Elf32_Word vd_next;$/;"	m	struct:__anon40	file:
+vd_next	test.cpp	/^	Elf64_Word vd_next;$/;"	m	struct:__anon41	file:
+vd_next	test.cpp	/^	__ext_Elf32_Word vd_next;$/;"	m	struct:__anon88	file:
+vd_next	test.cpp	/^	__ext_Elf64_Word vd_next;$/;"	m	struct:__anon92	file:
+vd_version	elf_repl.h	/^		Elf32_Half vd_version;$/;"	m	struct:__anon146
+vd_version	elf_repl.h	/^		Elf64_Half vd_version;$/;"	m	struct:__anon150
+vd_version	ext_types.h	/^		__ext_Elf32_Half vd_version;$/;"	m	struct:__anon116
+vd_version	ext_types.h	/^		__ext_Elf64_Half vd_version;$/;"	m	struct:__anon120
+vd_version	test.cpp	/^	Elf32_Half vd_version;$/;"	m	struct:__anon40	file:
+vd_version	test.cpp	/^	Elf64_Half vd_version;$/;"	m	struct:__anon41	file:
+vd_version	test.cpp	/^	__ext_Elf32_Half vd_version;$/;"	m	struct:__anon88	file:
+vd_version	test.cpp	/^	__ext_Elf64_Half vd_version;$/;"	m	struct:__anon92	file:
+vda_name	elf_repl.h	/^		Elf32_Word vda_name;$/;"	m	struct:__anon147
+vda_name	elf_repl.h	/^		Elf64_Word vda_name;$/;"	m	struct:__anon151
+vda_name	ext_types.h	/^		__ext_Elf32_Word vda_name;$/;"	m	struct:__anon117
+vda_name	ext_types.h	/^		__ext_Elf64_Word vda_name;$/;"	m	struct:__anon121
+vda_name	test.cpp	/^	Elf32_Word vda_name;$/;"	m	struct:__anon42	file:
+vda_name	test.cpp	/^	Elf64_Word vda_name;$/;"	m	struct:__anon43	file:
+vda_name	test.cpp	/^	__ext_Elf32_Word vda_name;$/;"	m	struct:__anon89	file:
+vda_name	test.cpp	/^	__ext_Elf64_Word vda_name;$/;"	m	struct:__anon93	file:
+vda_next	elf_repl.h	/^		Elf32_Word vda_next;$/;"	m	struct:__anon147
+vda_next	elf_repl.h	/^		Elf64_Word vda_next;$/;"	m	struct:__anon151
+vda_next	ext_types.h	/^		__ext_Elf32_Word vda_next;$/;"	m	struct:__anon117
+vda_next	ext_types.h	/^		__ext_Elf64_Word vda_next;$/;"	m	struct:__anon121
+vda_next	test.cpp	/^	Elf32_Word vda_next;$/;"	m	struct:__anon42	file:
+vda_next	test.cpp	/^	Elf64_Word vda_next;$/;"	m	struct:__anon43	file:
+vda_next	test.cpp	/^	__ext_Elf32_Word vda_next;$/;"	m	struct:__anon89	file:
+vda_next	test.cpp	/^	__ext_Elf64_Word vda_next;$/;"	m	struct:__anon93	file:
+verdaux_dtype	verdef.h	/^typedef verdaux_ftype verdaux_dtype;$/;"	t
+verdaux_dtype	verdef.h	/^typedef verdaux_mtype verdaux_dtype;$/;"	t
+verdaux_ftype	verdef_32_tof.c	/^typedef __ext_Elf32_Verdaux verdaux_ftype;$/;"	t	file:
+verdaux_ftype	verdef_32_tom.c	/^typedef __ext_Elf32_Verdaux verdaux_ftype;$/;"	t	file:
+verdaux_ftype	verdef_64_tof.c	/^typedef __ext_Elf64_Verdaux verdaux_ftype;$/;"	t	file:
+verdaux_ftype	verdef_64_tom.c	/^typedef __ext_Elf64_Verdaux verdaux_ftype;$/;"	t	file:
+verdaux_mtype	verdef_32_tof.c	/^typedef Elf32_Verdaux verdaux_mtype;$/;"	t	file:
+verdaux_mtype	verdef_32_tom.c	/^typedef Elf32_Verdaux verdaux_mtype;$/;"	t	file:
+verdaux_mtype	verdef_64_tof.c	/^typedef Elf64_Verdaux verdaux_mtype;$/;"	t	file:
+verdaux_mtype	verdef_64_tom.c	/^typedef Elf64_Verdaux verdaux_mtype;$/;"	t	file:
+verdaux_stype	verdef.h	/^typedef verdaux_ftype verdaux_stype;$/;"	t
+verdaux_stype	verdef.h	/^typedef verdaux_mtype verdaux_stype;$/;"	t
+verdef_atype	verdef.h	/^typedef align_ftype verdef_atype;$/;"	t
+verdef_atype	verdef.h	/^typedef align_mtype verdef_atype;$/;"	t
+verdef_dtype	verdef.h	/^typedef verdef_ftype verdef_dtype;$/;"	t
+verdef_dtype	verdef.h	/^typedef verdef_mtype verdef_dtype;$/;"	t
+verdef_ftype	verdef_32_tof.c	/^typedef __ext_Elf32_Verdef verdef_ftype;$/;"	t	file:
+verdef_ftype	verdef_32_tom.c	/^typedef __ext_Elf32_Verdef verdef_ftype;$/;"	t	file:
+verdef_ftype	verdef_64_tof.c	/^typedef __ext_Elf64_Verdef verdef_ftype;$/;"	t	file:
+verdef_ftype	verdef_64_tom.c	/^typedef __ext_Elf64_Verdef verdef_ftype;$/;"	t	file:
+verdef_h_rcsid	verdef.h	/^static const char verdef_h_rcsid[] =$/;"	v
+verdef_mtype	verdef_32_tof.c	/^typedef Elf32_Verdef verdef_mtype;$/;"	t	file:
+verdef_mtype	verdef_32_tom.c	/^typedef Elf32_Verdef verdef_mtype;$/;"	t	file:
+verdef_mtype	verdef_64_tof.c	/^typedef Elf64_Verdef verdef_mtype;$/;"	t	file:
+verdef_mtype	verdef_64_tom.c	/^typedef Elf64_Verdef verdef_mtype;$/;"	t	file:
+verdef_stype	verdef.h	/^typedef verdef_ftype verdef_stype;$/;"	t
+verdef_stype	verdef.h	/^typedef verdef_mtype verdef_stype;$/;"	t
+vernaux_dtype	verneed.h	/^typedef vernaux_ftype vernaux_dtype;$/;"	t
+vernaux_dtype	verneed.h	/^typedef vernaux_mtype vernaux_dtype;$/;"	t
+vernaux_ftype	verdef_32_tof.c	/^typedef __ext_Elf32_Vernaux vernaux_ftype;$/;"	t	file:
+vernaux_ftype	verdef_32_tom.c	/^typedef __ext_Elf32_Vernaux vernaux_ftype;$/;"	t	file:
+vernaux_ftype	verdef_64_tof.c	/^typedef __ext_Elf64_Vernaux vernaux_ftype;$/;"	t	file:
+vernaux_ftype	verdef_64_tom.c	/^typedef __ext_Elf64_Vernaux vernaux_ftype;$/;"	t	file:
+vernaux_mtype	verdef_32_tof.c	/^typedef Elf32_Vernaux vernaux_mtype;$/;"	t	file:
+vernaux_mtype	verdef_32_tom.c	/^typedef Elf32_Vernaux vernaux_mtype;$/;"	t	file:
+vernaux_mtype	verdef_64_tof.c	/^typedef Elf64_Vernaux vernaux_mtype;$/;"	t	file:
+vernaux_mtype	verdef_64_tom.c	/^typedef Elf64_Vernaux vernaux_mtype;$/;"	t	file:
+vernaux_stype	verneed.h	/^typedef vernaux_ftype vernaux_stype;$/;"	t
+vernaux_stype	verneed.h	/^typedef vernaux_mtype vernaux_stype;$/;"	t
+verneed_atype	verneed.h	/^typedef align_ftype verneed_atype;$/;"	t
+verneed_atype	verneed.h	/^typedef align_mtype verneed_atype;$/;"	t
+verneed_dtype	verneed.h	/^typedef verneed_ftype verneed_dtype;$/;"	t
+verneed_dtype	verneed.h	/^typedef verneed_mtype verneed_dtype;$/;"	t
+verneed_ftype	verdef_32_tof.c	/^typedef __ext_Elf32_Verneed verneed_ftype;$/;"	t	file:
+verneed_ftype	verdef_32_tom.c	/^typedef __ext_Elf32_Verneed verneed_ftype;$/;"	t	file:
+verneed_ftype	verdef_64_tof.c	/^typedef __ext_Elf64_Verneed verneed_ftype;$/;"	t	file:
+verneed_ftype	verdef_64_tom.c	/^typedef __ext_Elf64_Verneed verneed_ftype;$/;"	t	file:
+verneed_h_rcsid	verneed.h	/^static const char verneed_h_rcsid[] =$/;"	v
+verneed_mtype	verdef_32_tof.c	/^typedef Elf32_Verneed verneed_mtype;$/;"	t	file:
+verneed_mtype	verdef_32_tom.c	/^typedef Elf32_Verneed verneed_mtype;$/;"	t	file:
+verneed_mtype	verdef_64_tof.c	/^typedef Elf64_Verneed verneed_mtype;$/;"	t	file:
+verneed_mtype	verdef_64_tom.c	/^typedef Elf64_Verneed verneed_mtype;$/;"	t	file:
+verneed_stype	verneed.h	/^typedef verneed_ftype verneed_stype;$/;"	t
+verneed_stype	verneed.h	/^typedef verneed_mtype verneed_stype;$/;"	t
+vn_aux	elf_repl.h	/^		Elf32_Word vn_aux;$/;"	m	struct:__anon148
+vn_aux	elf_repl.h	/^		Elf64_Word vn_aux;$/;"	m	struct:__anon152
+vn_aux	ext_types.h	/^		__ext_Elf32_Word vn_aux;$/;"	m	struct:__anon118
+vn_aux	ext_types.h	/^		__ext_Elf64_Word vn_aux;$/;"	m	struct:__anon122
+vn_aux	test.cpp	/^	Elf32_Word vn_aux;$/;"	m	struct:__anon44	file:
+vn_aux	test.cpp	/^	Elf64_Word vn_aux;$/;"	m	struct:__anon45	file:
+vn_aux	test.cpp	/^	__ext_Elf32_Word vn_aux;$/;"	m	struct:__anon90	file:
+vn_aux	test.cpp	/^	__ext_Elf64_Word vn_aux;$/;"	m	struct:__anon94	file:
+vn_cnt	elf_repl.h	/^		Elf32_Half vn_cnt;$/;"	m	struct:__anon148
+vn_cnt	elf_repl.h	/^		Elf64_Half vn_cnt;$/;"	m	struct:__anon152
+vn_cnt	ext_types.h	/^		__ext_Elf32_Half vn_cnt;$/;"	m	struct:__anon118
+vn_cnt	ext_types.h	/^		__ext_Elf64_Half vn_cnt;$/;"	m	struct:__anon122
+vn_cnt	test.cpp	/^	Elf32_Half vn_cnt;$/;"	m	struct:__anon44	file:
+vn_cnt	test.cpp	/^	Elf64_Half vn_cnt;$/;"	m	struct:__anon45	file:
+vn_cnt	test.cpp	/^	__ext_Elf32_Half vn_cnt;$/;"	m	struct:__anon90	file:
+vn_cnt	test.cpp	/^	__ext_Elf64_Half vn_cnt;$/;"	m	struct:__anon94	file:
+vn_file	elf_repl.h	/^		Elf32_Word vn_file;$/;"	m	struct:__anon148
+vn_file	elf_repl.h	/^		Elf64_Word vn_file;$/;"	m	struct:__anon152
+vn_file	ext_types.h	/^		__ext_Elf32_Word vn_file;$/;"	m	struct:__anon118
+vn_file	ext_types.h	/^		__ext_Elf64_Word vn_file;$/;"	m	struct:__anon122
+vn_file	test.cpp	/^	Elf32_Word vn_file;$/;"	m	struct:__anon44	file:
+vn_file	test.cpp	/^	Elf64_Word vn_file;$/;"	m	struct:__anon45	file:
+vn_file	test.cpp	/^	__ext_Elf32_Word vn_file;$/;"	m	struct:__anon90	file:
+vn_file	test.cpp	/^	__ext_Elf64_Word vn_file;$/;"	m	struct:__anon94	file:
+vn_next	elf_repl.h	/^		Elf32_Word vn_next;$/;"	m	struct:__anon148
+vn_next	elf_repl.h	/^		Elf64_Word vn_next;$/;"	m	struct:__anon152
+vn_next	ext_types.h	/^		__ext_Elf32_Word vn_next;$/;"	m	struct:__anon118
+vn_next	ext_types.h	/^		__ext_Elf64_Word vn_next;$/;"	m	struct:__anon122
+vn_next	test.cpp	/^	Elf32_Word vn_next;$/;"	m	struct:__anon44	file:
+vn_next	test.cpp	/^	Elf64_Word vn_next;$/;"	m	struct:__anon45	file:
+vn_next	test.cpp	/^	__ext_Elf32_Word vn_next;$/;"	m	struct:__anon90	file:
+vn_next	test.cpp	/^	__ext_Elf64_Word vn_next;$/;"	m	struct:__anon94	file:
+vn_version	elf_repl.h	/^		Elf32_Half vn_version;$/;"	m	struct:__anon148
+vn_version	elf_repl.h	/^		Elf64_Half vn_version;$/;"	m	struct:__anon152
+vn_version	ext_types.h	/^		__ext_Elf32_Half vn_version;$/;"	m	struct:__anon118
+vn_version	ext_types.h	/^		__ext_Elf64_Half vn_version;$/;"	m	struct:__anon122
+vn_version	test.cpp	/^	Elf32_Half vn_version;$/;"	m	struct:__anon44	file:
+vn_version	test.cpp	/^	Elf64_Half vn_version;$/;"	m	struct:__anon45	file:
+vn_version	test.cpp	/^	__ext_Elf32_Half vn_version;$/;"	m	struct:__anon90	file:
+vn_version	test.cpp	/^	__ext_Elf64_Half vn_version;$/;"	m	struct:__anon94	file:
+vna_flags	elf_repl.h	/^		Elf32_Half vna_flags;$/;"	m	struct:__anon149
+vna_flags	elf_repl.h	/^		Elf64_Half vna_flags;$/;"	m	struct:__anon153
+vna_flags	ext_types.h	/^		__ext_Elf32_Half vna_flags;$/;"	m	struct:__anon119
+vna_flags	ext_types.h	/^		__ext_Elf64_Half vna_flags;$/;"	m	struct:__anon123
+vna_flags	test.cpp	/^	Elf32_Half vna_flags;$/;"	m	struct:__anon46	file:
+vna_flags	test.cpp	/^	Elf64_Half vna_flags;$/;"	m	struct:__anon47	file:
+vna_flags	test.cpp	/^	__ext_Elf32_Half vna_flags;$/;"	m	struct:__anon91	file:
+vna_flags	test.cpp	/^	__ext_Elf64_Half vna_flags;$/;"	m	struct:__anon95	file:
+vna_hash	elf_repl.h	/^		Elf32_Word vna_hash;$/;"	m	struct:__anon149
+vna_hash	elf_repl.h	/^		Elf64_Word vna_hash;$/;"	m	struct:__anon153
+vna_hash	ext_types.h	/^		__ext_Elf32_Word vna_hash;$/;"	m	struct:__anon119
+vna_hash	ext_types.h	/^		__ext_Elf64_Word vna_hash;$/;"	m	struct:__anon123
+vna_hash	test.cpp	/^	Elf32_Word vna_hash;$/;"	m	struct:__anon46	file:
+vna_hash	test.cpp	/^	Elf64_Word vna_hash;$/;"	m	struct:__anon47	file:
+vna_hash	test.cpp	/^	__ext_Elf32_Word vna_hash;$/;"	m	struct:__anon91	file:
+vna_hash	test.cpp	/^	__ext_Elf64_Word vna_hash;$/;"	m	struct:__anon95	file:
+vna_name	elf_repl.h	/^		Elf32_Word vna_name;$/;"	m	struct:__anon149
+vna_name	elf_repl.h	/^		Elf64_Word vna_name;$/;"	m	struct:__anon153
+vna_name	ext_types.h	/^		__ext_Elf32_Word vna_name;$/;"	m	struct:__anon119
+vna_name	ext_types.h	/^		__ext_Elf64_Word vna_name;$/;"	m	struct:__anon123
+vna_name	test.cpp	/^	Elf32_Word vna_name;$/;"	m	struct:__anon46	file:
+vna_name	test.cpp	/^	Elf64_Word vna_name;$/;"	m	struct:__anon47	file:
+vna_name	test.cpp	/^	__ext_Elf32_Word vna_name;$/;"	m	struct:__anon91	file:
+vna_name	test.cpp	/^	__ext_Elf64_Word vna_name;$/;"	m	struct:__anon95	file:
+vna_next	elf_repl.h	/^		Elf32_Word vna_next;$/;"	m	struct:__anon149
+vna_next	elf_repl.h	/^		Elf64_Word vna_next;$/;"	m	struct:__anon153
+vna_next	ext_types.h	/^		__ext_Elf32_Word vna_next;$/;"	m	struct:__anon119
+vna_next	ext_types.h	/^		__ext_Elf64_Word vna_next;$/;"	m	struct:__anon123
+vna_next	test.cpp	/^	Elf32_Word vna_next;$/;"	m	struct:__anon46	file:
+vna_next	test.cpp	/^	Elf64_Word vna_next;$/;"	m	struct:__anon47	file:
+vna_next	test.cpp	/^	__ext_Elf32_Word vna_next;$/;"	m	struct:__anon91	file:
+vna_next	test.cpp	/^	__ext_Elf64_Word vna_next;$/;"	m	struct:__anon95	file:
+vna_other	elf_repl.h	/^		Elf32_Half vna_other;$/;"	m	struct:__anon149
+vna_other	elf_repl.h	/^		Elf64_Half vna_other;$/;"	m	struct:__anon153
+vna_other	ext_types.h	/^		__ext_Elf32_Half vna_other;$/;"	m	struct:__anon119
+vna_other	ext_types.h	/^		__ext_Elf64_Half vna_other;$/;"	m	struct:__anon123
+vna_other	test.cpp	/^	Elf32_Half vna_other;$/;"	m	struct:__anon46	file:
+vna_other	test.cpp	/^	Elf64_Half vna_other;$/;"	m	struct:__anon47	file:
+vna_other	test.cpp	/^	__ext_Elf32_Half vna_other;$/;"	m	struct:__anon91	file:
+vna_other	test.cpp	/^	__ext_Elf64_Half vna_other;$/;"	m	struct:__anon95	file:
+word_32L__tof	test.cpp	/^static size_t word_32L__tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+word_32L__tom	test.cpp	/^static size_t word_32L__tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+word_32M__tof	test.cpp	/^static size_t word_32M__tof(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+word_32M__tom	test.cpp	/^static size_t word_32M__tom(unsigned char *dst, const unsigned char *src, size_t n)$/;"	f	file:
+x	32.xlatetof.c	38;"	d	file:
+x	32.xlatetof.c	50;"	d	file:
+x	64.xlatetof.c	40;"	d	file:
+x	64.xlatetof.c	52;"	d	file:
+xlate32	32.xlatetof.c	/^xlate32[EV_CURRENT - EV_NONE][EV_CURRENT - EV_NONE] = {$/;"	v	file:
+xlate32	test.cpp	/^ xlate32[1 - 0][1 - 0] = {$/;"	v	file:
+xlate32_11	32.xlatetof.c	/^xlate32_11[ \/* encoding *\/ ] = $/;"	v	file:
+xlate32_11	test.cpp	/^static const xltab xlate32_11[] = {$/;"	v	file:
+xlate64	64.xlatetof.c	/^ xlate64[EV_CURRENT - EV_NONE][EV_CURRENT - EV_NONE] = {$/;"	v	file:
+xlate64_11	64.xlatetof.c	/^    xlate64_11[ \/*encoding *\/ ] = {$/;"	v	file:
+xlator	32.xlatetof.c	/^typedef size_t(*xlator) (unsigned char *, const unsigned char *, size_t);$/;"	t	file:
+xlator	64.xlatetof.c	/^typedef size_t(*xlator) (unsigned char *, const unsigned char *, size_t);$/;"	t	file:
+xlator	test.cpp	/^typedef size_t(*xlator) (unsigned char *, const unsigned char *, size_t);$/;"	t	file:
+xlt3	verdef.h	130;"	d
+xlt3	verneed.h	134;"	d
+xlt_verdef	verdef.h	/^xlt_verdef(unsigned char *dst, const unsigned char *src, size_t n, unsigned enc)$/;"	f
+xlt_verneed	verneed.h	/^xlt_verneed(unsigned char *dst, const unsigned char *src, size_t n,$/;"	f
+xltab	32.xlatetof.c	/^typedef xlator xltab[ELF_T_NUM][2];$/;"	t	file:
+xltab	64.xlatetof.c	/^typedef xlator xltab[ELF_T_NUM][2];$/;"	t	file:
+xltab	test.cpp	/^typedef xlator xltab[ELF_T_NUM][2];$/;"	t	file:
+xltprefix	verdef.h	131;"	d
+xltprefix	verneed.h	135;"	d
+xread	input.c	/^static int xread(int fd, char *buffer, size_t len)$/;"	f	file:
+xwrite	update.c	/^static int xwrite(int fd, char *buffer, size_t len)$/;"	f	file:
