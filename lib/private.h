@@ -134,8 +134,8 @@ typedef struct Scn_Data Scn_Data;
  */
 struct Elf {
 	/* common */
-	size_t e_size;		/* file/member size */
-	size_t e_dsize;		/* size of memory image */
+	size_t e_size;		/* file/member size */									/* ELF文件大小 */
+	size_t e_dsize;		/* size of memory image */								/* ELF内存大小 */
 	Elf_Kind e_kind;	/* kind of file */
 	char *e_data;		/* file/member data */
 	char *e_rawdata;	/* file/member raw data */

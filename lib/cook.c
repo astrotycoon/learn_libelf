@@ -91,6 +91,8 @@ Elf_Data *_elf_xlatetom(const Elf * elf, Elf_Data * dst, const Elf_Data * src)
 	return NULL;
 }
 
+/* 本函数的目的: 将elf指向的ELF文件的类型为type，偏移为off的文本部分以内存的形式拷贝到buf，如果buf为NULL，则
+  动态申请 */
 static char *_elf_item(void *buf, Elf * elf, Elf_Type type, size_t off)
 {
 	Elf_Data src, dst;	/* src-->file  dst->memory */
@@ -127,11 +129,12 @@ static char *_elf_item(void *buf, Elf * elf, Elf_Type type, size_t off)
 	}
 
 	if (_elf_xlatetom(elf, &dst, &src)) {	/* 将src指向的ELF Header(文件表现形式) 转换为 dst指向的内存区域(内存表现形式) */
-		return (char *)dst.d_buf;
+		return (char *)dst.d_buf;  	/* 在这里返回的话，在哪释放呢 */
 	}
 	if (dst.d_buf != buf) {
 		free(dst.d_buf);
 	}
+
 	return NULL;
 }
 
