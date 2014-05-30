@@ -30,7 +30,7 @@ const size_t _elf_fmsize[2][EV_CURRENT - EV_NONE][ELF_T_NUM][2] =
 	/* ELFCLASS32 */
 	{
 	 	/* version 1 */
-	 	{
+	 	{	    /* mem size */			/* file size */
 	  		{sizeof(unsigned char), sizeof(unsigned char)},
 	  		{sizeof(Elf32_Addr), sizeof(__ext_Elf32_Addr)},
 	  		{sizeof(Elf32_Dyn), sizeof(__ext_Elf32_Dyn)},
@@ -49,13 +49,13 @@ const size_t _elf_fmsize[2][EV_CURRENT - EV_NONE][ELF_T_NUM][2] =
 	  		/* XXX: check Solaris values */
 	  		{0, 0},			/* Elf32_Verdef/Verdaux size varies */
 	  		{0, 0},			/* Elf32_Verneed/Vernaux size varies */
-	  },
+		},
 	},
 #if __LIBELF64
 	/* ELFCLASS64 */
 	{
 	 	/* version 1 */
-	 	{
+	 	{		/* mem size */			/* file size */
 	  		{sizeof(unsigned char), sizeof(unsigned char)},
 	  		{sizeof(Elf64_Addr), sizeof(__ext_Elf64_Addr)},
 	  		{sizeof(Elf64_Dyn), sizeof(__ext_Elf64_Dyn)},
@@ -74,7 +74,7 @@ const size_t _elf_fmsize[2][EV_CURRENT - EV_NONE][ELF_T_NUM][2] =
 	  		/* XXX: check Solaris values */
 	  		{0, 0},			/* Elf64_Verdef/Verdaux size varies */
 			{0, 0},			/* Elf64_Verneed/Vernaux size varies */
-	  },
+	  	},
 	},
 #endif				/* __LIBELF64 */
 };

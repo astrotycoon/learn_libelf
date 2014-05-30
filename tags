@@ -1544,7 +1544,7 @@ e_arhdr	lib/private.h	/^	Elf_Arhdr *e_arhdr;	\/* archive member header or NULL *
 e_arhdr	lib/test.cpp	/^	Elf_Arhdr *e_arhdr;$/;"	m	struct:Elf	file:
 e_base	lib/private.h	/^	size_t e_base;		\/* 0 if not an archive member *\/$/;"	m	struct:Elf
 e_base	lib/test.cpp	/^	size_t e_base;$/;"	m	struct:Elf	file:
-e_class	lib/private.h	/^	unsigned e_class;	\/* ELF class *\/$/;"	m	struct:Elf
+e_class	lib/private.h	/^	unsigned e_class;	\/* ELF class *\/											\/* 文件类别 -- 是32位的还是64位的 *\/$/;"	m	struct:Elf
 e_class	lib/test.cpp	/^	unsigned e_class;$/;"	m	struct:Elf	file:
 e_cooked	lib/private.h	/^	unsigned e_cooked:1;	\/* e_data was modified *\/$/;"	m	struct:Elf
 e_cooked	lib/test.cpp	/^	unsigned e_cooked:1;$/;"	m	struct:Elf	file:
@@ -1554,7 +1554,7 @@ e_data	lib/private.h	/^	char *e_data;		\/* file\/member data *\/$/;"	m	struct:El
 e_data	lib/test.cpp	/^	char *e_data;$/;"	m	struct:Elf	file:
 e_disabled	lib/private.h	/^	unsigned e_disabled:1;	\/* e_fd has been disabled *\/$/;"	m	struct:Elf
 e_disabled	lib/test.cpp	/^	unsigned e_disabled:1;$/;"	m	struct:Elf	file:
-e_dsize	lib/private.h	/^	size_t e_dsize;		\/* size of memory image *\/$/;"	m	struct:Elf
+e_dsize	lib/private.h	/^	size_t e_dsize;		\/* size of memory image *\/								\/* ELF内存大小 *\/$/;"	m	struct:Elf
 e_dsize	lib/test.cpp	/^	size_t e_dsize;$/;"	m	struct:Elf	file:
 e_ehdr	lib/private.h	/^	char *e_ehdr;		\/* ELF header *\/$/;"	m	struct:Elf
 e_ehdr	lib/test.cpp	/^	char *e_ehdr;$/;"	m	struct:Elf	file:
@@ -1570,7 +1570,7 @@ e_ehsize	lib/test.cpp	/^	__ext_Elf32_Half e_ehsize;$/;"	m	struct:__anon72	file:
 e_ehsize	lib/test.cpp	/^	__ext_Elf64_Half e_ehsize;$/;"	m	struct:__anon73	file:
 e_elf_flags	lib/private.h	/^	unsigned e_elf_flags;	\/* elf flags (ELF_F_*) *\/$/;"	m	struct:Elf
 e_elf_flags	lib/test.cpp	/^	unsigned e_elf_flags;$/;"	m	struct:Elf	file:
-e_encoding	lib/private.h	/^	unsigned e_encoding;	\/* ELF data encoding *\/$/;"	m	struct:Elf
+e_encoding	lib/private.h	/^	unsigned e_encoding;	\/* ELF data encoding *\/								\/* 数据编码格式 -- 大小端 *\/$/;"	m	struct:Elf
 e_encoding	lib/test.cpp	/^	unsigned e_encoding;$/;"	m	struct:Elf	file:
 e_entry	lib/elf_repl.h	/^		Elf32_Addr e_entry;$/;"	m	struct:__anon126
 e_entry	lib/elf_repl.h	/^		Elf64_Addr e_entry;$/;"	m	struct:__anon127
@@ -1600,7 +1600,7 @@ e_ident	lib/test.cpp	/^	unsigned char e_ident[(16)];$/;"	m	struct:__anon22	file:
 e_ident	lib/test.cpp	/^	unsigned char e_ident[(16)];$/;"	m	struct:__anon23	file:
 e_ident	lib/test.cpp	/^	unsigned char e_ident[(16)];$/;"	m	struct:__anon72	file:
 e_ident	lib/test.cpp	/^	unsigned char e_ident[(16)];$/;"	m	struct:__anon73	file:
-e_idlen	lib/private.h	/^	size_t e_idlen;		\/* identifier size *\/$/;"	m	struct:Elf
+e_idlen	lib/private.h	/^	size_t e_idlen;		\/* identifier size *\/									\/* EI_NIDENT -- 16 bytes *\/$/;"	m	struct:Elf
 e_idlen	lib/test.cpp	/^	size_t e_idlen;$/;"	m	struct:Elf	file:
 e_kind	lib/private.h	/^	Elf_Kind e_kind;	\/* kind of file *\/$/;"	m	struct:Elf
 e_kind	lib/test.cpp	/^	Elf_Kind e_kind;$/;"	m	struct:Elf	file:
@@ -1696,7 +1696,7 @@ e_shstrndx	lib/test.cpp	/^	Elf32_Half e_shstrndx;$/;"	m	struct:__anon22	file:
 e_shstrndx	lib/test.cpp	/^	Elf64_Half e_shstrndx;$/;"	m	struct:__anon23	file:
 e_shstrndx	lib/test.cpp	/^	__ext_Elf32_Half e_shstrndx;$/;"	m	struct:__anon72	file:
 e_shstrndx	lib/test.cpp	/^	__ext_Elf64_Half e_shstrndx;$/;"	m	struct:__anon73	file:
-e_size	lib/private.h	/^	size_t e_size;		\/* file\/member size *\/$/;"	m	struct:Elf
+e_size	lib/private.h	/^	size_t e_size;		\/* file\/member size *\/									\/* ELF文件大小 *\/$/;"	m	struct:Elf
 e_size	lib/test.cpp	/^	size_t e_size;$/;"	m	struct:Elf	file:
 e_strlen	lib/private.h	/^	size_t e_strlen;	\/* length of archive string table *\/$/;"	m	struct:Elf
 e_strlen	lib/test.cpp	/^	size_t e_strlen;$/;"	m	struct:Elf	file:
@@ -1720,7 +1720,7 @@ e_version	lib/elf_repl.h	/^		Elf32_Word e_version;$/;"	m	struct:__anon126
 e_version	lib/elf_repl.h	/^		Elf64_Word e_version;$/;"	m	struct:__anon127
 e_version	lib/ext_types.h	/^		__ext_Elf32_Word e_version;$/;"	m	struct:__anon100
 e_version	lib/ext_types.h	/^		__ext_Elf64_Word e_version;$/;"	m	struct:__anon101
-e_version	lib/private.h	/^	unsigned e_version;	\/* ELF version *\/$/;"	m	struct:Elf
+e_version	lib/private.h	/^	unsigned e_version;	\/* ELF version *\/										\/* ELF目前版本 *\/$/;"	m	struct:Elf
 e_version	lib/test.cpp	/^	Elf32_Word e_version;$/;"	m	struct:__anon22	file:
 e_version	lib/test.cpp	/^	Elf64_Word e_version;$/;"	m	struct:__anon23	file:
 e_version	lib/test.cpp	/^	__ext_Elf32_Word e_version;$/;"	m	struct:__anon72	file:

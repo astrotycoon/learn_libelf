@@ -70,11 +70,17 @@ Elf_Type _elf_scn_type(unsigned t)
  */
 #define overflow(a,b,t)	(sizeof(a) < sizeof(t) && (t)(a) != (b))
 
-#define truncerr(t) ((t)==ELF_T_EHDR?ERROR_TRUNC_EHDR:	\
-		    ((t)==ELF_T_PHDR?ERROR_TRUNC_PHDR:	\
+/* 如果类型t为ELF_T_EHDR，那么错误类型为ERROR_TRUNC_EHDR */
+/* 如果类型t为ELF_T_PHDR，那么错误类型为ERROR_TRUNC_PHDR */
+/* 都不是的话，那么错误类型为ERROR_INTERNAL */
+#define truncerr(t) ((t) == ELF_T_EHDR ? ERROR_TRUNC_EHDR:	\
+		    ((t) == ELF_T_PHDR ? ERROR_TRUNC_PHDR:	\
 		    ERROR_INTERNAL))
-#define memerr(t)   ((t)==ELF_T_EHDR?ERROR_MEM_EHDR:	\
-		    ((t)==ELF_T_PHDR?ERROR_MEM_PHDR:	\
+/* 如果类型t为ELF_T_EHDR，那么错误类型为ERROR_MEM_EHDR */
+/* 如果类型t为ELF_T_PHDR，那么错误类型为ERROR_MEM_PHDR */
+/* 都不是的话，那么错误类型为ERROR_INTERNAL */
+#define memerr(t)   ((t) == ELF_T_EHDR ?ERROR_MEM_EHDR:	\
+		    ((t) == ELF_T_PHDR ? ERROR_MEM_PHDR:	\
 		    ERROR_INTERNAL))
 
 Elf_Data *_elf_xlatetom(const Elf * elf, Elf_Data * dst, const Elf_Data * src)
@@ -93,6 +99,7 @@ Elf_Data *_elf_xlatetom(const Elf * elf, Elf_Data * dst, const Elf_Data * src)
 
 /* 本函数的目的: 将elf指向的ELF文件的类型为type，偏移为off的文本部分以内存的形式拷贝到buf，如果buf为NULL，则
   动态申请 */
+/* 该文件的文本形式已经mmap到内存，但依然是文本形式 */
 static char *_elf_item(void *buf, Elf * elf, Elf_Type type, size_t off)
 {
 	Elf_Data src, dst;	/* src-->file  dst->memory */
@@ -105,7 +112,7 @@ static char *_elf_item(void *buf, Elf * elf, Elf_Type type, size_t off)
 
 	src.d_type = type;					
 	src.d_version = elf->e_version;		/* src的version赋值为传递进来的elf->e_version*/
-	src.d_size = _fsize(elf->e_class, src.d_version, type);
+	src.d_size = _fsize(elf->e_class, src.d_version, type);	// _fsize --> 文件形式大小
 	elf_assert(src.d_size);
 	if ((elf->e_size - off) < src.d_size) {
 		seterr(truncerr(type));
@@ -113,7 +120,7 @@ static char *_elf_item(void *buf, Elf * elf, Elf_Type type, size_t off)
 	}
 
 	dst.d_version = _elf_version;		/* dst的version赋值为当前的_elf_version, 它有可能与elf->e_version是不同的 */
-	dst.d_size = _msize(elf->e_class, dst.d_version, type);
+	dst.d_size = _msize(elf->e_class, dst.d_version, type);	// _msize --> 内存形式大小
 	elf_assert(dst.d_size);
 
 	if (!(dst.d_buf = buf) && !(dst.d_buf = malloc(dst.d_size))) {	/* 如果传递进来的buf是NULL，则为dst.d_buf动态申请内存空间 */

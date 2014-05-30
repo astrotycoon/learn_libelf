@@ -24,14 +24,16 @@ static const char rcsid[] =
     "@(#) $Id: getident.c,v 1.7 2008/05/23 08:15:34 michael Exp $";
 #endif				/* lint */
 
+/* 参数: ptr用于获取ident的长度, 如果为NULL，则表示不需要获取ident的长度 */
+/* 返回值: 返回ehdr的首地址 */
 char *elf_getident(Elf * elf, size_t * ptr)
 {
 	size_t tmp;
 
-	if (!ptr) {
+	if (!ptr) {	// 如果参数ptr的值为NULL, 则使其指向ptr，避免后面的赋值而引起段错误 (*ptr = elf->e_idlen)
 		ptr = &tmp;
 	}
-	if (!elf) {
+	if (!elf) {	// 如果参数elf为NULL, 
 		*ptr = 0;
 		return NULL;
 	}
