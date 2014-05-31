@@ -1943,7 +1943,7 @@ max	lib/update.c	42;"	d	file:
 max	lib/update.c	43;"	d	file:
 memcmp	lib/private.h	75;"	d
 memcpy	lib/private.h	78;"	d
-memerr	lib/cook.c	76;"	d	file:
+memerr	lib/cook.c	82;"	d	file:
 memmove	lib/private.h	81;"	d
 memset	lib/private.h	85;"	d
 mode_t	lib/test.cpp	/^typedef __mode_t mode_t;$/;"	t	file:
@@ -2431,7 +2431,7 @@ translator_suffix	lib/verdef.h	125;"	d
 translator_suffix	lib/verdef.h	76;"	d
 translator_suffix	lib/verneed.h	129;"	d
 translator_suffix	lib/verneed.h	78;"	d
-truncerr	lib/cook.c	73;"	d	file:
+truncerr	lib/cook.c	76;"	d	file:
 tv_nsec	lib/test.cpp	/^	long int tv_nsec;$/;"	m	struct:timespec	file:
 tv_sec	lib/test.cpp	/^	__time_t tv_sec;$/;"	m	struct:timespec	file:
 tv_sec	lib/test.cpp	/^	__time_t tv_sec;$/;"	m	struct:timeval	file:

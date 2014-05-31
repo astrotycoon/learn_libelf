@@ -376,6 +376,9 @@ _elf32_xltsize(const Elf_Data * src, unsigned dv, unsigned encode, int tof)
 /*
  * direction-independent translation
  */
+/* tof: 0 -- 文件表示形式 -> 内存表示形式 
+ *      1 -- 内存表示形式 -> 文件表示形式    
+*/
 static Elf_Data *elf32_xlate(Elf_Data * dst, const Elf_Data * src,
 			     unsigned encode, int tof)
 {
@@ -439,11 +442,11 @@ static Elf_Data *elf32_xlate(Elf_Data * dst, const Elf_Data * src,
 /* 将不同的数据结构由32位类文件表示形式转换为内存表示形式 */
 Elf_Data *elf32_xlatetom(Elf_Data * dst, const Elf_Data * src, unsigned encode)
 {
-	return elf32_xlate(dst, src, encode, 0);
+	return elf32_xlate(dst, src, encode, 0);	/* 0 -- 文件表示形式 -> 内存表示形式 */
 }
 
 /* 将不同的数据结构由内存表示形式转换为32位类文件表示形式 */
 Elf_Data *elf32_xlatetof(Elf_Data * dst, const Elf_Data * src, unsigned encode)
 {
-	return elf32_xlate(dst, src, encode, 1);
+	return elf32_xlate(dst, src, encode, 1);	/* 1 -- 内存表示形式 -> 文件表示形式 */
 }
