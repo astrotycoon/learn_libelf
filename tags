@@ -2419,7 +2419,7 @@ top_srcdir	lib/Makefile	/^top_srcdir = ..$/;"	m
 top_srcdir	po/Makefile	/^top_srcdir = ..$/;"	m
 topdir	lib/Makefile	/^topdir = ..$/;"	m
 topdir	po/Makefile	/^topdir = ..$/;"	m
-translator	lib/32.xlatetof.c	333;"	d	file:
+translator	lib/32.xlatetof.c	342;"	d	file:
 translator	lib/64.xlatetof.c	353;"	d	file:
 translator	lib/verdef.h	/^translator(verdef, L11) (unsigned char *dst, const unsigned char *src,$/;"	f
 translator	lib/verdef.h	/^translator(verdef, M11) (unsigned char *dst, const unsigned char *src,$/;"	f

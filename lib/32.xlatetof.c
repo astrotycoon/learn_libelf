@@ -242,6 +242,15 @@ array_copy(unsigned char *dst, size_t dlen, const unsigned char *src,
 /*
  * instantiate copy functions
  */
+#if 0
+#define copy_type_e(name, e, type, copy)							\
+    copy_type_e_io(name, e, tom, Cat2(__ext_, type), type, copy)	\
+    copy_type_e_io(name, e, tof, type, Cat2(__ext_, type), copy)
+
+#define copy_type(name, version, type, copy)			\
+    copy_type_e(Cat3(name, L, version), L, type, copy)	\
+    copy_type_e(Cat3(name, M, version), M, type, copy)
+#endif
 copy_type(addr_32, 	_, 	Elf32_Addr, 	copy_addr_11)
 copy_type(half_32, 	_, 	Elf32_Half, 	copy_half_11)
 copy_type(off_32, 	_, 	Elf32_Off, 		copy_off_11)
@@ -433,6 +442,7 @@ static Elf_Data *elf32_xlate(Elf_Data * dst, const Elf_Data * src,
 	}
 	dst->d_size = dsize;
 	dst->d_type = type;
+
 	return dst;
 }
 

@@ -261,6 +261,7 @@ static int _elf_cook_shdr(Elf * elf)
 		seterr(ERROR_UNIMPLEMENTED);
 		return 0;
 	}
+
 	if (off) {
 		struct tmp {
 			Elf_Scn scn;
@@ -288,6 +289,7 @@ static int _elf_cook_shdr(Elf * elf)
 			seterr(ERROR_EHDR_SHENTSIZE);
 			return 0;
 		}
+
 		dst.d_version = EV_CURRENT;
 
 		if (num == 0) {
@@ -346,6 +348,7 @@ static int _elf_cook_shdr(Elf * elf)
 			seterr(ERROR_MEM_SCN);
 			return 0;
 		}
+
 		for (scn = NULL, i = num; i-- > 0;) {
 			head[i].scn = _elf_scn_init;
 			head[i].data = _elf_data_init;
