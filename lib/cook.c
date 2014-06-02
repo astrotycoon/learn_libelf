@@ -86,7 +86,7 @@ Elf_Type _elf_scn_type(unsigned t)
 Elf_Data *_elf_xlatetom(const Elf * elf, Elf_Data * dst, const Elf_Data * src)
 {
 	if (elf->e_class == ELFCLASS32) {
-		return elf32_xlatetom(dst, src, elf->e_encoding);
+		return elf32_xlatetom(dst, src, elf->e_encoding);	/* 在两种表现形式转化时是需要考虑编码方式的 */
 	}
 #if __LIBELF64
 	else if (elf->e_class == ELFCLASS64) {
@@ -136,8 +136,9 @@ static char *_elf_item(void *buf, Elf * elf, Elf_Type type, size_t off)
 	}
 
 	if (_elf_xlatetom(elf, &dst, &src)) {	/* 将src指向的ELF Header(文件表现形式) 转换为 dst指向的内存区域(内存表现形式) */
-		return (char *)dst.d_buf;  	/* 在这里返回的话，在哪释放呢 */
+		return (char *)dst.d_buf;  	/* 在这里返回的话，在哪释放呢 */  /* --> 在elf_end函数中_elf_free(elf->e_ehdr)*/
 	}
+	/* 只有当_elf_xlatetom函数返回NULL时才会执行到这里 */
 	if (dst.d_buf != buf) {
 		free(dst.d_buf);
 	}
@@ -364,16 +365,17 @@ static int _elf_cook_shdr(Elf * elf)
 			} else {
 				src.d_buf = elf->e_data + off + i * entsz;
 			}
+
 			dst.d_buf = &scn->s_uhdr;
 			dst.d_size = sizeof(scn->s_uhdr);
+
 			if (!_elf_xlatetom(elf, &dst, &src)) {
 				elf->e_scn_n = NULL;
 				free(head);
 				return 0;
 			}
-			elf_assert(dst.d_size ==
-				   _msize(elf->e_class, EV_CURRENT,
-					  ELF_T_SHDR));
+
+			elf_assert(dst.d_size == _msize(elf->e_class, EV_CURRENT, ELF_T_SHDR));
 			elf_assert(dst.d_type == ELF_T_SHDR);
 
 			scn->s_elf = elf;

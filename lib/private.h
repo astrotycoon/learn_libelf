@@ -380,6 +380,17 @@ extern const size_t _elf_fmsize[2][EV_CURRENT - EV_NONE][ELF_T_NUM][2];
 /*
  * Access macros for _elf_fmsize[]
  */
+/*
+ * 首先，_fsize和_msize名字的不用就决定了最后一个参数的不同(1和0)
+ * t代表type，我们知道这里有很多类型，所以每种类型都分 文件表现形式大小 和 内存表现形式大小
+ * v肯定是version了，因为在每个版本下，每种类型的的定义也许有所区别，当然目前就只有一个版本
+ * c代表的是class，考虑的是不同的体系结构（这里不需要考虑不同的编码方式，因为尽管编码方式不同，大小还是相同的），
+ * 32位和64位大小下，每种类型的大小肯定是不同的
+ *（但是在转换两种表现形式时，是需要考虑编码方式的，切记！） 
+ *
+ * 所以_elf_fmsize[2][EV_CURRENT - EV_NONE][ELF_T_NUM][2]:
+ * 在32bit或者64bit两种平台下，每个版本中（目前就一个版本），每个类型的 文件表现形式大小 和 内存表现形式大小 
+ */
 #define _fmsize(c, v, t, w)	\
 	(_elf_fmsize[(c) - ELFCLASS32][(v) - EV_NONE - 1][(t) - ELF_T_BYTE][(w)])
 #define _fsize(c, v, t)		_fmsize((c), (v), (t), 1)

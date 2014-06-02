@@ -264,11 +264,28 @@ copy_type(rel_32, 	11, Elf32_Rel, 		copy_rel_11)
 copy_type(shdr_32, 	11, Elf32_Shdr, 	copy_shdr_11)
 copy_type(sym_32, 	11, Elf32_Sym, 		copy_sym_11)
 
-typedef size_t(*xlator) (unsigned char *, const unsigned char *, size_t);
+/*
+ *	typedef size_t (*xlator)(unsigned char *dst, const unsigned char *src, size_t);
+ *  src --> dst
+ *
+ * 	typedef xlator xltab[ELF_T_NUM][2];
+ *  这种用法之前也遇到过: typedef struct __jmp_buf_tag jmp_buf[1]; --> 程序中出现jmp_buf，其实是一个指针 
+ *  说明: 首先这里存在ELF_T_NUM中类型，然后每种类型都应该有 文本表现形式 <------> 内存表现形式 两种转换形式
+ */
+typedef size_t (*xlator)(unsigned char *, const unsigned char *, size_t);
 typedef xlator xltab[ELF_T_NUM][2];
 
 /*
  * translation table (32-bit, version 1 -> version 1)
+ */
+/*
+ * L --> LSB little-endian      M --> MSB big-endian
+ * 11 --> 代表的是版本1 转换成 版本1
+ * 
+ * 在xltab的基础上，还有针对编码方式（大小端）做去区分，因为不同的编码方式，决定了转换的过程是不同的
+ * xlate32_11[2] --> 2 只的就是大小端两种编码方式
+ * 
+ * 至于这里为什么不针对不同的体系结构，是因为作者将目前的32bit和64bit用文件的形式分开了(32.xlatetof.c 和 64.xlatetof.c)
  */
 #if PIC
 static xltab

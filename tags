@@ -158,19 +158,19 @@ EI_OSABI	lib/elf_repl.h	125;"	d
 EI_PAD	lib/elf_repl.h	127;"	d
 EI_VERSION	lib/elf_repl.h	124;"	d
 ELF32_FSZ_ADDR	lib/elf_repl.h	42;"	d
-ELF32_FSZ_ADDR	lib/private.h	413;"	d
+ELF32_FSZ_ADDR	lib/private.h	424;"	d
 ELF32_FSZ_ADDR	lib/sys_elf.h	85;"	d
 ELF32_FSZ_HALF	lib/elf_repl.h	43;"	d
-ELF32_FSZ_HALF	lib/private.h	414;"	d
+ELF32_FSZ_HALF	lib/private.h	425;"	d
 ELF32_FSZ_HALF	lib/sys_elf.h	86;"	d
 ELF32_FSZ_OFF	lib/elf_repl.h	44;"	d
-ELF32_FSZ_OFF	lib/private.h	415;"	d
+ELF32_FSZ_OFF	lib/private.h	426;"	d
 ELF32_FSZ_OFF	lib/sys_elf.h	87;"	d
 ELF32_FSZ_SWORD	lib/elf_repl.h	45;"	d
-ELF32_FSZ_SWORD	lib/private.h	416;"	d
+ELF32_FSZ_SWORD	lib/private.h	427;"	d
 ELF32_FSZ_SWORD	lib/sys_elf.h	88;"	d
 ELF32_FSZ_WORD	lib/elf_repl.h	46;"	d
-ELF32_FSZ_WORD	lib/private.h	417;"	d
+ELF32_FSZ_WORD	lib/private.h	428;"	d
 ELF32_FSZ_WORD	lib/sys_elf.h	89;"	d
 ELF32_M_INFO	lib/elf_repl.h	955;"	d
 ELF32_M_SIZE	lib/elf_repl.h	954;"	d
@@ -189,25 +189,25 @@ ELF32_ST_INFO	lib/elf_repl.h	457;"	d
 ELF32_ST_TYPE	lib/elf_repl.h	456;"	d
 ELF32_ST_VISIBILITY	lib/elf_repl.h	496;"	d
 ELF64_FSZ_ADDR	lib/elf_repl.h	58;"	d
-ELF64_FSZ_ADDR	lib/private.h	420;"	d
+ELF64_FSZ_ADDR	lib/private.h	431;"	d
 ELF64_FSZ_ADDR	lib/sys_elf.h	99;"	d
 ELF64_FSZ_HALF	lib/elf_repl.h	59;"	d
-ELF64_FSZ_HALF	lib/private.h	421;"	d
+ELF64_FSZ_HALF	lib/private.h	432;"	d
 ELF64_FSZ_HALF	lib/sys_elf.h	100;"	d
 ELF64_FSZ_OFF	lib/elf_repl.h	60;"	d
-ELF64_FSZ_OFF	lib/private.h	422;"	d
+ELF64_FSZ_OFF	lib/private.h	433;"	d
 ELF64_FSZ_OFF	lib/sys_elf.h	101;"	d
 ELF64_FSZ_SWORD	lib/elf_repl.h	61;"	d
-ELF64_FSZ_SWORD	lib/private.h	423;"	d
+ELF64_FSZ_SWORD	lib/private.h	434;"	d
 ELF64_FSZ_SWORD	lib/sys_elf.h	102;"	d
 ELF64_FSZ_SXWORD	lib/elf_repl.h	63;"	d
-ELF64_FSZ_SXWORD	lib/private.h	424;"	d
+ELF64_FSZ_SXWORD	lib/private.h	435;"	d
 ELF64_FSZ_SXWORD	lib/sys_elf.h	104;"	d
 ELF64_FSZ_WORD	lib/elf_repl.h	62;"	d
-ELF64_FSZ_WORD	lib/private.h	425;"	d
+ELF64_FSZ_WORD	lib/private.h	436;"	d
 ELF64_FSZ_WORD	lib/sys_elf.h	103;"	d
 ELF64_FSZ_XWORD	lib/elf_repl.h	64;"	d
-ELF64_FSZ_XWORD	lib/private.h	426;"	d
+ELF64_FSZ_XWORD	lib/private.h	437;"	d
 ELF64_FSZ_XWORD	lib/sys_elf.h	105;"	d
 ELF64_M_INFO	lib/elf_repl.h	959;"	d
 ELF64_M_SIZE	lib/elf_repl.h	958;"	d
@@ -751,8 +751,8 @@ LD	lib/Makefile	/^LD = \/usr\/bin\/ld$/;"	m
 LDFLAGS	Makefile	/^LDFLAGS = $/;"	m
 LDFLAGS	lib/Makefile	/^LDFLAGS = $/;"	m
 LDFLAGS	po/Makefile	/^LDFLAGS = $/;"	m
-LIBELF_FAILURE	lib/private.h	462;"	d
-LIBELF_SUCCESS	lib/private.h	461;"	d
+LIBELF_FAILURE	lib/private.h	473;"	d
+LIBELF_SUCCESS	lib/private.h	472;"	d
 LIBINTL	po/Makefile	/^LIBINTL = $/;"	m
 LIBOBJS	lib/Makefile	/^LIBOBJS = $/;"	m
 LIBS	Makefile	/^LIBS = $/;"	m
@@ -796,7 +796,7 @@ PF_W	lib/elf_repl.h	640;"	d
 PF_X	lib/elf_repl.h	639;"	d
 PICFLAGS	lib/Makefile	/^PICFLAGS = -fPIC -DPIC$/;"	m
 PN_XNUM	lib/elf_repl.h	605;"	d
-PN_XNUM	lib/private.h	441;"	d
+PN_XNUM	lib/private.h	452;"	d
 POFILES	po/Makefile	/^POFILES =  de.po$/;"	m
 POTFILES	po/Makefile	/^POTFILES = $(top_srcdir)\/lib\/errors.h$/;"	m
 PRIME	lib/nlist.c	46;"	d	file:
@@ -867,7 +867,7 @@ SHN_LOPROC	lib/elf_repl.h	329;"	d
 SHN_LORESERVE	lib/elf_repl.h	328;"	d
 SHN_UNDEF	lib/elf_repl.h	327;"	d
 SHN_XINDEX	lib/elf_repl.h	335;"	d
-SHN_XINDEX	lib/private.h	437;"	d
+SHN_XINDEX	lib/private.h	448;"	d
 SHT_AMD64_UNWIND	lib/elf_repl.h	385;"	d
 SHT_DYNAMIC	lib/elf_repl.h	347;"	d
 SHT_DYNSYM	lib/elf_repl.h	352;"	d
@@ -911,7 +911,7 @@ SHT_SUNW_verneed	lib/elf_repl.h	380;"	d
 SHT_SUNW_versym	lib/elf_repl.h	381;"	d
 SHT_SYMTAB	lib/elf_repl.h	343;"	d
 SHT_SYMTAB_SHNDX	lib/elf_repl.h	357;"	d
-SHT_SYMTAB_SHNDX	lib/private.h	433;"	d
+SHT_SYMTAB_SHNDX	lib/private.h	444;"	d
 SIZEOF_INT	config.h	92;"	d
 SIZEOF_LONG	config.h	95;"	d
 SIZEOF_LONG_LONG	config.h	98;"	d
@@ -1047,8 +1047,8 @@ __elf_assert	lib/assert.c	/^void __elf_assert(const char *file, unsigned line, c
 __encoding	lib/update.c	/^static const unsigned short __encoding = ELFDATA2LSB + (ELFDATA2MSB << 8);$/;"	v	file:
 __err__	lib/errmsg.c	48;"	d	file:
 __err__	lib/errmsg.c	50;"	d	file:
-__err__	lib/private.h	400;"	d
-__err__	lib/private.h	402;"	d
+__err__	lib/private.h	411;"	d
+__err__	lib/private.h	413;"	d
 __err__	po/gmo2msg.c	33;"	d	file:
 __err__	po/gmo2msg.c	35;"	d	file:
 __ext_Elf32_Addr	lib/ext_types.h	/^	typedef unsigned char __ext_Elf32_Addr[ELF32_FSZ_ADDR];$/;"	t
@@ -1316,12 +1316,12 @@ _elf_update_pointers	lib/update.c	/^static int _elf_update_pointers(Elf * elf, c
 _elf_update_shnum	lib/newscn.c	/^int _elf_update_shnum(Elf * elf, size_t shnum)$/;"	f
 _elf_version	lib/data.c	/^unsigned _elf_version = EV_NONE;$/;"	v
 _elf_xlatetom	lib/cook.c	/^Elf_Data *_elf_xlatetom(const Elf * elf, Elf_Data * dst, const Elf_Data * src)$/;"	f
-_fmsize	lib/private.h	383;"	d
-_fsize	lib/private.h	385;"	d
+_fmsize	lib/private.h	394;"	d
+_fsize	lib/private.h	396;"	d
 _libelf_cat	lib/errmsg.c	/^static nl_catd _libelf_cat = (nl_catd) 0;$/;"	v	file:
 _makescn	lib/newscn.c	/^static Elf_Scn *_makescn(Elf * elf, size_t index)$/;"	f	file:
 _messages	lib/errmsg.c	/^static const char *_messages[] = {$/;"	v	file:
-_msize	lib/private.h	386;"	d
+_msize	lib/private.h	397;"	d
 _newindex	lib/opt.delscn.c	/^static size_t _newindex(size_t old, size_t index)$/;"	f	file:
 a_type	lib/test.cpp	/^	uint32_t a_type;$/;"	m	struct:__anon48	file:
 a_type	lib/test.cpp	/^	uint64_t a_type;$/;"	m	struct:__anon50	file:
@@ -1755,9 +1755,9 @@ elf64_newphdr	lib/32.newphdr.c	/^Elf64_Phdr *elf64_newphdr(Elf * elf, size_t cou
 elf64_xlate	lib/64.xlatetof.c	/^static Elf_Data *elf64_xlate(Elf_Data * dst, const Elf_Data * src,$/;"	f	file:
 elf64_xlatetof	lib/64.xlatetof.c	/^Elf_Data *elf64_xlatetof(Elf_Data * dst, const Elf_Data * src, unsigned encode)$/;"	f
 elf64_xlatetom	lib/64.xlatetof.c	/^Elf_Data *elf64_xlatetom(Elf_Data * dst, const Elf_Data * src, unsigned encode)$/;"	f
-elf_assert	lib/private.h	450;"	d
-elf_assert	lib/private.h	452;"	d
-elf_assert	lib/private.h	455;"	d
+elf_assert	lib/private.h	461;"	d
+elf_assert	lib/private.h	463;"	d
+elf_assert	lib/private.h	466;"	d
 elf_begin	lib/begin.c	/^Elf *elf_begin(int fd, Elf_Cmd cmd, Elf * ref)$/;"	f
 elf_cntl	lib/cntl.c	/^int elf_cntl(Elf * elf, Elf_Cmd cmd)$/;"	f
 elf_delscn	lib/opt.delscn.c	/^size_t elf_delscn(Elf * elf, Elf_Scn * scn)$/;"	f
@@ -2247,7 +2247,7 @@ seq_back	lib/32.xlatetof.c	57;"	d	file:
 seq_back	lib/64.xlatetof.c	59;"	d	file:
 seq_forw	lib/32.xlatetof.c	56;"	d	file:
 seq_forw	lib/64.xlatetof.c	58;"	d	file:
-seterr	lib/private.h	406;"	d
+seterr	lib/private.h	417;"	d
 sh_addr	lib/elf_repl.h	/^		Elf32_Addr sh_addr;$/;"	m	struct:__anon128
 sh_addr	lib/elf_repl.h	/^		Elf64_Addr sh_addr;$/;"	m	struct:__anon129
 sh_addr	lib/ext_types.h	/^		__ext_Elf32_Addr sh_addr;$/;"	m	struct:__anon102
@@ -2467,10 +2467,10 @@ uintmax_t	lib/test.cpp	/^__extension__ typedef unsigned long long int uintmax_t;
 uintptr_t	lib/test.cpp	/^typedef unsigned int uintptr_t;$/;"	t	file:
 ulong	lib/test.cpp	/^typedef unsigned long int ulong;$/;"	t	file:
 ushort	lib/test.cpp	/^typedef unsigned short int ushort;$/;"	t	file:
-valid_class	lib/private.h	391;"	d
-valid_encoding	lib/private.h	392;"	d
-valid_type	lib/private.h	394;"	d
-valid_version	lib/private.h	393;"	d
+valid_class	lib/private.h	402;"	d
+valid_encoding	lib/private.h	403;"	d
+valid_type	lib/private.h	405;"	d
+valid_version	lib/private.h	404;"	d
 vd_aux	lib/elf_repl.h	/^		Elf32_Word vd_aux;$/;"	m	struct:__anon146
 vd_aux	lib/elf_repl.h	/^		Elf64_Word vd_aux;$/;"	m	struct:__anon150
 vd_aux	lib/ext_types.h	/^		__ext_Elf32_Word vd_aux;$/;"	m	struct:__anon116
