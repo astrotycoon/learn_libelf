@@ -2419,7 +2419,7 @@ top_srcdir	lib/Makefile	/^top_srcdir = ..$/;"	m
 top_srcdir	po/Makefile	/^top_srcdir = ..$/;"	m
 topdir	lib/Makefile	/^topdir = ..$/;"	m
 topdir	po/Makefile	/^topdir = ..$/;"	m
-translator	lib/32.xlatetof.c	342;"	d	file:
+translator	lib/32.xlatetof.c	367;"	d	file:
 translator	lib/64.xlatetof.c	353;"	d	file:
 translator	lib/verdef.h	/^translator(verdef, L11) (unsigned char *dst, const unsigned char *src,$/;"	f
 translator	lib/verdef.h	/^translator(verdef, M11) (unsigned char *dst, const unsigned char *src,$/;"	f
@@ -2691,7 +2691,7 @@ xlate32_11	lib/32.xlatetof.c	/^xlate32_11[ \/* encoding *\/ ] = $/;"	v	file:
 xlate32_11	lib/test.cpp	/^static const xltab xlate32_11[] = {$/;"	v	file:
 xlate64	lib/64.xlatetof.c	/^ xlate64[EV_CURRENT - EV_NONE][EV_CURRENT - EV_NONE] = {$/;"	v	file:
 xlate64_11	lib/64.xlatetof.c	/^    xlate64_11[ \/*encoding *\/ ] = {$/;"	v	file:
-xlator	lib/32.xlatetof.c	/^typedef size_t(*xlator) (unsigned char *, const unsigned char *, size_t);$/;"	t	file:
+xlator	lib/32.xlatetof.c	/^typedef size_t (*xlator)(unsigned char *, const unsigned char *, size_t);$/;"	t	file:
 xlator	lib/64.xlatetof.c	/^typedef size_t(*xlator) (unsigned char *, const unsigned char *, size_t);$/;"	t	file:
 xlator	lib/test.cpp	/^typedef size_t(*xlator) (unsigned char *, const unsigned char *, size_t);$/;"	t	file:
 xlt3	lib/verdef.h	130;"	d

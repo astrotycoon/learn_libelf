@@ -271,6 +271,8 @@ copy_type(sym_32, 	11, Elf32_Sym, 		copy_sym_11)
  * 	typedef xlator xltab[ELF_T_NUM][2];
  *  这种用法之前也遇到过: typedef struct __jmp_buf_tag jmp_buf[1]; --> 程序中出现jmp_buf，其实是一个指针 
  *  说明: 首先这里存在ELF_T_NUM中类型，然后每种类型都应该有 文本表现形式 <------> 内存表现形式 两种转换形式
+ *  0 -- 文件表示形式 -> 内存表示形式 
+ *  1 -- 内存表示形式 -> 文件表示形式    
  */
 typedef size_t (*xlator)(unsigned char *, const unsigned char *, size_t);
 typedef xlator xltab[ELF_T_NUM][2];
@@ -278,12 +280,14 @@ typedef xlator xltab[ELF_T_NUM][2];
 /*
  * translation table (32-bit, version 1 -> version 1)
  */
-/*
+/* 要明确的一点是：每两个版本之间（包括同一版本之间）都存在一个转换表 下面的xlate32_11就是V1到V1之间的转换
+ * 之后的xltab只有一个xlate32_11是因为目前就只有一个版本，程序这样写，只处于通用性的考虑，以后要是出了新版本，
+ * 就可以往里面加新的转换表了 (考虑真周到啊)
  * L --> LSB little-endian      M --> MSB big-endian
  * 11 --> 代表的是版本1 转换成 版本1
  * 
  * 在xltab的基础上，还有针对编码方式（大小端）做去区分，因为不同的编码方式，决定了转换的过程是不同的
- * xlate32_11[2] --> 2 只的就是大小端两种编码方式
+ * xlate32_11[2] --> 2 指的就是大小端两种编码方式
  * 
  * 至于这里为什么不针对不同的体系结构，是因为作者将目前的32bit和64bit用文件的形式分开了(32.xlatetof.c 和 64.xlatetof.c)
  */
@@ -347,6 +351,10 @@ xlate32_11[ /* encoding */ ] =
 /*
  * main translation table (32-bit)
  */
+/*
+ * 目前xlate32的成员个数是由当前EV_CURRENT的值决定的，例如当前EV_CURRENT等于1，那么成员格式等于 1x1 = 1
+ * 如果将来出了新版本格式的ELF，那么EV_CURRENT等于2，那么成员格式就等译 2x2 = 4 了
+ */
 #if PIC
 static xltab *
 #else				/* PIC */
@@ -358,10 +366,10 @@ xlate32[EV_CURRENT - EV_NONE][EV_CURRENT - EV_NONE] = {
 
 #define translator(sv, dv, enc, type, d)	\
     (xlate32[(sv) - EV_NONE - 1]			\
-	    [(dv) - EV_NONE - 1]				\
-	    [(enc) - ELFDATA2LSB]				\
-	    [(type) - ELF_T_BYTE]				\
-	    [d])
+	    	[(dv) - EV_NONE - 1]			\
+	    	[(enc) - ELFDATA2LSB]			\
+	    	[(type) - ELF_T_BYTE]			\
+	    	[d])
 
 /*
  * destination buffer size
