@@ -261,7 +261,7 @@ array_copy(unsigned char *dst, size_t dlen, const unsigned char *src,
 /*
  * instantiate copy functions
  */
-copy_type(addr_64, _, Elf64_Addr, copy_addr_11)
+	copy_type(addr_64, _, Elf64_Addr, copy_addr_11)
     copy_type(half_64, _, Elf64_Half, copy_half_11)
     copy_type(off_64, _, Elf64_Off, copy_off_11)
     copy_type(sword_64, _, Elf64_Sword, copy_sword_11)

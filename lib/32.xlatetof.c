@@ -242,6 +242,12 @@ array_copy(unsigned char *dst, size_t dlen, const unsigned char *src,
 /*
  * instantiate copy functions
  */
+/*
+ * 宏copy_type的目的就是生成转换表xlate32_11中的各个函数的定义，这些函数的原型声明在private.h中 
+ * 之所有弄的有点复杂是因为：
+ * 	1. 每个类型的名称不一样，例如ehdr_32、phdr_32、shdr_32等
+ *  2. 每个类型的转换过程也是不一样的，所以必须都是独立的
+ */
 #if 0
 #define copy_type_e(name, e, type, copy)							\
     copy_type_e_io(name, e, tom, Cat2(__ext_, type), type, copy)	\
