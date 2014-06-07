@@ -59,6 +59,20 @@ static const char rcsid[] =
 /*
  * function instantiator
  */
+#define copy_type_e_io(ehdr_32L11, L, tom, __ext_Elf32_Ehdr, Elf32_Ehdr, copy_ehdr_11)
+static size_t ehdr_32L11_tom(unsigned char *dst, const unsigned char *src, size_t n)
+{
+	n /= sizeof(__ext_Elf32_Ehdr);
+	if (n && dst) {
+		const __ext_Elf32_Ehdr *from = (const __ext_Elf32_Ehdr *)src;
+		Elf32_Ehdr *to = (Elf32_Ehdr *)dst;
+		size_t i;
+
+		if ()
+	}
+
+	return n * sizeof(tto);
+}
 #define copy_type_e_io(name, e, io, tfrom, tto, copy)						\
 static size_t																\
 Cat3(name, _, io)(unsigned char *dst, const unsigned char *src, size_t n) 	\
@@ -250,15 +264,43 @@ array_copy(unsigned char *dst, size_t dlen, const unsigned char *src,
  *  2. 每个类型的转换过程也是不一样的，所以必须都是独立的
  */
 #if 0
+/*
+ *	copy_type_e_io: 这里的io指的就是怎么个转换方式   文本表现形式 <------> 内存表现形式 两种转换形式
+ *			name: 同宏copy_type_e
+ *			e: 代表的是编码方式，L --> 小端  M --> 大端	
+			io:	tom 文本表现形式 --> 内存表现形式		tof 内存表现形式 --> 文本表现形式
+			tfrom:
+			tto:	
+			copy:
+ *	说明:
+ *			宏copy_type_e_io利用name和io决定了最后的函数名称，而e/tfrom/tto/copy是这个函数需要的
+ *				其实这么多函数很相似，可是其中又有不同的地方，所以通过宏来传递参数，这样就大大减少了很多不必要的冗余代码
+ */
 #define copy_type_e_io(name, e, io, tfrom, tto, copy)						\
 
+/*	
+ *	copy_type_e:	
+ *				name: 这里的名字已经是可以反映出是什么体系结构和编码方式了，以及哪两个版本之间的转换，缺的就是不知道是什么转换，
+ *						这由宏copy_type_e_io来进一步完成
+ *				e:	代表的是编码方式，L --> 小端  M --> 大端
+ *				type: 同宏copy_type_e
+ *				copy: 同宏copy_type_e
+ *				
+ */
 #define copy_type_e(name, e, type, copy)							\
     copy_type_e_io(name, e, tom, Cat2(__ext_, type), type, copy)	\
     copy_type_e_io(name, e, tof, type, Cat2(__ext_, type), copy)
+
 /* 
  *  copy_type:
- *			name: 类型或者ELF文件中的结构，这里是32bit的，所以末尾加上32 
- *	宏copy_type会根据提供的name和version（有几个字节类型是没有版本号的，用_代替版本号），
+ *			name: ELF中出现的基本数据类型或者ELF文件中的基本数据结构，这里是32bit的，所以末尾加上32, 表明体系结构 
+ *			version: 这里的版本不是特指版本号，而是表示哪两个版本之间的转换，11代表的就是V1与V1之间的转换,
+ *						当然基本的数据类型在特定的体系结构下就不需要分版本号了，所有用'_'代替
+ *			type: ELF中定义的数据类型和数据结构,当然都是32bit下的数据类型和数据结构,
+ *					其实后续我们就会知道，定义的这些基本数据类型和基本数据结构都是内存表现形式，而加上__ext_后则是文本表现形式
+ *			copy: 每个基本数据类型或者基本数据结构具体转换过程的函数名（函数指针）
+ *	宏copy_type会根据提供的name和version，再依据编码方式生成宏copy_type_e需要的name，可以说这个name是基于体系机构和编码方式的
+ *  后续的宏copy_type_e会再依据是怎么个转换方式来来加上tom或者tof
  */
 #define copy_type(name, version, type, copy)			\
     copy_type_e(Cat3(name, L, version), L, type, copy)	\
@@ -299,7 +341,7 @@ typedef xlator xltab[ELF_T_NUM][2];
  * L --> LSB little-endian      M --> MSB big-endian
  * 11 --> 代表的是版本1 转换成 版本1
  * 
- * 在xltab的基础上，还有针对编码方式（大小端）做去区分，因为不同的编码方式，决定了转换的过程是不同的
+ * 在xltab的基础上，还需要针对编码方式（大小端）做出区分，因为不同的编码方式，决定了转换的过程是不同的
  * xlate32_11[2] --> 2 指的就是大小端两种编码方式
  * 
  * 至于这里为什么不针对不同的体系结构，是因为作者将目前的32bit和64bit用文件的形式分开了(32.xlatetof.c 和 64.xlatetof.c)
@@ -365,8 +407,10 @@ xlate32_11[ /* encoding */ ] =
  * main translation table (32-bit)
  */
 /*
- * 目前xlate32的成员个数是由当前EV_CURRENT的值决定的，例如当前EV_CURRENT等于1，那么成员格式等于 1x1 = 1
+ * 目前xlate32的成员个数是由当前EV_CURRENT的值决定的，例如当前EV_CURRENT等于1，那么成员个数等于 1x1 = 1
+ * xlate32_11表示当前版本1和版本1之间的转换 
  * 如果将来出了新版本格式的ELF，那么EV_CURRENT等于2，那么成员格式就等译 2x2 = 4 了
+ * 那么就会出现 xlate32_11/xlate32_12/xlate32_21/xlate32_22 表示32bit下相应版本间的转换
  */
 #if PIC
 static xltab *
@@ -458,6 +502,7 @@ static Elf_Data *elf32_xlate(Elf_Data * dst, const Elf_Data * src,
 		seterr(ERROR_UNKNOWN_TYPE);
 		return NULL;
 	}
+
 	op = translator(sv, dv, encode, type, tof);
 	if (!op) {
 		seterr(ERROR_UNKNOWN_TYPE);
