@@ -2415,17 +2415,17 @@ static size_t ehdr_32L11_tof(unsigned char *dst, const unsigned char *src, size_
 		} else {
 			for (i = 0; i < n; i++) {
 				array_copy(to->e_ident, sizeof(to->e_ident), from->e_ident, sizeof(from->e_ident));
-				((((char *)(to->e_type))[1] = ((unsigned int)(from->e_type) >> (8))), (((char *)(to->e_type))[0] =
-												       ((unsigned int)(from->e_type) >> (0))));
-				((((char *)(to->e_machine))[1] = ((unsigned int)(from->e_machine) >> (8))), (((char *)(to->e_machine))[0] =
-													     ((unsigned int)(from->
-															     e_machine) >> (0))));
-				((((char *)(to->e_version))[3] = ((unsigned int)(from->e_version) >> (24))), (((char *)(to->e_version))[2] =
-													      ((unsigned int)(from->
-															      e_version) >> (16))),
-				 (((char *)(to->e_version))[1] = ((unsigned int)(from->e_version) >> (8))), (((char *)(to->e_version))[0] =
-													     ((unsigned int)(from->
-															     e_version) >> (0))));
+				((((char *)(to->e_type))[1] = ((unsigned int)(from->e_type) >> (8))), 
+				 (((char *)(to->e_type))[0] = ((unsigned int)(from->e_type) >> (0))));
+
+				((((char *)(to->e_machine))[1] = ((unsigned int)(from->e_machine) >> (8))), 
+				 (((char *)(to->e_machine))[0] = ((unsigned int)(from->e_machine) >> (0))));
+
+				((((char *)(to->e_version))[3] = ((unsigned int)(from->e_version) >> (24))), 
+				 (((char *)(to->e_version))[2] = ((unsigned int)(from->e_version) >> (16))),
+				 (((char *)(to->e_version))[1] = ((unsigned int)(from->e_version) >> (8))), 
+				 (((char *)(to->e_version))[0] = ((unsigned int)(from->e_version) >> (0))));
+
 				((((char *)(to->e_entry))[3] = ((unsigned int)(from->e_entry) >> (24))), (((char *)(to->e_entry))[2] =
 													  ((unsigned int)(from->e_entry) >> (16))),
 				 (((char *)(to->e_entry))[1] = ((unsigned int)(from->e_entry) >> (8))), (((char *)(to->e_entry))[0] =

@@ -59,8 +59,9 @@ static const char rcsid[] =
 /*
  * function instantiator
  */
+#if 0
 #define copy_type_e_io(ehdr_32L11, L, tom, __ext_Elf32_Ehdr, Elf32_Ehdr, copy_ehdr_11)
-static size_t ehdr_32L11_tom(unsigned char *dst, const unsigned char *src, size_t n)
+static size_t xehdr_32L11_tom(unsigned char *dst, const unsigned char *src, size_t n)
 {
 	n /= sizeof(__ext_Elf32_Ehdr);
 	if (n && dst) {
@@ -68,11 +69,26 @@ static size_t ehdr_32L11_tom(unsigned char *dst, const unsigned char *src, size_
 		Elf32_Ehdr *to = (Elf32_Ehdr *)dst;
 		size_t i;
 
-		if ()
+		if (sizeof(__ext_Elf32_Ehdr) < sizeof(Elf32_Ehdr)) {
+			from += n;
+			to += n;
+			for (i = 0; i < n; i++) {
+				--from;
+				--to;
+				copy_ehdr_11(L, tom, seq_back);
+			}
+		}
+		else {
+			for (i = 0; i < n; i++) {
+				copy_ehdr_11(L, tom, seq_forw);
+				from++;
+				to++;
+			}
+		}
 	}
-
 	return n * sizeof(tto);
 }
+#endif
 #define copy_type_e_io(name, e, io, tfrom, tto, copy)						\
 static size_t																\
 Cat3(name, _, io)(unsigned char *dst, const unsigned char *src, size_t n) 	\
@@ -406,7 +422,7 @@ xlate32_11[ /* encoding */ ] =
 /*
  * main translation table (32-bit)
  */
-/*
+/* xlate32: xlate32是当前已有版本之间的转换表
  * 目前xlate32的成员个数是由当前EV_CURRENT的值决定的，例如当前EV_CURRENT等于1，那么成员个数等于 1x1 = 1
  * xlate32_11表示当前版本1和版本1之间的转换 
  * 如果将来出了新版本格式的ELF，那么EV_CURRENT等于2，那么成员格式就等译 2x2 = 4 了
@@ -421,6 +437,15 @@ xlate32[EV_CURRENT - EV_NONE][EV_CURRENT - EV_NONE] = {
 	{xlate32_11, },
 };
 
+/*	translator:
+ *			sv: 原版本号
+ *   		dv:	目的版本号
+ *			enc: 编码方式  0 -- little-endian  1 -- big-endian
+ *			type: 要转换的数据类型
+ *			d:	代表是何种转换
+ * 				0 -- 文件表示形式 -> 内存表示形式 
+ *      		1 -- 内存表示形式 -> 文件表示形式    
+ */
 #define translator(sv, dv, enc, type, d)	\
     (xlate32[(sv) - EV_NONE - 1]			\
 	    	[(dv) - EV_NONE - 1]			\
@@ -509,7 +534,7 @@ static Elf_Data *elf32_xlate(Elf_Data * dst, const Elf_Data * src,
 		return NULL;
 	}
 	dsize = (*op) (NULL, src->d_buf, src->d_size);
-	if (dsize == (size_t) - 1) {
+	if (dsize == (size_t)-1) {
 		return NULL;
 	}
 	if (dst->d_size < dsize) {
@@ -518,7 +543,7 @@ static Elf_Data *elf32_xlate(Elf_Data * dst, const Elf_Data * src,
 	}
 	if (dsize) {
 		tmp = (*op) (dst->d_buf, src->d_buf, src->d_size);
-		if (tmp == (size_t) - 1) {
+		if (tmp == (size_t)-1) {
 			return NULL;
 		}
 		elf_assert(tmp == dsize);
