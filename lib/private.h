@@ -225,14 +225,17 @@ struct Elf {
 /*
  * Section descriptor
  */
+/*
+ *	ELF文件中每个section对应一个Elf_Scn结构体，并且该结构体是链表形式，以便于通过一个循环遍历所有section
+ */
 struct Elf_Scn {
 	Elf_Scn *s_link;	/* pointer to next Elf_Scn */
-	Elf *s_elf;		/* pointer to elf descriptor */
+	Elf *s_elf;			/* pointer to elf descriptor */
 	size_t s_index;		/* number of this section */
 	unsigned s_scn_flags;	/* section flags (ELF_F_*) */
 	unsigned s_shdr_flags;	/* shdr flags (ELF_F_*) */
-	Scn_Data *s_data_1;	/* first data buffer */
-	Scn_Data *s_data_n;	/* last data buffer */
+	Scn_Data *s_data_1;		/* first data buffer */
+	Scn_Data *s_data_n;		/* last data buffer */
 	Scn_Data *s_rawdata;	/* raw data buffer */
 	/* data copied from shdr */
 	unsigned s_type;	/* section type */
@@ -268,7 +271,7 @@ struct Elf_Scn {
     /* s_offset */	0,\
     /* s_size */	0,\
     /* s_freeme */	0,\
-    /* s_uhdr */	{{0,}},\
+    /* s_uhdr 这里这个写法需要学习下 */	{{0,}},\
     /* s_magic */	SCN_MAGIC\
 }
 

@@ -151,9 +151,9 @@ static int _elf_cook_phdr(Elf * elf)
 	size_t num, off, entsz;
 
 	if (elf->e_class == ELFCLASS32) {
-		num = ((Elf32_Ehdr *) elf->e_ehdr)->e_phnum;
-		off = ((Elf32_Ehdr *) elf->e_ehdr)->e_phoff;
-		entsz = ((Elf32_Ehdr *) elf->e_ehdr)->e_phentsize;
+		num = ((Elf32_Ehdr *)elf->e_ehdr)->e_phnum;
+		off = ((Elf32_Ehdr *)elf->e_ehdr)->e_phoff;
+		entsz = ((Elf32_Ehdr *)elf->e_ehdr)->e_phentsize;
 	}
 #if __LIBELF64
 	else if (elf->e_class == ELFCLASS64) {
@@ -174,6 +174,7 @@ static int _elf_cook_phdr(Elf * elf)
 		seterr(ERROR_UNIMPLEMENTED);
 		return 0;
 	}
+
 	if (off) {
 		Elf_Scn *scn;
 		size_t size;
@@ -215,15 +216,16 @@ static int _elf_cook_phdr(Elf * elf)
 			seterr(ERROR_EHDR_PHENTSIZE);
 			return 0;
 		}
+
 		size = _msize(elf->e_class, _elf_version, ELF_T_PHDR);
 		elf_assert(size);
+
 		if (!(p = malloc(num * size))) {
 			seterr(memerr(ELF_T_PHDR));
 			return 0;
 		}
 		for (i = 0; i < num; i++) {
-			if (!_elf_item
-			    (p + i * size, elf, ELF_T_PHDR, off + i * entsz)) {
+			if (!_elf_item(p + i * size, elf, ELF_T_PHDR, off + i * entsz)) {
 				free(p);
 				return 0;
 			}
@@ -231,6 +233,7 @@ static int _elf_cook_phdr(Elf * elf)
 		elf->e_phdr = p;
 		elf->e_phnum = num;
 	}
+
 	return 1;
 }
 
@@ -239,9 +242,9 @@ static int _elf_cook_shdr(Elf * elf)
 	size_t num, off, entsz;
 
 	if (elf->e_class == ELFCLASS32) {
-		num = ((Elf32_Ehdr *) elf->e_ehdr)->e_shnum;
-		off = ((Elf32_Ehdr *) elf->e_ehdr)->e_shoff;
-		entsz = ((Elf32_Ehdr *) elf->e_ehdr)->e_shentsize;
+		num = ((Elf32_Ehdr *)elf->e_ehdr)->e_shnum;
+		off = ((Elf32_Ehdr *)elf->e_ehdr)->e_shoff;
+		entsz = ((Elf32_Ehdr *)elf->e_ehdr)->e_shentsize;
 	}
 #if __LIBELF64
 	else if (elf->e_class == ELFCLASS64) {
@@ -251,8 +254,7 @@ static int _elf_cook_shdr(Elf * elf)
 		/*
 		 * Check for overflow on 32-bit systems
 		 */
-		if (overflow
-		    (off, ((Elf64_Ehdr *) elf->e_ehdr)->e_shoff, Elf64_Off)) {
+		if (overflow(off, ((Elf64_Ehdr *) elf->e_ehdr)->e_shoff, Elf64_Off)) {
 			seterr(ERROR_OUTSIDE);
 			return 0;
 		}
@@ -291,9 +293,9 @@ static int _elf_cook_shdr(Elf * elf)
 			return 0;
 		}
 
-		dst.d_version = EV_CURRENT;
+		dst.d_version = EV_CURRENT;	/* 这里为什么不是_elf_version呢？*/
 
-		if (num == 0) {
+		if (num == 0) {	
 			union {
 				Elf32_Shdr sh32;
 #if __LIBELF64
@@ -405,13 +407,9 @@ static int _elf_cook_shdr(Elf * elf)
 				/*
 				 * Check for overflow on 32-bit systems
 				 */
-				if (overflow
-				    (scn->s_size, shdr->sh_size, Elf64_Xword)
-				    || overflow(scn->s_offset, shdr->sh_offset,
-						Elf64_Off)
-				    || overflow(sd->sd_data.d_align,
-						shdr->sh_addralign,
-						Elf64_Xword)) {
+				if (overflow(scn->s_size, shdr->sh_size, Elf64_Xword)
+				    || overflow(scn->s_offset, shdr->sh_offset, Elf64_Off)
+				    || overflow(sd->sd_data.d_align, shdr->sh_addralign, Elf64_Xword)) {
 					seterr(ERROR_OUTSIDE);
 					return 0;
 				}
@@ -457,15 +455,13 @@ static int _elf_cook_shdr(Elf * elf)
 					/*
 					 * sh_addralign must be correctly set
 					 */
-					if (shdr->sh_addralign ==
-					    ELF64_FSZ_ADDR) {
+					if (shdr->sh_addralign == ELF64_FSZ_ADDR) {
 						override++;
 					}
 					/*
 					 * The section must be properly aligned
 					 */
-					if (shdr->sh_offset % ELF64_FSZ_ADDR ==
-					    0) {
+					if (shdr->sh_offset % ELF64_FSZ_ADDR == 0) {
 						override++;
 					}
 					/* XXX: also look at the data? */
@@ -482,19 +478,21 @@ static int _elf_cook_shdr(Elf * elf)
 			}
 #endif				/* __LIBELF64 */
 			/* we already had this
-			   else {
-			   seterr(ERROR_UNIMPLEMENTED);
-			   return 0;
-			   }
+			else {
+				seterr(ERROR_UNIMPLEMENTED);
+				return 0;
+			}
 			 */
 
 			sd->sd_data.d_size = scn->s_size;
 			sd->sd_data.d_version = _elf_version;
 		}
+
 		elf_assert(scn == &head[0].scn);
 		elf->e_scn_1 = &head[0].scn;
 		head[0].scn.s_freeme = 1;
 	}
+
 	return 1;
 }
 
@@ -524,6 +522,7 @@ int _elf_cook(Elf * elf)
 	elf_assert(elf->e_magic == ELF_MAGIC);
 	elf_assert(elf->e_kind == ELF_K_ELF);
 	elf_assert(!elf->e_ehdr);
+
 	if (!valid_version(elf->e_version)) {
 		seterr(ERROR_UNKNOWN_VERSION);
 	} else if (!valid_encoding(elf->e_encoding)) {

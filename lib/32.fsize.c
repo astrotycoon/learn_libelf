@@ -50,6 +50,7 @@ const size_t _elf_fmsize[2][EV_CURRENT - EV_NONE][ELF_T_NUM][2] =
 	  		{0, 0},			/* Elf32_Verdef/Verdaux size varies */
 	  		{0, 0},			/* Elf32_Verneed/Vernaux size varies */
 		},
+		/* version 2 ... */
 	},
 #if __LIBELF64
 	/* ELFCLASS64 */
@@ -75,6 +76,7 @@ const size_t _elf_fmsize[2][EV_CURRENT - EV_NONE][ELF_T_NUM][2] =
 	  		{0, 0},			/* Elf64_Verdef/Verdaux size varies */
 			{0, 0},			/* Elf64_Verneed/Vernaux size varies */
 	  	},
+		/* version 2 ... */
 	},
 #endif				/* __LIBELF64 */
 };

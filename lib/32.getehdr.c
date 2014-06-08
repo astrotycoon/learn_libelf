@@ -42,14 +42,14 @@ char *_elf_getehdr(Elf * elf, unsigned cls)
 
 Elf32_Ehdr *elf32_getehdr(Elf * elf)
 {
-	return (Elf32_Ehdr *) _elf_getehdr(elf, ELFCLASS32);
+	return (Elf32_Ehdr *)_elf_getehdr(elf, ELFCLASS32);
 }
 
 #if __LIBELF64
 
 Elf64_Ehdr *elf64_getehdr(Elf * elf)
 {
-	return (Elf64_Ehdr *) _elf_getehdr(elf, ELFCLASS64);
+	return (Elf64_Ehdr *)_elf_getehdr(elf, ELFCLASS64);
 }
 
 #endif				/* __LIBELF64 */

@@ -24,7 +24,8 @@ static const char rcsid[] =
     "@(#) $Id: data.c,v 1.8 2008/05/23 08:15:34 michael Exp $";
 #endif				/* lint */
 
-unsigned _elf_version = EV_NONE;
+unsigned _elf_version = EV_NONE;	/* 这个_elf_version表明我们希望该库以哪个特定版本的方式操作一个ELF文件，
+										这个ELF文件版本也许并不等于_elf_version*/
 int _elf_errno = 0;
 int _elf_fill = 0;
 

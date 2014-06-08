@@ -2533,16 +2533,19 @@ static size_t ehdr_32M11_tom(unsigned char *dst, const unsigned char *src, size_
 			for (i = 0; i < n; i++) {
 				array_copy(to->e_ident, sizeof(to->e_ident), from->e_ident, sizeof(from->e_ident));
 				to->e_type =
-				    ((unsigned int)((((unsigned int)((unsigned char *)(from->e_type))[0]) << (8)) |
-						    (((unsigned int)((unsigned char *)(from->e_type))[1]) << (0))));
+				    ((unsigned int)
+							((((unsigned int)((unsigned char *)(from->e_type))[0]) << (8)) |
+						     (((unsigned int)((unsigned char *)(from->e_type))[1]) << (0))));
 				to->e_machine =
-				    ((unsigned int)((((unsigned int)((unsigned char *)(from->e_machine))[0]) << (8)) |
-						    (((unsigned int)((unsigned char *)(from->e_machine))[1]) << (0))));
+				    ((unsigned int)
+							((((unsigned int)((unsigned char *)(from->e_machine))[0]) << (8)) |
+						     (((unsigned int)((unsigned char *)(from->e_machine))[1]) << (0))));
 				to->e_version =
-				    ((unsigned int)((((unsigned int)((unsigned char *)(from->e_version))[0]) << (24)) |
-						    (((unsigned int)((unsigned char *)(from->e_version))[1]) << (16)) |
-						    (((unsigned int)((unsigned char *)(from->e_version))[2]) << (8)) |
-						    (((unsigned int)((unsigned char *)(from->e_version))[3]) << (0))));
+				    ((unsigned int)
+							((((unsigned int)((unsigned char *)(from->e_version))[0]) << (24)) |
+						     (((unsigned int)((unsigned char *)(from->e_version))[1]) << (16)) |
+						     (((unsigned int)((unsigned char *)(from->e_version))[2]) << (8)) |
+						     (((unsigned int)((unsigned char *)(from->e_version))[3]) << (0))));
 				to->e_entry =
 				    ((unsigned int)((((unsigned int)((unsigned char *)(from->e_entry))[0]) << (24)) |
 						    (((unsigned int)((unsigned char *)(from->e_entry))[1]) << (16)) |
@@ -2649,14 +2652,15 @@ static size_t ehdr_32M11_tof(unsigned char *dst, const unsigned char *src, size_
 		} else {
 			for (i = 0; i < n; i++) {
 				array_copy(to->e_ident, sizeof(to->e_ident), from->e_ident, sizeof(from->e_ident));
-				((((char *)(to->e_type))[0] = ((unsigned int)(from->e_type) >> (8))), (((char *)(to->e_type))[1] =
-												       ((unsigned int)(from->e_type) >> (0))));
-				((((char *)(to->e_machine))[0] = ((unsigned int)(from->e_machine) >> (8))), (((char *)(to->e_machine))[1] =
-													     ((unsigned int)(from->
-															     e_machine) >> (0))));
-				((((char *)(to->e_version))[0] = ((unsigned int)(from->e_version) >> (24))), (((char *)(to->e_version))[1] =
-													      ((unsigned int)(from->
-															      e_version) >> (16))),
+				((((char *)(to->e_type))[0] = ((unsigned int)(from->e_type) >> (8))), 
+				 (((char *)(to->e_type))[1] = ((unsigned int)(from->e_type) >> (0))));
+
+				((((char *)(to->e_machine))[0] = ((unsigned int)(from->e_machine) >> (8))), 
+				 (((char *)(to->e_machine))[1] = ((unsigned int)(from->e_machine) >> (0))));
+
+				((((char *)(to->e_version))[0] = ((unsigned int)(from->e_version) >> (24))), 
+				 (((char *)(to->e_version))[1] = ((unsigned int)(from->e_version) >> (16))),
+
 				 (((char *)(to->e_version))[2] = ((unsigned int)(from->e_version) >> (8))), (((char *)(to->e_version))[3] =
 													     ((unsigned int)(from->
 															     e_version) >> (0))));
