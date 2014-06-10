@@ -43,27 +43,35 @@ static void _elf_free_scns(Elf * elf, Elf_Scn * scn)
 	for (freescn = NULL; scn; scn = scn->s_link) {
 		elf_assert(scn->s_magic == SCN_MAGIC);
 		elf_assert(scn->s_elf == elf);
+
 		for (sd = scn->s_data_1; sd; sd = tmp) {
 			elf_assert(sd->sd_magic == DATA_MAGIC);
 			elf_assert(sd->sd_scn == scn);
+
 			tmp = sd->sd_link;
+
 			if (sd->sd_free_data) {
 				_elf_free(sd->sd_memdata);
 			}
+
 			if (sd->sd_freeme) {
 				free(sd);
 			}
 		}
+
 		if ((sd = scn->s_rawdata)) {
 			elf_assert(sd->sd_magic == DATA_MAGIC);
 			elf_assert(sd->sd_scn == scn);
+
 			if (sd->sd_free_data) {
 				_elf_free(sd->sd_memdata);
 			}
+
 			if (sd->sd_freeme) {
 				free(sd);
 			}
 		}
+
 		if (scn->s_freeme) {
 			_elf_free(freescn);
 			freescn = scn;
@@ -105,15 +113,20 @@ int elf_end(Elf * elf)
 	else if (!elf->e_memory) {
 		_elf_free(elf->e_data);
 	}
+
 	_elf_free_scns(elf, elf->e_scn_1);
+
 	if (elf->e_rawdata != elf->e_data) {
 		_elf_free(elf->e_rawdata);
 	}
+
 	if (elf->e_free_syms) {
 		_elf_free(elf->e_symtab);
 	}
+
 	_elf_free(elf->e_ehdr);
 	_elf_free(elf->e_phdr);
 	free(elf);
+
 	return 0;
 }
