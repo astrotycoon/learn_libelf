@@ -211,14 +211,13 @@ extern "C" {
 	extern size_t elf_rand __P((Elf * __elf, size_t __offset));
 	extern Elf_Data *elf_rawdata __P((Elf_Scn * __scn, Elf_Data * __data));
 	extern char *elf_rawfile __P((Elf * __elf, size_t * __ptr));
-	extern char *elf_strptr
-	    __P((Elf * __elf, size_t __section, size_t __offset));
+	extern char *elf_strptr __P((Elf * __elf, size_t __section, size_t __offset));
 	extern off_t elf_update __P((Elf * __elf, Elf_Cmd __cmd));
+
 	extern unsigned elf_version __P((unsigned __ver));
-	extern Elf_Data *elf32_xlatetof
-	    __P((Elf_Data * __dst, const Elf_Data * __src, unsigned __encode));
-	extern Elf_Data *elf32_xlatetom
-	    __P((Elf_Data * __dst, const Elf_Data * __src, unsigned __encode));
+
+	extern Elf_Data *elf32_xlatetof __P((Elf_Data * __dst, const Elf_Data * __src, unsigned __encode));
+	extern Elf_Data *elf32_xlatetom __P((Elf_Data * __dst, const Elf_Data * __src, unsigned __encode));
 
 /*
  * Additional functions found on Solaris
@@ -235,12 +234,10 @@ extern "C" {
 	extern Elf64_Phdr *elf64_getphdr __P((Elf * __elf));
 	extern Elf64_Phdr *elf64_newphdr __P((Elf * __elf, size_t __count));
 	extern Elf64_Shdr *elf64_getshdr __P((Elf_Scn * __scn));
-	extern size_t elf64_fsize __P((Elf_Type __type, size_t __count,
-				       unsigned __ver));
-	extern Elf_Data *elf64_xlatetof
-	    __P((Elf_Data * __dst, const Elf_Data * __src, unsigned __encode));
-	extern Elf_Data *elf64_xlatetom
-	    __P((Elf_Data * __dst, const Elf_Data * __src, unsigned __encode));
+	extern size_t elf64_fsize __P((Elf_Type __type, size_t __count, unsigned __ver));
+
+	extern Elf_Data *elf64_xlatetof __P((Elf_Data * __dst, const Elf_Data * __src, unsigned __encode));
+	extern Elf_Data *elf64_xlatetom __P((Elf_Data * __dst, const Elf_Data * __src, unsigned __encode));
 
 /*
  * Additional functions found on Solaris
