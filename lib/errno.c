@@ -27,7 +27,7 @@ static const char rcsid[] =
 int elf_errno(void)
 {
 	int tmp = _elf_errno;
-
 	_elf_errno = 0;
+
 	return tmp;
 }

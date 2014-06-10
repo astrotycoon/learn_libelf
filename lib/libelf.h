@@ -42,11 +42,11 @@ extern "C" {
 #endif				/* __cplusplus */
 
 #ifndef __P
-#if (__STDC__ + 0) || defined(__cplusplus) || defined(_WIN32)
-#define __P(args) args
+	#if (__STDC__ + 0) || defined(__cplusplus) || defined(_WIN32)
+	#define __P(args) args
 #else				/* __STDC__ || defined(__cplusplus) */
-#define __P(args) ()
-#endif				/* __STDC__ || defined(__cplusplus) */
+	#define __P(args) ()
+	#endif				/* __STDC__ || defined(__cplusplus) */
 #endif				/* __P */
 
 /*
@@ -67,7 +67,7 @@ extern "C" {
 /*
  * Flags
  */
-#define ELF_F_DIRTY	0x1
+#define ELF_F_DIRTY		0x1
 #define ELF_F_LAYOUT	0x4
 /*
  * Allow sections to overlap when ELF_F_LAYOUT is in effect.
@@ -173,23 +173,20 @@ extern "C" {
 	extern Elf *elf_memory __P((char *__image, size_t __size));
 	extern int elf_cntl __P((Elf * __elf, Elf_Cmd __cmd));
 	extern int elf_end __P((Elf * __elf));
+
 	extern const char *elf_errmsg __P((int __err));
 	extern int elf_errno __P((void));
+
 	extern void elf_fill __P((int __fill));
-	extern unsigned elf_flagdata __P((Elf_Data * __data, Elf_Cmd __cmd,
-					  unsigned __flags));
-	extern unsigned elf_flagehdr __P((Elf * __elf, Elf_Cmd __cmd,
-					  unsigned __flags));
-	extern unsigned elf_flagelf __P((Elf * __elf, Elf_Cmd __cmd,
-					 unsigned __flags));
-	extern unsigned elf_flagphdr __P((Elf * __elf, Elf_Cmd __cmd,
-					  unsigned __flags));
-	extern unsigned elf_flagscn __P((Elf_Scn * __scn, Elf_Cmd __cmd,
-					 unsigned __flags));
-	extern unsigned elf_flagshdr __P((Elf_Scn * __scn, Elf_Cmd __cmd,
-					  unsigned __flags));
-	extern size_t elf32_fsize __P((Elf_Type __type, size_t __count,
-				       unsigned __ver));
+
+	extern unsigned elf_flagdata __P((Elf_Data * __data, Elf_Cmd __cmd, unsigned __flags));
+	extern unsigned elf_flagehdr __P((Elf * __elf, Elf_Cmd __cmd, unsigned __flags));
+	extern unsigned elf_flagelf __P((Elf * __elf, Elf_Cmd __cmd, unsigned __flags));
+	extern unsigned elf_flagphdr __P((Elf * __elf, Elf_Cmd __cmd, unsigned __flags));
+	extern unsigned elf_flagscn __P((Elf_Scn * __scn, Elf_Cmd __cmd, unsigned __flags));
+	extern unsigned elf_flagshdr __P((Elf_Scn * __scn, Elf_Cmd __cmd, unsigned __flags));
+
+	extern size_t elf32_fsize __P((Elf_Type __type, size_t __count, unsigned __ver));
 	extern Elf_Arhdr *elf_getarhdr __P((Elf * __elf));
 	extern Elf_Arsym *elf_getarsym __P((Elf * __elf, size_t * __ptr));
 	extern off_t elf_getbase __P((Elf * __elf));

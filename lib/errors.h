@@ -22,7 +22,7 @@
 /* dummy for xgettext */
 #define _(str) str
 
-__err__(ERROR_OK, _("no error"))
+	__err__(ERROR_OK, _("no error"))
     __err__(ERROR_UNKNOWN, _("unknown error"))
     __err__(ERROR_INTERNAL, _("Internal error: unknown reason"))
     __err__(ERROR_UNIMPLEMENTED, _("Internal error: not implemented"))
@@ -33,10 +33,8 @@ __err__(ERROR_OK, _("no error"))
     __err__(ERROR_BADOFF, _("Request error: offset out of range"))
     __err__(ERROR_UNKNOWN_VERSION, _("Request error: unknown ELF version"))
     __err__(ERROR_CMDMISMATCH, _("Request error: ELF_C_* argument does not match"))
-    __err__(ERROR_MEMBERWRITE,
-	_("Request error: archive member begin() for writing"))
-    __err__(ERROR_FDMISMATCH,
-	_("Request error: archive/member file descriptor mismatch"))
+    __err__(ERROR_MEMBERWRITE, _("Request error: archive member begin() for writing"))
+    __err__(ERROR_FDMISMATCH, _("Request error: archive/member file descriptor mismatch"))
     __err__(ERROR_NOTELF, _("Request error: not an ELF file"))
     __err__(ERROR_CLASSMISMATCH, _("Request error: class file/memory mismatch"))
     __err__(ERROR_UNKNOWN_TYPE, _("Request error: invalid ELF_T_* argument"))
@@ -44,12 +42,10 @@ __err__(ERROR_OK, _("no error"))
     __err__(ERROR_DST2SMALL, _("Request error: destination buffer too small"))
     __err__(ERROR_NULLBUF, _("Request error: d_buf is NULL"))
     __err__(ERROR_UNKNOWN_CLASS, _("Request error: unknown ELF class"))
-    __err__(ERROR_ELFSCNMISMATCH,
-	_("Request error: section does not belong to file"))
+    __err__(ERROR_ELFSCNMISMATCH, _("Request error: section does not belong to file"))
     __err__(ERROR_NOSUCHSCN, _("Request error: no section at index"))
     __err__(ERROR_NULLSCN, _("Request error: can't manipulate null section"))
-    __err__(ERROR_SCNDATAMISMATCH,
-	_("Request error: data does not belong to section"))
+    __err__(ERROR_SCNDATAMISMATCH, _("Request error: data does not belong to section"))
     __err__(ERROR_NOSTRTAB, _("Request error: no string table"))
     __err__(ERROR_BADSTROFF, _("Request error: string table offset out of range"))
     __err__(ERROR_RDONLY, _("Request error: update(ELF_C_WRITE) on read-only file"))
@@ -77,8 +73,7 @@ __err__(ERROR_OK, _("no error"))
     __err__(ERROR_ALIGN_SHDR, _("Format error: section header table alignment"))
     __err__(ERROR_VERDEF_FORMAT, _("Format error: bad parameter in Verdef record"))
     __err__(ERROR_VERDEF_VERSION, _("Format error: unknown Verdef version"))
-    __err__(ERROR_VERNEED_FORMAT,
-	_("Format error: bad parameter in Verneed record"))
+    __err__(ERROR_VERNEED_FORMAT, _("Format error: bad parameter in Verneed record"))
     __err__(ERROR_VERNEED_VERSION, _("Format error: unknown Verneed version"))
     __err__(ERROR_EHDR_SHNUM, _("Format error: bad e_shnum value"))
     __err__(ERROR_EHDR_SHENTSIZE, _("Format error: bad e_shentsize value"))
