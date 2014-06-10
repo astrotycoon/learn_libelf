@@ -187,6 +187,7 @@ extern "C" {
 	extern unsigned elf_flagshdr __P((Elf_Scn * __scn, Elf_Cmd __cmd, unsigned __flags));
 
 	extern size_t elf32_fsize __P((Elf_Type __type, size_t __count, unsigned __ver));
+
 	extern Elf_Arhdr *elf_getarhdr __P((Elf * __elf));
 	extern Elf_Arsym *elf_getarsym __P((Elf * __elf, size_t * __ptr));
 	extern off_t elf_getbase __P((Elf * __elf));
@@ -196,16 +197,23 @@ extern "C" {
 	extern Elf32_Phdr *elf32_getphdr __P((Elf * __elf));
 	extern Elf_Scn *elf_getscn __P((Elf * __elf, size_t __index));
 	extern Elf32_Shdr *elf32_getshdr __P((Elf_Scn * __scn));
+
 	extern unsigned long elf_hash __P((const unsigned char *__name));
+
 	extern Elf_Kind elf_kind __P((Elf * __elf));
+
 	extern size_t elf_ndxscn __P((Elf_Scn * __scn));
+
 	extern Elf_Data *elf_newdata __P((Elf_Scn * __scn));
 	extern Elf32_Ehdr *elf32_newehdr __P((Elf * __elf));
 	extern Elf32_Phdr *elf32_newphdr __P((Elf * __elf, size_t __count));
 	extern Elf_Scn *elf_newscn __P((Elf * __elf));
+
 	extern Elf_Cmd elf_next __P((Elf * __elf));
 	extern Elf_Scn *elf_nextscn __P((Elf * __elf, Elf_Scn * __scn));
+
 	extern size_t elf_rand __P((Elf * __elf, size_t __offset));
+
 	extern Elf_Data *elf_rawdata __P((Elf_Scn * __scn, Elf_Data * __data));
 	extern char *elf_rawfile __P((Elf * __elf, size_t * __ptr));
 	extern char *elf_strptr __P((Elf * __elf, size_t __section, size_t __offset));
@@ -251,12 +259,9 @@ extern "C" {
  * some confusion about the correct values), they are now officially
  * deprecated and should be replaced with the three new functions below.
  */
-	DEPRECATED extern int elf_getphnum
-	    __P((Elf * __elf, size_t * __resultp));
-	DEPRECATED extern int elf_getshnum
-	    __P((Elf * __elf, size_t * __resultp));
-	DEPRECATED extern int elf_getshstrndx
-	    __P((Elf * __elf, size_t * __resultp));
+	DEPRECATED extern int elf_getphnum __P((Elf * __elf, size_t * __resultp));
+	DEPRECATED extern int elf_getshnum __P((Elf * __elf, size_t * __resultp));
+	DEPRECATED extern int elf_getshstrndx __P((Elf * __elf, size_t * __resultp));
 /*
  * Replacement functions (return -1 on failure, 0 on success).
  */
@@ -288,8 +293,7 @@ extern "C" {
  * elfx_remscn() returns the original index of the removed section.
  * A return value of zero indicates an error.
  */
-	extern size_t elfx_movscn
-	    __P((Elf * __elf, Elf_Scn * __scn, Elf_Scn * __after));
+	extern size_t elfx_movscn __P((Elf * __elf, Elf_Scn * __scn, Elf_Scn * __after));
 	extern size_t elfx_remscn __P((Elf * __elf, Elf_Scn * __scn));
 
 /*
