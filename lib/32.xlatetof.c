@@ -542,7 +542,7 @@ static Elf_Data *elf32_xlate(Elf_Data *dst, const Elf_Data *src,
 		return NULL;
 	}
 	if (dsize) {
-		tmp = (*op) (dst->d_buf, src->d_buf, src->d_size);
+		tmp = (*op)(dst->d_buf, src->d_buf, src->d_size);
 		if (tmp == (size_t)-1) {
 			return NULL;
 		}

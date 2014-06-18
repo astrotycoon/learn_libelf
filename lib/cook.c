@@ -83,7 +83,7 @@ Elf_Type _elf_scn_type(unsigned t)
 		    ((t) == ELF_T_PHDR ? ERROR_MEM_PHDR:	\
 		    ERROR_INTERNAL))
 
-Elf_Data *elf_xlatetom(const Elf *elf, Elf_Data *dst, const Elf_Data *src)
+Elf_Data *_elf_xlatetom(const Elf *elf, Elf_Data *dst, const Elf_Data *src)
 {
 	if (elf->e_class == ELFCLASS32) {
 		return elf32_xlatetom(dst, src, elf->e_encoding);	/* 在两种表现形式转化时是需要考虑编码方式的 */
