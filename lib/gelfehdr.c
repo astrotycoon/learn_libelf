@@ -27,14 +27,14 @@ static const char rcsid[] =
 #endif				/* lint */
 
 #define check_and_copy(type, d, s, name, eret)		\
-    do {						\
-	if (sizeof((d)->name) < sizeof((s)->name)	\
-	 && (type)(s)->name != (s)->name) {		\
-	    seterr(ERROR_BADVALUE);			\
-	    return (eret);				\
-	}						\
-	(d)->name = (type)(s)->name;			\
-    } while (0)
+do {												\
+	if (sizeof((d)->name) < sizeof((s)->name)		\
+			&& (type)(s)->name != (s)->name) {		\
+		seterr(ERROR_BADVALUE);						\
+		return (eret);								\
+	}												\
+	(d)->name = (type)(s)->name;					\
+} while (0)
 
 GElf_Ehdr *gelf_getehdr(Elf * elf, GElf_Ehdr * dst)
 {
@@ -45,17 +45,20 @@ GElf_Ehdr *gelf_getehdr(Elf * elf, GElf_Ehdr * dst)
 		return NULL;
 	}
 	elf_assert(elf->e_magic == ELF_MAGIC);
+
 	tmp = _elf_getehdr(elf, elf->e_class);
 	if (!tmp) {
 		return NULL;
 	}
+
 	if (!dst) {
 		dst = &buf;
 	}
+
 	if (elf->e_class == ELFCLASS64) {
-		*dst = *(Elf64_Ehdr *) tmp;
+		*dst = *(Elf64_Ehdr *)tmp;
 	} else if (elf->e_class == ELFCLASS32) {
-		Elf32_Ehdr *src = (Elf32_Ehdr *) tmp;
+		Elf32_Ehdr *src = (Elf32_Ehdr *)tmp;
 
 		memcpy(dst->e_ident, src->e_ident, EI_NIDENT);
 		check_and_copy(GElf_Half, dst, src, e_type, NULL);
@@ -71,7 +74,8 @@ GElf_Ehdr *gelf_getehdr(Elf * elf, GElf_Ehdr * dst)
 		check_and_copy(GElf_Half, dst, src, e_shentsize, NULL);
 		check_and_copy(GElf_Half, dst, src, e_shnum, NULL);
 		check_and_copy(GElf_Half, dst, src, e_shstrndx, NULL);
-	} else {
+	} 
+	else {
 		if (valid_class(elf->e_class)) {
 			seterr(ERROR_UNIMPLEMENTED);
 		} else {
@@ -79,14 +83,16 @@ GElf_Ehdr *gelf_getehdr(Elf * elf, GElf_Ehdr * dst)
 		}
 		return NULL;
 	}
-	if (dst == &buf) {
-		dst = (GElf_Ehdr *) malloc(sizeof(GElf_Ehdr));
+
+	if (dst == &buf) {	// 记住:可不能返回局部变量的地址啊!!!
+		dst = (GElf_Ehdr *)malloc(sizeof(GElf_Ehdr));
 		if (!dst) {
 			seterr(ERROR_MEM_EHDR);
 			return NULL;
 		}
 		*dst = buf;
 	}
+
 	return dst;
 }
 

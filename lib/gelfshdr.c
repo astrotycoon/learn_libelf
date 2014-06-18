@@ -27,14 +27,14 @@ static const char rcsid[] =
 #endif				/* lint */
 
 #define check_and_copy(type, d, s, name, eret)		\
-    do {						\
-	if (sizeof((d)->name) < sizeof((s)->name)	\
-	 && (type)(s)->name != (s)->name) {		\
-	    seterr(ERROR_BADVALUE);			\
-	    return (eret);				\
-	}						\
-	(d)->name = (type)(s)->name;			\
-    } while (0)
+do {												\
+	if (sizeof((d)->name) < sizeof((s)->name)		\
+		&& (type)(s)->name != (s)->name) {			\
+		seterr(ERROR_BADVALUE);						\
+		return (eret);								\
+	}												\
+	(d)->name = (type)(s)->name;					\
+} while (0)
 
 GElf_Shdr *gelf_getshdr(Elf_Scn * scn, GElf_Shdr * dst)
 {

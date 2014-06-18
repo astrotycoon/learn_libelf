@@ -30,6 +30,7 @@ int elf_getphdrnum(Elf * elf, size_t * resultp)
 		return -1;
 	}
 	elf_assert(elf->e_magic == ELF_MAGIC);
+
 	if (elf->e_kind != ELF_K_ELF) {
 		seterr(ERROR_NOTELF);
 		return -1;
@@ -40,6 +41,7 @@ int elf_getphdrnum(Elf * elf, size_t * resultp)
 	if (resultp) {
 		*resultp = elf->e_phnum;
 	}
+
 	return 0;
 }
 
@@ -49,9 +51,10 @@ int elf_getshdrnum(Elf * elf, size_t * resultp)
 	Elf_Scn *scn;
 
 	if (!elf) {
-		return -1;
+		return -1;	// 失败返回-1
 	}
 	elf_assert(elf->e_magic == ELF_MAGIC);
+
 	if (elf->e_kind != ELF_K_ELF) {
 		seterr(ERROR_NOTELF);
 		return -1;
@@ -89,11 +92,11 @@ int elf_getshdrstrndx(Elf * elf, size_t * resultp)
 		return -1;
 	}
 	if (elf->e_class == ELFCLASS32) {
-		num = ((Elf32_Ehdr *) elf->e_ehdr)->e_shstrndx;
+		num = ((Elf32_Ehdr *)elf->e_ehdr)->e_shstrndx;
 	}
 #if __LIBELF64
 	else if (elf->e_class == ELFCLASS64) {
-		num = ((Elf64_Ehdr *) elf->e_ehdr)->e_shstrndx;
+		num = ((Elf64_Ehdr *)elf->e_ehdr)->e_shstrndx;
 	}
 #endif				/* __LIBELF64 */
 	else {
@@ -108,7 +111,7 @@ int elf_getshdrstrndx(Elf * elf, size_t * resultp)
 		*resultp = num;
 		return 0;
 	}
-	/*
+	/* num == SHN_XINDEX
 	 * look at first section header
 	 */
 	if (!(scn = elf->e_scn_1)) {
@@ -123,6 +126,7 @@ int elf_getshdrstrndx(Elf * elf, size_t * resultp)
 	}
 #endif				/* __LIBELF64 */
 	*resultp = scn->s_shdr32.sh_link;
+
 	return 0;
 }
 
@@ -138,8 +142,7 @@ int elf_getshnum(Elf * elf, size_t * resultp)
 
 int elf_getshstrndx(Elf * elf, size_t * resultp)
 {
-	return elf_getshdrstrndx(elf,
-				 resultp) ? LIBELF_FAILURE : LIBELF_SUCCESS;
+	return elf_getshdrstrndx(elf, resultp) ? LIBELF_FAILURE : LIBELF_SUCCESS;
 }
 
 int elfx_update_shstrndx(Elf * elf, size_t value)
@@ -186,5 +189,6 @@ int elfx_update_shstrndx(Elf * elf, size_t value)
 	}
 	elf->e_ehdr_flags |= ELF_F_DIRTY;
 	scn->s_shdr_flags |= ELF_F_DIRTY;
+
 	return LIBELF_SUCCESS;
 }
