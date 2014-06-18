@@ -214,10 +214,10 @@ static void _elf_check_type(Elf * elf, size_t size)
 	if (size >= EI_NIDENT && !memcmp(elf->e_data, ELFMAG, SELFMAG)) {	/* 确保映射的是ELF文件 */
 		elf->e_kind = ELF_K_ELF;	/* 该文件类型 */
 		elf->e_idlen = EI_NIDENT;	/* 16字节 */
-		elf->e_class = elf->e_data[EI_CLASS];	/* 文件类别 */
-		elf->e_encoding = elf->e_data[EI_DATA];	/* 数据编码格式 */
+		elf->e_class = elf->e_data[EI_CLASS];		/* 体系结构 */
+		elf->e_encoding = elf->e_data[EI_DATA];		/* 数据编码格式 */
 		elf->e_version = elf->e_data[EI_VERSION];	/* ELF目前版本 */
-	} else if (size >= SARMAG && !memcmp(elf->e_data, ARMAG, SARMAG)) {
+	} else if (size >= SARMAG && !memcmp(elf->e_data, ARMAG, SARMAG)) {	/* 否则看看是不是AR文件 */
 		_elf_init_ar(elf);
 	}
 }
@@ -230,6 +230,7 @@ Elf *elf_begin(int fd, Elf_Cmd cmd, Elf * ref)
 	Elf *elf;
 
 	elf_assert(_elf_init.e_magic == ELF_MAGIC);
+
 	if (_elf_version == EV_NONE) {
 		seterr(ERROR_VERSION_UNSET);
 		return NULL;
@@ -270,14 +271,14 @@ Elf *elf_begin(int fd, Elf_Cmd cmd, Elf * ref)
 		return NULL;
 	}
 
-	if (!(elf = (Elf *) malloc(sizeof(Elf)))) {
+	if (!(elf = (Elf *)malloc(sizeof(Elf)))) {
 		seterr(ERROR_MEM_ELF);
 		return NULL;
 	}
-	*elf = _elf_init;	/* 结构体直接赋值 */
-	elf->e_fd = fd;
-	elf->e_parent = ref;
-	elf->e_size = elf->e_dsize = size;
+	*elf = _elf_init;					/* 结构体直接赋值 */
+	elf->e_fd = fd;						/* 文件描述符 */
+	elf->e_parent = ref;				/* 如果不是AR的话，则为NULL */
+	elf->e_size = elf->e_dsize = size;	/* 这里的e_size和e_dsize到底有什么区别吗 */
 
 	if (cmd != ELF_C_READ) {
 		elf->e_writable = 1;
@@ -362,7 +363,7 @@ Elf *elf_begin(int fd, Elf_Cmd cmd, Elf * ref)
 	} else if (size) {
 #if HAVE_MMAP
 		/*
-		 * Using mmap on writable files will interfere with elf_update
+		 * Using mmap on writable files will interfere with elf_update	(interfere with 干扰)
 		 */
 		if (!elf->e_writable && (elf->e_data = _elf_mmap(elf))) {	/* writble属性的文件不可以mmap */
 			elf->e_unmap_data = 1;
@@ -375,6 +376,7 @@ Elf *elf_begin(int fd, Elf_Cmd cmd, Elf * ref)
 	}
 
 	_elf_check_type(elf, size);
+
 	return elf;
 }
 

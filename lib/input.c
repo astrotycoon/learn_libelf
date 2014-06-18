@@ -86,6 +86,7 @@ void *_elf_mmap(Elf * elf)
 	elf_assert(elf);
 	elf_assert(elf->e_magic == ELF_MAGIC);
 	elf_assert(elf->e_base == 0);
+
 	if (elf->e_disabled) {
 		seterr(ERROR_FDDISABLED);
 	} else if (elf->e_size) {

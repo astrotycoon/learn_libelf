@@ -367,7 +367,7 @@ static xltab
 #else				/* PIC */
 static const xltab
 #endif				/* PIC */
-xlate32_11[ /* encoding */ ] = 
+xlate32_11[ /* encoding */ ] = 	/* 根据大小端的不同分开 */
 {
 	{	/* ELFDATA2LSB -- little-endian ordering */
 	 	{byte_copy, 		byte_copy},
@@ -439,7 +439,7 @@ xlate32[EV_CURRENT - EV_NONE][EV_CURRENT - EV_NONE] = {
 
 /*	translator:
  *			sv: 原版本号
- *   		dv:	目的版本号
+ *   		dv:	目的版本号 (sv和dv表示哪两个版本之间转换)
  *			enc: 编码方式  0 -- little-endian  1 -- big-endian
  *			type: 要转换的数据类型
  *			d:	代表是何种转换
@@ -447,11 +447,11 @@ xlate32[EV_CURRENT - EV_NONE][EV_CURRENT - EV_NONE] = {
  *      		1 -- 内存表示形式 -> 文件表示形式    
  */
 #define translator(sv, dv, enc, type, d)	\
-    (xlate32[(sv) - EV_NONE - 1]			\
-	    	[(dv) - EV_NONE - 1]			\
-	    	[(enc) - ELFDATA2LSB]			\
-	    	[(type) - ELF_T_BYTE]			\
-	    	[d])
+    	(xlate32[(sv) - EV_NONE - 1]		\
+	    		[(dv) - EV_NONE - 1]		\
+	    		[(enc) - ELFDATA2LSB]		\
+	    		[(type) - ELF_T_BYTE]		\
+	    		[d])
 
 /*
  * destination buffer size
@@ -495,8 +495,8 @@ _elf32_xltsize(const Elf_Data * src, unsigned dv, unsigned encode, int tof)
 /* tof: 0 -- 文件表示形式 -> 内存表示形式 
  *      1 -- 内存表示形式 -> 文件表示形式    
 */
-static Elf_Data *elf32_xlate(Elf_Data * dst, const Elf_Data * src,
-			     unsigned encode, int tof)
+static Elf_Data *elf32_xlate(Elf_Data *dst, const Elf_Data *src,
+			     		unsigned encode, int tof)
 {
 	Elf_Type type;
 	int dv;
@@ -533,7 +533,7 @@ static Elf_Data *elf32_xlate(Elf_Data * dst, const Elf_Data * src,
 		seterr(ERROR_UNKNOWN_TYPE);
 		return NULL;
 	}
-	dsize = (*op) (NULL, src->d_buf, src->d_size);
+	dsize = (*op)(NULL, src->d_buf, src->d_size);
 	if (dsize == (size_t)-1) {
 		return NULL;
 	}
@@ -558,13 +558,13 @@ static Elf_Data *elf32_xlate(Elf_Data * dst, const Elf_Data * src,
  * finally, the "official" translation functions
  */
 /* 将不同的数据结构由32位类文件表示形式转换为内存表示形式 */
-Elf_Data *elf32_xlatetom(Elf_Data * dst, const Elf_Data * src, unsigned encode)
+Elf_Data *elf32_xlatetom(Elf_Data *dst, const Elf_Data *src, unsigned encode)
 {
 	return elf32_xlate(dst, src, encode, 0);	/* 0 -- 文件表示形式 -> 内存表示形式 */
 }
 
 /* 将不同的数据结构由内存表示形式转换为32位类文件表示形式 */
-Elf_Data *elf32_xlatetof(Elf_Data * dst, const Elf_Data * src, unsigned encode)
+Elf_Data *elf32_xlatetof(Elf_Data *dst, const Elf_Data *src, unsigned encode)
 {
 	return elf32_xlate(dst, src, encode, 1);	/* 1 -- 内存表示形式 -> 文件表示形式 */
 }

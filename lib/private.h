@@ -136,8 +136,8 @@ struct Elf {
 	/* common */
 	size_t e_size;		/* file/member size */									/* ELF文件大小 */
 	size_t e_dsize;		/* size of memory image */								/* ELF内存大小 */
-	Elf_Kind e_kind;	/* kind of file */
-	char *e_data;		/* file/member data */
+	Elf_Kind e_kind;	/* kind of file */										/* ELF文件类型 -- 可重定位/可执行/共享库 */
+	char *e_data;		/* file/member data */									/* */
 	char *e_rawdata;	/* file/member raw data */
 	size_t e_idlen;		/* identifier size */									/* EI_NIDENT -- 16 bytes */
 	int e_fd;			/* file descriptor */
@@ -159,7 +159,7 @@ struct Elf {
 	unsigned e_class;	/* ELF class */											/* 文件类别 -- 是32位的还是64位的 */
 	unsigned e_encoding;	/* ELF data encoding */								/* 数据编码格式 -- 大小端 */
 	unsigned e_version;	/* ELF version */										/* ELF目前版本 */
-	char *e_ehdr;		/* ELF header */
+	char *e_ehdr;		/* ELF header */										/* ELF header首地址 */
 	char *e_phdr;		/* ELF program header table */
 	size_t e_phnum;		/* size of program header table */
 	Elf_Scn *e_scn_1;	/* first section */

@@ -83,7 +83,7 @@ Elf_Type _elf_scn_type(unsigned t)
 		    ((t) == ELF_T_PHDR ? ERROR_MEM_PHDR:	\
 		    ERROR_INTERNAL))
 
-Elf_Data *_elf_xlatetom(const Elf * elf, Elf_Data * dst, const Elf_Data * src)
+Elf_Data *elf_xlatetom(const Elf *elf, Elf_Data *dst, const Elf_Data *src)
 {
 	if (elf->e_class == ELFCLASS32) {
 		return elf32_xlatetom(dst, src, elf->e_encoding);	/* 在两种表现形式转化时是需要考虑编码方式的 */
@@ -102,16 +102,17 @@ Elf_Data *_elf_xlatetom(const Elf * elf, Elf_Data * dst, const Elf_Data * src)
 /* 该文件的文本形式已经mmap到内存，但依然是文本形式 */
 static char *_elf_item(void *buf, Elf * elf, Elf_Type type, size_t off)
 {
-	Elf_Data src, dst;	/* src-->file  dst->memory */
+	Elf_Data src, dst;	/* src-->file  dst-->memory */
 
 	elf_assert(valid_type(type));
+
 	if (off < 0 || off > elf->e_size) {
 		seterr(ERROR_OUTSIDE);
 		return NULL;
 	}
 
 	src.d_type = type;					
-	src.d_version = elf->e_version;		/* src的version赋值为传递进来的elf->e_version*/
+	src.d_version = elf->e_version;		/* src的version赋值为传递进来的elf->e_version ---> 也即待处理文件的version */
 	src.d_size = _fsize(elf->e_class, src.d_version, type);	// _fsize --> 文件形式大小
 	elf_assert(src.d_size);
 	if ((elf->e_size - off) < src.d_size) {
@@ -120,6 +121,7 @@ static char *_elf_item(void *buf, Elf * elf, Elf_Type type, size_t off)
 	}
 
 	dst.d_version = _elf_version;		/* dst的version赋值为当前的_elf_version, 它有可能与elf->e_version是不同的 */
+										/* _elf_version是用户通过elf_version传进来的，表示告诉该库我们的应用程序懂的版本 */
 	dst.d_size = _msize(elf->e_class, dst.d_version, type);	// _msize --> 内存形式大小
 	elf_assert(dst.d_size);
 
@@ -532,5 +534,6 @@ int _elf_cook(Elf * elf)
 	} else {
 		seterr(ERROR_UNKNOWN_CLASS);
 	}
+
 	return 0;
 }

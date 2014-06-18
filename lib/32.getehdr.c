@@ -30,6 +30,7 @@ char *_elf_getehdr(Elf * elf, unsigned cls)
 		return NULL;
 	}
 	elf_assert(elf->e_magic == ELF_MAGIC);
+
 	if (elf->e_kind != ELF_K_ELF) {
 		seterr(ERROR_NOTELF);
 	} else if (elf->e_class != cls) {
