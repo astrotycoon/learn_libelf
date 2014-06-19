@@ -94,7 +94,7 @@ static char *_elf_newphdr(Elf * elf, size_t count, unsigned cls)
 
 Elf32_Phdr *elf32_newphdr(Elf * elf, size_t count)
 {
-	return (Elf32_Phdr *) _elf_newphdr(elf, count, ELFCLASS32);
+	return (Elf32_Phdr *)_elf_newphdr(elf, count, ELFCLASS32);
 }
 
 #if __LIBELF64
