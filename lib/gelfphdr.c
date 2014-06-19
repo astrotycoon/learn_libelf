@@ -36,7 +36,7 @@ do {												\
 	(d)->name = (type)(s)->name;					\
 } while (0)
 
-GElf_Phdr *gelf_getphdr(Elf * elf, int ndx, GElf_Phdr * dst)
+GElf_Phdr *gelf_getphdr(Elf *elf, int ndx, GElf_Phdr *dst)
 {
 	GElf_Phdr buf;
 	char *tmp;
@@ -46,27 +46,32 @@ GElf_Phdr *gelf_getphdr(Elf * elf, int ndx, GElf_Phdr * dst)
 		return NULL;
 	}
 	elf_assert(elf->e_magic == ELF_MAGIC);
-	tmp = _elf_getphdr(elf, elf->e_class);
+
+	tmp = _elf_getphdr(elf, elf->e_class);	/* tmp指向ELF program header table首地址 */
 	if (!tmp) {
 		return NULL;
 	}
-	if (ndx < 0 || ndx >= elf->e_phnum) {
+
+	if (ndx < 0 || ndx >= elf->e_phnum) {	/* 检测传度进来的index的合法性 */
 		seterr(ERROR_BADINDEX);
 		return NULL;
 	}
-	n = _msize(elf->e_class, _elf_version, ELF_T_PHDR);
+
+	n = _msize(elf->e_class, _elf_version, ELF_T_PHDR);	/* 获得类型ELF_T_PHDR的内存表示大小 */
 	if (n == 0) {
 		seterr(ERROR_UNIMPLEMENTED);
 		return NULL;
 	}
+
 	if (!dst) {
 		dst = &buf;
 	}
-	if (elf->e_class == ELFCLASS64) {
-		*dst = *(Elf64_Phdr *) (tmp + ndx * n);
-	} else if (elf->e_class == ELFCLASS32) {
-		Elf32_Phdr *src = (Elf32_Phdr *) (tmp + ndx * n);
 
+	if (elf->e_class == ELFCLASS64) {
+		*dst = *(Elf64_Phdr *)(tmp + ndx * n);
+	} else if (elf->e_class == ELFCLASS32) {
+		Elf32_Phdr *src = (Elf32_Phdr *)(tmp + ndx * n);	/* 这两处tmp是char *类型的，所有可以直接加上偏移字节，体会用char *的好处 */
+															/* 省去了强制转化的过程 */
 		check_and_copy(GElf_Word, dst, src, p_type, NULL);
 		check_and_copy(GElf_Word, dst, src, p_flags, NULL);
 		check_and_copy(GElf_Off, dst, src, p_offset, NULL);
@@ -84,13 +89,14 @@ GElf_Phdr *gelf_getphdr(Elf * elf, int ndx, GElf_Phdr * dst)
 		return NULL;
 	}
 	if (dst == &buf) {
-		dst = (GElf_Phdr *) malloc(sizeof(GElf_Phdr));
+		dst = (GElf_Phdr *)malloc(sizeof(GElf_Phdr));	// 如果这里动态申请的话，那么何时释放呢
 		if (!dst) {
 			seterr(ERROR_MEM_PHDR);
 			return NULL;
 		}
 		*dst = buf;
 	}
+
 	return dst;
 }
 

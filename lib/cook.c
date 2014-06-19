@@ -99,7 +99,7 @@ Elf_Data *_elf_xlatetom(const Elf *elf, Elf_Data *dst, const Elf_Data *src)
 
 /* 本函数的目的: 将elf指向的ELF文件的类型为type，偏移为off的文本部分以内存的形式拷贝到buf，如果buf为NULL，则
   动态申请 */
-/* 该文件的文本形式已经mmap到内存，但依然是文本形式 */
+/* 该文件的文本形式已经mmap到内存，但依然是文本形式 -- 遵循一定的特性，如大小端特性 */
 static char *_elf_item(void *buf, Elf * elf, Elf_Type type, size_t off)
 {
 	Elf_Data src, dst;	/* src-->file  dst-->memory */
@@ -140,7 +140,7 @@ static char *_elf_item(void *buf, Elf * elf, Elf_Type type, size_t off)
 	if (_elf_xlatetom(elf, &dst, &src)) {	/* 将src指向的ELF Header(文件表现形式) 转换为 dst指向的内存区域(内存表现形式) */
 		return (char *)dst.d_buf;  	/* 在这里返回的话，在哪释放呢 */  /* --> 在elf_end函数中_elf_free(elf->e_ehdr)*/
 	}
-	/* 只有当_elf_xlatetom函数返回NULL时才会执行到这里 */
+	/* 只有当_elf_xlatetom函数返回NULL(即函数返回失败)时才会执行到这里 */
 	if (dst.d_buf != buf) {
 		free(dst.d_buf);
 	}
@@ -165,8 +165,7 @@ static int _elf_cook_phdr(Elf * elf)
 		/*
 		 * Check for overflow on 32-bit systems
 		 */
-		if (overflow
-		    (off, ((Elf64_Ehdr *) elf->e_ehdr)->e_phoff, Elf64_Off)) {
+		if (overflow(off, ((Elf64_Ehdr *)elf->e_ehdr)->e_phoff, Elf64_Off)) {
 			seterr(ERROR_OUTSIDE);
 			return 0;
 		}
@@ -183,6 +182,11 @@ static int _elf_cook_phdr(Elf * elf)
 		unsigned i;
 		char *p;
 
+		/*	
+		 * PN_XNUM(0xffff): Special value for e_phnum.  This indicates that the real number of
+       	 *		 			program headers is too large to fit into e_phnum.  Instead the real
+		 *					value is in the field sh_info of section 0. 
+         */
 		if (num == PN_XNUM) {
 			/*
 			 * Overflow in ehdr->e_phnum.

@@ -42,7 +42,7 @@ char *_elf_getphdr(Elf * elf, unsigned cls)
 
 Elf32_Phdr *elf32_getphdr(Elf * elf)
 {
-	return (Elf32_Phdr *) _elf_getphdr(elf, ELFCLASS32);
+	return (Elf32_Phdr *)_elf_getphdr(elf, ELFCLASS32);
 }
 
 #if __LIBELF64

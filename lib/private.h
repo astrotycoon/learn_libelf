@@ -160,10 +160,10 @@ struct Elf {
 	unsigned e_encoding;	/* ELF data encoding */								/* 数据编码格式 -- 大小端 */
 	unsigned e_version;	/* ELF version */										/* ELF目前版本 */
 	char *e_ehdr;		/* ELF header */										/* ELF header首地址 */
-	char *e_phdr;		/* ELF program header table */
-	size_t e_phnum;		/* size of program header table */
-	Elf_Scn *e_scn_1;	/* first section */
-	Elf_Scn *e_scn_n;	/* last section */
+	char *e_phdr;		/* ELF program header table */							/* ELF program header table首地址 */
+	size_t e_phnum;		/* size of program header table */						/* ELF program header table entry 的个数*/
+	Elf_Scn *e_scn_1;	/* first section */										/* 指向第一个section */
+	Elf_Scn *e_scn_n;	/* last section */										/* 指向最后一个section */
 	unsigned e_elf_flags;	/* elf flags (ELF_F_*) */
 	unsigned e_ehdr_flags;	/* ehdr flags (ELF_F_*) */
 	unsigned e_phdr_flags;	/* phdr flags (ELF_F_*) */
