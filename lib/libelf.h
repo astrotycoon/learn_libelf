@@ -188,13 +188,13 @@ extern "C" {
 
 	extern size_t elf32_fsize __P((Elf_Type __type, size_t __count, unsigned __ver));
 
-	extern Elf_Arhdr *elf_getarhdr __P((Elf * __elf));
-	extern Elf_Arsym *elf_getarsym __P((Elf * __elf, size_t * __ptr));
-	extern off_t elf_getbase __P((Elf * __elf));
-	extern Elf_Data *elf_getdata __P((Elf_Scn * __scn, Elf_Data * __data));
-	extern Elf32_Ehdr *elf32_getehdr __P((Elf * __elf));
-	extern char *elf_getident __P((Elf * __elf, size_t * __ptr));
-	extern Elf32_Phdr *elf32_getphdr __P((Elf * __elf));
+	extern Elf_Arhdr *elf_getarhdr __P((Elf *__elf));
+	extern Elf_Arsym *elf_getarsym __P((Elf *__elf, size_t *__ptr));
+	extern off_t elf_getbase __P((Elf *__elf));
+	extern Elf_Data *elf_getdata __P((Elf_Scn *__scn, Elf_Data *__data));
+	extern Elf32_Ehdr *elf32_getehdr __P((Elf *__elf));
+	extern char *elf_getident __P((Elf * __elf, size_t *__ptr));
+	extern Elf32_Phdr *elf32_getphdr __P((Elf *__elf));
 	extern Elf_Scn *elf_getscn __P((Elf * __elf, size_t __index));
 	extern Elf32_Shdr *elf32_getshdr __P((Elf_Scn * __scn));
 

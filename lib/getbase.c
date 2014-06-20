@@ -30,5 +30,6 @@ off_t elf_getbase(Elf * elf)
 		return -1;
 	}
 	elf_assert(elf->e_magic == ELF_MAGIC);
-	return (off_t) elf->e_base;
+
+	return (off_t)elf->e_base;
 }

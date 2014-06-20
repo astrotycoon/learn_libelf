@@ -152,8 +152,8 @@ static int _elf_cook_phdr(Elf * elf)
 {
 	size_t num, off, entsz;
 
-	if (elf->e_class == ELFCLASS32) {
-		num = ((Elf32_Ehdr *)elf->e_ehdr)->e_phnum;
+	if (elf->e_class == ELFCLASS32) {	/* 首先根据获得的ELF header获取ELF program heaer table的偏移，entry个数，以及每个entry的大小 */
+		num = ((Elf32_Ehdr *)elf->e_ehdr)->e_phnum;		/* 当然当e_phnum == PN_XNUM，那么其真实的个数在第一个section的sh_info中 */
 		off = ((Elf32_Ehdr *)elf->e_ehdr)->e_phoff;
 		entsz = ((Elf32_Ehdr *)elf->e_ehdr)->e_phentsize;
 	}
