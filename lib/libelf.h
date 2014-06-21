@@ -43,9 +43,9 @@ extern "C" {
 
 #ifndef __P
 	#if (__STDC__ + 0) || defined(__cplusplus) || defined(_WIN32)
-	#define __P(args) args
-#else				/* __STDC__ || defined(__cplusplus) */
-	#define __P(args) ()
+		#define __P(args) args
+	#else				/* __STDC__ || defined(__cplusplus) */
+		#define __P(args) ()
 	#endif				/* __STDC__ || defined(__cplusplus) */
 #endif				/* __P */
 
@@ -195,29 +195,30 @@ extern "C" {
 	extern Elf32_Ehdr *elf32_getehdr __P((Elf *__elf));
 	extern char *elf_getident __P((Elf * __elf, size_t *__ptr));
 	extern Elf32_Phdr *elf32_getphdr __P((Elf *__elf));
-	extern Elf_Scn *elf_getscn __P((Elf * __elf, size_t __index));
-	extern Elf32_Shdr *elf32_getshdr __P((Elf_Scn * __scn));
+
+	extern Elf_Scn *elf_getscn __P((Elf *__elf, size_t __index));
+	extern Elf32_Shdr *elf32_getshdr __P((Elf_Scn *__scn));
 
 	extern unsigned long elf_hash __P((const unsigned char *__name));
 
-	extern Elf_Kind elf_kind __P((Elf * __elf));
+	extern Elf_Kind elf_kind __P((Elf *__elf));
 
-	extern size_t elf_ndxscn __P((Elf_Scn * __scn));
+	extern size_t elf_ndxscn __P((Elf_Scn *__scn));
 
-	extern Elf_Data *elf_newdata __P((Elf_Scn * __scn));
-	extern Elf32_Ehdr *elf32_newehdr __P((Elf * __elf));
-	extern Elf32_Phdr *elf32_newphdr __P((Elf * __elf, size_t __count));
-	extern Elf_Scn *elf_newscn __P((Elf * __elf));
+	extern Elf_Data *elf_newdata __P((Elf_Scn *__scn));
+	extern Elf32_Ehdr *elf32_newehdr __P((Elf *__elf));
+	extern Elf32_Phdr *elf32_newphdr __P((Elf *__elf, size_t __count));
+	extern Elf_Scn *elf_newscn __P((Elf *__elf));
 
-	extern Elf_Cmd elf_next __P((Elf * __elf));
-	extern Elf_Scn *elf_nextscn __P((Elf * __elf, Elf_Scn * __scn));
+	extern Elf_Cmd elf_next __P((Elf *__elf));
+	extern Elf_Scn *elf_nextscn __P((Elf *__elf, Elf_Scn *__scn));
 
-	extern size_t elf_rand __P((Elf * __elf, size_t __offset));
+	extern size_t elf_rand __P((Elf *__elf, size_t __offset));
 
-	extern Elf_Data *elf_rawdata __P((Elf_Scn * __scn, Elf_Data * __data));
-	extern char *elf_rawfile __P((Elf * __elf, size_t * __ptr));
-	extern char *elf_strptr __P((Elf * __elf, size_t __section, size_t __offset));
-	extern off_t elf_update __P((Elf * __elf, Elf_Cmd __cmd));
+	extern Elf_Data *elf_rawdata __P((Elf_Scn *__scn, Elf_Data *__data));
+	extern char *elf_rawfile __P((Elf *__elf, size_t * __ptr));
+	extern char *elf_strptr __P((Elf *__elf, size_t __section, size_t __offset));
+	extern off_t elf_update __P((Elf *__elf, Elf_Cmd __cmd));
 
 	extern unsigned elf_version __P((unsigned __ver));
 

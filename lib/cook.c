@@ -177,7 +177,7 @@ static int _elf_cook_phdr(Elf * elf)
 	}
 
 	if (off) {
-		Elf_Scn *scn;
+		Elf_Scn *scn;	/* 用来获取第一个section */
 		size_t size;
 		unsigned i;
 		char *p;
@@ -186,6 +186,9 @@ static int _elf_cook_phdr(Elf * elf)
 		 * PN_XNUM(0xffff): Special value for e_phnum.  This indicates that the real number of
        	 *		 			program headers is too large to fit into e_phnum.  Instead the real
 		 *					value is in the field sh_info of section 0. 
+         * e_phnum: PN_XNUM (0xffff) --> sh_info
+		 * e_shnum: 0 --> sh_size
+    	 * e_shstrndx: SHN_XINDEX(0xffff) --> sh_link
          */
 		if (num == PN_XNUM) {
 			/*

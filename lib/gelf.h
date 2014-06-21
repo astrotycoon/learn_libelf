@@ -114,7 +114,7 @@ typedef Elf64_Syminfo GElf_Syminfo;
 	extern int gelf_update_phdr __P((Elf * __elf, int ndx, GElf_Phdr * __src));
 	extern unsigned long gelf_newphdr __P((Elf * __elf, size_t __phnum));
 
-	extern GElf_Shdr *gelf_getshdr __P((Elf_Scn * __scn, GElf_Shdr * __dst));
+	extern GElf_Shdr *gelf_getshdr __P((Elf_Scn *__scn, GElf_Shdr *__dst));
 	extern int gelf_update_shdr __P((Elf_Scn * __scn, GElf_Shdr * __src));
 
 	extern GElf_Dyn *gelf_getdyn __P((Elf_Data * __src, int __ndx, GElf_Dyn * __dst));

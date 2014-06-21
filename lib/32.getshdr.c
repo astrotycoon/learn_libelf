@@ -32,9 +32,11 @@ Elf32_Shdr *elf32_getshdr(Elf_Scn * scn)
 	elf_assert(scn->s_magic == SCN_MAGIC);
 	elf_assert(scn->s_elf);
 	elf_assert(scn->s_elf->e_magic == ELF_MAGIC);
+
 	if (scn->s_elf->e_class == ELFCLASS32) {
 		return &scn->s_shdr32;
 	}
+
 	seterr(ERROR_CLASSMISMATCH);
 	return NULL;
 }
@@ -46,12 +48,15 @@ Elf64_Shdr *elf64_getshdr(Elf_Scn * scn)
 	if (!scn) {
 		return NULL;
 	}
+
 	elf_assert(scn->s_magic == SCN_MAGIC);
 	elf_assert(scn->s_elf);
 	elf_assert(scn->s_elf->e_magic == ELF_MAGIC);
+
 	if (scn->s_elf->e_class == ELFCLASS64) {
 		return &scn->s_shdr64;
 	}
+
 	seterr(ERROR_CLASSMISMATCH);
 	return NULL;
 }

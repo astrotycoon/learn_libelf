@@ -101,12 +101,14 @@ Elf_Data *elf_getdata(Elf_Scn * scn, Elf_Data * data)
 		return NULL;
 	}
 	elf_assert(scn->s_magic == SCN_MAGIC);
+
 	if (scn->s_index == SHN_UNDEF) {
 		seterr(ERROR_NULLSCN);
 	} else if (data) {
 		for (sd = scn->s_data_1; sd; sd = sd->sd_link) {
 			elf_assert(sd->sd_magic == DATA_MAGIC);
 			elf_assert(sd->sd_scn == scn);
+
 			if (data == &sd->sd_data) {
 				/*
 				 * sd_link allocated by elf_newdata().
@@ -121,6 +123,7 @@ Elf_Data *elf_getdata(Elf_Scn * scn, Elf_Data * data)
 		elf = scn->s_elf;
 		elf_assert(elf);
 		elf_assert(elf->e_magic == ELF_MAGIC);
+
 		if (sd->sd_freeme) {
 			/* allocated by elf_newdata() */
 			return &sd->sd_data;
@@ -142,5 +145,6 @@ Elf_Data *elf_getdata(Elf_Scn * scn, Elf_Data * data)
 			seterr(ERROR_UNKNOWN_CLASS);
 		}
 	}
+
 	return NULL;
 }
