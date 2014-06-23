@@ -257,13 +257,13 @@ static int _elf_cook_shdr(Elf * elf)
 	}
 #if __LIBELF64
 	else if (elf->e_class == ELFCLASS64) {
-		num = ((Elf64_Ehdr *) elf->e_ehdr)->e_shnum;
-		off = ((Elf64_Ehdr *) elf->e_ehdr)->e_shoff;
-		entsz = ((Elf64_Ehdr *) elf->e_ehdr)->e_shentsize;
+		num = ((Elf64_Ehdr *)elf->e_ehdr)->e_shnum;
+		off = ((Elf64_Ehdr *)elf->e_ehdr)->e_shoff;
+		entsz = ((Elf64_Ehdr *)elf->e_ehdr)->e_shentsize;
 		/*
 		 * Check for overflow on 32-bit systems
 		 */
-		if (overflow(off, ((Elf64_Ehdr *) elf->e_ehdr)->e_shoff, Elf64_Off)) {
+		if (overflow(off, ((Elf64_Ehdr *)elf->e_ehdr)->e_shoff, Elf64_Off)) {
 			seterr(ERROR_OUTSIDE);
 			return 0;
 		}
@@ -330,9 +330,7 @@ static int _elf_cook_shdr(Elf * elf)
 			if (!_elf_xlatetom(elf, &dst, &src)) {
 				return 0;
 			}
-			elf_assert(dst.d_size ==
-				   _msize(elf->e_class, EV_CURRENT,
-					  ELF_T_SHDR));
+			elf_assert(dst.d_size == _msize(elf->e_class, EV_CURRENT, ELF_T_SHDR));
 			elf_assert(dst.d_type == ELF_T_SHDR);
 			if (elf->e_class == ELFCLASS32) {
 				num = u.sh32.sh_size;
@@ -517,9 +515,11 @@ static int _elf_cook_file(Elf * elf)
 	if (!_elf_cook_shdr(elf)) {
 		return 0;
 	}
+
 	if (!_elf_cook_phdr(elf)) {
 		return 0;
 	}
+
 	return 1;
 }
 

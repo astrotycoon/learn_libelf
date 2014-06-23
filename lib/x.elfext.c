@@ -71,7 +71,7 @@ int elf_getshdrnum(Elf * elf, size_t * resultp)
 	return 0;
 }
 
-int elf_getshdrstrndx(Elf * elf, size_t * resultp)
+int elf_getshdrstrndx(Elf *elf, size_t *resultp)
 {
 	size_t num = 0;
 	size_t dummy;
@@ -107,6 +107,10 @@ int elf_getshdrstrndx(Elf * elf, size_t * resultp)
 		}
 		return -1;
 	}
+
+	/*
+     * e_shstrndx: SHN_XINDEX ( > SHN_LORESERVE)  --> sh_link 
+	 */
 	if (num != SHN_XINDEX) {
 		*resultp = num;
 		return 0;

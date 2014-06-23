@@ -30,5 +30,6 @@ size_t elf_ndxscn(Elf_Scn * scn)
 		return SHN_UNDEF;
 	}
 	elf_assert(scn->s_magic == SCN_MAGIC);
+
 	return scn->s_index;
 }

@@ -32,6 +32,7 @@ Elf_Scn *elf_getscn(Elf * elf, size_t index)
 		return NULL;
 	}
 	elf_assert(elf->e_magic == ELF_MAGIC);
+
 	if (elf->e_kind != ELF_K_ELF) {
 		seterr(ERROR_NOTELF);
 	} else if (elf->e_ehdr || _elf_cook(elf)) {
@@ -44,5 +45,6 @@ Elf_Scn *elf_getscn(Elf * elf, size_t index)
 		}
 		seterr(ERROR_NOSUCHSCN);
 	}
+
 	return NULL;
 }

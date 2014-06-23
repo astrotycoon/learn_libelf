@@ -35,6 +35,7 @@ char *elf_strptr(Elf * elf, size_t section, size_t offset)
 		return NULL;
 	}
 	elf_assert(elf->e_magic == ELF_MAGIC);
+
 	if (!(scn = elf_getscn(elf, section))) {
 		return NULL;
 	}

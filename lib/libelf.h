@@ -100,7 +100,7 @@ extern "C" {
 		ELF_T_PHDR,
 		ELF_T_RELA,
 		ELF_T_REL,
-		ELF_T_SHDR,
+		ELF_T_SHDR,								/* ELF	section	header entries */
 		ELF_T_SWORD,
 		ELF_T_SYM,
 		ELF_T_WORD,
@@ -268,7 +268,7 @@ extern "C" {
  */
 	extern int elf_getphdrnum __P((Elf * __elf, size_t * __resultp));
 	extern int elf_getshdrnum __P((Elf * __elf, size_t * __resultp));
-	extern int elf_getshdrstrndx __P((Elf * __elf, size_t * __resultp));
+	extern int elf_getshdrstrndx __P((Elf *__elf, size_t *__resultp));
 
 /*
  * Convenience functions

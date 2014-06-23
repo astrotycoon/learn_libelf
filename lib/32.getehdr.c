@@ -36,7 +36,7 @@ char *_elf_getehdr(Elf * elf, unsigned cls)
 	} else if (elf->e_class != cls) {
 		seterr(ERROR_CLASSMISMATCH);
 	} else if (elf->e_ehdr || _elf_cook(elf)) {	/* 如果elf->e_ehdr为NULL，则获取ELF文件头 */
-		return elf->e_ehdr;
+		return elf->e_ehdr;						/* 这个过程就是把ELF的 文件表现形式 转化成 内存表现形式 的过程 */ 
 	}
 	return NULL;
 }
