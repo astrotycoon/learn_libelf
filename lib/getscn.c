@@ -39,6 +39,7 @@ Elf_Scn *elf_getscn(Elf * elf, size_t index)
 		for (scn = elf->e_scn_1; scn; scn = scn->s_link) {
 			elf_assert(scn->s_magic == SCN_MAGIC);
 			elf_assert(scn->s_elf == elf);
+
 			if (scn->s_index == index) {
 				return scn;
 			}
