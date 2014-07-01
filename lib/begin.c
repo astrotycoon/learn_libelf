@@ -236,12 +236,12 @@ Elf *elf_begin(int fd, Elf_Cmd cmd, Elf * ref)
 		return NULL;
 	} else if (cmd == ELF_C_NULL) {
 		return NULL;
-	} else if (cmd == ELF_C_WRITE) {
+	} else if (cmd == ELF_C_WRITE) {	// 如果是ELF_C_WRITE，则意味着要创建一个新的ELF文件，忽略掉ref参数
 		ref = NULL;
 	} else if (cmd != ELF_C_READ && cmd != ELF_C_RDWR) {
 		seterr(ERROR_INVALID_CMD);
 		return NULL;
-	} else if (ref) {
+	} else if (ref) {					// 处理AR文件	 
 		elf_assert(ref->e_magic == ELF_MAGIC);
 		if (!ref->e_readable || (cmd == ELF_C_RDWR && !ref->e_writable)) {
 			seterr(ERROR_CMDMISMATCH);
@@ -265,8 +265,9 @@ Elf *elf_begin(int fd, Elf_Cmd cmd, Elf * ref)
 			return NULL;
 		}
 		size = arhdr->ar_size;
-	} else if ((off = lseek(fd, (off_t)0, SEEK_END)) == (off_t)-1	/* off的值为文件大小 */
-		   || (off_t)(size = off) != off) {							/* size的值为文件大小 */
+	}	// 如果到这里的话，则程序是想处理一个已有的ELF文件 首先获取文件的大小 
+	else if ((off = lseek(fd, (off_t)0, SEEK_END)) == (off_t)-1	/* off的值为文件大小 */
+		   || (off_t)(size = off) != off) {						/* size的值为文件大小 */
 		seterr(ERROR_IO_GETSIZE);
 		return NULL;
 	}
@@ -285,7 +286,7 @@ Elf *elf_begin(int fd, Elf_Cmd cmd, Elf * ref)
 	}
 	if (cmd != ELF_C_WRITE) {
 		elf->e_readable = 1;
-	} else {
+	} else {		// 如果是创建一个新ELF的话，则这里就返回
 		return elf;
 	}
 

@@ -32,6 +32,7 @@ static char *_elf_newehdr(Elf * elf, unsigned cls)
 		return NULL;
 	}
 	elf_assert(elf->e_magic == ELF_MAGIC);
+
 	if (elf->e_readable) {
 		return _elf_getehdr(elf, cls);
 	} else if (!elf->e_ehdr) {
@@ -51,19 +52,20 @@ static char *_elf_newehdr(Elf * elf, unsigned cls)
 		elf_assert(elf->e_kind == ELF_K_ELF);
 		return elf->e_ehdr;
 	}
+
 	return NULL;
 }
 
 Elf32_Ehdr *elf32_newehdr(Elf * elf)
 {
-	return (Elf32_Ehdr *) _elf_newehdr(elf, ELFCLASS32);
+	return (Elf32_Ehdr *)_elf_newehdr(elf, ELFCLASS32);
 }
 
 #if __LIBELF64
 
 Elf64_Ehdr *elf64_newehdr(Elf * elf)
 {
-	return (Elf64_Ehdr *) _elf_newehdr(elf, ELFCLASS64);
+	return (Elf64_Ehdr *)_elf_newehdr(elf, ELFCLASS64);
 }
 
 unsigned long gelf_newehdr(Elf * elf, int cls)
@@ -72,6 +74,7 @@ unsigned long gelf_newehdr(Elf * elf, int cls)
 		seterr(ERROR_UNKNOWN_CLASS);
 		return 0;
 	}
+
 	return (unsigned long)_elf_newehdr(elf, cls);
 }
 

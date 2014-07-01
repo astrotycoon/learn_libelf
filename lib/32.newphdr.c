@@ -35,6 +35,7 @@ static char *_elf_newphdr(Elf * elf, size_t count, unsigned cls)
 		return NULL;
 	}
 	elf_assert(elf->e_magic == ELF_MAGIC);
+
 	if (!elf->e_ehdr && !elf->e_readable) {
 		seterr(ERROR_NOEHDR);
 	} else if (elf->e_kind != ELF_K_ELF) {
@@ -101,7 +102,7 @@ Elf32_Phdr *elf32_newphdr(Elf * elf, size_t count)
 
 Elf64_Phdr *elf64_newphdr(Elf * elf, size_t count)
 {
-	return (Elf64_Phdr *) _elf_newphdr(elf, count, ELFCLASS64);
+	return (Elf64_Phdr *)_elf_newphdr(elf, count, ELFCLASS64);
 }
 
 unsigned long gelf_newphdr(Elf * elf, size_t phnum)
