@@ -34,6 +34,7 @@ int _elf_update_shnum(Elf * elf, size_t shnum)
 	scn = elf->e_scn_1;
 	elf_assert(scn);
 	elf_assert(scn->s_index == 0);
+
 	if (shnum >= SHN_LORESERVE) {
 		extshnum = shnum;
 		shnum = 0;
@@ -69,6 +70,7 @@ static Elf_Scn *_makescn(Elf * elf, size_t index)
 	elf_assert(elf->e_magic == ELF_MAGIC);
 	elf_assert(elf->e_ehdr);
 	elf_assert(_elf_scn_init.s_magic == SCN_MAGIC);
+
 	if (!(scn = (Elf_Scn *) malloc(sizeof(*scn)))) {
 		seterr(ERROR_MEM_SCN);
 		return NULL;
@@ -79,6 +81,7 @@ static Elf_Scn *_makescn(Elf * elf, size_t index)
 	scn->s_shdr_flags = ELF_F_DIRTY;
 	scn->s_freeme = 1;
 	scn->s_index = index;
+
 	return scn;
 }
 
@@ -88,6 +91,7 @@ Elf_Scn *_elf_first_scn(Elf * elf)
 
 	elf_assert(elf);
 	elf_assert(elf->e_magic == ELF_MAGIC);
+
 	if ((scn = elf->e_scn_1)) {
 		return scn;
 	}
@@ -98,6 +102,7 @@ Elf_Scn *_elf_first_scn(Elf * elf)
 			elf->e_scn_1 = elf->e_scn_n = scn = NULL;
 		}
 	}
+
 	return scn;
 }
 

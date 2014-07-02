@@ -24,7 +24,7 @@ static const char rcsid[] =
     "@(#) $Id: 32.newphdr.c,v 1.16 2008/05/23 08:15:34 michael Exp $";
 #endif				/* lint */
 
-static char *_elf_newphdr(Elf * elf, size_t count, unsigned cls)
+static char *_elf_newphdr(Elf *elf, size_t count, unsigned cls)
 {
 	size_t extcount = 0;
 	Elf_Scn *scn = NULL;
@@ -90,6 +90,7 @@ static char *_elf_newphdr(Elf * elf, size_t count, unsigned cls)
 		scn->s_scn_flags |= ELF_F_DIRTY;
 		return phdr;
 	}
+
 	return NULL;
 }
 
