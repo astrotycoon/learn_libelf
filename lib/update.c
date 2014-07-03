@@ -995,6 +995,7 @@ off_t elf_update(Elf * elf, Elf_Cmd cmd)
 		return -1;
 	}
 	elf_assert(elf->e_magic == ELF_MAGIC);
+
 	if (cmd == ELF_C_WRITE) {
 		if (!elf->e_writable) {
 			seterr(ERROR_RDONLY);
@@ -1016,9 +1017,7 @@ off_t elf_update(Elf * elf, Elf_Cmd cmd)
 	} else if (elf->e_class == ELFCLASS32) {
 		len = _elf32_layout(elf, &flag);
 		if (len != -1 && cmd == ELF_C_WRITE && (flag & ELF_F_DIRTY)) {
-			len =
-			    _elf_output(elf, elf->e_fd, (size_t) len,
-					_elf32_write);
+			len = _elf_output(elf, elf->e_fd, (size_t) len, _elf32_write);
 		}
 		return len;
 	}
@@ -1026,9 +1025,7 @@ off_t elf_update(Elf * elf, Elf_Cmd cmd)
 	else if (elf->e_class == ELFCLASS64) {
 		len = _elf64_layout(elf, &flag);
 		if (len != -1 && cmd == ELF_C_WRITE && (flag & ELF_F_DIRTY)) {
-			len =
-			    _elf_output(elf, elf->e_fd, (size_t) len,
-					_elf64_write);
+			len = _elf_output(elf, elf->e_fd, (size_t) len, _elf64_write);
 		}
 		return len;
 	}
@@ -1038,5 +1035,6 @@ off_t elf_update(Elf * elf, Elf_Cmd cmd)
 	} else {
 		seterr(ERROR_UNKNOWN_CLASS);
 	}
+
 	return -1;
 }

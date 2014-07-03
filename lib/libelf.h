@@ -218,6 +218,7 @@ extern "C" {
 	extern Elf_Data *elf_rawdata __P((Elf_Scn *__scn, Elf_Data *__data));
 	extern char *elf_rawfile __P((Elf *__elf, size_t * __ptr));
 	extern char *elf_strptr __P((Elf *__elf, size_t __section, size_t __offset));
+
 	extern off_t elf_update __P((Elf *__elf, Elf_Cmd __cmd));
 
 	extern unsigned elf_version __P((unsigned __ver));
