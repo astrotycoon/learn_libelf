@@ -26,7 +26,7 @@ static const char rcsid[] =
 
 static char *_elf_newphdr(Elf *elf, size_t count, unsigned cls)
 {
-	size_t extcount = 0;
+	size_t extcount = 0;	// 在这里初始化为0是很有必要的
 	Elf_Scn *scn = NULL;
 	char *phdr = NULL;
 	size_t size;
@@ -45,10 +45,12 @@ static char *_elf_newphdr(Elf *elf, size_t count, unsigned cls)
 	} else if (elf->e_ehdr || _elf_cook(elf)) {
 		size = _msize(cls, _elf_version, ELF_T_PHDR);
 		elf_assert(size);
+
 		if (!(scn = _elf_first_scn(elf))) {
 			return NULL;
 		}
-		if (count) {
+
+		if (count) {	// 动态申请count个program header table entries
 			if (!(phdr = (char *)malloc(count * size))) {
 				seterr(ERROR_MEM_PHDR);
 				return NULL;
@@ -57,6 +59,13 @@ static char *_elf_newphdr(Elf *elf, size_t count, unsigned cls)
 		}
 		elf_assert(elf->e_ehdr);
 		elf->e_phnum = count;
+		/*
+		 *  这里要考虑到e_phnum等于PN_XNUM的特殊情况
+		 *	If the number of entries in the program header table is larger than or equal to PN_XNUM (0xffff)
+		 *	this member holds PN_XNUM (0xffff) and the real number of entries in the program header table is 
+		 *	held in the sh_info member of the first section
+		 * 
+		 */
 		if (count >= PN_XNUM) {
 			/*
 			 * get NULL section (create it if necessary)
@@ -65,12 +74,12 @@ static char *_elf_newphdr(Elf *elf, size_t count, unsigned cls)
 			count = PN_XNUM;
 		}
 		if (cls == ELFCLASS32) {
-			((Elf32_Ehdr *) elf->e_ehdr)->e_phnum = count;
+			((Elf32_Ehdr *)elf->e_ehdr)->e_phnum = count;
 			scn->s_shdr32.sh_info = extcount;
 		}
 #if __LIBELF64
 		else if (cls == ELFCLASS64) {
-			((Elf64_Ehdr *) elf->e_ehdr)->e_phnum = count;
+			((Elf64_Ehdr *)elf->e_ehdr)->e_phnum = count;
 			scn->s_shdr64.sh_info = extcount;
 		}
 #endif				/* __LIBELF64 */
@@ -81,13 +90,15 @@ static char *_elf_newphdr(Elf *elf, size_t count, unsigned cls)
 			}
 			return NULL;
 		}
-		if (elf->e_phdr) {
+		// discarding any existing program header table already present in the ELF descriptor elf
+		if (elf->e_phdr) {	 
 			free(elf->e_phdr);
 		}
 		elf->e_phdr = phdr;
 		elf->e_phdr_flags |= ELF_F_DIRTY;
 		elf->e_ehdr_flags |= ELF_F_DIRTY;
 		scn->s_scn_flags |= ELF_F_DIRTY;
+
 		return phdr;
 	}
 

@@ -103,7 +103,7 @@ extern "C" {
 		ELF_T_SHDR,								/* ELF section header entries */
 		ELF_T_SWORD,
 		ELF_T_SYM,
-		ELF_T_WORD,
+		ELF_T_WORD,								/* Unsigned 32-bit words */
 		/*
 		 * New stuff for 64-bit.
 		 *

@@ -31,21 +31,28 @@ int _elf_update_shnum(Elf * elf, size_t shnum)
 
 	elf_assert(elf);
 	elf_assert(elf->e_ehdr);
+
 	scn = elf->e_scn_1;
+
 	elf_assert(scn);
 	elf_assert(scn->s_index == 0);
 
+	/*	这里要考虑到段数的特殊情况
+     *	If the number of entries in the section header table is larger than or equal to SHN_LORESERVE (0xff00)
+     *	e_shnum holds the value zero and the real number of entries in the section header table is held in the 
+	 *	sh_size member of first section
+   	 */
 	if (shnum >= SHN_LORESERVE) {
 		extshnum = shnum;
 		shnum = 0;
 	}
 	if (elf->e_class == ELFCLASS32) {
-		((Elf32_Ehdr *) elf->e_ehdr)->e_shnum = shnum;
+		((Elf32_Ehdr *)elf->e_ehdr)->e_shnum = shnum;
 		scn->s_shdr32.sh_size = extshnum;
 	}
 #if __LIBELF64
 	else if (elf->e_class == ELFCLASS64) {
-		((Elf64_Ehdr *) elf->e_ehdr)->e_shnum = shnum;
+		((Elf64_Ehdr *)elf->e_ehdr)->e_shnum = shnum;
 		scn->s_shdr64.sh_size = extshnum;
 	}
 #endif				/* __LIBELF64 */
@@ -57,8 +64,10 @@ int _elf_update_shnum(Elf * elf, size_t shnum)
 		}
 		return -1;
 	}
+
 	elf->e_ehdr_flags |= ELF_F_DIRTY;
 	scn->s_shdr_flags |= ELF_F_DIRTY;
+
 	return 0;
 }
 
@@ -71,7 +80,7 @@ static Elf_Scn *_makescn(Elf * elf, size_t index)
 	elf_assert(elf->e_ehdr);
 	elf_assert(_elf_scn_init.s_magic == SCN_MAGIC);
 
-	if (!(scn = (Elf_Scn *) malloc(sizeof(*scn)))) {
+	if (!(scn = (Elf_Scn *)malloc(sizeof(*scn)))) {
 		seterr(ERROR_MEM_SCN);
 		return NULL;
 	}
@@ -92,11 +101,11 @@ Elf_Scn *_elf_first_scn(Elf * elf)
 	elf_assert(elf);
 	elf_assert(elf->e_magic == ELF_MAGIC);
 
-	if ((scn = elf->e_scn_1)) {
-		return scn;
+	if ((scn = elf->e_scn_1)) {	// 玛德,一开始我还以为是 == ，搞的我莫名其妙 
+		return scn;				// 现在看来这行代码真的很巧妙 (如果已经有第一个section，则返回e_scn_1)
 	}
-	if ((scn = _makescn(elf, 0))) {
-		elf->e_scn_1 = elf->e_scn_n = scn;
+	if ((scn = _makescn(elf, 0))) {	// 新建立一个Elf_Scn，index从0开始
+		elf->e_scn_1 = elf->e_scn_n = scn;	// 使第一个section和最后一个section都指向新建立的section
 		if (_elf_update_shnum(elf, 1)) {
 			free(scn);
 			elf->e_scn_1 = elf->e_scn_n = scn = NULL;
@@ -106,15 +115,17 @@ Elf_Scn *_elf_first_scn(Elf * elf)
 	return scn;
 }
 
-static Elf_Scn *_buildscn(Elf * elf)
+static Elf_Scn *_buildscn(Elf *elf)
 {
 	Elf_Scn *scn;
 
+	// 如果已经存在第一个section，则返回e_scn_1，否则动态申请一个，并返回之
 	if (!_elf_first_scn(elf)) {
 		return NULL;
 	}
 	scn = elf->e_scn_n;
 	elf_assert(scn);
+
 	if (!(scn = _makescn(elf, scn->s_index + 1))) {
 		return NULL;
 	}
@@ -122,7 +133,9 @@ static Elf_Scn *_buildscn(Elf * elf)
 		free(scn);
 		return NULL;
 	}
+	// 从右向左
 	elf->e_scn_n = elf->e_scn_n->s_link = scn;
+
 	return scn;
 }
 
@@ -134,6 +147,7 @@ Elf_Scn *elf_newscn(Elf * elf)
 		return NULL;
 	}
 	elf_assert(elf->e_magic == ELF_MAGIC);
+
 	if (!elf->e_readable && !elf->e_ehdr) {
 		seterr(ERROR_NOEHDR);
 	} else if (elf->e_kind != ELF_K_ELF) {
@@ -143,5 +157,6 @@ Elf_Scn *elf_newscn(Elf * elf)
 	} else if ((scn = _buildscn(elf))) {
 		return scn;
 	}
+
 	return NULL;
 }
