@@ -33,14 +33,14 @@ static const char rcsid[] =
 static const unsigned short __encoding = ELFDATA2LSB + (ELFDATA2MSB << 8);
 #define native_encoding (*(unsigned char*)&__encoding)
 
-#define rewrite(var,val,f)	\
-    do{if((var)!=(val)){(var)=(val);(f)|=ELF_F_DIRTY;}}while(0)
+#define rewrite(var, val, f)	\
+    do{ if((var) != (val)) {(var) = (val); (f) |= ELF_F_DIRTY;} }while(0)
 
-#define align(var,val)		\
-    do{if((val)>1){(var)+=(val)-1;(var)-=(var)%(val);}}while(0)
+#define align(var, val)		\
+    do{ if((val) > 1) {(var) += (val) - 1; (var) -= (var) % (val);} }while(0)
 
 #undef max
-#define max(a,b)		((a)>(b)?(a):(b))
+#define max(a,b)		((a) > (b) ? (a) : (b))
 
 static off_t
 scn_data_layout(Elf_Scn * scn, unsigned v, unsigned type, size_t * algn,
@@ -132,7 +132,7 @@ static off_t _elf32_layout(Elf * elf, unsigned *flag)
 {
 	int layout = (elf->e_elf_flags & ELF_F_LAYOUT) == 0;
 	int allow_overlap = (elf->e_elf_flags & ELF_F_LAYOUT_OVERLAP) != 0;
-	Elf32_Ehdr *ehdr = (Elf32_Ehdr *) elf->e_ehdr;
+	Elf32_Ehdr *ehdr = (Elf32_Ehdr *)elf->e_ehdr;
 	size_t off = 0;
 	unsigned version;
 	unsigned encoding;

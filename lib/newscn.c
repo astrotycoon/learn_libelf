@@ -94,7 +94,7 @@ static Elf_Scn *_makescn(Elf * elf, size_t index)
 	return scn;
 }
 
-Elf_Scn *_elf_first_scn(Elf * elf)
+Elf_Scn *_elf_first_scn(Elf *elf)
 {
 	Elf_Scn *scn;
 
@@ -120,6 +120,7 @@ static Elf_Scn *_buildscn(Elf *elf)
 	Elf_Scn *scn;
 
 	// 如果已经存在第一个section，则返回e_scn_1，否则动态申请一个，并返回之
+	// 创建一个新的section之前，必须存在第一个（index == 0）的section
 	if (!_elf_first_scn(elf)) {
 		return NULL;
 	}
@@ -129,6 +130,7 @@ static Elf_Scn *_buildscn(Elf *elf)
 	if (!(scn = _makescn(elf, scn->s_index + 1))) {
 		return NULL;
 	}
+
 	if (_elf_update_shnum(elf, scn->s_index + 1)) {
 		free(scn);
 		return NULL;

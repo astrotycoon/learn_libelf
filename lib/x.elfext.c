@@ -176,7 +176,7 @@ int elfx_update_shstrndx(Elf * elf, size_t value)
 	if (!elf->e_ehdr && !_elf_cook(elf)) {
 		return LIBELF_FAILURE;
 	}
-	if (!(scn = _elf_first_scn(elf))) {
+	if (!(scn = _elf_first_scn(elf))) {	// 要确保存在第一个section（index == 0）
 		return LIBELF_FAILURE;
 	}
 	elf_assert(scn->s_magic == SCN_MAGIC);
