@@ -113,9 +113,9 @@ Elf_Data *elf_getdata(Elf_Scn * scn, Elf_Data * data)
 				/*
 				 * sd_link allocated by elf_newdata().
 				 */
-				return &sd->sd_link->sd_data;
-			}
-		}
+				return &sd->sd_link->sd_data;	// 这里我有个疑惑，当sd->sd_link为NULL时，sd->sd_link->sd_data肯定是非法访问
+			}									// 那么sd->sd_link->sd_data的地址是合法的？ 如果合法，那么sd->sd_link->sd_link->sd_data
+		}										// 的地址合法吗？
 		seterr(ERROR_SCNDATAMISMATCH);
 	} else if ((sd = scn->s_data_1)) {
 		elf_assert(sd->sd_magic == DATA_MAGIC);

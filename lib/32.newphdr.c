@@ -46,6 +46,7 @@ static char *_elf_newphdr(Elf *elf, size_t count, unsigned cls)
 		size = _msize(cls, _elf_version, ELF_T_PHDR);
 		elf_assert(size);
 
+		// 在生成PHDR前，需要先生成一个section, 处于Extended numbering的考虑
 		if (!(scn = _elf_first_scn(elf))) {
 			return NULL;
 		}
@@ -73,6 +74,7 @@ static char *_elf_newphdr(Elf *elf, size_t count, unsigned cls)
 			extcount = count;
 			count = PN_XNUM;
 		}
+
 		if (cls == ELFCLASS32) {
 			((Elf32_Ehdr *)elf->e_ehdr)->e_phnum = count;
 			scn->s_shdr32.sh_info = extcount;
