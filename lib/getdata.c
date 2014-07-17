@@ -92,7 +92,7 @@ static Elf_Data *_elf_cook_scn(Elf * elf, Elf_Scn * scn, Scn_Data * sd)
 	return NULL;
 }
 
-Elf_Data *elf_getdata(Elf_Scn * scn, Elf_Data * data)
+Elf_Data *elf_getdata(Elf_Scn *scn, Elf_Data *data)
 {
 	Scn_Data *sd;
 	Elf *elf;
@@ -114,13 +114,14 @@ Elf_Data *elf_getdata(Elf_Scn * scn, Elf_Data * data)
 				 * sd_link allocated by elf_newdata().
 				 */
 				return &sd->sd_link->sd_data;	// 这里我有个疑惑，当sd->sd_link为NULL时，sd->sd_link->sd_data肯定是非法访问
+												// ------> (我们不能访问0地址处的内容)
 			}									// 那么sd->sd_link->sd_data的地址是合法的？ 如果合法，那么sd->sd_link->sd_link->sd_data
 		}										// 的地址合法吗？
-		seterr(ERROR_SCNDATAMISMATCH);
-	} else if ((sd = scn->s_data_1)) {
-		elf_assert(sd->sd_magic == DATA_MAGIC);
-		elf_assert(sd->sd_scn == scn);
-		elf = scn->s_elf;
+		seterr(ERROR_SCNDATAMISMATCH);			// 2014-7-17 17:07:49 解释: 由#define offsetof(type, member) ((int)&((type*)0)->member)得知，
+	} else if ((sd = scn->s_data_1)) {			// 0地址处的结构体成员，我们绝对是不能访问的，但是取地址可以，这里sd->sd_link->sd_data的地址是
+		elf_assert(sd->sd_magic == DATA_MAGIC);	// 0,这也正解释了为什么Scn_Data结构体中成员sd_data必须放在首位的原因
+		elf_assert(sd->sd_scn == scn);			// 而返回sd->sd_link->sd_link->sd_data的地址肯定是不行的了
+		elf = scn->s_elf;						// 因为sd->sd_link->sd_link已经访问了0地址的内容了，必然导致断错误
 		elf_assert(elf);
 		elf_assert(elf->e_magic == ELF_MAGIC);
 

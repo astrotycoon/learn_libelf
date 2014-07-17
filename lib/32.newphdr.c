@@ -24,6 +24,11 @@ static const char rcsid[] =
     "@(#) $Id: 32.newphdr.c,v 1.16 2008/05/23 08:15:34 michael Exp $";
 #endif				/* lint */
 
+/*
+ *	注意两点:
+ *		1:	该函数会忽略掉之前存在的phdr(free掉),所以我们应该一次性确定有多少个phdr，即count等于多少 	
+ *		2: 	当count等于0时，该函数所做的就是忽略掉之前存在的phdr(free掉)
+ */
 static char *_elf_newphdr(Elf *elf, size_t count, unsigned cls)
 {
 	size_t extcount = 0;	// 在这里初始化为0是很有必要的
@@ -107,7 +112,7 @@ static char *_elf_newphdr(Elf *elf, size_t count, unsigned cls)
 	return NULL;
 }
 
-Elf32_Phdr *elf32_newphdr(Elf * elf, size_t count)
+Elf32_Phdr *elf32_newphdr(Elf *elf, size_t count)
 {
 	return (Elf32_Phdr *)_elf_newphdr(elf, count, ELFCLASS32);
 }

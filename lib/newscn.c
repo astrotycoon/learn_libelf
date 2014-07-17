@@ -24,7 +24,11 @@ static const char rcsid[] =
     "@(#) $Id: newscn.c,v 1.13 2008/05/23 08:15:35 michael Exp $";
 #endif				/* lint */
 
-int _elf_update_shnum(Elf * elf, size_t shnum)
+/*
+ * 	该函数用来设置e_shnum，当然这其中是要考虑特殊情况的，
+ *	一旦参数shnum是特殊，则需要第一个section中相应的sh_size来存储
+ */
+int _elf_update_shnum(Elf *elf, size_t shnum)
 {
 	size_t extshnum = 0;
 	Elf_Scn *scn;
@@ -32,9 +36,8 @@ int _elf_update_shnum(Elf * elf, size_t shnum)
 	elf_assert(elf);
 	elf_assert(elf->e_ehdr);
 
-	scn = elf->e_scn_1;
-
-	elf_assert(scn);
+	scn = elf->e_scn_1;			// scn指向第一个Elf_Scn
+	elf_assert(scn);			// 要确保存在第一个section，否则当Extended numbering的时候就没有意义了
 	elf_assert(scn->s_index == 0);
 
 	/*	这里要考虑到段数的特殊情况
@@ -71,7 +74,10 @@ int _elf_update_shnum(Elf * elf, size_t shnum)
 	return 0;
 }
 
-static Elf_Scn *_makescn(Elf * elf, size_t index)
+/*
+ *	动态申请空间创建一个全新的Elf_Scn, 参数index用于指定这个section的序号，从0开始
+ */
+static Elf_Scn *_makescn(Elf *elf, size_t index)
 {
 	Elf_Scn *scn;
 
@@ -94,6 +100,9 @@ static Elf_Scn *_makescn(Elf * elf, size_t index)
 	return scn;
 }
 
+/*
+ *	获得第一个section对应的Elf_Scn的地址 如果已经存在 则直接返回 如果不存在，则动态申请一个
+ */
 Elf_Scn *_elf_first_scn(Elf *elf)
 {
 	Elf_Scn *scn;
@@ -104,10 +113,11 @@ Elf_Scn *_elf_first_scn(Elf *elf)
 	if ((scn = elf->e_scn_1)) {	// 玛德,一开始我还以为是 == ，搞的我莫名其妙 
 		return scn;				// 现在看来这行代码真的很巧妙 (如果已经有第一个section，则返回e_scn_1)
 	}
+
 	if ((scn = _makescn(elf, 0))) {	// 新建立一个Elf_Scn，index从0开始
 		elf->e_scn_1 = elf->e_scn_n = scn;	// 使第一个section和最后一个section都指向新建立的section
 		if (_elf_update_shnum(elf, 1)) {
-			free(scn);
+			free(scn);				// 如果失败，则释放空间按，并且设置scn等于NULL，因为scn要返回
 			elf->e_scn_1 = elf->e_scn_n = scn = NULL;
 		}
 	}
@@ -115,6 +125,14 @@ Elf_Scn *_elf_first_scn(Elf *elf)
 	return scn;
 }
 
+/*
+ *	创建一个section的步骤: 
+ *		1: 首先确保存在第一个Elf_Scn，因为第一个Elf_Scn并不对应一个真实的section，一般用于扩展使用
+ *		2: 然后调用_makescn创建一个全新的Elf_Scn (其下标是e_scn_n的s_index + 1)
+ *		3: 接着调用_elf_update_shnum更新一下elf->e_shnum，
+ *		   当然该函数会考虑到特殊情况的，这也是第一步为什么非要存在一个Elf_Scn的原因 
+ *		4: 最后更新下elf中的e_scn_n -- 即把刚创建的section追加到scn链表上
+ */
 static Elf_Scn *_buildscn(Elf *elf)
 {
 	Elf_Scn *scn;
@@ -141,7 +159,7 @@ static Elf_Scn *_buildscn(Elf *elf)
 	return scn;
 }
 
-Elf_Scn *elf_newscn(Elf * elf)
+Elf_Scn *elf_newscn(Elf *elf)
 {
 	Elf_Scn *scn;
 

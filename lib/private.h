@@ -279,7 +279,7 @@ struct Elf_Scn {
  * Data descriptor
  */
 struct Scn_Data {
-	Elf_Data sd_data;	/* must be first! */
+	Elf_Data sd_data;	/* must be first! */	/* 在函数elf_getdata中为看到必须为first的原因 */
 	Scn_Data *sd_link;	/* pointer to next Scn_Data */
 	Elf_Scn *sd_scn;	/* pointer to section */
 	char *sd_memdata;	/* memory image of section */
@@ -459,14 +459,14 @@ enum {
  * Debugging
  */
 #if ENABLE_DEBUG
-extern void __elf_assert __P((const char *, unsigned, const char *));
-#if (__STDC__ + 0)
-#define elf_assert(x)	do{if(!(x))__elf_assert(__FILE__,__LINE__,#x);}while(0)
-#else				/* __STDC__ */
-#define elf_assert(x)	do{if(!(x))__elf_assert(__FILE__,__LINE__,"x");}while(0)
-#endif				/* __STDC__ */
+	extern void __elf_assert __P((const char *, unsigned, const char *));
+	#if (__STDC__ + 0)
+		#define elf_assert(x)	do{if(!(x))__elf_assert(__FILE__,__LINE__,#x);}while(0)
+	#else				/* __STDC__ */
+		#define elf_assert(x)	do{if(!(x))__elf_assert(__FILE__,__LINE__,"x");}while(0)
+	#endif				/* __STDC__ */
 #else				/* ENABLE_DEBUG */
-#define elf_assert(x)	do{}while(0)
+	#define elf_assert(x)	do{}while(0)
 #endif				/* ENABLE_DEBUG */
 
 /*

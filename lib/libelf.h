@@ -179,12 +179,12 @@ extern "C" {
 
 	extern void elf_fill __P((int __fill));
 
-	extern unsigned elf_flagdata __P((Elf_Data * __data, Elf_Cmd __cmd, unsigned __flags));
-	extern unsigned elf_flagehdr __P((Elf * __elf, Elf_Cmd __cmd, unsigned __flags));
-	extern unsigned elf_flagelf __P((Elf * __elf, Elf_Cmd __cmd, unsigned __flags));
-	extern unsigned elf_flagphdr __P((Elf * __elf, Elf_Cmd __cmd, unsigned __flags));
-	extern unsigned elf_flagscn __P((Elf_Scn * __scn, Elf_Cmd __cmd, unsigned __flags));
-	extern unsigned elf_flagshdr __P((Elf_Scn * __scn, Elf_Cmd __cmd, unsigned __flags));
+	extern unsigned elf_flagdata __P((Elf_Data *__data, Elf_Cmd __cmd, unsigned __flags));
+	extern unsigned elf_flagehdr __P((Elf *__elf, Elf_Cmd __cmd, unsigned __flags));
+	extern unsigned elf_flagelf __P((Elf *__elf, Elf_Cmd __cmd, unsigned __flags));
+	extern unsigned elf_flagphdr __P((Elf *__elf, Elf_Cmd __cmd, unsigned __flags));
+	extern unsigned elf_flagscn __P((Elf_Scn *__scn, Elf_Cmd __cmd, unsigned __flags));
+	extern unsigned elf_flagshdr __P((Elf_Scn *__scn, Elf_Cmd __cmd, unsigned __flags));
 
 	extern size_t elf32_fsize __P((Elf_Type __type, size_t __count, unsigned __ver));
 
