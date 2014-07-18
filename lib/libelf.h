@@ -67,8 +67,8 @@ extern "C" {
 /*
  * Flags
  */
-#define ELF_F_DIRTY		0x1
-#define ELF_F_LAYOUT	0x4
+#define ELF_F_DIRTY		0x1	/* */
+#define ELF_F_LAYOUT	0x4	/* the application wishes to take complete charge of the layout of the ELF file*/
 /*
  * Allow sections to overlap when ELF_F_LAYOUT is in effect.
  * Note that this flag ist NOT portable, and that it may render
