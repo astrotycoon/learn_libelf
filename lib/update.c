@@ -45,9 +45,8 @@ static const unsigned short __encoding = ELFDATA2LSB + (ELFDATA2MSB << 8);
 #undef max
 #define max(a,b)		((a) > (b) ? (a) : (b))
 
-static off_t
-scn_data_layout(Elf_Scn * scn, unsigned v, unsigned type, size_t * algn,
-		unsigned *flag)
+static off_t scn_data_layout(Elf_Scn *scn, unsigned v, unsigned type, 
+												size_t *algn, unsigned *flag)
 {
 	Elf *elf = scn->s_elf;
 	Elf_Data *data;
@@ -60,51 +59,47 @@ scn_data_layout(Elf_Scn * scn, unsigned v, unsigned type, size_t * algn,
 	if (!(sd = scn->s_data_1)) {
 		/* no data in section */
 		*algn = scn_align;
-		return (off_t) len;
+		return (off_t)len;
 	}
 	/* load data from file, if any */
 	if (!(data = elf_getdata(scn, NULL))) {
-		return (off_t) - 1;
+		return (off_t)-1;
 	}
 	elf_assert(data == &sd->sd_data);
+
 	for (; sd; sd = sd->sd_link) {
 		elf_assert(sd->sd_magic == DATA_MAGIC);
 		elf_assert(sd->sd_scn == scn);
 
 		if (!valid_version(sd->sd_data.d_version)) {
-			return (off_t) - 1;
+			return (off_t)-1;
 		}
 
 		fsize = sd->sd_data.d_size;
 		if (fsize && type != SHT_NOBITS
 		    && valid_type(sd->sd_data.d_type)) {
 			if (elf->e_class == ELFCLASS32) {
-				fsize =
-				    _elf32_xltsize(&sd->sd_data, v, ELFDATA2LSB,
-						   1);
+				fsize = _elf32_xltsize(&sd->sd_data, v, ELFDATA2LSB, 1);
 			}
 #if __LIBELF64
 			else if (elf->e_class == ELFCLASS64) {
-				fsize =
-				    _elf64_xltsize(&sd->sd_data, v, ELFDATA2LSB,
-						   1);
+				fsize = _elf64_xltsize(&sd->sd_data, v, ELFDATA2LSB, 1);
 			}
 #endif				/* __LIBELF64 */
 			else {
 				elf_assert(valid_class(elf->e_class));
 				seterr(ERROR_UNIMPLEMENTED);
-				return (off_t) - 1;
+				return (off_t)-1;
 			}
-			if (fsize == (size_t) - 1) {
-				return (off_t) - 1;
+			if (fsize == (size_t)-1) {
+				return (off_t)-1;
 			}
 		}
 
 		if (layout) {
 			align(len, sd->sd_data.d_align);
 			scn_align = max(scn_align, sd->sd_data.d_align);
-			rewrite(sd->sd_data.d_off, (off_t) len,
-				sd->sd_data_flags);
+			rewrite(sd->sd_data.d_off, (off_t)len, sd->sd_data_flags);
 			len += fsize;
 		} else {
 			len = max(len, sd->sd_data.d_off + fsize);
@@ -113,7 +108,8 @@ scn_data_layout(Elf_Scn * scn, unsigned v, unsigned type, size_t * algn,
 		*flag |= sd->sd_data_flags;
 	}
 	*algn = scn_align;
-	return (off_t) len;
+
+	return (off_t)len;
 }
 
 static size_t scn_entsize(const Elf * elf, unsigned version, unsigned stype)
@@ -174,7 +170,6 @@ static off_t _elf32_layout(Elf * elf, unsigned *flag)
 	align_addr = _fsize(ELFCLASS32, version, ELF_T_ADDR);
 	elf_assert(align_addr);
 
-	// 重写PHDR
 	if ((phnum = elf->e_phnum)) {	// 目前存在PHDR	
 		entsize = _fsize(ELFCLASS32, version, ELF_T_PHDR);
 		elf_assert(entsize);
@@ -236,7 +231,8 @@ static off_t _elf32_layout(Elf * elf, unsigned *flag)
 			*flag |= scn->s_shdr_flags;
 			continue;
 		}
-
+	
+		// 重写每个section的data链表
 		len = scn_data_layout(scn, version, shdr->sh_type, &scn_align, flag);
 		if (len == -1) {
 			return -1;
