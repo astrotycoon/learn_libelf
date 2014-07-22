@@ -456,8 +456,7 @@ xlate32[EV_CURRENT - EV_NONE][EV_CURRENT - EV_NONE] = {
 /*
  * destination buffer size
  */
-size_t
-_elf32_xltsize(const Elf_Data * src, unsigned dv, unsigned encode, int tof)
+size_t _elf32_xltsize(const Elf_Data *src, unsigned dv, unsigned encode, int tof)
 {
 	Elf_Type type = src->d_type;
 	unsigned sv = src->d_version;
@@ -478,15 +477,18 @@ _elf32_xltsize(const Elf_Data * src, unsigned dv, unsigned encode, int tof)
 		seterr(ERROR_UNKNOWN_ENCODING);
 		return (size_t) - 1;
 	}
+
 	if (!valid_type(type)) {
 		seterr(ERROR_UNKNOWN_TYPE);
 		return (size_t) - 1;
 	}
+
 	if (!(op = translator(sv, dv, encode, type, tof))) {
 		seterr(ERROR_UNKNOWN_TYPE);
 		return (size_t) - 1;
 	}
-	return (*op) (NULL, src->d_buf, src->d_size);
+
+	return (*op)(NULL, src->d_buf, src->d_size);
 }
 
 /*

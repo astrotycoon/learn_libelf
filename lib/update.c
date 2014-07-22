@@ -52,17 +52,18 @@ static off_t scn_data_layout(Elf_Scn *scn, unsigned v, unsigned type,
 	Elf_Data *data;
 	int layout = (elf->e_elf_flags & ELF_F_LAYOUT) == 0;
 	size_t scn_align = 1;
-	size_t len = 0;
+	size_t len = 0;	/* 用于统计这个section的大小 */
 	Scn_Data *sd;
 	size_t fsize;
 
+	// sd指向第一个Scn_Data
 	if (!(sd = scn->s_data_1)) {
 		/* no data in section */
 		*algn = scn_align;
 		return (off_t)len;
 	}
 	/* load data from file, if any */
-	if (!(data = elf_getdata(scn, NULL))) {
+	if (!(data = elf_getdata(scn, NULL))) {	// data指向第一个Scn_Data中的Elf_Data
 		return (off_t)-1;
 	}
 	elf_assert(data == &sd->sd_data);
@@ -76,8 +77,7 @@ static off_t scn_data_layout(Elf_Scn *scn, unsigned v, unsigned type,
 		}
 
 		fsize = sd->sd_data.d_size;
-		if (fsize && type != SHT_NOBITS
-		    && valid_type(sd->sd_data.d_type)) {
+		if (fsize && type != SHT_NOBITS && valid_type(sd->sd_data.d_type)) {
 			if (elf->e_class == ELFCLASS32) {
 				fsize = _elf32_xltsize(&sd->sd_data, v, ELFDATA2LSB, 1);
 			}
@@ -91,6 +91,7 @@ static off_t scn_data_layout(Elf_Scn *scn, unsigned v, unsigned type,
 				seterr(ERROR_UNIMPLEMENTED);
 				return (off_t)-1;
 			}
+
 			if (fsize == (size_t)-1) {
 				return (off_t)-1;
 			}
@@ -232,7 +233,7 @@ static off_t _elf32_layout(Elf * elf, unsigned *flag)
 			continue;
 		}
 	
-		// 重写每个section的data链表
+		// 重写每个section(第一个特殊的section除外)的data链表
 		len = scn_data_layout(scn, version, shdr->sh_type, &scn_align, flag);
 		if (len == -1) {
 			return -1;
@@ -244,22 +245,20 @@ static off_t _elf32_layout(Elf * elf, unsigned *flag)
 		if (shdr->sh_entsize == 0) {
 			entsize = scn_entsize(elf, version, shdr->sh_type);
 			if (entsize > 1) {
-				rewrite(shdr->sh_entsize, entsize,
-					scn->s_shdr_flags);
+				rewrite(shdr->sh_entsize, entsize, scn->s_shdr_flags);
 			}
 		}
 
 		if (layout) {
 			align(off, scn_align);
 			rewrite(shdr->sh_offset, off, scn->s_shdr_flags);
-			rewrite(shdr->sh_size, (size_t) len, scn->s_shdr_flags);
-			rewrite(shdr->sh_addralign, scn_align,
-				scn->s_shdr_flags);
+			rewrite(shdr->sh_size, (size_t)len, scn->s_shdr_flags);
+			rewrite(shdr->sh_addralign, scn_align, scn->s_shdr_flags);
 
 			if (shdr->sh_type != SHT_NOBITS) {
-				off += (size_t) len;
+				off += (size_t)len;
 			}
-		} else if ((size_t) len > shdr->sh_size) {
+		} else if ((size_t)len > shdr->sh_size) {
 			seterr(ERROR_SCN2SMALL);
 			return -1;
 		} else {
@@ -297,10 +296,11 @@ static off_t _elf32_layout(Elf * elf, unsigned *flag)
 		}
 		*flag |= scn->s_shdr_flags;
 	}
-
+				
 	if (shnum) {
 		entsize = _fsize(ELFCLASS32, version, ELF_T_SHDR);
 		elf_assert(entsize);
+
 		if (layout) {
 			align(off, align_addr);
 			rewrite(ehdr->e_shoff, off, elf->e_ehdr_flags);
@@ -314,6 +314,12 @@ static off_t _elf32_layout(Elf * elf, unsigned *flag)
 			rewrite(ehdr->e_shoff, 0, elf->e_ehdr_flags);
 		}
 	}
+
+	/*
+	 *	If the number of entries in the section header table is larger than or equal to SHN_LORESERVE (0xff00)
+	 *	e_shnum holds the value zero  and  the  real number of entries in the section header table is held in
+     *	the sh_size member of the first section
+	 */
 	if (shnum >= SHN_LORESERVE) {
 		Elf_Scn *scn = elf->e_scn_1;
 		Elf32_Shdr *shdr = &scn->s_shdr32;
@@ -937,9 +943,8 @@ static int xwrite(int fd, char *buffer, size_t len)
 	return 0;
 }
 
-static off_t
-_elf_output(Elf * elf, int fd, size_t len,
-	    off_t(*_elf_write) (Elf *, char *, size_t))
+static off_t _elf_output(Elf * elf, int fd, size_t len,
+	    				off_t (*_elf_write)(Elf *, char *, size_t))
 {
 	char *buf;
 	off_t err;
@@ -948,17 +953,18 @@ _elf_output(Elf * elf, int fd, size_t len,
 #if HAVE_FTRUNCATE
 	ftruncate(fd, 0);
 #endif				/* HAVE_FTRUNCATE */
+
 #if HAVE_MMAP
 	/*
 	 * Make sure the file is (at least) len bytes long
 	 */
 #if HAVE_FTRUNCATE
-	lseek(fd, (off_t) len, SEEK_SET);
+	lseek(fd, (off_t)len, SEEK_SET);
 	if (ftruncate(fd, len)) {
 #else				/* HAVE_FTRUNCATE */
 	{
 #endif				/* HAVE_FTRUNCATE */
-		if (lseek(fd, (off_t) len - 1, SEEK_SET) != (off_t) len - 1) {
+		if (lseek(fd, (off_t)len - 1, SEEK_SET) != (off_t)len - 1) {
 			seterr(ERROR_IO_SEEK);
 			return -1;
 		}
@@ -967,8 +973,8 @@ _elf_output(Elf * elf, int fd, size_t len,
 			return -1;
 		}
 	}
-	buf =
-	    (void *)mmap(NULL, len, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+
+	buf = (void *)mmap(NULL, len, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
 	if (buf != (char *)-1) {
 		if ((char)_elf_fill && !(elf->e_elf_flags & ELF_F_LAYOUT)) {
 			memset(buf, _elf_fill, len);
@@ -1006,7 +1012,7 @@ off_t elf_update(Elf * elf, Elf_Cmd cmd)
 		return -1;
 	}
 	elf_assert(elf->e_magic == ELF_MAGIC);
-
+							
 	if (cmd == ELF_C_WRITE) {
 		if (!elf->e_writable) {
 			seterr(ERROR_RDONLY);
@@ -1028,7 +1034,7 @@ off_t elf_update(Elf * elf, Elf_Cmd cmd)
 	} else if (elf->e_class == ELFCLASS32) {
 		len = _elf32_layout(elf, &flag);
 		if (len != -1 && cmd == ELF_C_WRITE && (flag & ELF_F_DIRTY)) {
-			len = _elf_output(elf, elf->e_fd, (size_t) len, _elf32_write);
+			len = _elf_output(elf, elf->e_fd, (size_t)len, _elf32_write);
 		}
 		return len;
 	}
