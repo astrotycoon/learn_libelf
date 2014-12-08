@@ -279,7 +279,7 @@ static int _elf_cook_shdr(Elf * elf)
 			Elf_Scn scn;
 			Scn_Data data;
 		} *head;
-		Elf_Data src, dst;
+		Elf_Data src, dst;	/* src --> file  dst --> memory */
 		Elf_Scn *scn;
 		Scn_Data *sd;
 		unsigned i;
@@ -304,6 +304,9 @@ static int _elf_cook_shdr(Elf * elf)
 
 		dst.d_version = EV_CURRENT;	/* 这里为什么不是_elf_version呢？*/
 
+		/*
+		 * e_shnum: 0 --> sh_size
+         */
 		if (num == 0) {	
 			union {
 				Elf32_Shdr sh32;
@@ -314,7 +317,7 @@ static int _elf_cook_shdr(Elf * elf)
 
 			/*
 			 * Overflow in ehdr->e_shnum.
-			 * Get real value from first SHDR.
+			 * Get real value from first SHDR (sh_size).
 			 */
 			if (elf->e_size - off < entsz) {
 				seterr(ERROR_TRUNC_SHDR);
@@ -332,6 +335,7 @@ static int _elf_cook_shdr(Elf * elf)
 			}
 			elf_assert(dst.d_size == _msize(elf->e_class, EV_CURRENT, ELF_T_SHDR));
 			elf_assert(dst.d_type == ELF_T_SHDR);
+
 			if (elf->e_class == ELFCLASS32) {
 				num = u.sh32.sh_size;
 			}
@@ -498,7 +502,7 @@ static int _elf_cook_shdr(Elf * elf)
 		elf_assert(scn == &head[0].scn);
 		elf->e_scn_1 = &head[0].scn;
 		head[0].scn.s_freeme = 1;
-	}
+	}	/* if (off) */
 
 	return 1;
 }

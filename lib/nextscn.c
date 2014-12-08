@@ -30,6 +30,7 @@ Elf_Scn *elf_nextscn(Elf * elf, Elf_Scn * scn)
 		return NULL;
 	}
 	elf_assert(elf->e_magic == ELF_MAGIC);
+
 	if (scn) {
 		elf_assert(scn->s_magic == SCN_MAGIC);
 		if (scn->s_elf == elf) {
@@ -49,5 +50,6 @@ Elf_Scn *elf_nextscn(Elf * elf, Elf_Scn * scn)
 		}
 		seterr(ERROR_NOSUCHSCN);
 	}
+
 	return NULL;
 }
