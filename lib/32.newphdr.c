@@ -24,9 +24,14 @@ static const char rcsid[] =
     "@(#) $Id: 32.newphdr.c,v 1.16 2008/05/23 08:15:34 michael Exp $";
 #endif				/* lint */
 
-static char *_elf_newphdr(Elf * elf, size_t count, unsigned cls)
+/*
+ *	注意两点:
+ *		1:	该函数会忽略掉之前存在的phdr(free掉),所以我们应该一次性确定有多少个phdr，即count等于多少 	
+ *		2: 	当count等于0时，该函数所做的就是忽略掉之前存在的phdr(free掉)
+ */
+static char *_elf_newphdr(Elf *elf, size_t count, unsigned cls)
 {
-	size_t extcount = 0;
+	size_t extcount = 0;	// 在这里初始化为0是很有必要的
 	Elf_Scn *scn = NULL;
 	char *phdr = NULL;
 	size_t size;
@@ -35,6 +40,7 @@ static char *_elf_newphdr(Elf * elf, size_t count, unsigned cls)
 		return NULL;
 	}
 	elf_assert(elf->e_magic == ELF_MAGIC);
+
 	if (!elf->e_ehdr && !elf->e_readable) {
 		seterr(ERROR_NOEHDR);
 	} else if (elf->e_kind != ELF_K_ELF) {
@@ -44,10 +50,13 @@ static char *_elf_newphdr(Elf * elf, size_t count, unsigned cls)
 	} else if (elf->e_ehdr || _elf_cook(elf)) {
 		size = _msize(cls, _elf_version, ELF_T_PHDR);
 		elf_assert(size);
+
+		// 在生成PHDR前，需要先生成一个section, 处于Extended numbering的考虑
 		if (!(scn = _elf_first_scn(elf))) {
 			return NULL;
 		}
-		if (count) {
+
+		if (count) {	// 动态申请count个program header table entries
 			if (!(phdr = (char *)malloc(count * size))) {
 				seterr(ERROR_MEM_PHDR);
 				return NULL;
@@ -56,6 +65,13 @@ static char *_elf_newphdr(Elf * elf, size_t count, unsigned cls)
 		}
 		elf_assert(elf->e_ehdr);
 		elf->e_phnum = count;
+		/*
+		 *  这里要考虑到e_phnum等于PN_XNUM的特殊情况
+		 *	If the number of entries in the program header table is larger than or equal to PN_XNUM (0xffff)
+		 *	this member holds PN_XNUM (0xffff) and the real number of entries in the program header table is 
+		 *	held in the sh_info member of the first section
+		 * 
+		 */
 		if (count >= PN_XNUM) {
 			/*
 			 * get NULL section (create it if necessary)
@@ -63,13 +79,14 @@ static char *_elf_newphdr(Elf * elf, size_t count, unsigned cls)
 			extcount = count;
 			count = PN_XNUM;
 		}
+
 		if (cls == ELFCLASS32) {
-			((Elf32_Ehdr *) elf->e_ehdr)->e_phnum = count;
+			((Elf32_Ehdr *)elf->e_ehdr)->e_phnum = count;
 			scn->s_shdr32.sh_info = extcount;
 		}
 #if __LIBELF64
 		else if (cls == ELFCLASS64) {
-			((Elf64_Ehdr *) elf->e_ehdr)->e_phnum = count;
+			((Elf64_Ehdr *)elf->e_ehdr)->e_phnum = count;
 			scn->s_shdr64.sh_info = extcount;
 		}
 #endif				/* __LIBELF64 */
@@ -80,19 +97,22 @@ static char *_elf_newphdr(Elf * elf, size_t count, unsigned cls)
 			}
 			return NULL;
 		}
-		if (elf->e_phdr) {
+		// discarding any existing program header table already present in the ELF descriptor elf
+		if (elf->e_phdr) {	 
 			free(elf->e_phdr);
 		}
 		elf->e_phdr = phdr;
 		elf->e_phdr_flags |= ELF_F_DIRTY;
 		elf->e_ehdr_flags |= ELF_F_DIRTY;
 		scn->s_scn_flags |= ELF_F_DIRTY;
+
 		return phdr;
 	}
+
 	return NULL;
 }
 
-Elf32_Phdr *elf32_newphdr(Elf * elf, size_t count)
+Elf32_Phdr *elf32_newphdr(Elf *elf, size_t count)
 {
 	return (Elf32_Phdr *)_elf_newphdr(elf, count, ELFCLASS32);
 }
@@ -101,7 +121,7 @@ Elf32_Phdr *elf32_newphdr(Elf * elf, size_t count)
 
 Elf64_Phdr *elf64_newphdr(Elf * elf, size_t count)
 {
-	return (Elf64_Phdr *) _elf_newphdr(elf, count, ELFCLASS64);
+	return (Elf64_Phdr *)_elf_newphdr(elf, count, ELFCLASS64);
 }
 
 unsigned long gelf_newphdr(Elf * elf, size_t phnum)

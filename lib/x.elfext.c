@@ -158,6 +158,13 @@ int elfx_update_shstrndx(Elf * elf, size_t value)
 		return LIBELF_FAILURE;
 	}
 	elf_assert(elf->e_magic == ELF_MAGIC);
+
+	/*
+	 *	这里需要考虑e_shstrndx >= SHN_LORESERVE的特殊情况	
+	 *	If  the index of section name string table section is larger than or equal to SHN_LORESERVE (0xff00)
+	 *	this member holds SHN_LORESERVE (0xff00), and the real index of the section name string table section 
+	 *	is held in the sh_link member of the first section	
+	 */
 	if (value >= SHN_LORESERVE) {
 		extvalue = value;
 		value = SHN_XINDEX;
@@ -169,17 +176,18 @@ int elfx_update_shstrndx(Elf * elf, size_t value)
 	if (!elf->e_ehdr && !_elf_cook(elf)) {
 		return LIBELF_FAILURE;
 	}
-	if (!(scn = _elf_first_scn(elf))) {
+	if (!(scn = _elf_first_scn(elf))) {	// 要确保存在第一个section（index == 0）
 		return LIBELF_FAILURE;
 	}
 	elf_assert(scn->s_magic == SCN_MAGIC);
+
 	if (elf->e_class == ELFCLASS32) {
-		((Elf32_Ehdr *) elf->e_ehdr)->e_shstrndx = value;
+		((Elf32_Ehdr *)elf->e_ehdr)->e_shstrndx = value;
 		scn->s_shdr32.sh_link = extvalue;
 	}
 #if __LIBELF64
 	else if (elf->e_class == ELFCLASS64) {
-		((Elf64_Ehdr *) elf->e_ehdr)->e_shstrndx = value;
+		((Elf64_Ehdr *)elf->e_ehdr)->e_shstrndx = value;
 		scn->s_shdr64.sh_link = extvalue;
 	}
 #endif				/* __LIBELF64 */

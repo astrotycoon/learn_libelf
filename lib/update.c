@@ -33,75 +33,74 @@ static const char rcsid[] =
 static const unsigned short __encoding = ELFDATA2LSB + (ELFDATA2MSB << 8);
 #define native_encoding (*(unsigned char*)&__encoding)
 
-#define rewrite(var,val,f)	\
-    do{if((var)!=(val)){(var)=(val);(f)|=ELF_F_DIRTY;}}while(0)
+#define rewrite(var, val, f)	\
+    do{ if((var) != (val)) {(var) = (val); (f) |= ELF_F_DIRTY;} }while(0)
 
-#define align(var,val)		\
-    do{if((val)>1){(var)+=(val)-1;(var)-=(var)%(val);}}while(0)
+/*
+ *	使var最终按val对齐
+ */
+#define align(var, val)		\
+    do{ if((val) > 1) {(var) += (val) - 1; (var) -= (var) % (val);} }while(0)
 
 #undef max
-#define max(a,b)		((a)>(b)?(a):(b))
+#define max(a,b)		((a) > (b) ? (a) : (b))
 
-static off_t
-scn_data_layout(Elf_Scn * scn, unsigned v, unsigned type, size_t * algn,
-		unsigned *flag)
+static off_t scn_data_layout(Elf_Scn *scn, unsigned v, unsigned type, 
+												size_t *algn, unsigned *flag)
 {
 	Elf *elf = scn->s_elf;
 	Elf_Data *data;
 	int layout = (elf->e_elf_flags & ELF_F_LAYOUT) == 0;
 	size_t scn_align = 1;
-	size_t len = 0;
+	size_t len = 0;	/* 用于统计这个section的大小 */
 	Scn_Data *sd;
 	size_t fsize;
 
+	// sd指向第一个Scn_Data
 	if (!(sd = scn->s_data_1)) {
 		/* no data in section */
 		*algn = scn_align;
-		return (off_t) len;
+		return (off_t)len;
 	}
 	/* load data from file, if any */
-	if (!(data = elf_getdata(scn, NULL))) {
-		return (off_t) - 1;
+	if (!(data = elf_getdata(scn, NULL))) {	// data指向第一个Scn_Data中的Elf_Data
+		return (off_t)-1;
 	}
 	elf_assert(data == &sd->sd_data);
+
 	for (; sd; sd = sd->sd_link) {
 		elf_assert(sd->sd_magic == DATA_MAGIC);
 		elf_assert(sd->sd_scn == scn);
 
 		if (!valid_version(sd->sd_data.d_version)) {
-			return (off_t) - 1;
+			return (off_t)-1;
 		}
 
 		fsize = sd->sd_data.d_size;
-		if (fsize && type != SHT_NOBITS
-		    && valid_type(sd->sd_data.d_type)) {
+		if (fsize && type != SHT_NOBITS && valid_type(sd->sd_data.d_type)) {
 			if (elf->e_class == ELFCLASS32) {
-				fsize =
-				    _elf32_xltsize(&sd->sd_data, v, ELFDATA2LSB,
-						   1);
+				fsize = _elf32_xltsize(&sd->sd_data, v, ELFDATA2LSB, 1);
 			}
 #if __LIBELF64
 			else if (elf->e_class == ELFCLASS64) {
-				fsize =
-				    _elf64_xltsize(&sd->sd_data, v, ELFDATA2LSB,
-						   1);
+				fsize = _elf64_xltsize(&sd->sd_data, v, ELFDATA2LSB, 1);
 			}
 #endif				/* __LIBELF64 */
 			else {
 				elf_assert(valid_class(elf->e_class));
 				seterr(ERROR_UNIMPLEMENTED);
-				return (off_t) - 1;
+				return (off_t)-1;
 			}
-			if (fsize == (size_t) - 1) {
-				return (off_t) - 1;
+
+			if (fsize == (size_t)-1) {
+				return (off_t)-1;
 			}
 		}
 
 		if (layout) {
 			align(len, sd->sd_data.d_align);
 			scn_align = max(scn_align, sd->sd_data.d_align);
-			rewrite(sd->sd_data.d_off, (off_t) len,
-				sd->sd_data_flags);
+			rewrite(sd->sd_data.d_off, (off_t)len, sd->sd_data_flags);
 			len += fsize;
 		} else {
 			len = max(len, sd->sd_data.d_off + fsize);
@@ -110,7 +109,8 @@ scn_data_layout(Elf_Scn * scn, unsigned v, unsigned type, size_t * algn,
 		*flag |= sd->sd_data_flags;
 	}
 	*algn = scn_align;
-	return (off_t) len;
+
+	return (off_t)len;
 }
 
 static size_t scn_entsize(const Elf * elf, unsigned version, unsigned stype)
@@ -130,9 +130,9 @@ static size_t scn_entsize(const Elf * elf, unsigned version, unsigned stype)
 
 static off_t _elf32_layout(Elf * elf, unsigned *flag)
 {
-	int layout = (elf->e_elf_flags & ELF_F_LAYOUT) == 0;
+	int layout = (elf->e_elf_flags & ELF_F_LAYOUT) == 0;	// 1 -- libelf库可以在section间填充空白字节  0 -- 反之
 	int allow_overlap = (elf->e_elf_flags & ELF_F_LAYOUT_OVERLAP) != 0;
-	Elf32_Ehdr *ehdr = (Elf32_Ehdr *) elf->e_ehdr;
+	Elf32_Ehdr *ehdr = (Elf32_Ehdr *)elf->e_ehdr;
 	size_t off = 0;
 	unsigned version;
 	unsigned encoding;
@@ -144,6 +144,7 @@ static off_t _elf32_layout(Elf * elf, unsigned *flag)
 
 	*flag = elf->e_elf_flags | elf->e_phdr_flags;
 
+	// 获得版本号，并检查版本号的合法性
 	if ((version = ehdr->e_version) == EV_NONE) {
 		version = EV_CURRENT;
 	}
@@ -151,6 +152,7 @@ static off_t _elf32_layout(Elf * elf, unsigned *flag)
 		seterr(ERROR_UNKNOWN_VERSION);
 		return -1;
 	}
+	// 获得大小端，并检查大小端的合法性
 	if ((encoding = ehdr->e_ident[EI_DATA]) == ELFDATANONE) {
 		encoding = native_encoding;
 	}
@@ -158,43 +160,53 @@ static off_t _elf32_layout(Elf * elf, unsigned *flag)
 		seterr(ERROR_UNKNOWN_ENCODING);
 		return -1;
 	}
+
+	// 重写EHDR 
 	entsize = _fsize(ELFCLASS32, version, ELF_T_EHDR);
 	elf_assert(entsize);
-	rewrite(ehdr->e_ehsize, entsize, elf->e_ehdr_flags);
+	rewrite(ehdr->e_ehsize, entsize, elf->e_ehdr_flags);	// 重写ehdr->e_ehsize
 	off = entsize;
 
+	// 获得系统地址对齐字节数 
 	align_addr = _fsize(ELFCLASS32, version, ELF_T_ADDR);
 	elf_assert(align_addr);
 
-	if ((phnum = elf->e_phnum)) {
+	if ((phnum = elf->e_phnum)) {	// 目前存在PHDR	
 		entsize = _fsize(ELFCLASS32, version, ELF_T_PHDR);
 		elf_assert(entsize);
+
 		if (layout) {
-			align(off, align_addr);
-			rewrite(ehdr->e_phoff, off, elf->e_ehdr_flags);
+			align(off, align_addr);	// 使off按align_addr字节对齐
+			rewrite(ehdr->e_phoff, off, elf->e_ehdr_flags);	// 重写ehdr->e_phoff
 			off += phnum * entsize;
 		} else {
 			off = max(off, ehdr->e_phoff + phnum * entsize);
 		}
-	} else {
+	} else {						// 目前不存在PHDR
 		entsize = 0;
 		if (layout) {
 			rewrite(ehdr->e_phoff, 0, elf->e_ehdr_flags);
 		}
 	}
+	/*	
+	 *	If the number of entries in the program header table is larger than or equal to PN_XNUM (0xffff)
+   	 *	this member holds PN_XNUM (0xffff) and the real number of entries in the program header table is held 
+	 *	in the sh_info member of the first section
+     */
 	if (phnum >= PN_XNUM) {
 		Elf_Scn *scn = elf->e_scn_1;
 		Elf32_Shdr *shdr = &scn->s_shdr32;
-
 		elf_assert(scn);
 		elf_assert(scn->s_index == 0);
-		rewrite(shdr->sh_info, phnum, scn->s_shdr_flags);
+
+		rewrite(shdr->sh_info, phnum, scn->s_shdr_flags);		// 重写第一个section的sh_info
 		*flag |= scn->s_shdr_flags;
 		phnum = PN_XNUM;
 	}
-	rewrite(ehdr->e_phnum, phnum, elf->e_ehdr_flags);
-	rewrite(ehdr->e_phentsize, entsize, elf->e_ehdr_flags);
+	rewrite(ehdr->e_phnum, phnum, elf->e_ehdr_flags);			// 重写ehdr->e_phnum
+	rewrite(ehdr->e_phentsize, entsize, elf->e_ehdr_flags);		// 重写ehdr->e_phentsize
 
+	// 重写SHDR
 	for (scn = elf->e_scn_1, shnum = 0; scn; scn = scn->s_link, ++shnum) {
 		Elf32_Shdr *shdr = &scn->s_shdr32;
 		size_t scn_align = 1;
@@ -204,25 +216,25 @@ static off_t _elf32_layout(Elf * elf, unsigned *flag)
 
 		*flag |= scn->s_scn_flags;
 
+		// 针对第一个特殊的section
 		if (scn->s_index == SHN_UNDEF) {
-			rewrite(shdr->sh_entsize, 0, scn->s_shdr_flags);
+			rewrite(shdr->sh_entsize, 0, scn->s_shdr_flags);		// 重写sh_entsize
 			if (layout) {
-				rewrite(shdr->sh_offset, 0, scn->s_shdr_flags);
-				rewrite(shdr->sh_size, 0, scn->s_shdr_flags);
-				rewrite(shdr->sh_addralign, 0,
-					scn->s_shdr_flags);
+				rewrite(shdr->sh_offset, 0, scn->s_shdr_flags);		// 重写sh_offset
+				rewrite(shdr->sh_size, 0, scn->s_shdr_flags);		// 重写sh_size
+				rewrite(shdr->sh_addralign, 0, scn->s_shdr_flags);	// 重写sh_addralign
 			}
 			*flag |= scn->s_shdr_flags;
 			continue;
 		}
+
 		if (shdr->sh_type == SHT_NULL) {
 			*flag |= scn->s_shdr_flags;
 			continue;
 		}
-
-		len =
-		    scn_data_layout(scn, version, shdr->sh_type, &scn_align,
-				    flag);
+	
+		// 重写每个section(第一个特殊的section除外)的data链表
+		len = scn_data_layout(scn, version, shdr->sh_type, &scn_align, flag);
 		if (len == -1) {
 			return -1;
 		}
@@ -233,22 +245,20 @@ static off_t _elf32_layout(Elf * elf, unsigned *flag)
 		if (shdr->sh_entsize == 0) {
 			entsize = scn_entsize(elf, version, shdr->sh_type);
 			if (entsize > 1) {
-				rewrite(shdr->sh_entsize, entsize,
-					scn->s_shdr_flags);
+				rewrite(shdr->sh_entsize, entsize, scn->s_shdr_flags);
 			}
 		}
 
 		if (layout) {
 			align(off, scn_align);
 			rewrite(shdr->sh_offset, off, scn->s_shdr_flags);
-			rewrite(shdr->sh_size, (size_t) len, scn->s_shdr_flags);
-			rewrite(shdr->sh_addralign, scn_align,
-				scn->s_shdr_flags);
+			rewrite(shdr->sh_size, (size_t)len, scn->s_shdr_flags);
+			rewrite(shdr->sh_addralign, scn_align, scn->s_shdr_flags);
 
 			if (shdr->sh_type != SHT_NOBITS) {
-				off += (size_t) len;
+				off += (size_t)len;
 			}
-		} else if ((size_t) len > shdr->sh_size) {
+		} else if ((size_t)len > shdr->sh_size) {
 			seterr(ERROR_SCN2SMALL);
 			return -1;
 		} else {
@@ -286,10 +296,11 @@ static off_t _elf32_layout(Elf * elf, unsigned *flag)
 		}
 		*flag |= scn->s_shdr_flags;
 	}
-
+				
 	if (shnum) {
 		entsize = _fsize(ELFCLASS32, version, ELF_T_SHDR);
 		elf_assert(entsize);
+
 		if (layout) {
 			align(off, align_addr);
 			rewrite(ehdr->e_shoff, off, elf->e_ehdr_flags);
@@ -303,6 +314,12 @@ static off_t _elf32_layout(Elf * elf, unsigned *flag)
 			rewrite(ehdr->e_shoff, 0, elf->e_ehdr_flags);
 		}
 	}
+
+	/*
+	 *	If the number of entries in the section header table is larger than or equal to SHN_LORESERVE (0xff00)
+	 *	e_shnum holds the value zero  and  the  real number of entries in the section header table is held in
+     *	the sh_size member of the first section
+	 */
 	if (shnum >= SHN_LORESERVE) {
 		Elf_Scn *scn = elf->e_scn_1;
 		Elf32_Shdr *shdr = &scn->s_shdr32;
@@ -926,9 +943,8 @@ static int xwrite(int fd, char *buffer, size_t len)
 	return 0;
 }
 
-static off_t
-_elf_output(Elf * elf, int fd, size_t len,
-	    off_t(*_elf_write) (Elf *, char *, size_t))
+static off_t _elf_output(Elf * elf, int fd, size_t len,
+	    				off_t (*_elf_write)(Elf *, char *, size_t))
 {
 	char *buf;
 	off_t err;
@@ -937,17 +953,18 @@ _elf_output(Elf * elf, int fd, size_t len,
 #if HAVE_FTRUNCATE
 	ftruncate(fd, 0);
 #endif				/* HAVE_FTRUNCATE */
+
 #if HAVE_MMAP
 	/*
 	 * Make sure the file is (at least) len bytes long
 	 */
 #if HAVE_FTRUNCATE
-	lseek(fd, (off_t) len, SEEK_SET);
+	lseek(fd, (off_t)len, SEEK_SET);
 	if (ftruncate(fd, len)) {
 #else				/* HAVE_FTRUNCATE */
 	{
 #endif				/* HAVE_FTRUNCATE */
-		if (lseek(fd, (off_t) len - 1, SEEK_SET) != (off_t) len - 1) {
+		if (lseek(fd, (off_t)len - 1, SEEK_SET) != (off_t)len - 1) {
 			seterr(ERROR_IO_SEEK);
 			return -1;
 		}
@@ -956,8 +973,8 @@ _elf_output(Elf * elf, int fd, size_t len,
 			return -1;
 		}
 	}
-	buf =
-	    (void *)mmap(NULL, len, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+
+	buf = (void *)mmap(NULL, len, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
 	if (buf != (char *)-1) {
 		if ((char)_elf_fill && !(elf->e_elf_flags & ELF_F_LAYOUT)) {
 			memset(buf, _elf_fill, len);
@@ -995,6 +1012,7 @@ off_t elf_update(Elf * elf, Elf_Cmd cmd)
 		return -1;
 	}
 	elf_assert(elf->e_magic == ELF_MAGIC);
+							
 	if (cmd == ELF_C_WRITE) {
 		if (!elf->e_writable) {
 			seterr(ERROR_RDONLY);
@@ -1016,9 +1034,7 @@ off_t elf_update(Elf * elf, Elf_Cmd cmd)
 	} else if (elf->e_class == ELFCLASS32) {
 		len = _elf32_layout(elf, &flag);
 		if (len != -1 && cmd == ELF_C_WRITE && (flag & ELF_F_DIRTY)) {
-			len =
-			    _elf_output(elf, elf->e_fd, (size_t) len,
-					_elf32_write);
+			len = _elf_output(elf, elf->e_fd, (size_t)len, _elf32_write);
 		}
 		return len;
 	}
@@ -1026,9 +1042,7 @@ off_t elf_update(Elf * elf, Elf_Cmd cmd)
 	else if (elf->e_class == ELFCLASS64) {
 		len = _elf64_layout(elf, &flag);
 		if (len != -1 && cmd == ELF_C_WRITE && (flag & ELF_F_DIRTY)) {
-			len =
-			    _elf_output(elf, elf->e_fd, (size_t) len,
-					_elf64_write);
+			len = _elf_output(elf, elf->e_fd, (size_t) len, _elf64_write);
 		}
 		return len;
 	}
@@ -1038,5 +1052,6 @@ off_t elf_update(Elf * elf, Elf_Cmd cmd)
 	} else {
 		seterr(ERROR_UNKNOWN_CLASS);
 	}
+
 	return -1;
 }

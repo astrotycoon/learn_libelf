@@ -49,6 +49,7 @@ GElf_Shdr *gelf_getshdr(Elf_Scn * scn, GElf_Shdr * dst)
 	if (!dst) {
 		dst = &buf;
 	}
+
 	if (scn->s_elf->e_class == ELFCLASS64) {
 		*dst = scn->s_shdr64;
 	} else if (scn->s_elf->e_class == ELFCLASS32) {
@@ -80,6 +81,7 @@ GElf_Shdr *gelf_getshdr(Elf_Scn * scn, GElf_Shdr * dst)
 		}
 		*dst = buf;
 	}
+
 	return dst;
 }
 

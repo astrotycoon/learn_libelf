@@ -67,8 +67,8 @@ extern "C" {
 /*
  * Flags
  */
-#define ELF_F_DIRTY		0x1
-#define ELF_F_LAYOUT	0x4
+#define ELF_F_DIRTY		0x1	/* */
+#define ELF_F_LAYOUT	0x4	/* the application wishes to take complete charge of the layout of the ELF file*/
 /*
  * Allow sections to overlap when ELF_F_LAYOUT is in effect.
  * Note that this flag ist NOT portable, and that it may render
@@ -103,7 +103,7 @@ extern "C" {
 		ELF_T_SHDR,								/* ELF section header entries */
 		ELF_T_SWORD,
 		ELF_T_SYM,
-		ELF_T_WORD,
+		ELF_T_WORD,								/* Unsigned 32-bit words */
 		/*
 		 * New stuff for 64-bit.
 		 *
@@ -179,12 +179,12 @@ extern "C" {
 
 	extern void elf_fill __P((int __fill));
 
-	extern unsigned elf_flagdata __P((Elf_Data * __data, Elf_Cmd __cmd, unsigned __flags));
-	extern unsigned elf_flagehdr __P((Elf * __elf, Elf_Cmd __cmd, unsigned __flags));
-	extern unsigned elf_flagelf __P((Elf * __elf, Elf_Cmd __cmd, unsigned __flags));
-	extern unsigned elf_flagphdr __P((Elf * __elf, Elf_Cmd __cmd, unsigned __flags));
-	extern unsigned elf_flagscn __P((Elf_Scn * __scn, Elf_Cmd __cmd, unsigned __flags));
-	extern unsigned elf_flagshdr __P((Elf_Scn * __scn, Elf_Cmd __cmd, unsigned __flags));
+	extern unsigned elf_flagdata __P((Elf_Data *__data, Elf_Cmd __cmd, unsigned __flags));
+	extern unsigned elf_flagehdr __P((Elf *__elf, Elf_Cmd __cmd, unsigned __flags));
+	extern unsigned elf_flagelf __P((Elf *__elf, Elf_Cmd __cmd, unsigned __flags));
+	extern unsigned elf_flagphdr __P((Elf *__elf, Elf_Cmd __cmd, unsigned __flags));
+	extern unsigned elf_flagscn __P((Elf_Scn *__scn, Elf_Cmd __cmd, unsigned __flags));
+	extern unsigned elf_flagshdr __P((Elf_Scn *__scn, Elf_Cmd __cmd, unsigned __flags));
 
 	extern size_t elf32_fsize __P((Elf_Type __type, size_t __count, unsigned __ver));
 
@@ -218,6 +218,7 @@ extern "C" {
 	extern Elf_Data *elf_rawdata __P((Elf_Scn *__scn, Elf_Data *__data));
 	extern char *elf_rawfile __P((Elf *__elf, size_t * __ptr));
 	extern char *elf_strptr __P((Elf *__elf, size_t __section, size_t __offset));
+
 	extern off_t elf_update __P((Elf *__elf, Elf_Cmd __cmd));
 
 	extern unsigned elf_version __P((unsigned __ver));

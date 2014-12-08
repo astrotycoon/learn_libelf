@@ -24,7 +24,7 @@ static const char rcsid[] =
     "@(#) $Id: 32.newehdr.c,v 1.16 2008/05/23 08:15:34 michael Exp $";
 #endif				/* lint */
 
-static char *_elf_newehdr(Elf * elf, unsigned cls)
+static char *_elf_newehdr(Elf *elf, unsigned cls)
 {
 	size_t size;
 
@@ -32,11 +32,13 @@ static char *_elf_newehdr(Elf * elf, unsigned cls)
 		return NULL;
 	}
 	elf_assert(elf->e_magic == ELF_MAGIC);
+
 	if (elf->e_readable) {
 		return _elf_getehdr(elf, cls);
 	} else if (!elf->e_ehdr) {
 		size = _msize(cls, _elf_version, ELF_T_EHDR);
 		elf_assert(size);
+
 		if ((elf->e_ehdr = (char *)malloc(size))) {
 			memset(elf->e_ehdr, 0, size);
 			elf->e_ehdr_flags |= ELF_F_DIRTY;
@@ -51,19 +53,20 @@ static char *_elf_newehdr(Elf * elf, unsigned cls)
 		elf_assert(elf->e_kind == ELF_K_ELF);
 		return elf->e_ehdr;
 	}
+
 	return NULL;
 }
 
-Elf32_Ehdr *elf32_newehdr(Elf * elf)
+Elf32_Ehdr *elf32_newehdr(Elf *elf)
 {
-	return (Elf32_Ehdr *) _elf_newehdr(elf, ELFCLASS32);
+	return (Elf32_Ehdr *)_elf_newehdr(elf, ELFCLASS32);
 }
 
 #if __LIBELF64
 
 Elf64_Ehdr *elf64_newehdr(Elf * elf)
 {
-	return (Elf64_Ehdr *) _elf_newehdr(elf, ELFCLASS64);
+	return (Elf64_Ehdr *)_elf_newehdr(elf, ELFCLASS64);
 }
 
 unsigned long gelf_newehdr(Elf * elf, int cls)
@@ -72,6 +75,7 @@ unsigned long gelf_newehdr(Elf * elf, int cls)
 		seterr(ERROR_UNKNOWN_CLASS);
 		return 0;
 	}
+
 	return (unsigned long)_elf_newehdr(elf, cls);
 }
 
