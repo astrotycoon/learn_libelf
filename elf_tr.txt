@@ -1355,6 +1355,7 @@ entity.
 
 * STT_COMMON
   The symbol labels an uninitialized common block. 
+  当符号类型是STT_COMMON时，表明该符号是个公用块数据对象。 
 
 * STT_LOPROC through STT_HIPROC
   Values in this inclusive range are reserved for processor-specific
@@ -1372,13 +1373,18 @@ automatically through the procedure linkage table.
 
 Symbols with type STT_COMMON label uninitialized common blocks. 
 In relocatable objects, these symbols are not allocated and must 
-have the special section index SHN_COMMON (see below). In shared objects and 
+have the special section index SHN_COMMON. In shared objects and 
 executables these symbols must be allocated to some section in the defining object.
+当一个符号的类型是STT_COMMON时，则表明该符号是个公用块数据对象。在可重定位文件中，
+并不会为这些符号分配空间，并且与之相关的节的节头表索引值必须是SHN_COMMON。但是在共享库
+和可执行文件中，这些符号必须在相应的节（bss）中分配空间。
 
 In relocatable objects, symbols with type STT_COMMON are treated just as other 
 symbols with index SHN_COMMON. If the link-editor allocates space for the 
 SHN_COMMON symbol in an output section of the object it is producing, 
 it must preserve the type of the output symbol as STT_COMMON.
+在可重定位文件中，对符号类型是STT_COMMON的符号的处理方式跟那些与之相关节的节头表索引值为SHN_COMMON的符号
+的处理方式是一样的。 
 
 When the dynamic linker encounters a reference to a symbol that resolves 
 to a definition of type STT_COMMON, it may (but is not required to) change 
