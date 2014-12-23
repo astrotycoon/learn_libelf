@@ -536,8 +536,11 @@ not have sections for these special indexes.
   SHN_LORESERVE   0xff00
   SHN_LOPROC      0xff00
   SHN_HIPROC      0xff1f
+  SHN_LOOS		  0xff20
+  SHN_HIOS		  0xff3f
   SHN_ABS         0xfff1
   SHN_COMMON      0xfff2
+  SHN_XINDEX	  0Xffff
   SHN_HIRESERVE   0xffff
 
 * SHN_UNDEF
@@ -1119,24 +1122,23 @@ A symbol table entry has the following format.
 一个符号表项的数据结构定义如下：
 
 + Figure 1-16: Symbol Table Entry
-
   typedef struct {
       Elf32_Word	st_name;	/* 符号名称 （实际是个数值，代表的是相应字符串表索引） 			*/
       Elf32_Addr	st_value;	/* 符号数值 （根据不同的符号属性，不同的目标文件，数值意义不同）*/
       Elf32_Word	st_size;	/* 符号大小 （符号在目标文件中占用的字节数）					*/
       unsigned char	st_info;	/* 符号的类型 和 绑定属性 */
       unsigned char	st_other;	/* 符号的可见性 */
-      Elf32_Half	st_shndx;	/* 符号关联的节的节头表索引值 */
+      Elf32_Half	st_shndx;	/* 符号（关联的节）的节头表索引 值 */
   } Elf32_Sym;
 
 * st_name
   符号的名称
-
   This member holds an index into the object file's symbol string
   table, which holds the character representations of the symbol
   names. If the value is non-zero, it represents a string table index
   that gives the symbol name. Otherwise, the symbol table entry has no
   name.
+
   st_name成员其实不是一个字符串，而是一个数值，代表的是目标文件中字符串表的一个索引值，
   那里才真正存储着该符号的名称对应的字符串。如果st_name成员数值不为0，则它代表符号名在
   字符串表中的索引。否则，说明该符号没有名称。
@@ -1146,10 +1148,10 @@ NOTE: External C symbols have the same names in C and object files' symbol table
 
 * st_value
   符号数值
-
   This member gives the value of the associated symbol. Depending on
   the context, this may be an absolute value, an address, etc.;
   details appear below.
+
   st_value成员给出了相应的符号值。这个符号值具体是什么意思，是要依据上下文的（主要依据不同的
   符号属性和不同的目标文件），也许是个绝对值，也许是个地址值，等等。
 
@@ -1160,13 +1162,15 @@ NOTE: External C symbols have the same names in C and object files' symbol table
   size is the number of bytes contained in the object. This member
   holds 0 if the symbol has no size or an unknown size.
   很多类型的符号都是有大小属性的。例如，一个数据对象的大小指的是它实际在目标文件中占的字节数。
-  st_size成员如果是0的话，说明这个符号在目标文件中不占用任何字节数或者当前是未知大小的。
+  st_size成员如果是0的话，说明这个符号在目标文件中不占用任何字节数（例如common symbols）或者
+  当前是未知大小的（例如undefined symbols）。
 
 * st_info
   符号的类型 和 绑定属性 
   This member specifies the symbol's type and binding attributes.  A
   list of the values and meanings appears below. The following code
   shows how to manipulate the values.
+
   成员st_info指定了符号的类型（低四位）和绑定属性（高四位）。不同的符号类型/符号绑定属性以及意义将在下文列出。
   下面的宏分别展现了如何操作成员st_info。通过st_info得到类型和绑定属性，以及如何通过类型和绑定属性而得到st_info。
 
@@ -1211,6 +1215,7 @@ NOTE: External C symbols have the same names in C and object files' symbol table
   the values and meanings appears below. The following code shows 
   how to manipulate the values for both 32 and 64-bit objects. Other 
   bits contain 0 and have no defined meaning. 
+
   st_other成员目前指定符号的可见性属性。不同的可见性属性值以及意义将在文章后续给出。
   下面的宏分别展示了在32位和64位机器上如何操作st_other。出了低两位，其余的位都为0并且没有意义。
 
@@ -1223,11 +1228,11 @@ NOTE: External C symbols have the same names in C and object files' symbol table
 	#define STV_PROTECTED   3       /* Not preemptible, not exported */
 
 * st_shndx
-  符号关联的节的节头表索引值
+  符号（关联的节）的节头表索引值
   Every symbol table entry is ``defined'' in relation to some section;
-  this member holds the relevant section header table index. As Figure
-  1-8 {*} and the related text describe, some section indexes indicate
-  special meanings.
+  this member holds the relevant section header table index. As the 
+  sh_link and sh_info interpretation table and the related text describe, 
+  some section indexes indicate special meanings.
   每一个符号表项所代表的特定符号信息都是和一个特定的 “节” 相关联的，st_shndx成员
   代表的就是这个特定“节”的节头表索引（比如一个定义的全局变量global，那么符号global
   的属性st_shndx值应该就是.data节所对应的节头表索引；定义的函数foo，那么符号foo
@@ -1301,6 +1306,11 @@ Global and weak symbols differ in two major ways.
   含着未定义全局符号的完整定义 -- 当然了，这里的定义本身可以是全局符号，也
   可以是弱符号。但是链接器是不会为了解析一个未定义的弱符号而去搜索静态库的。
 
+NOTE: The behavior of weak symbols in areas not specified by this document 
+is implementation defined. Weak symbols are intended primarily for use in system software. 
+Applications using weak symbols are unreliable since changes in the runtime environment 
+might cause the execution to fail.
+
 In each symbol table, all symbols with STB_LOCAL binding precede the
 weak and global symbols. As ``Sections'' above describes, a symbol
 table section's sh_info section header member holds the symbol table
@@ -1312,7 +1322,7 @@ index for the first non-local symbol.
 
 A symbol's type provides a general classification for the associated
 entity.
-
+一个符号的类型为符号关联的实体进行分类。
 + Figure 1-18: Symbol Types, ELF32_ST_TYPE
   Name         Value
   ====         =====
@@ -1341,7 +1351,7 @@ entity.
   The symbol is associated with a section. Symbol table entries of
   this type exist primarily for relocation and normally have STB_LOCAL binding.
   当符号类型是STT_SECTION时，表明该符号关联的实体是个节。一般符号表中的一个符号是这个
-  类型时，主要是用于重定位的目的，并且其绑定实行一般情况下是STB_LOCAL。
+  类型时，主要是用于重定位的目的，并且其绑定属性一般情况下是STB_LOCAL。
 
 * STT_FILE 文件符号
   Conventionally, the symbol's name gives the name of the source file
@@ -1355,7 +1365,18 @@ entity.
 
 * STT_COMMON
   The symbol labels an uninitialized common block. 
-  当符号类型是STT_COMMON时，表明该符号是个公用块数据对象。 
+  当符号类型是STT_COMMON时，表明该符号是个公用块数据对象，并且这个公用块
+  在目标文件中实际是未被分配空间的。 
+
+* STT_TLS
+  The symbol specifies a Thread-Local Storage entity. When defined, it 
+  gives the assigned offset for the symbol, not the actual address. 
+  Symbols of type STT_TLS can be referenced by only special thread-local storage relocations 
+  and thread-local storage relocations can only reference symbols with type STT_TLS. 
+  Implementation need not support thread-local storage.
+
+* STT_LOOS through STT_HIOS
+  Values in this inclusive range are reserved for operating system-specific semantics.
 
 * STT_LOPROC through STT_HIPROC
   Values in this inclusive range are reserved for processor-specific
@@ -1375,25 +1396,30 @@ Symbols with type STT_COMMON label uninitialized common blocks.
 In relocatable objects, these symbols are not allocated and must 
 have the special section index SHN_COMMON. In shared objects and 
 executables these symbols must be allocated to some section in the defining object.
-当一个符号的类型是STT_COMMON时，则表明该符号是个公用块数据对象。在可重定位文件中，
-并不会为这些符号分配空间，并且与之相关的节的节头表索引值必须是SHN_COMMON。但是在共享库
-和可执行文件中，这些符号必须在相应的节（bss）中分配空间。
+当一个符号的类型是STT_COMMON时，则表明该符号是个公用块数据对象，且这个公用块在目标文件中
+实际是未被分配空间。在可重定位文件中，并不会为这些符号分配空间，并且与之相关的节的节头表索引值
+必须是SHN_COMMON。但是在共享库和可执行文件中，这些符号必须在相应的节（bss）中分配空间。
 
 In relocatable objects, symbols with type STT_COMMON are treated just as other 
 symbols with index SHN_COMMON. If the link-editor allocates space for the 
 SHN_COMMON symbol in an output section of the object it is producing, 
 it must preserve the type of the output symbol as STT_COMMON.
 在可重定位文件中，对符号类型是STT_COMMON的符号的处理方式跟那些与之相关节的节头表索引值为SHN_COMMON的符号
-的处理方式是一样的。 
+的处理方式是一样的。如果链接器在生成可执行文件或者共享库时，为这类符号分配了空间的话，那么必须保留该符号的
+类型为STT_COMMON.（why？） 
 
-When the dynamic linker encounters a reference to a symbol that resolves 
-to a definition of type STT_COMMON, it may (but is not required to) change 
+When the dynamic linker encounters a reference to a symbol that resolves to 
+a definition of type STT_COMMON, it may (but is not required to) change 
 its symbol resolution rules as follows: instead of binding the reference to 
 the first symbol found with the given name, the dynamic linker searches for 
 the first symbol with that name with type other than STT_COMMON. If no such 
 symbol is found, it looks for the STT_COMMON definition of that name that has 
 the largest size.
-
+当动态链接器（/lib/ld-linux.so.2）遇到一个符号引用是指向符号类型是STT_COMMON的符号定义时，
+那么动态链接器也许（但是并不推荐这样做）会改变符号解析的法则如下：并不会像其它类型的符号一样，
+将该引用绑定到第一个同名的符号定义，而是先搜索类型为非STT_COMMON的符号定义，如果存在则绑定到
+该符号定义。如果不存在，那么动态链接器这才在符号类型为STT_COMMON的定义中搜索，并且最终选择占用内存
+空间最大的那个。
 
 If a symbol's value refers to a specific location within a section,
 its section index member, st_shndx, holds an index into the section
@@ -1401,32 +1427,51 @@ header table. As the section moves during relocation, the symbol's
 value changes as well, and references to the symbol continue to
 ``point'' to the same location in the program. Some special section
 index values give other semantics.
+如果一个符号的数值代表的是其在节中特定的位置，那么该符号表的节头表索引值st_shndx
+的值就是该节在节头表中的索引值。因为在重定位的过程中，节的位置会变化的，
+即符号的节头表索引值st_shndx值会改变，所以符号的数值st_value同样会做相应的改变，
+但是该符号的引用依然”指向“该符号(!)。当符号表的节头表索引值st_shndx为下面四种特殊的
+节头表索引值时有特别的含义。
 
 * SHN_ABS
-
   The symbol has an absolute value that will not change because of
   relocation.
+  当符号的节头表索引值为SHN_ABS时，该符号的数值是个绝对值，并且不会因为重定位而改变。
 
 * SHN_COMMON
-
   The symbol labels a common block that has not yet been allocated.
   The symbol's value gives alignment constraints, similar to a
   section's sh_addralign member. That is, the link editor will
   allocate the storage for the symbol at an address that is a multiple
   of st_value. The symbol's size tells how many bytes are required.
-
+  当符号的节头表索引值st_shndx为SHN_COMMON时，其标记的是未被分配空间的公用块。
+  这种情况下，符号的数值与节头表表项中的成员sh_addralign意义类似，代表
+  的是该符号的对齐字节数 -- 也就是说，链接器在为该符号分配存储空间时，起始地址的值
+  必须是st_value的倍数。符号大小st_size告诉链接器存储空间的大小。
+  
 * SHN_UNDEF
-
   This section table index means the symbol is undefined. When the
   link editor combines this object file with another that defines the
   indicated symbol, this file's references to the symbol will be
   linked to the actual definition.
+  当符号的节头表索引值st_shndx为SHN_UNDEF（0）时，表明该符号是未定义的。那么在链接的过程
+  中，链接器会在其他目标文件中找到该符号的定义，并且使其链接到实际的定义上去。
+
+* SHN_XINDEX
+  This value is an escape value. It indicates that the symbol refers to 
+  a specific location within a section, but that the section header index 
+  for that section is too large to be represented directly in the symbol table entry. 
+  The actual section header index is found in the associated SHT_SYMTAB_SHNDX section. 
+  The entries in that section correspond one to one with the entries in the symbol table. 
+  Only those entries in SHT_SYMTAB_SHNDX that correspond to symbol table entries 
+  with SHN_XINDEX will hold valid section header indexes; all other entries will have value 0.
+  
 
 As mentioned above, the symbol table entry for index 0 (STN_UNDEF) is
 reserved; it holds the following.
-
+前面提到过，符号表的第一表项，即符号表索引值为0（STN_UNDEF）的符号表表项是保留不使用的。
+它的内容如下：
 + Figure 1-19: Symbol Table Entry: Index 0
-
   Name        Value    Note
   ====        =====    ====
   st_name       0      No name
