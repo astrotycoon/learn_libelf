@@ -1053,8 +1053,7 @@ names.
 
 
    ========================= String Table =========================
-
-
+							  字符串表
 String table sections hold null-terminated character sequences,
 commonly called strings. The object file uses these strings to
 represent symbol and section names. One references a string as an
@@ -1066,11 +1065,23 @@ either no name or a null name, depending on the context. An empty
 string table section is permitted; its section header's sh_size member
 would contain zero. Non-zero indexes are invalid for an empty string
 table.
+字符串表节（string table sections）中存储若干以空字符结尾的字符串序列，
+即通常我们说的字符串。在目标文件中，使用这些字符串来表示符号名称和节的
+名称。当需要使用这些字符串时，只需要提供字符串在字符串表中的索引值即可。
+字符串表的第一个字节，即索引值为0对应的字节中存储的是空字符。同样的，因为
+所有的字符串都是空字符结尾，所以字符串表的最后一个字节中存储的也是空字符。
+索引值为0的字符串代表的是没有名字或者名字为空。一个空的字符串表是允许的，
+这种情况下，它的节头表表项成员sh_size数值为0，意思是该节大小为0，所以此时提供
+一个非零的字符串表索引值是非法的。
 
 A section header's sh_name member holds an index into the section
 header string table section, as designated by the e_shstrndx member of
 the ELF header. The following figures show a string table with 25
 bytes and the strings associated with various indexes.
+一个目标文件中一般包含多个字符串表（.dynstr/.shstrtab/.strtab），其中.shstrtab节中存储的
+是所有节的名字字符串。节头表表项成员sh_name代表的就是该节在.shstrtab中的索引值，该字符串表
+所在节的节头表索引值由ELF头中的e_shstrndx成员指出。 
+下图展现的是一个长度为25字节的字符串表。
 
        Index   +0   +1   +2   +3   +4   +5   +6   +7   +8   +9
        =====   ==   ==   ==   ==   ==   ==   ==   ==   ==   ==
@@ -1080,7 +1091,6 @@ bytes and the strings associated with various indexes.
 
 
 + Figure 1-15: String Table Indexes
-
   Index   String
   =====   ======
       0   none
@@ -1097,8 +1107,7 @@ times. Unreferenced strings also are allowed.
 
 
    ========================= Symbol Table =========================
-
-
+							    符号表
 An object file's symbol table holds information needed to locate and
 relocate a program's symbolic definitions and references. A symbol
 table index is a subscript into this array. Index 0 both designates
@@ -1233,10 +1242,16 @@ NOTE: External C symbols have the same names in C and object files' symbol table
   this member holds the relevant section header table index. As the 
   sh_link and sh_info interpretation table and the related text describe, 
   some section indexes indicate special meanings.
+
   每一个符号表项所代表的特定符号信息都是和一个特定的 “节” 相关联的，st_shndx成员
   代表的就是这个特定“节”的节头表索引（比如一个定义的全局变量global，那么符号global
   的属性st_shndx值应该就是.data节所对应的节头表索引；定义的函数foo，那么符号foo
-  的属性st_shndx值应该就是.text节所对应的节头表索引）。部分节头表索引会有特殊的含义。
+  的属性st_shndx值应该就是.text节所对应的节头表索引）。部分符号的节头表索引会有特殊的含义。
+
+  If this member contains SHN_XINDEX, then the actual section header index is too large 
+  to fit in this field. The actual value is contained in the associated section of type SHT_SYMTAB_SHNDX.
+  如果这个成员的值是SHN_XINDEX时，证明该符号关联的节的节头表索引值过大，超出了st_shndx所能代表的最大数值。
+  那么真正的节头表索引值存储在一个类型为SHT_SYMTAB_SHNDX的扩展节中。
 
 A symbol's binding determines the linkage visibility and behavior.
 一个符号的绑定属性决定了该符号在链接阶段的可见性以及链接时的处理方式。
@@ -1274,6 +1289,9 @@ A symbol's binding determines the linkage visibility and behavior.
   地方，即链接属性也是external的。但是链接器处理弱符号的优先级相对全局符号要低，即
   当全局符号和弱符号同名时，链接器最后使用全局符号而忽略弱符号。
 
+* STB_LOOS through STB_HIOS
+  Values in this inclusive range are reserved for operating system-specific semantics.
+
 * STB_LOPROC through STB_HIPROC
   Values in this inclusive range are reserved for processor-specific
   semantics.
@@ -1298,18 +1316,33 @@ Global and weak symbols differ in two major ways.
 
 * When the link editor searches archive libraries, it extracts archive
   members that contain definitions of undefined global symbols. The
-  member's definition may be either a global or a weak symbol. The
-  link editor does not extract archive members to resolve undefined
-  weak symbols. Unresolved weak symbols have a zero value.
+  member's definition may be either a global or a weak symbol. 
+
   当程序使用静态库时，链接器会自动去搜索静态库，并且根据程序中未定义的全局
   符号选择性的提取出静态库中的可重定位文件，在这提取出的可重定位文件中就包
   含着未定义全局符号的完整定义 -- 当然了，这里的定义本身可以是全局符号，也
-  可以是弱符号。但是链接器是不会为了解析一个未定义的弱符号而去搜索静态库的。
+  可以是弱符号。
+
+  The link editor does not extract archive members to resolve undefined
+  weak symbols. Unresolved weak symbols have a zero value. The use of –z weakextract 
+  overrides this default behavior. This options enables weak references to cause 
+  the extraction of archive members.
+
+  但是链接器默认是不会为了解析一个未定义的弱符号而去搜索静态库的，而是将该弱符号
+  初始化为0。如果使用了–z weakextract选项的话，链接器依然会去提取静态库中的成员。
 
 NOTE: The behavior of weak symbols in areas not specified by this document 
 is implementation defined. Weak symbols are intended primarily for use in system software. 
 Applications using weak symbols are unreliable since changes in the runtime environment 
 might cause the execution to fail.
+
+[wikipedia]Weak symbols are not mentioned by C or C++ language standards; as such, inserting them into 
+code is not very portable. Even if two platforms support the same or similar syntax for 
+marking symbols as weak, the semantics may differ in subtle points, e.g. whether weak symbols during 
+dynamic linking at runtime lose their semantics or not.
+
+注意： 弱符号的行为是实现相关的，C/C++标准中并没有弱符号的概念。弱符号主要用于系统软件中，不推荐在应用程序
+中使用弱符号。
 
 In each symbol table, all symbols with STB_LOCAL binding precede the
 weak and global symbols. As ``Sections'' above describes, a symbol
@@ -1320,9 +1353,10 @@ index for the first non-local symbol.
 应的节头表项的节头表成员sh_info中的数值代表的是第一个绑定属性为非STB_LOCAL
 的符号的符号表索引值（即最后一个绑定属性为STB_LOCAL符号的符号表索引值加1）。
 
+
 A symbol's type provides a general classification for the associated
 entity.
-一个符号的类型为符号关联的实体进行分类。
+一个符号的类型为该符号关联的实体进行分类。
 + Figure 1-18: Symbol Types, ELF32_ST_TYPE
   Name         Value
   ====         =====
@@ -1405,8 +1439,8 @@ symbols with index SHN_COMMON. If the link-editor allocates space for the
 SHN_COMMON symbol in an output section of the object it is producing, 
 it must preserve the type of the output symbol as STT_COMMON.
 在可重定位文件中，对符号类型是STT_COMMON的符号的处理方式跟那些与之相关节的节头表索引值为SHN_COMMON的符号
-的处理方式是一样的。如果链接器在生成可执行文件或者共享库时，为这类符号分配了空间的话，那么必须保留该符号的
-类型为STT_COMMON.（why？） 
+的处理方式是一样的。如果链接器在生成可执行文件或者共享库时，为这类符号分配了空间的话（.bss），那么必须保留该符号的
+类型为STT_COMMON.（why？ -- 下文给出） 
 
 When the dynamic linker encounters a reference to a symbol that resolves to 
 a definition of type STT_COMMON, it may (but is not required to) change 
@@ -1514,6 +1548,64 @@ programs.
 综合以上三点可知，在不同的目标文件中st_value的值多少有所不同，这样的设计是
 为了方便一些特定程序更加方便有效的访问和利用这些符号数值（例如在链接时，ld ... 在运行时，动态链接器）。
 
+
+A symbol's visibility, although it may be specified in a relocatable object, 
+defines how that symbol may be accessed once it has become part of an executable or shared object.
+
++ Figure 1-20: Symbol Visibility 
+		Name		   		Value
+     	========   		    =====
+    	STV_DEFAULT		 	  0
+		STV_INTERNAL		  1
+		STV_HIDDEN			  2
+		STV_PROTECTED		  3
+
+* STV_DEFAULT <<
+  The visibility of symbols with the STV_DEFAULT attribute is as specified by the symbol's binding type. 
+  That is, global and weak symbols are visible outside of their defining component (executable file or shared object). 
+  Local symbols are hidden, as described below. Global and weak symbols are also preemptable, 
+  that is, they may by preempted by definitions of the same name in another component.
+  当符号的可见性是STV_DEFAULT时，
+
+* STV_PROTECTED
+  A symbol defined in the current component is protected if it is visible in other components but not preemptable, 
+  meaning that any reference to such a symbol from within the defining component must be resolved to 
+  the definition in that component, even if there is a definition in another component that would preempt 
+  by the default rules. 
+  A symbol with STB_LOCAL binding may not have STV_PROTECTED visibility. 
+  If a symbol definition with STV_PROTECTED visibility from a shared object is taken as resolving a reference from 
+  an executable or another shared object, the SHN_UNDEF symbol table entry created has STV_DEFAULT visibility.
+
+* STV_HIDDEN <<
+  A symbol defined in the current component is hidden if its name is not visible to other components. 
+  Such a symbol is necessarily protected. This attribute may be used to control the external interface of a component. 
+  Note that an object named by such a symbol may still be referenced from another component if its address is passed outside.
+
+  A hidden symbol contained in a relocatable object must be either removed or converted to STB_LOCAL binding 
+  by the link-editor when the relocatable object is included in an executable file or shared object.
+
+* STV_INTERNAL
+  The meaning of this visibility attribute may be defined by processor supplements to further constrain hidden symbols. 
+  A processor supplement's definition should be such that generic tools can safely treat internal symbols as hidden.
+
+  An internal symbol contained in a relocatable object must be either removed or converted to STB_LOCAL binding 
+  by the link-editor when the relocatable object is included in an executable file or shared object.
+
+None of the visibility attributes affects resolution of symbols within an executable or shared object 
+during link-editing -- such resolution is controlled by the binding type. 
+Once the link-editor has chosen its resolution, these attributes impose two requirements, 
+both based on the fact that references in the code being linked may have been optimized to take advantage of the attributes.
+
+· First, all of the non-default visibility attributes, when applied to a symbol reference, 
+  imply that a definition to satisfy that reference must be provided within the current executable or shared object. 
+  If such a symbol reference has no definition within the component being linked, 
+  then the reference must have STB_WEAK binding and is resolved to zero.
+
+· Second, if any reference to or definition of a name is a symbol with a non-default visibility attribute, 
+  the visibility attribute must be propagated to the resolving symbol in the linked object. 
+  If different visibility attributes are specified for distinct references to or definitions of a symbol, 
+  the most constraining visibility attribute must be propagated to the resolving symbol in the linked object. 
+  The attributes, ordered from least to most constraining, are: STV_PROTECTED, STV_HIDDEN and STV_INTERNAL.
 
    ========================== Relocation ==========================
 
