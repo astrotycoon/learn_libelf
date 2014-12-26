@@ -528,7 +528,7 @@ If the number of sections is greater than or equal to SHN_LORESERVE (0xff00), e_
 the value SHN_UNDEF (0) and the actual number of section header table entries is contained 
 in the sh_size field of the section header at index 0 (otherwise, the sh_size member of the initial entry contains 0).
 如果节头表的表项个数大于或者等于SHN_LORESERVE（0xff00）的话，成员e_shnum的值为SHN_UNDEF（0），那么真正的节头表表项个数
-存储在节头表中第一表项（节头表索引值为0）中的成员sh_size里（否则，一般情况下，成员sh_size的值为0）。
+存储在节头表中第一表项（节头表索引值为0）中的成员sh_size里（否则，一般情况下，第一表项的成员sh_size的值为0）。
 
 Some section header table indexes are reserved in contexts where index size is restricted, 
 for example, the st_shndx member of a symbol table entry and the e_shnum and e_shstrndx members of the ELF header. 
@@ -537,8 +537,15 @@ Also in such contexts, an escape value indicates that the actual section index i
 to be found elsewhere, in a larger field.
 需要注意的是，有一些特殊的节头表索引值是预留的，这些预留值可能会被符号表表项成员st_shndx和ELF文件头中
 的成员e_shnum和e_shstrndx使用到。在这种情况下，这些预留值的意义并不是说明在目标文件中真实存在这些索引值的
-节，而是有其特殊的含义。同样的，在这种情况下，一个 逸出值 表明真实的节头表索引值存储在别处（一个大小足够能容纳真实
+节，而是有其特殊的含义。同样的，在这种情况下，一个 逸出值（escape value） 表明真实的节头表索引值存储在别处（一个大小足够能容纳真实
 节头表索引值的地方）。
+
+e_shnum 	-> SHN_UNDEF 		======> 	sh_size
+e_shstrndx	-> SHN_XINDEX		======>		sh_link
+
+st_shndx	-> SHN_UNDEF		======> 	该符号是个未定义符号
+st_shndx	-> SHN_ABS			======>		该符号是文件符号（STT_FILE）
+st_shndx	-> SHN_COMMON		======>		该符号是公用块数据		
 
 (OLD)Some section header table indexes are reserved; an object file will
 not have sections for these special indexes.
@@ -563,14 +570,17 @@ not have sections for these special indexes.
   当节头表索引值为SHN_UNDEF时，表明的是一个未定义、不存在的节头表索引。
   例如，当一个符号表表项的成员st_shndx值为SHN_UNDEF时，代表该符号是个未定义符号；
   当e_shnum的值是SHN_UNDEF是，表明真实的节头表表项个数（也是目标文件中节的总个数）存储在第一个
-  （即节头表索引值为0）节头表表项的成员sh_size中；
+  （即节头表索引值为0）节头表表项的成员sh_size中；当e_shstrndx的值是SHN_XINDEX时，表明真实的节名表
+  存储在第一个（即节头表索引值为0）节头表表项的成员sh_link中。
 
 NOTE: Although index 0 is reserved as the undefined value, the section
 header table contains an entry for index 0. That is, if the e_shnum
 member of the ELF header says a file has 6 entries in the section
 header table, they have the indexes 0 through 5. The contents of the
 initial entry are specified later in this section.
-注意：
+注意：尽管索引值SHN_UNDEF（0）是个预留至，但是节头表的索引值依然是从0开始的。
+如果ELF文件头成员e_shnum的值为6，说明该目标文件中的节头表有6个表项（即文件有6个节），
+它们的索引值为0 ~ 5。
 
 * SHN_LORESERVE
   This value specifies the lower bound of the range of reserved
@@ -580,14 +590,23 @@ initial entry are specified later in this section.
   Values in this inclusive range are reserved for processor-specific
   semantics.
 
+* SHN_LOOS through SHN_HIOS
+  Values in this inclusive range are reserved for operating system-specific semantics.
+
 * SHN_ABS
   This value specifies absolute values for the corresponding
   reference. For example, symbols defined relative to section number
   SHN_ABS have absolute values and are not affected by relocation.
+  当节头表索引值为SHN_ABS时，
+
 
 * SHN_COMMON
   Symbols defined relative to this section are common symbols, such as
   FORTRAN COMMON or unallocated C external variables.
+
+* SHN_XINDEX
+  This value is an escape value. It indicates that the actual section header index is 
+  too large to fit in the containing field and is to be found in another location (specific to the structure where it appears).
 
 * SHN_HIRESERVE
   This value specifies the upper bound of the range of reserved
