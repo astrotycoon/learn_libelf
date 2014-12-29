@@ -634,11 +634,15 @@ table. Moreover, object files' sections satisfy several conditions.
   sections might not ``cover'' every byte in an object file. The
   contents of the inactive data are unspecified.
 
-* 目标文件中每一个节都对应一个节头表索引，但是存在节头表索引，并不说明
-  目标文件中真实存在该节，例如可重定位文件中的.bss节。
+* 目标文件中真实存在的节都对应一个节头表索引，但是存在节头表索引，并不能说明
+  目标文件中真实存在该节，例如可重定位文件中的.bss节就是存在节头表索引，但是
+  在文件中该节的大小为0。
+* 目标文件中的一个节所占用的空间是连续的（当然了，有的节大小可能为0，例如.bss节）。
+* 目标文件中的所有节互相之间不覆盖或者重叠的。
+* 目标文件中也许存在冗余的字符。由于字节对齐的需要，目标文件中有的结构（包括这个头和节）
+  之间并不是连续的，而是随机填充的冗余数据，这样的数据是未定义的。
 
 A section header has the following structure.
-
 + Figure 1-9: Section Header
   typedef struct {
       Elf32_Word	sh_name;		/* 节名 -- 在节名表中的索引值 */
@@ -657,19 +661,21 @@ A section header has the following structure.
   This member specifies the name of the section. Its value is an index
   into the section header string table section [see ``String Table''
   below], giving the location of a null-terminated string.
+  成员sh_name是用来指定该节的名称的。它本身其实并不是字符串，而是一个节名表的索引值，
+  在那里真正存储着该节名称的字符串文本。 
 
 * sh_type
-
   This member categorizes the section's contents and semantics.
   Section types and their descriptions appear below.
+  成员sh_type指定该节的类型。
 
 * sh_flags
-
   Sections support 1-bit flags that describe miscellaneous attributes.
   Flag definitions appear below.
+  成员sh_flags用来描述该节的诸多属性。它由一系列标志比特位组成，每一位对应
+  一个属性，当具备某一属性时，相应的标志位设置为1，反之设置为0。
 
 * sh_addr
-
   If the section will appear in the memory image of a process, this
   member gives the address at which the section's first byte should
   reside. Otherwise, the member contains 0.
@@ -842,12 +848,15 @@ marks undefined section references. This entry holds the following.
   sh_addralign	    0      No alignment
   sh_entsize        0      No entries
 
+
 A section header's sh_flags member holds 1-bit flags that describe the
 section's attributes. Defined values appear below; other values are
 reserved.
+节头表表项中成员sh_flags用来描述该节的各种属性。
+节头表表项成员sh_flags中一个位对应该节的一个属性，当某种属性设置时，相应位
+设置为1，反之设置为0。
 
 + Figure 1-12: Section Attribute Flags, sh_flags
-
   Name                Value
   ====                =====
   SHF_WRITE             0x1
@@ -858,24 +867,24 @@ reserved.
 If a flag bit is set in sh_flags, the attribute is ``on'' for the
 section. Otherwise, the attribute is ``off'' or does not apply.
 Undefined attributes are set to zero.
+当成员sh_flags的某个位设置为1时，说明该节具备相应的属性。反之，则说明
+该节不具备相应的属性。
 
 * SHF_WRITE
-
   The section contains data that should be writable during process
   execution.
+  属性标志SHF_WRITE说明当该程序在运行时，该节的数据是可写的。
 
 * SHF_ALLOC
-
   The section occupies memory during process execution. Some control
   sections do not reside in the memory image of an object file; this
   attribute is off for those sections.
+  属性标志SHF_ALLOC说明当该程序在运行时，该节的数据是要占用内存空间的。
 
 * SHF_EXECINSTR
-
   The section contains executable machine instructions.
 
 * SHF_MASKPROC
-
   All bits included in this mask are reserved for processor-specific
   semantics.
 
