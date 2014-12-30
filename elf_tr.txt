@@ -533,16 +533,17 @@ in the sh_size field of the section header at index 0 (otherwise, the sh_size me
 Some section header table indexes are reserved in contexts where index size is restricted, 
 for example, the st_shndx member of a symbol table entry and the e_shnum and e_shstrndx members of the ELF header. 
 In such contexts, the reserved values do not represent actual sections in the object file. 
-Also in such contexts, an escape value indicates that the actual section index is 
-to be found elsewhere, in a larger field.
-需要注意的是，有一些特殊的节头表索引值是预留的，这些预留值可能会被符号表表项成员st_shndx和ELF文件头中
-的成员e_shnum和e_shstrndx使用到。在这种情况下，这些预留值的意义并不是说明在目标文件中真实存在这些索引值的
-节，而是有其特殊的含义。同样的，在这种情况下，一个 逸出值（escape value） 表明真实的节头表索引值存储在别处（一个大小足够能容纳真实
-节头表索引值的地方）。
-
+Also in such contexts, an escape value indicates that the actual section index is to be found elsewhere, in a larger field.
+需要注意的是，有一些特殊的节头表索引值是预留的，这些预留值可能会被符号表表项成员st_shndx和ELF文件头成员e_shnum和e_shstrndx使用到。
+在这种情况下，这些预留值的意义并不是说明在目标文件中真实存在这些索引值的节，而是有其特殊的含义。
+同样的，在这种情况下，一个 逸出值（escape value） 表明真实的节头表索引值存储在别处（一个大小足够能容纳真实节头表索引值的地方）。
+ name			escape value					elsewhere
+==========	==============					==========
 e_shnum 	-> SHN_UNDEF 		======> 	sh_size
 e_shstrndx	-> SHN_XINDEX		======>		sh_link
 
+ name			reserve value 					meaning	
+==========  ==============					==========	
 st_shndx	-> SHN_UNDEF		======> 	该符号是个未定义符号
 st_shndx	-> SHN_ABS			======>		该符号是文件符号（STT_FILE）
 st_shndx	-> SHN_COMMON		======>		该符号是公用块数据		
@@ -569,17 +570,16 @@ not have sections for these special indexes.
   relative to section number SHN_UNDEF is an undefined symbol.
   当节头表索引值为SHN_UNDEF时，表明的是一个未定义、不存在的节头表索引。
   例如，当一个符号表表项的成员st_shndx值为SHN_UNDEF时，代表该符号是个未定义符号；
-  当e_shnum的值是SHN_UNDEF是，表明真实的节头表表项个数（也是目标文件中节的总个数）存储在第一个
-  （即节头表索引值为0）节头表表项的成员sh_size中；当e_shstrndx的值是SHN_XINDEX时，表明真实的节名表
-  存储在第一个（即节头表索引值为0）节头表表项的成员sh_link中。
+  当e_shnum的值是SHN_UNDEF是，表明真实的节头表表项个数（也就是目标文件中节的总个数）存储在第一个（即节头表索引值为0）
+  节头表表项的成员sh_size中；
 
 NOTE: Although index 0 is reserved as the undefined value, the section
 header table contains an entry for index 0. That is, if the e_shnum
 member of the ELF header says a file has 6 entries in the section
 header table, they have the indexes 0 through 5. The contents of the
 initial entry are specified later in this section.
-注意：尽管索引值SHN_UNDEF（0）是个预留至，但是节头表的索引值依然是从0开始的。
-如果ELF文件头成员e_shnum的值为6，说明该目标文件中的节头表有6个表项（即文件有6个节），
+注意：尽管索引值SHN_UNDEF（0）是个预留值，但是节头表的索引值依然是从0开始的。
+如果ELF文件头成员e_shnum的值为6，说明该目标文件中的节头表有6个表项（即目标文件中有6个节），
 它们的索引值为0 ~ 5。
 
 * SHN_LORESERVE
@@ -598,16 +598,19 @@ initial entry are specified later in this section.
   reference. For example, symbols defined relative to section number
   SHN_ABS have absolute values and are not affected by relocation.
   当节头表索引值为SHN_ABS时，表明该符号是个绝对值，并且该值不会因为重定位而改变。
+  例如，符号表表项成员st_shndx的值为SHN_ABS时，表明该符号时个文件符号（STT_FILE）。
 
 * SHN_COMMON
   Symbols defined relative to this section are common symbols, such as
   FORTRAN COMMON or unallocated C external variables.
   当符号的节头表索引值为SHN_COMMON时，表明该符号是个公用块数据。
+  例如，符号表表项成员st_shndx的值为SHN_COMMON时，表明该符号对应的实体是个公用块数据。
 
 * SHN_XINDEX
   This value is an escape value. It indicates that the actual section header index is 
   too large to fit in the containing field and is to be found in another location (specific to the structure where it appears).
   节头表索引值SHN_XINDEX代表的是个 逸出值。它代表的意思是真实的 节头表索引值 太大，所以存储在别处。
+  当e_shstrndx的值是SHN_XINDEX时，表明真实的节名表存储在第一个（即节头表索引值为0）节头表表项的成员sh_link中。
 
 * SHN_HIRESERVE
   This value specifies the upper bound of the range of reserved
@@ -619,13 +622,13 @@ initial entry are specified later in this section.
   的存在这些表项。
 
 Sections contain all information in an object file, except the ELF
-header, the program header table, and the section header
-table. Moreover, object files' sections satisfy several conditions.
+header, the program header table, and the section header table. 
+Moreover, object files' sections satisfy several conditions.
 目标文件中除了ELF文件头、程序头表、程序段和节头表，剩下的就全都是节了。
 此外，目标文件中的节符合下列条件：
 
-* Every section in an object file has exactly one section header
-  describing it. Section headers may exist that do not have a section.
+* Every section in an object file has exactly one section header describing it. 
+  Section headers may exist that do not have a section.
 * Each section occupies one contiguous (possibly empty) sequence of
   bytes within a file.
 * Sections in a file may not overlap. No byte in a file resides in
@@ -659,8 +662,8 @@ A section header has the following structure.
 
 * sh_name
   This member specifies the name of the section. Its value is an index
-  into the section header string table section [see ``String Table''
-  below], giving the location of a null-terminated string.
+  into the section header string table section [see ``String Table" below], 
+  giving the location of a null-terminated string.
   成员sh_name是用来指定该节的名称的。它本身其实并不是字符串，而是一个节名表的索引值，
   在那里真正存储着该节名称的字符串文本。 
 
@@ -679,29 +682,41 @@ A section header has the following structure.
   If the section will appear in the memory image of a process, this
   member gives the address at which the section's first byte should
   reside. Otherwise, the member contains 0.
+  如果该节的数据内容最后存在于程序的内存映像中，成员sh_addr指定的是该节数据
+  在内存中的起始地址。否则，即该节数据不需要映射到内存中时，该成员数值为0。
 
 * sh_offset
-
   This member's value gives the byte offset from the beginning of the
   file to the first byte in the section. One section type, SHT_NOBITS
   described below, occupies no space in the file, and its sh_offset
   member locates the conceptual placement in the file.
+  成员sh_offset的数值代表的意思是该节数据在目前文件中的偏移量。需要注意的是，
+  当节的类型为SHT_NOBITS时，说明该节在目标文件中并不占用空间大小，所以此时
+  成员sh_offset的数值代表的是概念上的偏移值。  
 
 * sh_size
-
   This member gives the section's size in bytes.  Unless the section
   type is SHT_NOBITS, the section occupies sh_size bytes in the file.
   A section of type SHT_NOBITS may have a non-zero size, but it
   occupies no space in the file.
+  成员sh_size说明的是该节的大小。当节的类型不是SHT_NOBITS时，成员sh_size的数值就是该节
+  在目标文件中的实际大小；当节的类型是SHT_NOBITS时，尽管sh_size的数值有可能不是0，但是
+  其实该节在目标文件中不占用实际大小。
 
 * sh_link
   This member holds a section header table index link, whose
   interpretation depends on the section type. A table below describes
   the values.
+  成员sh_link的数值代表的是一个节头表索引值，具体的意义解释因节的类型不同而不同。
 
 * sh_info
   This member holds extra information, whose interpretation depends on
-  the section type. A table below describes the values.
+  the section type. A table below describes the values. 
+  If the sh_flags field for this section header includes the attribute SHF_INFO_LINK, 
+  then this member represents a section header table index.
+  成员sh_info中包含该节的额外信息，具体的意义解释因节的类型的不同而不同。 
+  如果该节的节头表表项成员sh_flags包含属性标志SHF_INFO_LINK的话，那么sh_info
+  代表的是一个节头表索引值。
 
 * sh_addralign
   Some sections have address alignment constraints. For example, if a
@@ -710,17 +725,22 @@ A section header has the following structure.
   be congruent to 0, modulo the value of sh_addralign. Currently, only
   0 and positive integral powers of two are allowed. Values 0 and 1
   mean the section has no alignment constraints.
+  有一些节有字节对齐的限制。例如，如果一个节中有双字节类型的数据，那么系统必须保证
+  该节的字节对齐数是双字节类型大小的。也就是说，成员sh_addr的数值必须是双字节类型大小
+  的整数倍。目前，成员sh_addralign的数值只能是0或者其他2的整数幂数值。数值0和1代表的是
+  该节没有字节对齐要求。
 
 * sh_entsize
   Some sections hold a table of fixed-size entries, such as a symbol
   table. For such a section, this member gives the size in bytes of
   each entry. The member contains 0 if the section does not hold a
   table of fixed-size entries.
+  有一些节的数据内容是固定大小的表，例如符号表。对于这样的节，成员sh_entsize给出的是每个
+  表项的大小。如果该成员数值为0，则说明该节的数据内容并不是一张表。
 
 A section header's sh_type member specifies the section's semantics.
-
+节头表表项成员sh_type直接该节的类型。
 + Figure 1-10: Section Types, sh_type
-
   Name               Value
   ====               =====
   SHT_NULL              0
@@ -735,24 +755,33 @@ A section header's sh_type member specifies the section's semantics.
   SHT_REL	         	9
   SHT_SHLIB             10
   SHT_DYNSYM            11
+  SHT_INIT_ARRAY		14
+  SHT_FINI_ARRAY		15
+  SHT_PREINIT_ARRAY		16
+  SHT_GROUP				17
+  SHT_SYMTAB_SHNDX		18
+  SHT_LOOS		0x60000000
+  SHT_HIOS		0x6fffffff
   SHT_LOPROC    0x70000000
   SHT_HIPROC    0x7fffffff
   SHT_LOUSER    0x80000000
   SHT_HIUSER    0xffffffff
 
 * SHT_NULL
-
   This value marks the section header as inactive; it does not have an
   associated section. Other members of the section header have
   undefined values.
+  当节头表表项成员sh_type类型为SHT_NULL时，表明该节头表表项是无效的（非活动的），目标文件中没有
+  它对应的节，其他成员的值是未定义的（当e_shnum的值为0（SHN_UNDEF）时，真正的节个数不是存储在该表项的sh_size中吗
+  还有e_shstrndx，怎么不提下?）。
 
 * SHT_PROGBITS
-
   The section holds information defined by the program, whose format
   and meaning are determined solely by the program.
+  当节的类型是SHT_PROGBITS时表明该节中有程序定义的信息，这些信息的格式和
+  意义完全是由程序定义的。
 
 * SHT_SYMTAB and SHT_DYNSYM
-
   These sections hold a symbol table. Currently, an object file may
   have only one section of each type, but this restriction may be
   relaxed in the future. Typically, SHT_SYMTAB provides symbols for
@@ -761,9 +790,14 @@ A section header's sh_type member specifies the section's semantics.
   dynamic linking. Consequently, an object file may also contain a
   SHT_DYNSYM section, which holds a minimal set of dynamic linking
   symbols, to save space. See ``Symbol Table'' below for details.
+  当节的类型是SHT_SYMTAB或者SHT_DYNSYM时，表明该节的数据内容是符号表。
+  目前的目标文件中，每种类型的节只有一个，在将来会考虑增加节的个数。
+  一般情况下，类型为SHT_SYMTAB的节是为链接器提供符号信息，尽管有的符号在程序运行时
+  也会被动态链接器用到 -- SHT_SYMTAB类型的节中包含的是所有的符号信息，因此也就包含了
+  很多动态链接器不需要的符号信息，为了动态链接的方便和高效，一般可执行文件中还包含
+  一个类型为SHT_DYNSYM的节，该节包含的完全是动态链接器要用到的符号信息。
 
 * SHT_STRTAB
-
   The section holds a string table. An object file may have multiple
   string table sections. See ``String Table'' below for details.
 
@@ -862,7 +896,16 @@ reserved.
   SHF_WRITE             0x1
   SHF_ALLOC             0x2
   SHF_EXECINSTR         0x4
-  SHF_MASKPROC   0xf0000000
+  SHF_MERGE				0x10
+  SHF_STRINGS			0x20
+  SHF_INFO_LINK			0x40
+  SHF_LINK_ORDER		0x80
+  SHF_OS_NONCONFORMING	0x100
+  SHF_GROUP				0x200
+  SHF_TLS				0x400
+  SHF_COMPRESSED		0x800
+  SHF_MASKOS			0x0ff00000
+  SHF_MASKPROC			0xf0000000
 
 If a flag bit is set in sh_flags, the attribute is ``on'' for the
 section. Otherwise, the attribute is ``off'' or does not apply.
@@ -880,13 +923,53 @@ Undefined attributes are set to zero.
   sections do not reside in the memory image of an object file; this
   attribute is off for those sections.
   属性标志SHF_ALLOC说明当该程序在运行时，该节的数据是要占用内存空间的。
+  并不是目标文件中所有的节都会占用内存空间，例如有的起控制作用的节，在程序加载到
+  内存空间时，并不会加载进内存，即程序的内存映像中不需要这些节的信息，所以
+  该节就不需要SHF_ALLOC属性。
 
 * SHF_EXECINSTR
   The section contains executable machine instructions.
+  属性标志SHF_EXECINSTR标明该节包含可执行的机器指令。
+
+* SHF_MERGE
+  The data in the section may be merged to eliminate duplication. Unless the SHF_STRINGS flag is also set, 
+  the data elements in the section are of a uniform size. The size of each element is specified in the section header's 
+  sh_entsize field. If the SHF_STRINGS flag is also set, the data elements consist of null-terminated character strings. 
+  The size of each character is specified in the section header's sh_entsize field.
+  属性标志SHF_MERGE表明该节的数据有可能会被合并，从而来消除不必要的数据重复。当该节没有设置属性标志SHF_STRINGS时，那么
+  该节的数据元素大小是固定的 -- 由成员sh_entsize来指定该固定大小数值。如果设置了属性标志SHF_STRINGS的话，表明该节数据元素
+  是以空字符结尾的字符串 -- 而每个字符的大小由成员sh_entsize来指定。
+
+  Each element in the section is compared against other elements in sections with the same name, type and flags. 
+  Elements that would have identical values at program run-time may be merged. Relocations referencing elements of 
+  such sections must be resolved to the merged locations of the referenced values. Note that any relocatable values, 
+  including values that would result in run-time relocations, must be analyzed to determine whether the run-time values 
+  would actually be identical. An ABI-conforming object file may not depend on specific elements being merged, 
+  and an ABI-conforming link editor may choose not to merge specific elements.
+
+* SHF_STRINGS
+  The data elements in the section consist of null-terminated character strings. 
+  The size of each character is specified in the section header's sh_entsize field.
+  属性标志SHF_STRINGS表明该节包含的是以空字符结尾的字符串，并且每个字符的大小有成员
+  sh_entsize指定。
+
+* SHF_INFO_LINK
+  The sh_info field of this section header holds a section header table index.
+  当设置了属性标志SHF_INFO_LINK时，那么成员sh_info中包含的是一个节头表索引值。 
+
+* SHF_LINK_ORDER
+  This flag adds special ordering requirements for link editors. The requirements apply if 
+  the sh_link field of this section's header references another section (the linked-to section). 
+  If this section is combined with other sections in the output file, it must appear in the same relative order 
+  with respect to those sections, as the linked-to section appears with respect to sections the linked-to section is combined with.
+
+
+  []A typical use of this flag is to build a table that references text or data sections in address order.
 
 * SHF_MASKPROC
   All bits included in this mask are reserved for processor-specific
   semantics.
+
 
 Two members in the section header, sh_link and sh_info, hold special
 information, depending on section type.
