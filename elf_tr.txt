@@ -655,7 +655,7 @@ A section header has the following structure.
       Elf32_Off		sh_offset;		/* 该节在文件中的偏移量 */
       Elf32_Word	sh_size;		/* 节长度 */
       Elf32_Word	sh_link;		/* */
-      Elf32_Word	sh_info;		/* 额外信息 */
+      Elf32_Word	sh_info;		/* 辅助信息 */
       Elf32_Word	sh_addralign;	/* 该节的字节对齐数 */
       Elf32_Word	sh_entsize;		/* 如果该节是个表的，那么表示每个表项的大小 */
   } Elf32_Shdr;
@@ -714,7 +714,7 @@ A section header has the following structure.
   the section type. A table below describes the values. 
   If the sh_flags field for this section header includes the attribute SHF_INFO_LINK, 
   then this member represents a section header table index.
-  成员sh_info中包含该节的额外信息，具体的意义解释因节的类型的不同而不同。 
+  成员sh_info中包含该节的辅助信息，具体的意义解释因节的类型的不同而不同。 
   如果该节的节头表表项成员sh_flags包含属性标志SHF_INFO_LINK的话，那么sh_info
   代表的是一个节头表索引值。
 
@@ -800,64 +800,100 @@ A section header's sh_type member specifies the section's semantics.
 * SHT_STRTAB
   The section holds a string table. An object file may have multiple
   string table sections. See ``String Table'' below for details.
+  当节的类型是SHT_STRTAB时表明该节是个字符串表。目标文件中可以包含多个
+  字符串表（.dynstr/.shstrtab/.strtab）
 
 * SHT_RELA
-
   The section holds relocation entries with explicit addends, such as
   type Elf32_Rela for the 32-bit class of object files. An object file
   may have multiple relocation sections.  See ``Relocation'' below for
   details.
+  （怎么翻译呢）
 
 * SHT_HASH
-
   The section holds a symbol hash table. All objects participating in
   dynamic linking must contain a symbol hash table. Currently, an
   object file may have only one hash table, but this restriction may
   be relaxed in the future. See ``Hash Table'' in Part 2 for details.
+  当节的类型是SHT_HASH时，表明该节的数据内容一个符号哈希表。所有参与动态链接的目标
+  文件必须有个符号哈希表。目前，一个目标文件只能有一个符号哈希表，但是这个限制将来
+  可能会取消。
 
 * SHT_DYNAMIC
-
   The section holds information for dynamic linking. Currently, an
   object file may have only one dynamic section, but this restriction
   may be relaxed in the future. See ``Dynamic Section'' in Part 2 for
   details.
+  当节的类型是SHT_DYNAMIC时，那么该节数据内容提供的是关于动态链接的信息。
+  目前，一个目标文件只能包含一个类型为SHT_DYNAMIC的节，但是这个限制将来可能
+  会取消。
 
 * SHT_NOTE
-
   The section holds information that marks the file in some way. See
   ``Note Section'' in Part 2 for details.
+  （怎么翻译呢）
 
 * SHT_NOBITS
-
   A section of this type occupies no space in the file but otherwise
   resembles SHT_PROGBITS. Although this section contains no bytes, the
   sh_offset member contains the conceptual file offset.
+  当节的类型是SHT_NOBITS时，表明该节在目标文件中不占用任何空间，其他的性质和类型为SHT_PROGBITS的节很相像。
+  在说明sh_offset时提到过，尽管该类型的节不占用目标文件的空间，但是此时sh_offset还是给出了概念上的文件偏移值。
 
 * SHT_REL
-
   The section holds relocation entries without explicit addends, such
   as type Elf32_Rel for the 32-bit class of object files. An object
   file may have multiple relocation sections. See ``Relocation'' below
   for details.
+  （怎么翻译呢）
 
 * SHT_SHLIB
-
   This section type is reserved but has unspecified
   semantics. Programs that contain a section of this type do not
   conform to the ABI.
 
-* SHT_LOPROC through SHT_HIPROC
+* SHT_INIT_ARRAY
+  This section contains an array of pointers to initialization functions, as described in 
+  ``Initialization and Termination Functions'' in Chapter 5. Each pointer in the array is 
+  taken as a parameterless procedure with a void return.
 
-  Values in this inclusive range are reserved for processor-specific
-  semantics.
+* SHT_FINI_ARRAY
+  This section contains an array of pointers to termination functions, as described in 
+  ``Initialization and Termination Functions'' in Chapter 5. Each pointer in the array is 
+  taken as a parameterless procedure with a void return.
+
+* SHT_PREINIT_ARRAY
+  This section contains an array of pointers to functions that are invoked before 
+  all other initialization functions, as described in ``Initialization and Termination Functions'' in Chapter 5. 
+  Each pointer in the array is taken as a parameterless procedure with a void return.
+
+* SHT_GROUP
+  This section defines a section group. A section group is a set of sections that are related 
+  and that must be treated specially by the linker (see below for further details). 
+  Sections of type SHT_GROUP may appear only in relocatable objects (objects with the ELF header e_type member set to ET_REL). 
+  The section header table entry for a group section must appear in the section header table 
+  before the entries for any of the sections that are members of the group.
+
+* SHT_SYMTAB_SHNDX
+  This section is associated with a section of type SHT_SYMTAB and is required if any of 
+  the section header indexes referenced by that symbol table contain the escape value SHN_XINDEX. 
+  The section is an array of Elf32_Word values. Each value corresponds one to one with a symbol table entry 
+  and appear in the same order as those entries. The values represent the section header indexes against which 
+  the symbol table entries are defined. Only if corresponding symbol table entry's st_shndx field contains 
+  the escape value SHN_XINDEX will the matching Elf32_Word hold the actual section header index; 
+  otherwise, the entry must be SHN_UNDEF (0).
+
+* SHT_LOOS through SHT_HIOS
+  Values in this inclusive range are reserved for operating system-specific semantics.
+
+* SHT_LOPROC through SHT_HIPROC
+  Values in this inclusive range are reserved for processor-specific semantics.
 
 * SHT_LOUSER
-
   This value specifies the lower bound of the range of indexes
   reserved for application programs.
 
 * SHT_HIUSER
-
   This value specifies the upper bound of the range of indexes
   reserved for application programs. Section types between SHT_LOUSER
   and SHT_HIUSER may be used by the application, without conflicting
@@ -866,9 +902,9 @@ A section header's sh_type member specifies the section's semantics.
 Other section type values are reserved. As mentioned before, the
 section header for index 0 (SHN_UNDEF) exists, even though the index
 marks undefined section references. This entry holds the following.
+其他的节类型值是保留不使用的。
 
 + Figure 1-11: Section Header Table Entry: Index 0
-
   Name            Value    Note
   ====            =====    ====
   sh_name           0      No name
@@ -876,9 +912,9 @@ marks undefined section references. This entry holds the following.
   sh_flags          0      No flags
   sh_addr           0      No address
   sh_offset         0      No file offset
-  sh_size           0      No size
-  sh_link	SHN_UNDEF  No link information
-  sh_info	    0      No auxiliary information
+  sh_size           0      If non-zero, the actual number of section header entries 
+  sh_link			0	   If non-zero, the index of the section header string table section	
+  sh_info	    	0      No auxiliary information
   sh_addralign	    0      No alignment
   sh_entsize        0      No entries
 
