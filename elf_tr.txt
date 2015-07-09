@@ -1281,7 +1281,7 @@ section.
 是定义时，在链接阶段链接器需要为它们重定位，当代表的是引用时，在链接阶段链接器需要
 在其他编译单元定位到该符号的定义。 
 符号表其实是这些符号信息的集合统称，即符号表是这些符号信息一起组成的一个数组，
-所以一个符号表索引对应该数组中的一个符号表项。其中，符号表索引0有双重含义：一般情况下
+所以一个 符号表索引（symbol table index） 对应该数组中的一个符号表项。其中，符号表索引0有双重含义：一般情况下
 代表的意思是指代符号表的第一个表项，然而有时一个未定义符号却也使用STN_UNDEF（0）来指定其节头表索引。
 
                              Name       Value
@@ -1440,8 +1440,7 @@ A symbol's binding determines the linkage visibility and behavior.
   file's definition of a global symbol will satisfy another file's
   undefined reference to the same global symbol.
   当一个符号的绑定属性是STB_GLOBAL时，则表明该符号的链接属性是external的，
-  对其他目标文件来说是可见的，即可以访问。正常情况下，在一个文件中定义的全局符号，
-  一定是要在其他文件中被引用，否则无须定义全局符号。
+  对其他目标文件来说是可见的，即可以访问。
 
 * STB_WEAK 弱符号
   Weak symbols resemble global symbols, but their definitions have
@@ -1474,6 +1473,10 @@ Global and weak symbols differ in two major ways.
   定义而忽略弱符号的定义。与此类似的，如果一个符号被放在COMMON块（就
   是说这个符号的st_shndx成员的值为SHN_COMMON),则一个同名的弱符号也不
   会引起错误。链接器同样认可放在COMMON块符号的定义而忽略其他的弱符号。 
+
+-----------------------------------------------------------------------
+>>>	STB_GLOBAL > SHN_COMMON > STB_WEAK
+-----------------------------------------------------------------------
 
 * When the link editor searches archive libraries, it extracts archive
   members that contain definitions of undefined global symbols. The
@@ -1622,8 +1625,8 @@ header table. As the section moves during relocation, the symbol's
 value changes as well, and references to the symbol continue to
 ``point'' to the same location in the program. Some special section
 index values give other semantics.
-如果一个符号的数值代表的是其在节中特定的位置，那么该符号表的节头表索引值st_shndx
-的值就是该节在节头表中的索引值。因为在重定位的过程中，节的位置会变化的，
+如果一个符号的数值代表的是其在节中特定的位置，那么该符号的节头表索引值st_shndx的值
+就是该节在节头表中的索引值。因为在重定位的过程中，节的位置会变化的，
 即符号的节头表索引值st_shndx值会改变，所以符号的数值st_value同样会做相应的改变，
 但是该符号的引用依然”指向“该符号(!)。当符号表的节头表索引值st_shndx为下面四种特殊的
 节头表索引值时有特别的含义。
@@ -1640,7 +1643,7 @@ index values give other semantics.
   allocate the storage for the symbol at an address that is a multiple
   of st_value. The symbol's size tells how many bytes are required.
   当符号的节头表索引值st_shndx为SHN_COMMON时，其标记的是未被分配空间的公用块。
-  这种情况下，符号的数值与节头表表项中的成员sh_addralign意义类似，代表
+  这种情况下，符号的数值st_value与节头表表项中的成员sh_addralign意义类似，代表
   的是该符号的对齐字节数 -- 也就是说，链接器在为该符号分配存储空间时，起始地址的值
   必须是st_value的倍数。符号大小st_size告诉链接器存储空间的大小。
   
@@ -3218,3 +3221,32 @@ synonyms are provided to satisfy the ANSI C standard.
   _getdate_err		opterr
   __iob			optind
 			optopt
+
+
+
+section -- 节
+section name -- 节名
+section header 
+section header table -- 节头表
+section header table entry -- 节头表表项
+section header table index -- 节头表索引
+section header string talbe -- 节名字符串表 （节名表）
+
+program segment -- 程序段
+program segment table -- 程序头表
+program segment table entry -- 程序头表表项
+
+
+symbol table -- 符号表
+symbol table entry -- 符号表项
+symbol table index -- 符号表索引
+
+string table -- 字符串表
+string table section -- 字符串表节
+string table index -- 字符串表索引
+
+procedure linkage table -- 程序连接表
+
+common block -- 公用块
+escape value -- 溢出值：在实验研究分析或运行数据统计时，个别数据可能有与其它数据偏离较远的现象，这些数据叫做可疑值或叫逸出值。
+
