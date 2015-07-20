@@ -1277,19 +1277,19 @@ index. The contents of the initial entry are specified later in this
 section.
 目标文件中的“符号表（symbol table）”包含的都是程序中的符号信息 -- 这些
 符号代表的或许是定义（例如定义全局变量时使用的变量名，或者定义函数时使用的函数名），
-或许代表的是引用（例如使用关键字extern声明的变量或函数时使用的符号名称），当代表的
-是定义时，在链接阶段链接器需要为它们重定位，当代表的是引用时，在链接阶段链接器需要
-在其他编译单元定位到该符号的定义。 
-符号表其实是这些符号信息的集合统称，即符号表是这些符号信息一起组成的一个数组，
-所以一个 符号表索引（symbol table index） 对应该数组中的一个符号表项。其中，符号表索引0有双重含义：一般情况下
-代表的意思是指代符号表的第一个表项，然而有时一个未定义符号却也使用STN_UNDEF（0）来指定其节头表索引。
+或许代表的是引用（例如使用关键字extern声明的变量或函数时使用的符号名称）。当代表的
+是定义时，在链接阶段链接器需要为它们重定位；当代表的是引用时，在链接阶段链接器需要
+在其他编译模块定位到该符号的定义。 
+符号表其实是所有符号信息的集合统称，即符号表是所有符号信息一起组成的一个数组，
+所以一个 符号表索引（symbol table index） 对应该数组中的一个（符号表）表项。其中，索引值0有双重含义：一般情况下
+代表的意思是指代符号表的第一个表项，然而有时一个未定义符号却也使用STN_UNDEF（0）来指定其节头表索引值。
 
                              Name       Value
                              ====       =====
 			     			 STN_UNDEF      0
 
 A symbol table entry has the following format.
-一个符号表项的数据结构定义如下：
+一个符号表表项的数据结构定义如下：
 
 + Figure 1-16: Symbol Table Entry
   typedef struct {
@@ -1309,12 +1309,11 @@ A symbol table entry has the following format.
   that gives the symbol name. Otherwise, the symbol table entry has no
   name.
 
-  st_name成员其实不是一个字符串，而是一个数值，代表的是目标文件中字符串表的一个索引值，
-  那里才真正存储着该符号的名称对应的字符串。如果st_name成员数值不为0，则它代表符号名在
-  字符串表中的索引。否则，说明该符号没有名称。
+  st_name成员其实不是一个字符串，而是一个数值，代表的是目标文件中 字符串表 中的一个索引值，
+  那里才真正存储着该符号的名称对应的字符串。如果st_name成员数值不为0，则代表该符号有符号名称。否则，说明该符号没有名称。
 
 NOTE: External C symbols have the same names in C and object files' symbol tables.
-注意：C程序中的 具有外部链接属性的符号 的名称 和 生成的目标文件中的符号表中的符号名称 是相同的。
+注意：在C程序中的 具有外部链接属性的符号 的名称 和 最后生成的目标文件中的符号表中的符号名称 是相同的，这点与C++不同。
 
 * st_value
   符号数值
@@ -1665,8 +1664,7 @@ index values give other semantics.
   with SHN_XINDEX will hold valid section header indexes; all other entries will have value 0.
   
 
-As mentioned above, the symbol table entry for index 0 (STN_UNDEF) is
-reserved; it holds the following.
+As mentioned above, the symbol table entry for index 0 (STN_UNDEF) is reserved; it holds the following.
 前面提到过，符号表的第一表项，即符号表索引值为0（STN_UNDEF）的符号表表项是保留不使用的。
 它的内容如下：
 + Figure 1-19: Symbol Table Entry: Index 0
@@ -1680,8 +1678,8 @@ reserved; it holds the following.
   st_shndx  SHN_UNDEF  No section
 
 
-			    Symbol Values
-				  符号数值
+	Symbol Values
+	符号数值
 Symbol table entries for different object file types have slightly
 different interpretations for the st_value member.
 对于符号表中的每一个符号表项来说，在不同的目标文件中，对成员st_value
