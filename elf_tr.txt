@@ -538,15 +538,15 @@ Also in such contexts, an escape value indicates that the actual section index i
 在这种情况下，这些预留值的意义并不是说明在目标文件中真实存在这些索引值的节，而是有其特殊的含义。
 同样的，在这种情况下，一个 逸出值（escape value） 表明真实的节头表索引值存储在别处（一个大小足够能容纳真实节头表索引值的地方）。
  name			escape value					elsewhere
-==========	==============					==========
-e_shnum 	-> SHN_UNDEF 		======> 	sh_size
-e_shstrndx	-> SHN_XINDEX		======>		sh_link
+==========		==============				   ==========
+e_shnum 	->   SHN_UNDEF 		 ======> 		sh_size
+e_shstrndx	->   SHN_XINDEX		 ======>		sh_link
 
  name			reserve value 					meaning	
-==========  ==============					==========	
-st_shndx	-> SHN_UNDEF		======> 	该符号是个未定义符号
-st_shndx	-> SHN_ABS			======>		该符号是文件符号（STT_FILE）
-st_shndx	-> SHN_COMMON		======>		该符号是公用块数据		
+==========      ==============				   ==========	
+st_shndx	->   SHN_UNDEF		 ======> 	    该符号是个未定义符号
+st_shndx	->   SHN_ABS	     ======>		该符号是文件符号（STT_FILE）
+st_shndx	->   SHN_COMMON		 ======>		该符号是公用块数据		
 
 (OLD)Some section header table indexes are reserved; an object file will
 not have sections for these special indexes.
@@ -1318,8 +1318,7 @@ NOTE: External C symbols have the same names in C and object files' symbol table
 * st_value
   符号数值
   This member gives the value of the associated symbol. Depending on
-  the context, this may be an absolute value, an address, etc.;
-  details appear below.
+  the context, this may be an absolute value, an address, etc.; details appear below.
 
   st_value成员给出了相应的符号值。这个符号值具体是什么意思，是要依据上下文的（主要依据不同的
   符号属性和不同的目标文件），也许是个绝对值，也许是个地址值，等等。
@@ -1777,7 +1776,7 @@ both based on the fact that references in the code being linked may have been op
   The attributes, ordered from least to most constraining, are: STV_PROTECTED, STV_HIDDEN and STV_INTERNAL.
 
    ========================== Relocation ==========================
-
+							  重定位信息
 
 Relocation is the process of connecting symbolic references with
 symbolic definitions. For example, when a program calls a function,
@@ -1876,7 +1875,7 @@ data fields (bit numbers appear inthe lower box corners).
   in the 32-bit Intel Architecture.
 
                            3------2------1------0------+
-	     0x01020304    |  01  |  02  |  03  |  04  |
+	     0x01020304    	   |  01  |  02  |  03  |  04  |
                           31------+------+------+------0
 
 Calculations below assume the actions are transforming a relocatable
@@ -1943,7 +1942,7 @@ addend and the computed result use the same byte order.
   Name            Value  Field   Calculation
   ====            =====  =====   ===========
   R_386_NONE        0    none    none
-  R_386_32	    1    word32  S + A
+  R_386_32	        1    word32  S + A
   R_386_PC32	    2    word32  S + A - P
   R_386_GOT32	    3    word32  G + A - P
   R_386_PLT32	    4    word32  L + A - P
