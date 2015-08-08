@@ -649,8 +649,8 @@ A section header has the following structure.
 + Figure 1-9: Section Header
   typedef struct {
       Elf32_Word	sh_name;		/* 节名 -- 在节名表中的索引值 */
-      Elf32_Word	sh_type;		/* 节类型 */
-      Elf32_Word	sh_flags;		/* 节标志 */
+      Elf32_Word	sh_type;		/* 节类型 -- */
+      Elf32_Word	sh_flags;		/* 节标志 -- 是否可读可写可执行 */
       Elf32_Addr	sh_addr;		/* 执行时该节的虚拟地址 */
       Elf32_Off		sh_offset;		/* 该节在文件中的偏移量 */
       Elf32_Word	sh_size;		/* 节长度 */
@@ -1695,13 +1695,13 @@ different interpretations for the st_value member.
   virtual address (memory interpretation) for which the section number
   is irrelevant.
 * 在可重定位文件中，当成员st_shndx等于SHN_COMMON时，则st_value的值代表的是
-该符号的对齐字节数。
+  该符号的对齐字节数。
 * 在可重定位文件中，如果一个符号是已定义的，那么st_value的值代表的是该符号
-在其所在的节中的偏移量 -- 当然了，这个节是由st_shndx指定的。
+  在其所在的节中的偏移量 -- 当然了，这个节是由st_shndx指定的。
 * 在可执行文件和共行库中，st_value的值不再是一个节偏移量，而代表的是一个虚拟地址，
-直接指向符号所在的内存位置，这样做的目的是为了当该文件被加载到内存中时，这些文件中
-的符号对动态链接器（ld-linux.so.2）来说更加的有用 -- 因为虚拟地址是与节无关的，所以
-这种情况下，我们不需要关心st_shndx的值。
+  直接指向符号所在的内存位置，这样做的目的是为了当该文件被加载到内存中时，这些文件中
+  的符号对动态链接器（ld-linux.so.2）来说更加的有用 -- 因为虚拟地址是与节无关的，所以
+  这种情况下，我们不需要关心st_shndx的值。
 
 Although the symbol table values have similar meanings for different
 object files, the data allow efficient access by the appropriate
@@ -1786,12 +1786,21 @@ must have information that describes how to modify their section
 contents, thus allowing executable and shared object files to hold the
 right information for a process's program image. Relocation entries
 are these data.
+重定位操作是连接符号引用和符号定义的过程。例如，程序中调用一个函数，代码中我们
+只需要指定函数名（符号引用）即可，但是当程序实际运行的时候，相关的CALL指令必须
+能够正确无误地跳转到函数地址处（符号定义）去执行函数代码。可是在链接阶段之前，
+符号的虚拟地址（亦可称运行时地址）并没有分配，只有在进行链接时链接器才会为符号
+分配虚拟地址。在符号地址确认后，链接器这才会修改机器指令，可是链接器并不会聪明
+到可以自动找到可重定位文件中引用外部符号的地方，所以可重定位文件必须提供相应的
+信息来帮助链接器，换句话说，可重定位文件中必须包含相关的信息来告诉链接器如何去
+修改节的内容，只有这样，最后生成的可执行文件或者共享库才会包含正确的信息来构建
+最终的进程映像。可重定位项就是帮助链接器重定位的信息。
 
-+ Figure 1-20: Relocation Entries
++ Figure 1-20: Relocation Entries 可重定位项
 
   typedef struct {
-      Elf32_Addr	r_offset;
-      Elf32_Word	r_info;
+      Elf32_Addr	r_offset;	/* 可重定位文件：在节中的偏移值  可执行文件或者共享库：虚拟地址 */
+      Elf32_Word	r_info;		/* 需要重定位的符号在符号表中的索引值 + 重定位类型 */
   } Elf32_Rel;
 
   typedef struct {
@@ -1808,6 +1817,10 @@ are these data.
   relocation. For an executable file or a shared object, the value is
   the virtual address of the storage unit affected by the relocation.
 
+  r_offset给出的是需要做重定位操作的位置，代表的意思对于不同的文件来说有所不同。
+  对可重定位文件来说，r_offset代表的是段内偏移，即需要重定位操作的地方在所在节
+  中的偏移值。对于可执行文件或者共享库来说，r_offset代表的是需要重定位操作的地方de虚拟地址。
+
 * r_info
 
   This member gives both the symbol table index with respect to which
@@ -1820,14 +1833,20 @@ are these data.
   index, it means the result of applying ELF32_R_TYPE or ELF32_R_SYM,
   respectively, to the entry's r_info member.
 
-    #define ELF32_R_SYM(i)	((i)>>8)
-    #define ELF32_R_TYPE(i)	((unsigned char)(i))
+  r_info中包含重定位类型和需要重定位的符号在符号表中的索引值。举例来说，一个跟函数重定位相关的
+  重定位项中的r_info会给出该函数符号在符号表中的索引值。如果索引值是STN_UNDEF，即符号是未定义的，
+  那么重定位过程中将使用0作为该符号的符号数值。重定位类型是处理器相关的一种属性。可以使用宏ELF32_R_SYM
+  和宏ELF32_R_TYPE分别得到符号表索引值和重定位类型。
+
+    #define ELF32_R_SYM(i)		((i)>>8)
+    #define ELF32_R_TYPE(i)		((unsigned char)(i))
     #define ELF32_R_INFO(s, t)	((s)<<8+(unsigned char)(t))
 
 * r_addend
 
   This member specifies a constant addend used to compute the value to
   be stored into the relocatable field.
+  r_addend一般是个常量，用来辅助计算修订值。
 
 As shown above, only Elf32_Rela entries contain an explicit
 addend. Entries of type Elf32_Rel store an implicit addend in the
@@ -1835,6 +1854,7 @@ location to be modified. Depending on the processor architecture, one
 form or the other might be necessary or more convenient. Consequently,
 an implementation for a particular machine may use one form
 exclusively or either form depending on context.
+从上面的介绍可以看到，只有Elf32_Rela需要
 
 A relocation section references two other sections: a symbol table and
 a section to modify. The section header's sh_info and sh_link members,
