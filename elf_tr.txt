@@ -1020,9 +1020,11 @@ information, depending on section type.
   SHT_HASH     The section header index of    0
                the symbol table to which the
                hash table applies.
+
   SHT_REL,     The section header index of    The section header index of
   SHT_RELA     the associated symbol table.   the section to which the
                                               relocation applies.
+
   SHT_SYMTAB,  The section header index of    One greater than the symbol
   SHT_DYNSYM   the associated string table.   table index of the last local
                                               symbol (binding STB_LOCAL).
@@ -1788,15 +1790,16 @@ right information for a process's program image. Relocation entries
 are these data.
 重定位操作是连接符号引用和符号定义的过程。例如，程序中调用一个函数，代码中我们
 只需要指定函数名（符号引用）即可，但是当程序实际运行的时候，相关的CALL指令必须
-能够正确无误地跳转到函数地址处（符号定义）去执行函数代码。可是在链接阶段之前，
-符号的虚拟地址（亦可称运行时地址）并没有分配，只有在进行链接时链接器才会为符号
-分配虚拟地址。在符号地址确认后，链接器这才会修改机器指令，可是链接器并不会聪明
-到可以自动找到可重定位文件中引用外部符号的地方，所以可重定位文件必须提供相应的
-信息来帮助链接器，换句话说，可重定位文件中必须包含相关的信息来告诉链接器如何去
-修改节的内容，只有这样，最后生成的可执行文件或者共享库才会包含正确的信息来构建
-最终的进程映像。可重定位项就是帮助链接器重定位的信息。
+能够正确无误地跳转到函数实际地址处（符号定义）去执行函数代码。可是在链接阶段之
+前，符号的虚拟地址（亦可称运行时地址）并没有分配，只有在链接阶段的符号解析过程
+中链接器才会为符号分配虚拟地址。在符号地址确认后，链接器这才会修改机器指令（即
+重定位操作是在符号解析之后），可是链接器并不会聪明到可以自动找到可重定位文件中
+引用外部符号的地方（即需要修改的地方），所以可重定位文件必须提供相应的信息来帮
+助链接器，换句话说，可重定位文件中必须包含相关的信息来告诉链接器如何去修改节的
+内容，只有这样，最后生成的可执行文件或者共享库才会包含正确的信息来构建最终的进
+程映像。可重定位项就是帮助链接器进行重定位操作的信息。
 
-+ Figure 1-20: Relocation Entries 可重定位项
++ Figure 1-20: Relocation Entries 重定位项
 
   typedef struct {
       Elf32_Addr	r_offset;	/* 可重定位文件：在节中的偏移值  可执行文件或者共享库：虚拟地址 */
@@ -1836,7 +1839,7 @@ are these data.
   r_info中包含重定位类型和需要重定位的符号在符号表中的索引值。举例来说，一个跟函数重定位相关的
   重定位项中的r_info会给出该函数符号在符号表中的索引值。如果索引值是STN_UNDEF，即符号是未定义的，
   那么重定位过程中将使用0作为该符号的符号数值。重定位类型是处理器相关的一种属性。可以使用宏ELF32_R_SYM
-  和宏ELF32_R_TYPE分别得到符号表索引值和重定位类型。
+  和宏ELF32_R_TYPE分别得到需要重定位的符号的符号表索引值以及重定位类型。
 
     #define ELF32_R_SYM(i)		((i)>>8)
     #define ELF32_R_TYPE(i)		((unsigned char)(i))
@@ -1854,32 +1857,47 @@ location to be modified. Depending on the processor architecture, one
 form or the other might be necessary or more convenient. Consequently,
 an implementation for a particular machine may use one form
 exclusively or either form depending on context.
-从上面的介绍可以看到，只有Elf32_Rela需要
+从上面的定义可以看到，Elf32_Rela和Elf32_Rel的区别仅仅是多了一个r_addend。
+Elf32_Rela中用r_addend显示地指出Addend，而对于Elf32_Rel来说，它的Addend
+被填充在引用外部符号的地址处，即需要进行重定位操作的地方。具体的体系结构
+可以选择适合自己的一种格式，或者两种格式都使用，只不过在不同的上下文中使用
+更合适的格式。
 
 A relocation section references two other sections: a symbol table and
 a section to modify. The section header's sh_info and sh_link members,
 described in ``Sections'' above, specify these relationships.
 Relocation entries for different object files have slightly different
 interpretations for the r_offset member.
+自此我们知道一个重定位节与其它两个节相关联，一个是符号表（节），另一个是
+该重定位节对应的需要进行重定位操作的节，它们的节头表索引值分别由节头表成员
+sh_info和sh_link指定。成员r_offset的意义因文件的不同而有所区别，如下：
 
 * In relocatable files, r_offset holds a section offset. That is, the
   relocation section itself describes how to modify another section in
   the file; relocation offsets designate a storage unit within the
   second section.
+* 如果是可重定位文件，那么r_offset的数值代表的是需要进行重定位操作的地方在所在节中的
+  偏移值。也就是会说，在可重定位文件中，重定位节就是描述如何修改需要进行重定位操作的
+  节的内容，r_offset就是告诉链接器需要修改的地方在节中的位置。
+
 * In executable and shared object files, r_offset holds a virtual
   address. To make these files' relocation entries more useful for the
   dynamic linker, the section offset (file interpretation) gives way
   to a virtual address (memory interpretation).
+  如果是可执行文件或者共享库文件，r_offset数值代表的是一个虚拟地址。在程序运行过程中
+  动态链接器会用到虚拟地址。
 
 Although the interpretation of r_offset changes for different object
 files to allow efficient access by the relevant programs, the
 relocation types' meanings stay the same.
+尽管一个重定位项中的r_offset的意义会因为文件的不同而不同，但是r_info中的
+重定位类型却总是一直保持不变的。
 
 
 			   Relocation Types
-
+				 重定位类型
 Relocation entries describe how to alter the following instruction and
-data fields (bit numbers appear inthe lower box corners).
+data fields (bit numbers appear in the lower box corners).
 
 + Figure 1-21: Relocatable Fields 
 
@@ -1894,9 +1912,9 @@ data fields (bit numbers appear inthe lower box corners).
   alignment. These values use the same byte order as other word values
   in the 32-bit Intel Architecture.
 
-                           3------2------1------0------+
-	     0x01020304    	   |  01  |  02  |  03  |  04  |
-                          31------+------+------+------0
+                     3------2------1------0------+
+	     0x01020304  |  01  |  02  |  03  |  04  |
+                    31------+------+------+------0
 
 Calculations below assume the actions are transforming a relocatable
 file into either an executable or a shared object file. Conceptually,
