@@ -1303,6 +1303,20 @@ A symbol table entry has the following format.
       Elf32_Half	st_shndx;	/* 符号（关联的节）的节头表索引 值 */
   } Elf32_Sym;
 
+  The attribute of identifier: 	name 			--> st_name 
+								type 			--> st_info & 0x0f
+								size			--> st_size
+								value			--> st_value
+								storage class 	--> st_info >> 4 && st_other
+								scope			--> st_other?
+								linkage			--> st_info >> 4: GLOBAL->external LOCAL->internal WEAK..
+
+	scope: An identifier's scope is where the identifier can be referenced in a program.
+	storage class: An identifier's storage class determines the period during which that identifier exists in memory.(lifetime) 
+	linkage: An identifier's linkage determines whether an identifier is known only in the source file where it is declared 
+			 or across multiple files that are compiled, then linked together. An identifier's storage-class specifier helps 
+		     determine its storage class and linkage.
+
 * st_name
   符号的名称
   This member holds an index into the object file's symbol string
