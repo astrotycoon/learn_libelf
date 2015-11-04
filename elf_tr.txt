@@ -213,7 +213,7 @@ For portability reasons, ELF uses no bit-fields.
 
 
    ========================== ELF Header ==========================
-
+							  ELF文件头
 
 Some object file control structures can grow, because the ELF header
 contains their actual sizes. If the object file format changes, a
