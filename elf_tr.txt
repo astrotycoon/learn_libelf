@@ -1564,6 +1564,7 @@ entity.
   this type exist primarily for relocation and normally have STB_LOCAL binding.
   当符号类型是STT_SECTION时，表明该符号关联的实体是个节。一般符号表中的一个符号是这个
   类型时，主要是用于重定位的目的，并且其绑定属性一般情况下是STB_LOCAL。
+	// 比如？
 
 * STT_FILE 文件符号
   Conventionally, the symbol's name gives the name of the source file
@@ -1855,9 +1856,9 @@ are these data.
   那么重定位过程中将使用0作为该符号的符号数值。重定位类型是处理器相关的一种属性。可以使用宏ELF32_R_SYM
   和宏ELF32_R_TYPE分别得到需要重定位的符号的符号表索引值以及重定位类型。
 
-    #define ELF32_R_SYM(i)		((i)>>8)
+    #define ELF32_R_SYM(i)		((i) >> 8)
     #define ELF32_R_TYPE(i)		((unsigned char)(i))
-    #define ELF32_R_INFO(s, t)	((s)<<8+(unsigned char)(t))
+    #define ELF32_R_INFO(s, t)	((s) << 8 + (unsigned char)(t))
 
 * r_addend
 
@@ -1891,7 +1892,7 @@ sh_info和sh_link指定。成员r_offset的意义因文件的不同而有所区�
   the file; relocation offsets designate a storage unit within the
   second section.
 * 如果是可重定位文件，那么r_offset的数值代表的是需要进行重定位操作的地方在所在节中的
-  偏移值。也就是会说，在可重定位文件中，重定位节就是描述如何修改需要进行重定位操作的
+  偏移值。也就是说，在可重定位文件中，重定位节就是描述如何修改需要进行重定位操作的
   节的内容，r_offset就是告诉链接器需要修改的地方在节中的位置。
 
 * In executable and shared object files, r_offset holds a virtual
@@ -1899,7 +1900,9 @@ sh_info和sh_link指定。成员r_offset的意义因文件的不同而有所区�
   dynamic linker, the section offset (file interpretation) gives way
   to a virtual address (memory interpretation).
   如果是可执行文件或者共享库文件，r_offset数值代表的是一个虚拟地址。在程序运行过程中
-  动态链接器会用到虚拟地址。
+  动态链接器会用到该虚拟地址。（为了让这些重定位项对动态链接器来说更加有用，r_offset代表的
+  并不是偏移值，而是代表的虚拟地址）
+  give way to
 
 Although the interpretation of r_offset changes for different object
 files to allow efficient access by the relevant programs, the
@@ -1940,7 +1943,6 @@ and accomplish the same result. Descriptions below use the following
 notation.
 
 * A
-
   This means the addend used to compute the value of the relocatable
   field.
 
@@ -1952,19 +1954,16 @@ notation.
   be different.
 
 * G
-
   This means the offset into the global offset table at which the
   address of the relocation entry's symbol will reside during
   execution. See ``Global Offset Table'' in Part 2 for more
   information.
 
 * GOT
-
   This means the address of the global offset table. See ``Global
   Offset Table'' in Part 2 for more information.
 
 * L
-
   This means the place (section offset or address) of the procedure
   linkage table entry for a symbol. A procedure linkage table entry
   redirects a function call to the proper destination. The link editor
@@ -1973,12 +1972,10 @@ notation.
   Table'' in Part 2 for more information.
 
 * P
-
   This means the place (section offset or address) of the storage unit
   being relocated (computed using r_offset).
 
 * S
-
   This means the value of the symbol whose index resides in the
   relocation entry.
 
@@ -2008,11 +2005,11 @@ addend and the computed result use the same byte order.
 Some relocation types have semantics beyond simple calculation.
 
 * R_386_GOT32
-
   This relocation type computes the distance from the base of the
   global offset table to the symbol's global offset table entry. It
   additionally instructs the link editor to build a global offset
   table.
+  重定位类型R_386_GOT32需要计算符号对应的GOT表项在GOT表中的偏移量。
 
 * R_386_PLT32
 
@@ -2045,7 +2042,6 @@ Some relocation types have semantics beyond simple calculation.
   ``Procedure Linkage Table'' in Part 2].
 
 * R_386_RELATIVE
-
   The link editor creates this relocation type for dynamic linking.
   Its offset member gives a location within a shared object that
   contains a value representing a relative address. The dynamic linker
@@ -2053,22 +2049,35 @@ Some relocation types have semantics beyond simple calculation.
   address at which the shared object was loaded to the relative
   address. Relocation entries for this type must specify 0 for the
   symbol table index.
+  重定位类型R_386_RELATIVE是链接器在生成共享库时特地为动态链接器生成的，
+  
+  r_offset代表的是共享库内的一个偏移值，在该偏移值处存储的是一个
+
+  当指针类型的静态变量、全局变量指向静态变量、static函数或者字符串，并且最终
+  需要生成的是共享库，那么链接阶段链接器会特地为动态链接器生成重定位类型是R_386_RELATIVE
+  的重定位信息。r_offset代表的是指针变量在共享库中的偏移值，在该偏移值处存储的是指针指向变量在
+  共享库文件中的偏移值。程序运行时，动态链接器只需要将共享库的加载地址和指向的变量在文件中的偏移值
+  相加写回到r_offset指向的地方即可。
+
 
 * R_386_GOTOFF
-
   This relocation type computes the difference between a symbol's
   value and the address of the global offset table. It additionally
   instructs the link editor to build the global offset table.
-
+  重定位类型R_386_GOTOFF需要链接器计算符号地址和GOT表之间的位置差值。
+  	目标文件:R_386_GOTOFF
+	共享库: NULL
 
 * R_386_GOTPC
-
   This relocation type resembles R_386_PC32, except it uses the
   address of the global offset table in its calculation. The symbol
   referenced in this relocation normally is _GLOBAL_OFFSET_TABLE_,
   which additionally instructs the link editor to build the global
   offset table.
-
+  重定位类型R_386_GOTPC跟R_386_PC32很类似，不同的是R_386_GOTPC计算的是
+  PC和GOT表之间的差值，而不是PC与函数之间的差值。通常情况下，跟R_386_GOTPC相关的符号是_GLOBAL_OFFSET_TABLE_。
+	目标文件: R_386_GOTPC
+	共享库: NULL
    ________________________________________________________________
 
 

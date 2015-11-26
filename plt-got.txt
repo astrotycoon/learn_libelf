@@ -1,0 +1,135 @@
+
+These notes are a transcript of commands for observing the PLT/GOT
+dynamic linking structures of an ELF executable in memory. The
+GDB session if attached to a running executable of a (vulnerable)
+ftp server with: 
+
+# gdb mtftp <pid>
+
+The file is needed for its symbol table (.symtab section).
+
+Obtain relocation info from the executable. We will look
+at two dynamically linked functions, one already resolved
+by the dynamic linker ld.so, the other not yet resolved.
+Let us start with the unresolved "symbol" syslog.
+
+# readelf -a mtftpd
+
+Relocation section '.rel.plt' at offset 0xcac contains 78 entries:
+ Offset     Info    Type            Sym.Value  Sym. Name
+...
+0804e184  00002007 R_386_JUMP_SLOT   08049134   syslog
+0804e188  00002107 R_386_JUMP_SLOT   08049144   setsockopt
+...
+
+(gdb) info symbol 0x804e184
+_GLOBAL_OFFSET_TABLE_ + 136 in section .got  <-- aha, this is a slot in GOT
+
+(gdb) disas 0x08049134 0x8049144   <--- disassemble from this address
+Dump of assembler code from 0x8049134 to 0x8049144:
+0x08049134:     jmp    *0x804e184  <--  jump to the address stored here (in GOT)
+0x0804913a:     push   $0xf8
+0x0804913f:     jmp    0x8048f34   <--  will go to dynamic linker
+End of assembler dump.
+
+(gdb) x/1x 0x804e184
+0x804e184 <_GLOBAL_OFFSET_TABLE_+136>:  0x0804913a  <-- points right back past
+                                                           the jump instruction
+
+(gdb) disas *0x804e184 *0x804e184+10
+Dump of assembler code from 0x804913a to 0x8049144:
+0x0804913a:     push   $0xf8
+0x0804913f:     jmp    0x8048f34
+End of assembler dump.
+
+Let us have a look at the target of the jump:
+
+(gdb) disas 0x8048f34 0x8048f34 +10
+Dump of assembler code from 0x8048f34 to 0x8048f3e:
+0x08048f34:     pushl  0x804e100
+0x08048f3a:     jmp    *0x804e104
+End of assembler dump.
+
+What did we push?
+
+(gdb) info sym 0x804e100
+_GLOBAL_OFFSET_TABLE_ + 4 in section .got
+
+(gdb) x/1x 0x804e100
+0x804e100 <_GLOBAL_OFFSET_TABLE_+4>:    0x0038c758  <-- in ld.so data segment
+
+And then go where?
+
+(gdb) x/1x 0x804e104
+0x804e104 <_GLOBAL_OFFSET_TABLE_+8>:    0x00383460  <-- in ld.so code segment
+
+Let us see where these addresses are:
+
+# cat /proc/20894/maps
+00377000-0038c000 r-xp 00000000 03:01 765176     /lib/ld-2.3.2.so
+0038c000-0038d000 rw-p 00015000 03:01 765176     /lib/ld-2.3.2.so
+
+(gdb) x/1x *0x804e104
+0x383460 <_dl_runtime_resolve>: 0x8b525150
+
+Well, the debugger tells us that we are really looking at
+the start of the function _dl_runtime_resolve, the entry
+point of the dynamic linker. Let's have a look:
+
+(gdb) disas *0x804e104
+Dump of assembler code for function _dl_runtime_resolve:
+0x00383460 <_dl_runtime_resolve+0>:     push   %eax
+0x00383461 <_dl_runtime_resolve+1>:     push   %ecx
+0x00383462 <_dl_runtime_resolve+2>:     push   %edx
+0x00383463 <_dl_runtime_resolve+3>:     mov    0x10(%esp,1),%edx <-- picking up "f8"
+0x00383467 <_dl_runtime_resolve+7>:     mov    0xc(%esp,1),%eax  <-- and "0x804e100"
+0x0038346b <_dl_runtime_resolve+11>:    call   0x3831f0 <fixup>
+0x00383470 <_dl_runtime_resolve+16>:    pop    %edx
+0x00383471 <_dl_runtime_resolve+17>:    pop    %ecx
+0x00383472 <_dl_runtime_resolve+18>:    xchg   %eax,(%esp,1)
+0x00383475 <_dl_runtime_resolve+21>:    ret    $0x8
+0x00383478 <_dl_runtime_resolve+24>:    nop
+0x00383479 <_dl_runtime_resolve+25>:    lea    0x0(%esi,1),%esi
+End of assembler dump.
+
+The "fixup" function does the most interesting part of the job:
+finds the function to which the passed argument, the entry 
+in the dynamic symbol table (0xf8 in our case) points, and fixes up the
+corresponding entry in the GOT table.
+
+-----------------------------------------------------------------
+
+Compare this to the function which has already been resolved and linked by
+the dynamic linker, setsockopt:
+
+Recall the relocation entry:
+
+# readelf -a mtftpd
+
+Relocation section '.rel.plt' at offset 0xcac contains 78 entries:
+ Offset     Info    Type            Sym.Value  Sym. Name
+...
+0804e184  00002007 R_386_JUMP_SLOT   08049134   syslog
+0804e188  00002107 R_386_JUMP_SLOT   08049144   setsockopt
+...
+
+(gdb) x/1x 0x804e188
+0x804e188 <_GLOBAL_OFFSET_TABLE_+140>:  0x0046b970
+
+(gdb) info sym 0x0046b970
+setsockopt in section .text
+
+(gdb) p setsockopt
+$11 = {<text variable, no debug info>} 0x46b970 <setsockopt>
+
+(gdb) disas 0x8049144 0x8049144+20
+Dump of assembler code from 0x8049144 to 0x8049158:
+0x08049144:     jmp    *0x804e188
+0x0804914a:     push   $0x100
+0x0804914f:     jmp    0x8048f34
+...
+
+So the call to setsockopt (call 0x8049144) will be dispatched 
+by the jump *<got_entry> straight to the library, on all subsequent
+calls, after "fixup" sets it the first time.
+
