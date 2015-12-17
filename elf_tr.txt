@@ -1587,6 +1587,7 @@ entity.
   Symbols of type STT_TLS can be referenced by only special thread-local storage relocations 
   and thread-local storage relocations can only reference symbols with type STT_TLS. 
   Implementation need not support thread-local storage.
+  当符号的类型是STT_TLS时，表明该符号对应变量存储在线程局部存储内。
 
 * STT_LOOS through STT_HIOS
   Values in this inclusive range are reserved for operating system-specific semantics.
@@ -2049,16 +2050,11 @@ Some relocation types have semantics beyond simple calculation.
   address at which the shared object was loaded to the relative
   address. Relocation entries for this type must specify 0 for the
   symbol table index.
-  重定位类型R_386_RELATIVE是链接器在生成共享库时特地为动态链接器生成的，
-  
-  r_offset代表的是共享库内的一个偏移值，在该偏移值处存储的是一个
-
   当指针类型的静态变量、全局变量指向静态变量、static函数或者字符串，并且最终
   需要生成的是共享库，那么链接阶段链接器会特地为动态链接器生成重定位类型是R_386_RELATIVE
   的重定位信息。r_offset代表的是指针变量在共享库中的偏移值，在该偏移值处存储的是指针指向变量在
-  共享库文件中的偏移值。程序运行时，动态链接器只需要将共享库的加载地址和指向的变量在文件中的偏移值
-  相加写回到r_offset指向的地方即可。
-
+  共享库文件中的偏移值。程序运行时，动态链接器只需要将共享库的加载地址和r_offset处存储的偏移值
+  相加写回到r_offset偏移处即可。
 
 * R_386_GOTOFF
   This relocation type computes the difference between a symbol's
