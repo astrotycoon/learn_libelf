@@ -1,0 +1,101 @@
+[ This is based in part on investigations by Rohan Garg. ]
+
+An ELF header has the interpreter of an executable.  It will be something
+like ld-linux.so.  Opening the executable in vi will show it to you.  Linux
+then executes:  ld-linux.so PATH/a.out
+Note that ld-linux.so has a concept of current directory and can follow
+absolute and relative paths.  But it does not recognize the environment
+variable PATH.
+After this, the kernel maps ld-linux.so into memory as an executable,
+and ld-linux.so maps a.out into memory.  ld-linux.so then calls
+_dl_start() (for libraries) and then the ELF start function (for the
+base executable).  Usually, _start() is the ELF start function, and
+it is found in the statically linked file crt1.o.
+
+Dynamic Library:
+_start() --> macro RTLD_START in rtld.c, defined as macro
+		 in sysdeps/x86_64/dl-machine.h (in glibc.c)
+ _dl_start() --> rtld.c (ld-linux.so)
+  _dl_init() --> dl-init.c
+   call_init() --> dl-init.c
+    _init() --> crti.o; init section of the library
+     __do_global_ctors_aux() --> crtbegin.o
+      library ctors section --> attribute ((constructor))
+      __static_initialization_and_destruction_0 --> user code emitted by g++
+
+Dynamically Linked Executable GNU:
+ [ NOTE:  ld-linux.so conceptually has a _start executed by the kernel,
+	that calls _dl_start().
+        The ld-linux.so _start() should not be confused with the one in crt1.o ]
+ _dl_start() --> dl-init.c (ld-linux.so)
+  _dl_init() --> dl-init.c
+   call_init() --> dl-init.c
+    for each dynamic library:
+    _init() --> init section of the library (using attribute ((constructor)))
+     __do_global_ctors_aux() --> crtbegin.o
+      __static_initialization_and_destruction_0 --> user code emitted by g++
+  _dl_start_final() --> rtld.c
+  [ _dl_start() calls rtld.c:dl_main(), with signature:
+      static void dl_main (const ElfW(Phdr) *phdr, ElfW(Word) phnum,
+                           ElfW(Addr) *user_entry, ElfW(auxv_t) *auxv);
+       dl_main() adjusts the AUXV vector so that phdr, etc., refer to the
+         user's executable rather than to the ELF loader, ld-linux.so.
+  ]
+ _start() --> crt1.o
+   push libc_csu_init
+   push libc_csu_fini
+   push main
+   __libc_start_main() --> libc.so
+    __libc_csu_init() --> libc_nonshared.a(init-elf.oS); came from /usr/lib/libc.so (a linker script)
+      _init() --> crti.o
+     	__do_global_ctors_aux() --> crtbegin.o
+     	  __static_initialization_and_destruction_0 --> user code emitted by g++
+    main()
+
+NOTE: See: http://s.eresi-project.org/inc/articles/elf-rtld.txt
+        for more info with another part of the call graph.
+
+NOTE:  _tls_get_addr is defined in: /lib/ld-linux.so.2
+
+NOTE:  See also:  https://sourceware.org/glibc/wiki/DynamicLoader
+                  for dynamic loader only.
+
+NOTE:
+   To see code:  disassemble /lib64/ld-linux-x86-64.so.2
+   or get source code from glibc source,
+   or (gdb) break _dl_start ; (gdb) run
+   Note that 'readelf -e /lib64/ld-linux-x86-64.so.2' shows the low level
+     "Entry point address", e_entry in the Elf header of type Elf64_Ehdr.
+
+# =================================
+# System calls:
+
+NOTE:  Once all this has been set up, the program will want to call
+       back to the kernel for system calls.  See this aricle,
+           http://articles.manugarg.com/systemcallinlinux2_6.html
+       for a good description of how it is done (although it does not discuss
+       linux-vdso.so, a pseudo-library created by the kernel at runtime,
+       which has the actual call to sysenter.
+
+# =================================
+# AUXILIARY VECTOR and DYNAMIC SECTIONS (sections of dynamically linked object)
+#   To see auxiliary vector values: LD_SHOW_AUXV=1 ./a.out 
+#   To see ELF sections: readelf -S ./a.out  ; readelf -S libmylibrary.so
+#   To see symbols:  nm ./a.out ; nm libmylibrary.so
+#   To see dynamic symbols (required by dynamic linker for linking across
+	libraries at runtime):  nm -D ./a.out ; nm -D libmylibrary.so
+
+NOTE:  The kernel will want to pass additional information to
+  the ELF loader (usually found at ld-linux.so).  The additional information
+  is in AUXV, the auxiliary vector, which is placed on the stack of
+  the ELF loader by the kernel.  For an article on AUXV, see:
+    http://articles.manugarg.com/aboutelfauxiliaryvectors
+  The auxiliary vector is still there on the stack, when the user main()
+  function begins.
+
+NOTE:  Should discuss dynamic symbols versus ordinary symbols ('-D' for 'nm')
+
+NOTE:  /usr/include/elf.h - AT_*, auxiliary vector, etc. (for ELF linker)
+        DT_* (dynamic tags, or "tags of sections of dynamically linked objects"
+        [ auxiliary vector tags, and dynamic tags for sections of ELF binary
+          have some overlap, but don't have to coincide. ]

@@ -1,4 +1,5 @@
 /*
+via:http://s.eresi-project.org/inc/articles/elf-rtld.txt
 
 Last update Sun Dec 22 06:55:39 2002 mayhem
 
