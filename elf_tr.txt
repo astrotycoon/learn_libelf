@@ -1300,6 +1300,12 @@ As the example shows, a string table index may refer to any byte in
 the section. A string may appear more than once; references to
 substrings may exist; and a single string may be referenced multiple
 times. Unreferenced strings also are allowed.
+从这个列子中我们可以看到：
+（1）只要是合法的索引值，就可以访问该字符串表中的任何字节。
+（2）一个字符串在字符串表中允许出现多次。
+（3）可以使用合法的索引值访问一个字符串的子串。
+（4）只要提供索引值，一个字符串当然可以引用多次。
+（5）甚至允许从不被引用的字符串的存在。
 
 
    ========================= Symbol Table =========================
