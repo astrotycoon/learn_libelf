@@ -1300,7 +1300,7 @@ As the example shows, a string table index may refer to any byte in
 the section. A string may appear more than once; references to
 substrings may exist; and a single string may be referenced multiple
 times. Unreferenced strings also are allowed.
-从这个列子中我们可以看到：
+从上面的列子中我们可以看到：
 （1）只要是合法的索引值，就可以访问该字符串表中的任何字节。
 （2）一个字符串在字符串表中允许出现多次。
 （3）可以使用合法的索引值访问一个字符串的子串。
@@ -1643,7 +1643,8 @@ symbols with types other than STT_FUNC will not be referenced
 automatically through the procedure linkage table.
 链接器对那些存在于共享库中的函数符号（即那些符号类型为STT_FUNC的符号）有特殊的处理。
 当其它的目标文件引用了共享库中的函数时，链接器会自动的为这个引用符号创建一个 程序连接表（PLT）
-表项。而共享库中符号类型为非STT_FUNC的符号则不通过 程序连接表（PLT）自动访问。
+表项。而共享库中符号类型为非STT_FUNC的符号则不是通过 程序连接表（PLT）自动访问。
+例如，可执行程序引用共享库中的共享对象（即符号类型为STT_OBJECT的符号）时，链接器会创建一个copy reloc来解决。
 
 Symbols with type STT_COMMON label uninitialized common blocks. 
 In relocatable objects, these symbols are not allocated and must 
@@ -1769,7 +1770,8 @@ programs.
 
 A symbol's visibility, although it may be specified in a relocatable object, 
 defines how that symbol may be accessed once it has become part of an executable or shared object.
-尽管也许一个符号的可见性是在编译时指定的，但是可见性定义的是符号在可执行文件或者共享库中能否被访问的特性。
+尽管我们可以在编译阶段(通过在source code中或者编译器选项指定符号的可见性)和静态链接阶段（通过export list文件）指定符号的可见性属性，
+但其实可见性属性控制的是一个符号在运行时的解析行为。
 + Figure 1-20: Symbol Visibility 
 		Name		   		Value
      	========   		    =====
@@ -1783,9 +1785,9 @@ defines how that symbol may be accessed once it has become part of an executable
   That is, global and weak symbols are visible outside of their defining component (executable file or shared object). 
   Local symbols are hidden, as described below. Global and weak symbols are also preemptable, 
   that is, they may by preempted by definitions of the same name in another component.
-  当符号的可见性是STV_DEFAULT时，那么该符号的可见性由符号的绑定属性决定。也就是说，（可执行文件和共享库中的）全局符号和弱符号
-  是外部可访问的，而局部符号外部是无法访问的，其可见性是STV_HIDDEN。这种情况下，全局符号依然是优先处理的，也就是说，当全局符号
-  和弱符号同名是，链接器选择全局符号，而忽略弱符号。
+  当符号的可见性是STV_DEFAULT时，那么该符号的可见性由符号的绑定属性决定。这类情况下，（可执行文件和共享库中的）全局符号和弱符号
+  默认是外部可访问的，而本地符号外部是无法被访问的。但是，可见性是STV_DEFAULT的全局符号和弱符号是可被覆盖的。
+  什么意思？举个例子，共享库中的可见性值为STV_DEFAULTD的全局符号和弱符号是可被可执行文件中的同名符号覆盖的。
 
 * STV_PROTECTED
   A symbol defined in the current component is protected if it is visible in other components but not preemptable, 
