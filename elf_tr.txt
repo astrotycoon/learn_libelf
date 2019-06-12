@@ -1786,7 +1786,7 @@ defines how that symbol may be accessed once it has become part of an executable
   Local symbols are hidden, as described below. Global and weak symbols are also preemptable, 
   that is, they may by preempted by definitions of the same name in another component.
   当符号的可见性是STV_DEFAULT时，那么该符号的可见性由符号的绑定属性决定。这类情况下，（可执行文件和共享库中的）全局符号和弱符号
-  默认是外部可访问的，而本地符号外部是无法被访问的。但是，可见性是STV_DEFAULT的全局符号和弱符号是可被覆盖的。
+  默认是外部可访问的，本地符号默认外部是无法被访问的。但是，可见性是STV_DEFAULT的全局符号和弱符号是可被覆盖的。
   什么意思？举个例子，共享库中的可见性值为STV_DEFAULTD的全局符号和弱符号是可被可执行文件中的同名符号覆盖的。
 
 * STV_PROTECTED
@@ -1797,14 +1797,18 @@ defines how that symbol may be accessed once it has become part of an executable
   A symbol with STB_LOCAL binding may not have STV_PROTECTED visibility. 
   If a symbol definition with STV_PROTECTED visibility from a shared object is taken as resolving a reference from 
   an executable or another shared object, the SHN_UNDEF symbol table entry created has STV_DEFAULT visibility.
+  当符号的可见性是STV_PROTECTED时，它是外部可见的，这点跟可见性是STV_DEFAULT的一样，但不同的是它是不可覆盖的。
+  这样的符号在共享库中比较常见。不可覆盖意味着如果在这个共享库访问这个符号，就一定是访问这个符号，尽管可执行文件中也
+  会存在同样名字的符号也不会被覆盖掉。
+  规定绑定属性为STB_LOCAL的符号的可见性不可以是STV_PROTECTED。
+ 
 
 * STV_HIDDEN <<
   A symbol defined in the current component is hidden if its name is not visible to other components. 
   Such a symbol is necessarily protected. This attribute may be used to control the external interface of a component. 
   Note that an object named by such a symbol may still be referenced from another component if its address is passed outside.
-  当符号的可见性是STV_HIDDEN时，证明该符号是外部无法访问的。这个属性可以用来控制共享库接口的可见性，是其只能内部访问。
-  需要主要的是，尽管一个数据对象的名字符号也可以设定为STV_HIDDEN，但是如果能获取到该符号的地址的话，那么也是
-  可以访问或者修改该数据对象的。
+  当符号的可见性是STV_HIDDEN时，证明该符号是外部无法访问的。这个属性主要用来控制共享库对外接口的数量。
+  需要注意的是，一个可见性为STV_HIDDEN的数据对象，如果能获取到该符号的地址，那么依然是可以访问或者修改该数据对象的。
 
   A hidden symbol contained in a relocatable object must be either removed or converted to STB_LOCAL binding 
   by the link-editor when the relocatable object is included in an executable file or shared object.
