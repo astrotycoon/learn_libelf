@@ -1739,8 +1739,7 @@ As mentioned above, the symbol table entry for index 0 (STN_UNDEF) is reserved; 
 	符号数值
 Symbol table entries for different object file types have slightly
 different interpretations for the st_value member.
-对于符号表中的每一个符号表项来说，在不同的目标文件中，对成员st_value
-的意义解释也是不同的。
+在不同的目标文件中，对成员st_value的意义解释也是不同的。
 
 * In relocatable files, st_value holds alignment constraints for a
   symbol whose section index is SHN_COMMON.
@@ -1752,20 +1751,18 @@ different interpretations for the st_value member.
   linker, the section offset (file interpretation) gives way to a
   virtual address (memory interpretation) for which the section number
   is irrelevant.
-* 在可重定位文件中，当成员st_shndx等于SHN_COMMON时，则st_value的值代表的是
+* 在可重定位文件中，若符号的st_shndx等于SHN_COMMON，则st_value的值代表的是
   该符号的对齐字节数。
-* 在可重定位文件中，如果一个符号是已定义的，那么st_value的值代表的是该符号
+* 在可重定位文件中，若一个符号是已定义的，那么st_value的值代表的是该符号
   在其所在的节中的偏移量 -- 当然了，这个节是由st_shndx指定的。
-* 在可执行文件和共行库中，st_value的值不再是一个节偏移量，而代表的是一个虚拟地址，
-  直接指向符号所在的内存位置，这样做的目的是为了当该文件被加载到内存中时，这些文件中
-  的符号对动态链接器（ld-linux.so.2）来说更加的有用 -- 因为虚拟地址是与节无关的，所以
-  这种情况下，我们不需要关心st_shndx的值。
+* 在可执行文件和共行库中，一个已定义符号的st_value的值不再是一个节偏移量，而是一个虚拟地址，
+  因为动态链接器需要知道符号的内存地址。 -- 因为虚拟地址是与节无关的，所以这种情况下，我们不需要关心st_shndx的值。
 
 Although the symbol table values have similar meanings for different
 object files, the data allow efficient access by the appropriate
 programs.
-综合以上三点可知，在不同的目标文件中st_value的值多少有所不同，这样的设计是
-为了方便一些特定程序更加方便有效的访问和利用这些符号数值（例如在链接时，ld ... 在运行时，动态链接器）。
+综合以上三点可知，在不同的目标文件中st_value的值代表的含义不同。这样设计是有原因的：在静态链接阶段，
+链接器需要的是符号在文件中的位置信息，而在程序运行时，动态链接器需要的是符号在内存中的位置信息。
 
 
 A symbol's visibility, although it may be specified in a relocatable object, 
